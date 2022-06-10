@@ -6,3 +6,12 @@ D:\Workspace\Sherlock\Fuentes\Ver4.2\clsDatos\obj\Debug\DAL.csprojAssemblyRefere
 D:\Workspace\Sherlock\Fuentes\Ver4.2\clsDatos\obj\Debug\DAL.csproj.CopyComplete
 D:\Workspace\Sherlock\Fuentes\Ver4.2\clsDatos\obj\Debug\DAL.dll
 D:\Workspace\Sherlock\Fuentes\Ver4.2\clsDatos\obj\Debug\DAL.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\bin\Debug\DAL.dll
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\bin\Debug\DAL.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\bin\Debug\DTO.dll
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\bin\Debug\DTO.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\obj\Debug\DAL.dll
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDatos\obj\Debug\DAL.pdb

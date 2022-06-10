@@ -1032,7 +1032,7 @@ namespace ListasSarlaft.Classes
                         //    "select a.CodigoEvento 'Código',em.Descripcion Empresa,reg.NombreRegion 'Región',pai.NombrePais 'Pais',dep.NombreDepartamento Departamento,ciu.NombreCiudad Ciudad,ofi.NombreOficinaSucursal 'Oficina/Sucursal' ,a.DetalleUbicacion 'Detalle Ubicación',a.DescripcionEvento 'Descripción Evento',ser.Descripcion 'Servicio/Producto',subs.SubDescripcion 'SubServicio/SubProducto',SUBSTRING(convert(varchar,a.FechaInicio,120),1,10) 'Fecha Inicio', a.HoraInicio 'Hora Inicio',SUBSTRING(convert(varchar,a.FechaFinalizacion,120),1,10) 'Fecha Finalización',a.HoraFinalizacion 'Hora Finalización',SUBSTRING(convert(varchar,a.FechaDescubrimiento,120),1,10) 'Fecha Descubrimiento',a.HoraDescubrimiento 'Hora Descubrimiento',can.Descripcion Canal,gen.Descripcion 'Generador del Evento',case a.IdGeneraEvento when 2 then a.NomGeneradorEvento else jer.NombreResponsable end as 'Responsable Evento', a.CuantiaPerdida 'Posible Cuantía de Pérdida ',SUBSTRING(convert(varchar,a.FechaEvento,120),1,10) 'Fecha Registro',usu.Usuario Usuario,cv.NombreCadenaValor 'Cadena Valor',mp.Nombre MacroProceso, pp.Nombre Proceso,sp.Nombre SubProceso,pa.Nombre Actividad,jer1.NombreResponsable 'Responsable Solución',ec.Descripcion 'Clase de Riesgo',esc.SubDescripcion 'SubClase de Riesgo',ptp.NombreTipoPerdidaEvento 'Tipo de Pérdida',eln.Descripcion 'Línea Operativa ',esln.SubDescripcion 'SubLínea Operativa',a.MasLineas 'Más Líneas Operativas',case a.AfectaContinudad when 1 then 'Si' when 0 then 'No' end 'Afecta Continuidad',ee.Descripcion Estado,a.Observaciones,jer2.NombreResponsable 'Responsable Contabilidad',a.CuentaPUC 'Cuenta PUC',a.CuentaOrden 'Cuenta de Orden',a.TasaCambio1 'Tasa de Cambio',a.ValorPesos1 'Valor en Pesos',a.ValorRecuperadoTotal 'Valor Recuperado Total',a.TasaCambio2 'Tasa de Cambio 2',a.ValorPesos2 'Valor en Pesos 2',case a.Recuperacion when 1 then 'Si' when 0 then 'No' end 'Recuperación ',a.ValorRecuperacion 'Fuente de la Recuperación' from Riesgos.Eventos a left join Eventos.Empresa em on a.IdEmpresa = em.IdEmpresa left join Parametrizacion.Regiones reg on a.IdRegion = reg.IdRegion left join Parametrizacion.Paises pai on a.IdRegion = pai.IdRegion and a.IdPais = pai.IdPais left join Parametrizacion.Departamentos dep on a.IdPais = dep.IdPais and a.IdDepartamento = dep.IdDepartamento left join Parametrizacion.Ciudades ciu on a.IdDepartamento = ciu.IdDepartamento and a.IdCiudad = ciu.IdCiudad left join Parametrizacion.OficinaSucursal ofi on a.IdCiudad = ofi.IdCiudad and a.IdOficinaSucursal = ofi.IdOficinaSucursal left join Eventos.Servicio ser on a.IdServicio = ser.IdServicio left join Eventos.SubServicio subs on a.IdSubServicio = subs.IdSubServicio left join Eventos.Canal can on a.IdCanal = can.IdCanal left join Eventos.Generador gen on a.IdGeneraEvento = gen.IdGenerador left join Parametrizacion.DetalleJerarquiaOrg jer on a.GeneraEvento = jer.idHijo left join Listas.Usuarios usu on a.IdUsuario = usu.IdUsuario left join Procesos.CadenaValor cv on a.IdCadenaValor = cv.IdCadenaValor left join Procesos.Macroproceso mp on a.IdCadenaValor = mp.IdCadenaValor and a.IdMacroproceso = mp.IdMacroProceso left join Procesos.Proceso pp on a.IdMacroproceso = pp.IdMacroProceso and a.IdProceso = pp.IdProceso left join Procesos.Subproceso sp on a.IdProceso = sp.IdProceso and a.IdSubProceso = sp.IdSubproceso left join Procesos.Actividad pa on a.IdSubProceso = pa.IdSubproceso and a.IdActividad = pa.IdActividad left join Parametrizacion.DetalleJerarquiaOrg jer1 on a.ResponsableEvento = jer1.idHijo left join Eventos.Clase ec on a.IdClase = ec.IdClase left join Eventos.SubClase esc on a.IdClase = esc.IdClase and a.IdSubClase = esc.IdSubClase left join Parametrizacion.TipoPerdidaEvento ptp on a.IdTipoPerdidaEvento = ptp.IdTipoPerdidaEvento left join Eventos.LineaNegocio eln on a.IdLineaProceso = eln.IdLineaNegocio left join Eventos.SubLineaNegocio esln on a.IdLineaProceso = esln.IdLineaNegocio and a.IdSubLineaProceso = esln.IdSubLineaNegocio left join Eventos.Estado ee on a.IdEstado = ee.IdEstado left join Parametrizacion.DetalleJerarquiaOrg jer2 on a.ResponsableContabilidad = jer2.idHijo " + condicion + " ORDER BY a.CodigoEvento");
 
                         strQry1 = "SELECT a.CodigoEvento 'Código', LTRIM(RTRIM(ISNULL(em.Descripcion, ''))) Empresa, PAr.NombreArea Area, " +
-                            "usu.Usuario Usuario, LTRIM(RTRIM(USU.Nombres)) + ' ' + LTRIM(RTRIM(USU.Apellidos)) NombreUsuarioRegistro,"+"\n"+
+                            "usu.Usuario Usuario, LTRIM(RTRIM(USU.Nombres)) + ' ' + LTRIM(RTRIM(USU.Apellidos)) NombreUsuarioRegistro," + "\n" +
                             "SUBSTRING(CONVERT(VARCHAR,a.FechaEvento, 120), 1, 10) 'Fecha Registro', reg.NombreRegion 'Región', pai.NombrePais 'Pais', " +
                             "dep.NombreDepartamento Departamento, ciu.NombreCiudad Ciudad, ofi.NombreOficinaSucursal 'Oficina/Sucursal'" + "\n" +
                             " , a.DetalleUbicacion 'Detalle Ubicación', a.DescripcionEvento 'Descripción Evento', ser.Descripcion 'Servicio/Producto'," +
@@ -1056,36 +1056,36 @@ namespace ListasSarlaft.Classes
                             "CASE a.Recuperacion WHEN 1 THEN 'Si' WHEN 0 THEN 'No' END 'Recuperación', a.ValorRecuperacion 'Fuente de la Recuperación'" + "\n" +
                             ",SUBSTRING(CONVERT(VARCHAR,a.FechaContabilidad, 120), 1, 10) 'Fecha Contabilización', [NombreImpactoCualitativo], " +
                             "a.IdEvento, a.FechaRecuperacion, a.HoraRecuperacion, a.CuantiaRecup, a.CuantiaOtraRecup, " +
-                            "a.CuantiaNeta "+"\n";
+                            "a.CuantiaNeta " + "\n";
                         strQry2 = "FROM Riesgos.Eventos a " + "\n" +
-                            "LEFT JOIN Eventos.Empresa em ON a.IdEmpresa = em.IdEmpresa " + "\n" + "" +
-                            "LEFT JOIN Parametrizacion.Regiones reg ON a.IdRegion = reg.IdRegion " + "\n" +
-                            "LEFT JOIN Parametrizacion.Paises pai ON a.IdRegion = pai.IdRegion AND a.IdPais = pai.IdPais " + "\n" +
-                            "LEFT JOIN Parametrizacion.Departamentos dep ON a.IdPais = dep.IdPais AND a.IdDepartamento = dep.IdDepartamento " + "\n" +
-                            "LEFT JOIN Parametrizacion.Ciudades ciu ON a.IdDepartamento = ciu.IdDepartamento AND a.IdCiudad = ciu.IdCiudad " + "\n" +
-                            "LEFT JOIN Parametrizacion.OficinaSucursal ofi ON a.IdCiudad = ofi.IdCiudad AND a.IdOficinaSucursal = ofi.IdOficinaSucursal " + "\n" +
-                            "LEFT JOIN Eventos.Servicio ser ON a.IdServicio = ser.IdServicio " + "\n" +
-                            "LEFT JOIN Eventos.SubServicio subs on a.IdSubServicio = subs.IdSubServicio " + "\n" +
-                            "LEFT JOIN Eventos.Canal can ON a.IdCanal = can.IdCanal " + "\n" +
-                            "LEFT JOIN Eventos.Generador gen ON a.IdGeneraEvento = gen.IdGenerador " + "\n" +
-                            "LEFT JOIN Parametrizacion.DetalleJerarquiaOrg JER ON a.GeneraEvento = JER.idHijo " + "\n" +
-                            "LEFT JOIN Listas.Usuarios usu ON a.IdUsuario = usu.IdUsuario " + "\n" +
-                            "LEFT JOIN Procesos.CadenaValor cv ON a.IdCadenaValor = cv.IdCadenaValor " + "\n" +
-                            "LEFT JOIN Procesos.Macroproceso mp ON a.IdCadenaValor = mp.IdCadenaValor AND a.IdMacroproceso = mp.IdMacroProceso " + "\n" +
-                            "LEFT JOIN Procesos.Proceso pp ON a.IdMacroproceso = pp.IdMacroProceso AND a.IdProceso = pp.IdProceso " + "\n" +
-                            "LEFT JOIN Procesos.Subproceso sp ON a.IdProceso = sp.IdProceso AND a.IdSubProceso = sp.IdSubproceso " + "\n" +
-                            "LEFT JOIN Procesos.Actividad pa ON a.IdSubProceso = pa.IdSubproceso AND a.IdActividad = pa.IdActividad " + "\n" +
-                            "LEFT JOIN Parametrizacion.DetalleJerarquiaOrg jer1 ON a.ResponsableEvento = jer1.idHijo " + "\n" +
-                            "LEFT JOIN Eventos.Clase ec ON a.IdClase = ec.IdClase " + "\n" +
-                            "LEFT JOIN Eventos.SubClase esc ON a.IdClase = esc.IdClase AND a.IdSubClase = esc.IdSubClase " + "\n" +
-                            "LEFT JOIN Parametrizacion.TipoPerdidaEvento ptp ON a.IdTipoPerdidaEvento = ptp.IdTipoPerdidaEvento " + "\n" +
-                            "LEFT JOIN Eventos.LineaNegocio eln ON a.IdLineaProceso = eln.IdLineaNegocio " + "\n" +
-                            "LEFT JOIN Eventos.SubLineaNegocio esln ON a.IdLineaProceso = esln.IdLineaNegocio AND a.IdSubLineaProceso = esln.IdSubLineaNegocio " + "\n" +
-                            "LEFT JOIN Eventos.Estado ee ON a.IdEstado = ee.IdEstado " + "\n" +
-                            "LEFT JOIN Parametrizacion.DetalleJerarquiaOrg jer2 ON a.ResponsableContabilidad = jer2.idHijo " + "\n" +
-                            "LEFT JOIN [Parametrizacion].[JerarquiaOrganizacional] PJO ON usu.IdJerarquia  = PJO.idHijo " + "\n" +
-                            "LEFT JOIN [Parametrizacion].[DetalleJerarquiaOrg] PDJO ON PJO.idHijo = PDJO.idHijo " + "\n" + 
-                            "LEFT JOIN [Parametrizacion].[Area] PAr ON PDJO.IdArea = PAr.IdArea";
+"left JOIN Eventos.Empresa em ON a.IdEmpresa = em.IdEmpresa" + "\n" +
+"left JOIN Listas.Usuarios usu ON a.IdUsuario = usu.IdUsuario" + "\n" +
+"left JOIN [Parametrizacion].[JerarquiaOrganizacional] PJO ON usu.IdJerarquia  = PJO.idHijo" + "\n" +
+"left JOIN [Parametrizacion].[DetalleJerarquiaOrg] PDJO ON PJO.idHijo = PDJO.idHijo " + "\n" +
+"left JOIN [Parametrizacion].[Area] PAr ON PDJO.IdArea = PAr.IdArea " + "\n" +
+"left JOIN Parametrizacion.Regiones reg ON a.IdRegion = reg.IdRegion " + "\n" +
+"left JOIN Parametrizacion.Paises pai ON a.IdRegion = pai.IdRegion AND a.IdPais = pai.IdPais  " + "\n" +
+"left JOIN Parametrizacion.Departamentos dep ON a.IdPais = dep.IdPais AND a.IdDepartamento = dep.IdDepartamento " + "\n" +
+"left JOIN Parametrizacion.Ciudades ciu ON a.IdDepartamento = ciu.IdDepartamento AND a.IdCiudad = ciu.IdCiudad " + "\n" +
+"left JOIN Parametrizacion.OficinaSucursal ofi ON a.IdCiudad = ofi.IdCiudad AND a.IdOficinaSucursal = ofi.IdOficinaSucursal " + "\n" +
+"left JOIN Eventos.Servicio ser ON a.IdServicio = ser.IdServicio " + "\n" +
+"left JOIN Eventos.SubServicio subs on a.IdSubServicio = subs.IdSubServicio  " + "\n" +
+"left JOIN Eventos.Canal can ON a.IdCanal = can.IdCanal " + "\n" +
+"left JOIN Eventos.Generador gen ON a.IdGeneraEvento = gen.IdGenerador " + "\n" +
+"left JOIN Procesos.CadenaValor cv ON a.IdCadenaValor = cv.IdCadenaValor  " + "\n" +
+"left JOIN Procesos.Macroproceso mp ON a.IdCadenaValor = mp.IdCadenaValor AND a.IdMacroproceso = mp.IdMacroProceso " + "\n" +
+"left JOIN Procesos.Proceso pp ON a.IdMacroproceso = pp.IdMacroProceso AND a.IdProceso = pp.IdProceso  " + "\n" +
+"left JOIN Procesos.Subproceso sp ON a.IdProceso = sp.IdProceso AND a.IdSubProceso = sp.IdSubproceso " + "\n" +
+"left JOIN Procesos.Actividad pa ON a.IdSubProceso = pa.IdSubproceso AND a.IdActividad = pa.IdActividad " + "\n" +
+"left JOIN Parametrizacion.DetalleJerarquiaOrg jer1 ON a.ResponsableEvento = jer1.idHijo  " + "\n" +
+"left JOIN Eventos.Clase ec ON a.IdClase = ec.IdClase " + "\n" +
+"left JOIN Eventos.SubClase esc ON a.IdClase = esc.IdClase AND a.IdSubClase = esc.IdSubClase " + "\n" +
+"left JOIN Parametrizacion.TipoPerdidaEvento ptp ON a.IdTipoPerdidaEvento = ptp.IdTipoPerdidaEvento " + "\n" +
+"left JOIN Eventos.LineaNegocio eln ON a.IdLineaProceso = eln.IdLineaNegocio " + "\n" +
+"left JOIN Eventos.SubLineaNegocio esln ON a.IdLineaProceso = esln.IdLineaNegocio AND a.IdSubLineaProceso = esln.IdSubLineaNegocio  " + "\n" +
+"left JOIN Eventos.Estado ee ON a.IdEstado = ee.IdEstado  " + "\n" +
+"left JOIN Parametrizacion.DetalleJerarquiaOrg jer2 ON a.ResponsableContabilidad = jer2.idHijo ";
+
                         strConsulta = string.Format("{0} {1} {2} ORDER BY a.CodigoEvento", strQry1, strQry2, condicion);
                         #endregion
 
@@ -1375,7 +1375,7 @@ namespace ListasSarlaft.Classes
            + "       a.CuantiaRecup, \n"
            + "       a.CuantiaOtraRecup, \n" 
            + "       a.CuantiaNeta \n"
-           + "a.fechaRecuperacion,a.cuantiaRecuperadaSeguros,a.cuantiaOtrasRecuperaciones,a.cuantiaNetaRecuperaciones \n"
+          // + "a.fechaRecuperacion,a.cuantiaRecuperadaSeguros,a.cuantiaOtrasRecuperaciones,a.cuantiaNetaRecuperaciones \n"
            + "FROM Riesgos.Eventos a WITH	(NOLOCK)\n"
            + "     LEFT JOIN Eventos.Clase b ON a.IdClase = b.IdClase\n"
            + "     LEFT JOIN Parametrizacion.TipoPerdidaEvento c WITH	(NOLOCK) ON a.IdTipoPerdidaEvento = c.IdTipoPerdidaEvento\n"

@@ -72,7 +72,7 @@ namespace ListasSarlaft.Classes.BLL.Riesgos.Parametrizacion
                             CCalificacionExperta CargaPuntoCorte = new CCalificacionExperta();
                             CargaPuntoCorte.IdPuntoCorte = Convert.ToInt32(dr["IdPuntoCorte"]);
                             CargaPuntoCorte.IdFrecuenciaEventos = Convert.ToInt32(dr["IdFrecuenciaEventos"]);
-                            CargaPuntoCorte.NombreFrecuencia = dr["NombreFrecuencia"].ToString().Trim();
+                            CargaPuntoCorte.NombreFrecuencia = dr["NombreFrecuenciaEvento"].ToString().Trim();
                             CargaPuntoCorte.Min = Convert.ToInt32(dr["Min"]);
                             CargaPuntoCorte.Max = Convert.ToInt32(dr["Max"]);
 

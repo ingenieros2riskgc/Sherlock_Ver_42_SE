@@ -6873,3 +6873,505 @@ El nombre de columna 'Estado' no es válido.,    en System.Data.OleDb.OleDbComma
    en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en D:\Workspace\Sherlock\Fuentes\Ver4.2\ListasSarlaft\Classes\cDataBase.cs:línea 44
    en ListasSarlaft.Classes.cEvento.loadDDLTipoPerdidaEvento() en D:\Workspace\Sherlock\Fuentes\Ver4.2\ListasSarlaft\Classes\cEvento.cs:línea 834
 22/07/2021 8:46:59
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.autenticarUsuario(String Usuario, String Contrasena) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 352
+6/06/2022 2:11:27 p. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.mtdUsuarioBloqueado(String Usuario, String Contrasena) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 1037
+6/06/2022 2:11:27 p. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.MensajeLogin(String Usuario) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 182
+6/06/2022 2:11:27 p. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.autenticarUsuario(String Usuario, String Contrasena) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 352
+6/06/2022 4:21:45 p. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.mtdUsuarioBloqueado(String Usuario, String Contrasena) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 1037
+6/06/2022 4:21:45 p. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.MensajeLogin(String Usuario) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 182
+6/06/2022 4:21:45 p. m.
+[DBNETLIB][ConnectionRead (recv()).]Error general de red. Consulte la documentación de la red.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cControl.AllListControles() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cControl.cs:línea 1925
+6/06/2022 4:33:52 p. m.
+Error relacionado con la red o específico de la instancia mientras se establecía una conexión con el servidor SQL Server. No se encontró el servidor o éste no estaba accesible. Compruebe que el nombre de la instancia es correcto y que SQL Server está configurado para admitir conexiones remotas. (provider: Named Pipes Provider, error: 40 - No se pudo abrir una conexión con SQL Server),    en System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   en System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   en System.Data.SqlClient.SqlConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.EjecutarSPParametrosReturnInteger(String NombreSp, List`1 Parametros) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 108
+6/06/2022 4:38:52 p. m.
+Error relacionado con la red o específico de la instancia mientras se establecía una conexión con el servidor SQL Server. No se encontró el servidor o éste no estaba accesible. Compruebe que el nombre de la instancia es correcto y que SQL Server está configurado para admitir conexiones remotas. (provider: Named Pipes Provider, error: 40 - No se pudo abrir una conexión con SQL Server)
+6/06/2022 4:38:52 p. m.
+[DBNETLIB][ConnectionWrite (send()).]Error general de red. Consulte la documentación de la red.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cCuenta.Login_SN(String IdUsuario, Int32 Login) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 163
+7/06/2022 4:17:20 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.mtdEstaBloqueado() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 1000
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.permisosConsulta(String IdFormulario) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 379
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLRegion() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1254
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLClasificacion() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1470
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadCBLCausas() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 717
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadCBLConsecuencias() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 735
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadCBLTratamiento() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 753
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLCadenaValor() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1130
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLProbabilidad() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1075
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLFactorRiesgoOperativo() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1039
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLTipoEventoOperativo() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 985
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLRiesgoAsociadoOperativo() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1003
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadCBLRiesgoAsociadoLA() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 681
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadCBLFactorRiesgoLAFT() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 699
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadDDLImpacto() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1112
+7/06/2022 4:18:12 p. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cRiesgo.loadLBCadenaValor() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cRiesgo.cs:línea 1925
+7/06/2022 4:18:13 p. m.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta cerca de '.'.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cEvento.loadInfoEventos(String CodigoEvento, String DescripcionEvento, String IdCadenaValor, String IdMacroproceso, String IdProceso, String IdSubProceso, Int32 IdUsuarioJerarquia, Int32 IdSesion, String TipoArea) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cEvento.cs:línea 1397
+8/06/2022 7:57:34 a. m.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta cerca de '.'.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cEvento.loadInfoEventos(String CodigoEvento, String DescripcionEvento, String IdCadenaValor, String IdMacroproceso, String IdProceso, String IdSubProceso, Int32 IdUsuarioJerarquia, Int32 IdSesion, String TipoArea) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cEvento.cs:línea 1397
+8/06/2022 7:59:52 a. m.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta cerca de '.'.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cEvento.loadInfoEventos(String CodigoEvento, String DescripcionEvento, String IdCadenaValor, String IdMacroproceso, String IdProceso, String IdSubProceso, Int32 IdUsuarioJerarquia, Int32 IdSesion, String TipoArea) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cEvento.cs:línea 1397
+8/06/2022 8:00:05 a. m.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta cerca de '.'.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cEvento.loadInfoEventos(String CodigoEvento, String DescripcionEvento, String IdCadenaValor, String IdMacroproceso, String IdProceso, String IdSubProceso, Int32 IdUsuarioJerarquia, Int32 IdSesion, String TipoArea) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cEvento.cs:línea 1397
+8/06/2022 8:00:23 a. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.autenticarUsuario(String Usuario, String Contrasena) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 352
+8/06/2022 2:34:49 p. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.mtdUsuarioBloqueado(String Usuario, String Contrasena) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 1037
+8/06/2022 2:34:49 p. m.
+[DBNETLIB][ConnectionOpen (Connect()).]No existe el servidor SQL Server o se ha denegado el acceso al mismo.,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar() en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 30
+   en ListasSarlaft.Classes.cCuenta.MensajeLogin(String Usuario) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cCuenta.cs:línea 182
+8/06/2022 2:34:49 p. m.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta cerca de '.'.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cEvento.loadInfoEventos(String CodigoEvento, String DescripcionEvento, String IdCadenaValor, String IdMacroproceso, String IdProceso, String IdSubProceso, Int32 IdUsuarioJerarquia, Int32 IdSesion, String TipoArea) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cEvento.cs:línea 1397
+8/06/2022 2:36:07 p. m.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta junto a la palabra clave 'with'. Si esta instrucción es una expresión de tabla común, una cláusula xmlnamespaces o una cláusula de contexto de seguimiento de cambios, la instrucción anterior debe terminarse con punto y coma.
+Sintaxis incorrecta cerca de '.'.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cDataBase.cs:línea 44
+   en ListasSarlaft.Classes.cEvento.loadInfoEventos(String CodigoEvento, String DescripcionEvento, String IdCadenaValor, String IdMacroproceso, String IdProceso, String IdSubProceso, Int32 IdUsuarioJerarquia, Int32 IdSesion, String TipoArea) en C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\Classes\cEvento.cs:línea 1397
+8/06/2022 2:42:48 p. m.
+Cod Control: C1 |Total calificación: 7,9
+9/06/2022 10:19:44 a. m.
+Cod Control: C1 |Total calificación: 9,1
+9/06/2022 10:19:48 a. m.
+Cod Control: C1 |Total calificación: 21,1
+9/06/2022 10:19:54 a. m.
+Cod Control: C1 |Total calificación: 22,35
+9/06/2022 10:20:05 a. m.
+Cod Control: C2096 |Total calificación: 21,5
+9/06/2022 10:27:02 a. m.
+Cod Control: C2097 |Total calificación: 6,7
+9/06/2022 10:28:13 a. m.
+Cod Control: C2097 |Total calificación: 4,6
+9/06/2022 10:28:17 a. m.
+Cod Control: C2745 |Total calificación: 22,2
+9/06/2022 10:29:39 a. m.
+Cod Control: C2745 |Total calificación: 22,2
+9/06/2022 10:29:52 a. m.
+Cod Control: C2745 |Total calificación: 27,7
+9/06/2022 10:30:18 a. m.
+Expiró el tiempo de espera de inicio de sesión,    en System.Data.OleDb.OleDbConnectionInternal..ctor(OleDbConnectionString constr, OleDbConnection connection)
+   en System.Data.OleDb.OleDbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   en System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   en System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   en System.Data.OleDb.OleDbConnection.Open()
+   en ListasSarlaft.Classes.cDataBase.conectar()
+   en ListasSarlaft.Classes.cEvento.mtdGetCodEventAsociados(Int32 IdEvento)
+9/06/2022 11:21:23 a. m.
+El identificador formado por varias partes 'PAr.NombreArea' no se pudo enlazar.,    en System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object& executeResult)
+   en System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   en System.Data.OleDb.OleDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.OleDb.OleDbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   en System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   en ListasSarlaft.Classes.cDataBase.ejecutarConsulta(String txtQuery)
+   en ListasSarlaft.Classes.cEvento.ReporteEventos(String IdCadenaValor, String IdMacroProceso, String IdProceso, String IdClasificacionRiesgo, String IdClasificacionGeneralRiesgo, String NombreRiesgoInherente, String NombreRiesgoResidual, String IdEmpresa, String numeroQuery, String IdRiesgo, String FechaIni, String FechaFin)
+9/06/2022 4:24:31 p. m.

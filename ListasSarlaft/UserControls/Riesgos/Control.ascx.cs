@@ -3138,7 +3138,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             ModificarControl();
         }
 
-        protected void btnAceptar1_Click(object sender, EventArgs e)
+        protected void btnAceptar1_Click(object sender, EventArgs e)//ImbCalcularControl_Click
         {// evento confirmacion - Yoendy Ca              
             GridViewRow row = GridView1.Rows[RowGridControles];
             int booActivo = 0;
@@ -3180,6 +3180,16 @@ namespace ListasSarlaft.UserControls.Riesgos
                     }
                 }
             }
+        }
+
+        protected void ImbCalcularControl_Click(object sender, EventArgs e)
+        {
+            clsBLLcalificaControl cProcess = new clsBLLcalificaControl();
+            List<cControlEntity> lstControles = cControl.AllListControles();
+            string strErrMsg = string.Empty;
+            Boolean flag = cProcess.mtdCalificaControlMasico(lstControles, ref strErrMsg);
+            if (flag == true)
+                Mensaje("Proceso finalizado exitosamente");
         }
 
         private void ModificarControl()

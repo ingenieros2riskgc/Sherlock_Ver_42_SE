@@ -8,3 +8,14 @@ D:\Workspace\Sherlock\Fuentes\Ver4.2\clsLogica\obj\Release\DLL.csprojAssemblyRef
 D:\Workspace\Sherlock\Fuentes\Ver4.2\clsLogica\obj\Release\DLL.csproj.CopyComplete
 D:\Workspace\Sherlock\Fuentes\Ver4.2\clsLogica\obj\Release\DLL.dll
 D:\Workspace\Sherlock\Fuentes\Ver4.2\clsLogica\obj\Release\DLL.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\bin\Release\DLL.dll
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\bin\Release\DLL.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\bin\Release\DAL.dll
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\bin\Release\DTO.dll
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\bin\Release\DAL.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\bin\Release\DTO.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\obj\Release\DLL.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\obj\Release\DLL.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\obj\Release\DLL.csproj.CopyComplete
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\obj\Release\DLL.dll
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsLogica\obj\Release\DLL.pdb

@@ -12,7 +12,7 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Text.RegularExpressions;
-using Microsoft.Office.Interop.Excel;
+
 using System.Configuration;
 using ClosedXML.Excel;
 using Microsoft.Security.Application;

@@ -1913,6 +1913,70 @@ namespace ListasSarlaft.Classes
             }
             return lstControles;
         }
+
+        public List<cControlEntity> AllListControles()
+        {
+            DataTable dtInformacion = new DataTable();
+            List<cControlEntity> lstControles = new List<cControlEntity>();
+            try
+            {
+
+                cDataBase.conectar();
+                dtInformacion = cDataBase.ejecutarConsulta("SELECT Riesgos.Control.IdControl, Riesgos.Control.CodigoControl, Riesgos.Control.NombreControl, " +
+                    "Riesgos.Control.DescripcionControl, Riesgos.Control.ObjetivoControl, Riesgos.Control.Responsable, Riesgos.Control.IdPeriodicidad, " +
+                    "Riesgos.Control.IdTest, Parametrizacion.Test.NombreTest, Riesgos.Control.IdClaseControl, Riesgos.Control.IdTipoControl, " +
+                    "isnull(Riesgos.Control.IdResponsableExperiencia,0) IdResponsableExperiencia, Riesgos.Control.IdDocumentacion, Riesgos.Control.IdResponsabilidad, " +
+                    "Riesgos.Control.IdCalificacionControl, Riesgos.Control.FechaRegistro, Riesgos.Control.IdUsuario, Riesgos.Control.IdMitiga, " +
+                    "Parametrizacion.JerarquiaOrganizacional.NombreHijo,Riesgos.Control.ResponsableEjecucion " +
+                    ",isnull(Riesgos.Control.[Variable6],0) Variable6,isnull(Riesgos.Control.[Variable7],0) Variable7" +
+                    ", isnull(Riesgos.Control.[Variable8],0) Variable8, isnull(Riesgos.Control.[Variable9],0) Variable9, isnull(Riesgos.Control.[Variable10],0) Variable10, isnull(Riesgos.Control.[Variable11],0) Variable11, isnull(Riesgos.Control.[Variable12],0) Variable12" +
+                    ", isnull(Riesgos.Control.[Variable13],0) Variable13, isnull(Riesgos.Control.[Variable14],0) Variable14, isnull(Riesgos.Control.[Variable15],0) Variable15" +
+                    " FROM Riesgos.Control INNER JOIN Parametrizacion.Test ON Riesgos.Control.IdTest = Parametrizacion.Test.IdTest " +
+                    "LEFT JOIN Parametrizacion.JerarquiaOrganizacional ON Parametrizacion.JerarquiaOrganizacional.idHijo = Riesgos.Control.Responsable order by CodigoControl asc ");
+                cDataBase.desconectar();
+            }
+            catch (Exception ex)
+            {
+                cDataBase.desconectar();
+                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
+                //throw new Exception(ex.Message);
+            }
+            foreach (DataRow row in dtInformacion.Rows)
+            {
+                cControlEntity controlEntity = new cControlEntity();
+                controlEntity.IdControl = Convert.ToInt32(row["IdControl"].ToString().Trim());
+                controlEntity.CodigoControl = row["CodigoControl"].ToString().Trim();
+                controlEntity.NombreControl = row["NombreControl"].ToString().Trim();
+                controlEntity.DescripcionControl = row["DescripcionControl"].ToString().Trim();
+                controlEntity.ObjetivoControl = row["ObjetivoControl"].ToString().Trim();
+                controlEntity.Responsable = Convert.ToInt32(row["Responsable"].ToString().Trim());
+                controlEntity.IdPeriodicidad = Convert.ToInt32(row["IdPeriodicidad"].ToString().Trim());
+                controlEntity.IdTest = Convert.ToInt32(row["IdTest"].ToString().Trim());
+                controlEntity.IdCalificacionControl = 0;
+                controlEntity.IdClaseControl = Convert.ToInt32(row["IdClaseControl"].ToString().Trim());
+                controlEntity.IdTipoControl = Convert.ToInt32(row["IdTipoControl"].ToString().Trim());
+                controlEntity.IdResponsableExperiencia = Convert.ToInt32(row["IdResponsableExperiencia"].ToString().Trim());
+                controlEntity.IdDocumentacion = Convert.ToInt32(row["IdDocumentacion"].ToString().Trim());
+                controlEntity.IdResponsabilidad = Convert.ToInt32(row["IdResponsabilidad"].ToString().Trim());
+                controlEntity.IdMitiga = Convert.ToInt32(row["IdMitiga"].ToString().Trim());
+                controlEntity.IdUsuario = Convert.ToInt32(row["IdUsuario"].ToString().Trim());
+                controlEntity.ResponsableEjecucion = row["ResponsableEjecucion"].ToString();
+                //controlEntity.Procedimiento = row["procedimiento"].ToString();
+                controlEntity.Variable6 = Convert.ToInt32(row["Variable6"].ToString().Trim());
+                controlEntity.Variable7 = Convert.ToInt32(row["Variable7"].ToString().Trim());
+                controlEntity.Variable8 = Convert.ToInt32(row["Variable8"].ToString().Trim());
+                controlEntity.Variable9 = Convert.ToInt32(row["Variable9"].ToString().Trim());
+                controlEntity.Variable10 = Convert.ToInt32(row["Variable10"].ToString().Trim());
+                controlEntity.Variable11 = Convert.ToInt32(row["Variable11"].ToString().Trim());
+                controlEntity.Variable12 = Convert.ToInt32(row["Variable12"].ToString().Trim());
+                controlEntity.Variable13 = Convert.ToInt32(row["Variable13"].ToString().Trim());
+                controlEntity.Variable14 = Convert.ToInt32(row["Variable14"].ToString().Trim());
+                controlEntity.Variable15 = Convert.ToInt32(row["Variable15"].ToString().Trim());
+
+                lstControles.Add(controlEntity);
+            }
+            return lstControles;
+        }
         #endregion metodos
 
     }

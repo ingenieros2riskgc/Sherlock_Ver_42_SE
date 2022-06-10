@@ -365,6 +365,17 @@
                                     ToolTip="Insertar" OnClick="ImageButton3_Click" />
                             </td>
                         </tr>
+                         <tr>
+                            <td align="center" class="auto-style1">
+                                <asp:Label ID="lblRecalculoC" runat="server" Text="Calcular Calificación controles"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <asp:ImageButton ID="ImbCalcularControl" runat="server" ImageUrl="~/Imagenes/Aplicacion/Gears.png"
+                                    ToolTip="Cancelar" OnClick="ImbCalcularControl_Click" />
+                            </td>
+                        </tr>
                     </table>
                 </td>
             </tr>
