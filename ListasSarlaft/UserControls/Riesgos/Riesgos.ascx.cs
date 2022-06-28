@@ -1,43 +1,46 @@
-﻿using ListasSarlaft.Classes;
-using Microsoft.Security.Application;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.IO;
-using System.Net.Mail;
+using System.Linq;
 using System.Web;
-using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
+using System.Data;
+using System.Data.SqlClient;
+using ListasSarlaft.Classes;
+using System.IO;
+using System.Threading;
+using System.Web.Script.Services;
+using System.Web.Services;
+using Microsoft.Security.Application;
+using System.Configuration;
 
 namespace ListasSarlaft.UserControls.Riesgos
 {
     public partial class Riesgos : System.Web.UI.UserControl
     {
         #region Variables
-        private string IdFormulario = "5003";
-        private string PestanaControl = "5004";
-        private string PestanaObjetivo = "5005";
-        private string PestanaPlanAccion = "5006";
-        private string PestanaEventos = "5007";
-        private string strPestanaJustifPDF = "5020";
-        private string strRecalificarRiesgos = "5036";
-        private cControl cControl = new cControl();
-        private cRiesgo cRiesgo = new cRiesgo();
-        private cRegistroOperacion cRegistroOperacion = new cRegistroOperacion();
-        private cCuenta cCuenta = new cCuenta();
+        string IdFormulario = "5003";
+        string PestanaControl = "5004";
+        string PestanaObjetivo = "5005";
+        string PestanaPlanAccion = "5006";
+        string PestanaEventos = "5007";
+        string strPestanaJustifPDF = "5020";
+        string strRecalificarRiesgos = "5036";
+        cControl cControl = new cControl();
+        cRiesgo cRiesgo = new cRiesgo();
+        cRegistroOperacion cRegistroOperacion = new cRegistroOperacion();
+        cCuenta cCuenta = new cCuenta();
         private static int LastInsertIdCE;
         private static int NuevoRiesgo = 0;
         //Variables para el nuevo calculo de Reisgo Residual
         private static int CantControlesProbabilidad = 0;
         private static int CantControlesImpacto = 0;
         private static string LastRiesgo = string.Empty;
-        private string[] strColors = new string[10000];
-        private clsDTOFrecuenciavsEventos objFrequencyEvents = new clsDTOFrecuenciavsEventos();
-        private List<clsDTOFrecuenciavsEventos> listFreqVsEven = new List<clsDTOFrecuenciavsEventos>();
-
+        string[] strColors = new string[10000];
         #endregion Variables
 
         #region Properties
@@ -53,36 +56,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 infoGridConsultarControles = value;
                 ViewState["infoGridConsultarControles"] = infoGridConsultarControles;
-            }
-        }
-
-        private int idFrecuenciaEvento;
-        private int IdFrecuenciaEvento
-        {
-            get
-            {
-                idFrecuenciaEvento = (int)ViewState["idFrecuenciaEvento"];
-                return idFrecuenciaEvento;
-            }
-            set
-            {
-                idFrecuenciaEvento = value;
-                ViewState["idFrecuenciaEvento"] = idFrecuenciaEvento;
-            }
-        }
-
-        private int idImpactoEvento;
-        private int IdImpactoEvento
-        {
-            get
-            {
-                idImpactoEvento = (int)ViewState["idImpactoEvento"];
-                return idImpactoEvento;
-            }
-            set
-            {
-                idImpactoEvento = value;
-                ViewState["idImpactoEvento"] = idImpactoEvento;
             }
         }
 
@@ -221,12 +194,12 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private string idCalificacionControl;
-        private string IdCalificacionControl
+        private String idCalificacionControl;
+        private String IdCalificacionControl
         {
             get
             {
-                idCalificacionControl = (string)ViewState["idCalificacionControl"];
+                idCalificacionControl = (String)ViewState["idCalificacionControl"];
                 return idCalificacionControl;
             }
             set
@@ -368,21 +341,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 infoGridComentarioRiesgo = value;
                 ViewState["infoGridComentarioRiesgo"] = infoGridComentarioRiesgo;
-            }
-        }
-
-        private DataTable infoGridComentarioTratamiento;
-        private DataTable InfoGridComentarioTratamiento
-        {
-            get
-            {
-                infoGridComentarioTratamiento = (DataTable)ViewState["infoGridComentarioTratamiento"];
-                return infoGridComentarioTratamiento;
-            }
-            set
-            {
-                infoGridComentarioTratamiento = value;
-                ViewState["infoGridComentarioTratamiento"] = infoGridComentarioTratamiento;
             }
         }
 
@@ -549,324 +507,124 @@ namespace ListasSarlaft.UserControls.Riesgos
                 ViewState["rowGridConsultarCausasRiesgos"] = rowGridConsultarCausasRiesgos;
             }
         }
-
-        private int cuantosCheckTratamiento;
-        private int CuantosCheckTratamiento
-        {
-            get
-            {
-                cuantosCheckTratamiento = (int)ViewState["cuantosCheckTratamiento"];
-                return cuantosCheckTratamiento;
-            }
-            set
-            {
-                cuantosCheckTratamiento = value;
-                ViewState["cuantosCheckTratamiento"] = cuantosCheckTratamiento;
-            }
-        }
-
-        private int pagIndexInfoGridFR;
-        private int PagIndexInfoGridFR
-        {
-            get
-            {
-                pagIndexInfoGridFR = (int)ViewState["pagIndexInfoGridFR"];
-                return pagIndexInfoGridFR;
-            }
-            set
-            {
-                pagIndexInfoGridFR = value;
-                ViewState["pagIndexInfoGridFR"] = pagIndexInfoGridFR;
-            }
-        }
-        private DataTable infoGrid;
-        private DataTable InfoGrid
-        {
-            get
-            {
-                infoGrid = (DataTable)ViewState["infoGrid"];
-                return infoGrid;
-            }
-            set
-            {
-                infoGrid = value;
-                ViewState["infoGrid"] = infoGrid;
-            }
-        }
-
-        private DataTable variablesCategoria;
-        private DataTable VariablesCategoria
-        {
-            get
-            {
-                variablesCategoria = (DataTable)ViewState["variablesCategoria"];
-                return variablesCategoria;
-            }
-            set
-            {
-                variablesCategoria = value;
-                ViewState["variablesCategoria"] = variablesCategoria;
-            }
-        }
-
-        private DataTable variablesCategoriaImpacto;
-        private DataTable VariablesCategoriaImpacto
-        {
-            get
-            {
-                variablesCategoriaImpacto = (DataTable)ViewState["variablesCategoriaImpacto"];
-                return variablesCategoriaImpacto;
-            }
-            set
-            {
-                variablesCategoriaImpacto = value;
-                ViewState["variablesCategoriaImpacto"] = variablesCategoriaImpacto;
-            }
-        }
-
-        private DataTable variablesFrecuencia;
-        private DataTable Variablesfrecuencia
-        {
-            get
-            {
-                variablesFrecuencia = (DataTable)ViewState["variablesFrecuencia"];
-                return variablesFrecuencia;
-            }
-            set
-            {
-                variablesFrecuencia = value;
-                ViewState["variablesFrecuencia"] = variablesFrecuencia;
-            }
-        }
-
-        private DataTable variablesImpacto;
-        private DataTable VariablesImpacto
-        {
-            get
-            {
-                variablesImpacto = (DataTable)ViewState["variablesImpacto"];
-                return variablesImpacto;
-            }
-            set
-            {
-                variablesImpacto = value;
-                ViewState["variablesImpacto"] = variablesImpacto;
-            }
-        }
-
-        private int rowGrid;
-        private int RowGrid
-        {
-            get
-            {
-                rowGrid = (int)ViewState["rowGrid"];
-                return rowGrid;
-            }
-            set
-            {
-                rowGrid = value;
-                ViewState["rowGrid"] = rowGrid;
-            }
-        }
-
-        private int rowGridConsultarRiesgos;
-        private int RowGridConsultarRiesgos
-        {
-            get
-            {
-                rowGridConsultarRiesgos = (int)ViewState["rowGridConsultarRiesgos"];
-                return rowGridConsultarRiesgos;
-            }
-            set
-            {
-                rowGridConsultarRiesgos = value;
-                ViewState["rowGridConsultarRiesgos"] = rowGridConsultarRiesgos;
-            }
-        }
-
-        private DataTable infoGvFrecuenciaImpacto;
-        private DataTable InfoGvFrecuenciaImpactoo
-        {
-            get
-            {
-                infoGvFrecuenciaImpacto = (DataTable)ViewState["infoGvFrecuenciaImpacto"];
-                return infoGvFrecuenciaImpacto;
-            }
-            set
-            {
-                infoGvFrecuenciaImpacto = value;
-                ViewState["infoGvFrecuenciaImpacto"] = infoGvFrecuenciaImpacto;
-            }
-        }
-
-        private DataTable infoGvPlanesAsociados;
-        private DataTable InfoGvPlanesAsociados
-        {
-            get
-            {
-                infoGvPlanesAsociados = (DataTable)ViewState["infoGvPlanesAsociados"];
-                return infoGvPlanesAsociados;
-            }
-            set
-            {
-                infoGvPlanesAsociados = value;
-                ViewState["infoGvPlanesAsociados"] = infoGvPlanesAsociados;
-            }
-        }
-
         #endregion
-        // private string IdFormulario_ = "5022";
-        private cCuenta cCuenta_ = new cCuenta();
-        private cRiesgo cRiesgo_ = new cRiesgo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int? IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-            if (IdUsuario == 0)
-            {
-                IdUsuario = null;
-            }
-            if (string.IsNullOrEmpty(IdUsuario.ToString().Trim()))
-            {
+            if (cCuenta.permisosConsulta(IdFormulario) == "False")
                 Response.Redirect("~/Formularios/Sarlaft/Admin/HomeAdmin.aspx?Denegar=1");
-            }
-            else
+
+            Page.Form.Attributes.Add("enctype", "multipart/form-data");
+            ScriptManager scrtManager = ScriptManager.GetCurrent(this.Page);
+            scrtManager.RegisterPostBackControl(ImageButton16);
+            scrtManager.RegisterPostBackControl(GridView4);
+            scrtManager.RegisterPostBackControl(ImageButton15);
+            scrtManager.RegisterPostBackControl(GridView10);
+            scrtManager.RegisterPostBackControl(GridView8);
+            scrtManager.RegisterPostBackControl(Button6);
+            scrtManager.RegisterPostBackControl(Button1);
+            scrtManager.RegisterPostBackControl(this.ImbViewJPGfrecuencia);
+            scrtManager.RegisterPostBackControl(this.ImbViewJPGimpacto);
+            scrtManager.RegisterPostBackControl(this.ImbViewJPGfrecuenciaIns);
+            scrtManager.RegisterPostBackControl(this.ImbViewJPGimpactoIns);
+            string strErrMsg = string.Empty;
+            if (!Page.IsPostBack)
             {
-                if (cCuenta.permisosConsulta(IdFormulario) == "NOPERMISO")
+                if (Request.QueryString["CodRiesgo"] == null)
                 {
-                    Response.Redirect("~/Formularios/Sarlaft/Admin/HomeAdmin.aspx?NP=2");
+
+                    loadDDLRegion();
+                    loadDDLClasificacion();
+                    loadCBLCausas();
+                    loadCBLConsecuencias();
+                    loadCBLTratamiento();
+                    loadDDLCadenaValor();
+                    loadDDLProbabilidad();
+                    loadDDLFactorRiesgoOperativo();
+                    loadDDLTipoEventoOperativo();
+                    loadDDLRiesgoAsociadoOperativo();
+                    loadCBLRiesgoAsociadoLA();
+                    loadCBLFactorRiesgoLAFT();
+                    loadDDLImpacto();
+                    loadLBCadenaValor();
+                    loadGridRiesgos();
+                    loadInfoCalificacionControl();
+                    //Camilo 12/02/2014
+                    //loadDDLObjetivos();
+                    loadDDLPlanes();
+                    loadDDLTipoRecursoPlanAccion();
+                    loadDDLEstadoPlanAccion();
+                    //armarIntervalos();
+                    inicializarValores();
+                    PopulateTreeView();
+
+                    mtdLoadGridAudRiesgoControl();
+                    mtdLoadInfoAudRiesgoControl();
                 }
                 else
                 {
-                    Page.Form.Attributes.Add("enctype", "multipart/form-data");
-                    ScriptManager scrtManager = ScriptManager.GetCurrent(this.Page);
-                    scrtManager.RegisterPostBackControl(ImageButton16);
-                    scrtManager.RegisterPostBackControl(GridView4);
-                    scrtManager.RegisterPostBackControl(ImageButton15);
-                    scrtManager.RegisterPostBackControl(GridView10);
-                    scrtManager.RegisterPostBackControl(GridView8);
-                    scrtManager.RegisterPostBackControl(Button6);
-                    scrtManager.RegisterPostBackControl(Button1);
-                    scrtManager.RegisterPostBackControl(this.ImbViewJPGfrecuencia);
-                    scrtManager.RegisterPostBackControl(this.ImbViewJPGimpacto);
-                    scrtManager.RegisterPostBackControl(this.ImbViewJPGfrecuenciaIns);
-                    scrtManager.RegisterPostBackControl(this.ImbViewJPGimpactoIns);
-                    scrtManager.RegisterPostBackControl(this.IBinsertGVC);
-                    scrtManager.RegisterPostBackControl(this.IBupdateGVC);
-
-                    //scrtManager.RegisterPostBackControl(this.btnInsertarNuevo);
-
-                    string strErrMsg = string.Empty;
-                    if (!Page.IsPostBack)
+                    LCodRiesgo.Text = Request.QueryString["CodRiesgo"];
+                    tbGridRiesgos.Visible = false;
+                    loadDDLRegion();
+                    loadDDLClasificacion();
+                    loadCBLCausas();
+                    loadCBLConsecuencias();
+                    loadCBLTratamiento();
+                    loadDDLCadenaValor();
+                    loadDDLProbabilidad();
+                    loadDDLFactorRiesgoOperativo();
+                    loadDDLTipoEventoOperativo();
+                    loadDDLRiesgoAsociadoOperativo();
+                    loadCBLRiesgoAsociadoLA();
+                    loadCBLFactorRiesgoLAFT();
+                    loadDDLImpacto();
+                    loadLBCadenaValor();
+                    loadGridRiesgos();
+                    loadInfoCalificacionControl();
+                    //Camilo 12/02/2014
+                    //loadDDLObjetivos();
+                    loadDDLPlanes();
+                    loadDDLTipoRecursoPlanAccion();
+                    loadDDLEstadoPlanAccion();
+                    //armarIntervalos();
+                    PopulateTreeView();
+                    RowGridRiesgos = 0;
+                    mtdLoadGridAudRiesgoControl();
+                    mtdLoadInfoAudRiesgoControl();
+                    inicializarValores();
+                    resetValuesModificarRiesgo();
+                    resetValuesModificarRiesgoControl();
+                    resetValuesModificarRiesgoCalificacion();
+                    resetValuesModificarRiesgoObjetivos();
+                    resetValuesModificarRiesgoPlanAccion();
+                    resetValuesModificarRiesgoEventos();
+                    resetValuesJustificacion();
+                    resetValuesJustificacionPlanAccion();
+                    resetValuesAgregarRiesgo();
+                    loadGridRiesgos();
+                    loadInfoRiesgos();
+                    if (InfoGridRiesgos.Rows.Count > 0)
                     {
-                        if (Request.QueryString["CodRiesgo"] == null)
-                        {
-                            loadDDLRegion();
-                            loadDDLClasificacion();
-                            loadCBLCausas();
-                            loadCBLConsecuencias();
-                            loadCBLTratamiento();
-                            loadDDLCadenaValor();
-                            LoadDDLProbabilidad();
-                            loadDDLFactorRiesgoOperativo();
-                            loadDDLTipoEventoOperativo();
-                            loadDDLRiesgoAsociadoOperativo();
-                            loadCBLRiesgoAsociadoLA();
-                            loadCBLFactorRiesgoLAFT();
-                            loadDDLImpacto();
-                            loadLBCadenaValor();
-                            loadGridRiesgos();
-                            loadInfoCalificacionControl();
-                            //Camilo 12/02/2014
-                            //loadDDLObjetivos();
-                            loadDDLPlanes();
-                            loadDDLTipoRecursoPlanAccion();
-                            loadDDLEstadoPlanAccion();
-                            //armarIntervalos();
-                            inicializarValores();
-                            PopulateTreeView();
-                            LoadCBEstados();
-
-                            mtdLoadGridAudRiesgoControl();
-                            mtdLoadInfoAudRiesgoControl();
-                            resetResponsableT();
-
-                        }
-                        else
-                        {
-                            LCodRiesgo.Text = Request.QueryString["CodRiesgo"];
-                            tbGridRiesgos.Visible = false;
-                            loadDDLRegion();
-                            loadDDLClasificacion();
-                            loadCBLCausas();
-                            loadCBLConsecuencias();
-                            loadCBLTratamiento();
-                            loadDDLCadenaValor();
-                            LoadDDLProbabilidad();
-                            loadDDLFactorRiesgoOperativo();
-                            loadDDLTipoEventoOperativo();
-                            loadDDLRiesgoAsociadoOperativo();
-                            loadCBLRiesgoAsociadoLA();
-                            loadCBLFactorRiesgoLAFT();
-                            loadDDLImpacto();
-                            loadLBCadenaValor();
-                            loadGridRiesgos();
-                            loadInfoCalificacionControl();
-                            //Camilo 12/02/2014
-                            //loadDDLObjetivos();
-                            loadDDLPlanes();
-                            loadDDLTipoRecursoPlanAccion();
-                            loadDDLEstadoPlanAccion();
-                            //armarIntervalos();
-                            PopulateTreeView();
-                            RowGridRiesgos = 0;
-                            mtdLoadGridAudRiesgoControl();
-                            mtdLoadInfoAudRiesgoControl();
-                            inicializarValores();
-                            resetValuesModificarRiesgo();
-                            resetValuesModificarRiesgoControl();
-                            resetValuesModificarRiesgoCalificacion();
-                            resetValuesModificarRiesgoObjetivos();
-                            resetValuesModificarRiesgoPlanAccion();
-                            resetValuesModificarRiesgoEventos();
-                            resetValuesJustificacion();
-                            resetValuesJustificacionPlanAccion();
-                            resetValuesAgregarRiesgo();
-                            loadGridRiesgos();
-                            loadInfoRiesgos();
-
-                            if (InfoGridRiesgos.Rows.Count > 0)
-                            {
-                                detalleRiesgoSeleccionado();
-                                loadGridControlesRiesgo();
-                                loadInfoControlesRiesgo(ref strErrMsg);
-                                loadGridArchivoRiesgo();
-                                loadInfoArchivoRiesgo(ref strErrMsg);
-                                loadGridComentarioRiesgo();
-                                loadInfoComentarioRiesgo(ref strErrMsg);
-                                loadGridObjetivoRiesgo();
-                                loadInfoObjetivoRiesgo(ref strErrMsg);
-                                loadGridPlanAccionRiesgo();
-                                loadInfoPlanAccionRiesgo(ref strErrMsg);
-                                loadGridEventoRiesgo();
-                                loadInfoEventoRiesgo(ref strErrMsg);
-                            }
-                            else
-                            {
-                                Mensaje1("El riesgo está anulado");
-                            }
-                        }
+                        detalleRiesgoSeleccionado();
+                        loadGridControlesRiesgo();
+                        loadInfoControlesRiesgo(ref strErrMsg);
+                        loadGridArchivoRiesgo();
+                        loadInfoArchivoRiesgo(ref strErrMsg);
+                        loadGridComentarioRiesgo();
+                        loadInfoComentarioRiesgo(ref strErrMsg);
+                        loadGridObjetivoRiesgo();
+                        loadInfoObjetivoRiesgo(ref strErrMsg);
+                        loadGridPlanAccionRiesgo();
+                        loadInfoPlanAccionRiesgo(ref strErrMsg);
+                        loadGridEventoRiesgo();
+                        loadInfoEventoRiesgo(ref strErrMsg);
                     }
+                    else
+                        Mensaje1("El riesgo está anulado");
                 }
             }
         }
 
-        private void inicializarValoresUsuario()
-        {
-            cCuenta.notAuthenticated();
-        }
-
-        //set
         #region Treeview
         private void PopulateTreeView()
         {
@@ -876,8 +634,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             TreeView2.ExpandAll();
             TreeView3.ExpandAll();
             TreeView4.ExpandAll();
-            TreeView5.ExpandAll();
-            TreeView6.ExpandAll();
         }
 
         private DataTable GetTreeViewData()
@@ -892,10 +648,8 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         private void AddTopTreeViewNodes(DataTable treeViewData)
         {
-            DataView view = new DataView(treeViewData)
-            {
-                RowFilter = "IdPadre = -1"
-            };
+            DataView view = new DataView(treeViewData);
+            view.RowFilter = "IdPadre = -1";
             foreach (DataRowView row in view)
             {
                 TreeNode newNode = new TreeNode(row["NombreHijo"].ToString().Trim(), row["IdHijo"].ToString());
@@ -920,33 +674,16 @@ namespace ListasSarlaft.UserControls.Riesgos
                 TreeView4.Nodes.Add(newNode);
                 AddChildTreeViewNodes(treeViewData, newNode);
             }
-            foreach (DataRowView row in view)
-            {
-                TreeNode newNode = new TreeNode(row["NombreHijo"].ToString().Trim(), row["IdHijo"].ToString());
-                TreeView5.Nodes.Add(newNode);
-                AddChildTreeViewNodes(treeViewData, newNode);
-            }
-            foreach (DataRowView row in view)
-            {
-                TreeNode newNode = new TreeNode(row["NombreHijo"].ToString().Trim(), row["IdHijo"].ToString());
-                TreeView6.Nodes.Add(newNode);
-                AddChildTreeViewNodes(treeViewData, newNode);
-            }
-
         }
 
         private void AddChildTreeViewNodes(DataTable treeViewData, TreeNode parentTreeViewNode)
         {
-            DataView view = new DataView(treeViewData)
-            {
-                RowFilter = "IdPadre = " + parentTreeViewNode.Value
-            };
+            DataView view = new DataView(treeViewData);
+            view.RowFilter = "IdPadre = " + parentTreeViewNode.Value;
             foreach (DataRowView row in view)
             {
-                TreeNode newNode = new TreeNode(row["NombreHijo"].ToString().Trim(), row["IdHijo"].ToString())
-                {
-                    ToolTip = "Nombre: " + row["NombreResponsable"].ToString() + "\rCorreo: " + row["CorreoResponsable"].ToString().Trim()
-                };
+                TreeNode newNode = new TreeNode(row["NombreHijo"].ToString().Trim(), row["IdHijo"].ToString());
+                newNode.ToolTip = "Nombre: " + row["NombreResponsable"].ToString() + "\rCorreo: " + row["CorreoResponsable"].ToString().Trim();
                 parentTreeViewNode.ChildNodes.Add(newNode);
                 AddChildTreeViewNodes(treeViewData, newNode);
             }
@@ -963,35 +700,6 @@ namespace ListasSarlaft.UserControls.Riesgos
         {
             TextBox20.Text = TreeView2.SelectedNode.Text;
             lblIdDependencia2.Text = TreeView2.SelectedNode.Value;
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void TreeView3_SelectedNodeChanged(object sender, EventArgs e)
@@ -1004,18 +712,6 @@ namespace ListasSarlaft.UserControls.Riesgos
         {
             TextBox23.Text = TreeView4.SelectedNode.Text;
             lblIdDependencia4.Text = TreeView4.SelectedNode.Value;
-        }
-
-        protected void TreeView5_SelectedNodeChanged(object sender, EventArgs e)
-        {
-            txtResponsableT.Text = TreeView5.SelectedNode.Text;
-            lblIdDependencia5.Text = TreeView5.SelectedNode.Value;
-        }
-
-        protected void TreeView6_SelectedNodeChanged(object sender, EventArgs e)
-        {
-            txtResponsablet_2.Text = TreeView6.SelectedNode.Text;
-            lblIdDependencia6.Text = TreeView6.SelectedNode.Value;
         }
         #endregion Treeview
 
@@ -1144,7 +840,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLTipoRiesgoOperativo(string IdFactorRiesgoOperativo, int Tipo)
+        private void loadDDLTipoRiesgoOperativo(String IdFactorRiesgoOperativo, int Tipo)
         {
             try
             {
@@ -1172,35 +868,16 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        // Yoendy - Carga Combo Variables
-        private void LoadDDLProbabilidad()
+        private void loadDDLProbabilidad()
         {
             try
             {
-                string cb1 = DropDownList45.SelectedValue.ToString().Trim();
-                string cb2 = DropDownList66.SelectedItem.Value.ToString();
-                int cuantosCb1 = DropDownList45.Items.Count;
                 DataTable dtInfo = new DataTable();
-                DataTable dtInfiNB = new DataTable();
-
-                if (cb1 == "---")
+                dtInfo = cRiesgo.loadDDLProbabilidad();
+                for (int i = 0; i < dtInfo.Rows.Count; i++)
                 {
-                    if (cuantosCb1 == 1)
-                    {
-                        DropDownList45.ClearSelection();
-                        dtInfo = cRiesgo.loadDDLProbabilidad();
-                        for (int i = 0; i < dtInfo.Rows.Count; i++)
-                        {
-                            DropDownList45.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProbabilidad"].ToString().Trim(), dtInfo.Rows[i]["IdProbabilidad"].ToString()));
-                        }
-                    }
-                }
-                if (cb2 == "---")
-                {
-                    for (int i = 0; i < dtInfo.Rows.Count; i++)
-                    {
-                        DropDownList66.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProbabilidad"].ToString().Trim(), dtInfo.Rows[i]["IdProbabilidad"].ToString()));
-                    }
+                    DropDownList45.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProbabilidad"].ToString().Trim(), dtInfo.Rows[i]["IdProbabilidad"].ToString()));
+                    DropDownList66.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProbabilidad"].ToString().Trim(), dtInfo.Rows[i]["IdProbabilidad"].ToString()));
                 }
             }
             catch (Exception ex)
@@ -1242,13 +919,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                 }
 
                 if (dtInfo.Rows.Count > 0)
-                {
                     TextBox8.Text = "R" + dtInfo.Rows[0]["NumRegistros"].ToString().Trim();
-                }
                 else
-                {
                     TextBox8.Text = "R1";
-                }
             }
             catch (Exception ex)
             {
@@ -1334,7 +1007,6 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         private void loadCBLTratamiento()
         {
-            Panel9.Enabled = false;
             try
             {
                 DataTable dtInfo = new DataTable();
@@ -1370,7 +1042,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLMacroproceso(string IdCadenaValor, int Tipo)
+        private void loadDDLMacroproceso(String IdCadenaValor, int Tipo)
         {
             try
             {
@@ -1404,7 +1076,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLProceso(string IdMacroproceso, int Tipo)
+        private void loadDDLProceso(String IdMacroproceso, int Tipo)
         {
             try
             {
@@ -1438,7 +1110,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLSubProceso(string IdProceso, int Tipo)
+        private void loadDDLSubProceso(String IdProceso, int Tipo)
         {
             try
             {
@@ -1472,7 +1144,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLActividad(string IdSubproceso, int Tipo)
+        private void loadDDLActividad(String IdSubproceso, int Tipo)
         {
             try
             {
@@ -1518,7 +1190,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLPais(string IdRegion, int Tipo)
+        private void loadDDLPais(String IdRegion, int Tipo)
         {
             try
             {
@@ -1546,7 +1218,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLDepartamento(string IdPais, int Tipo)
+        private void loadDDLDepartamento(String IdPais, int Tipo)
         {
             try
             {
@@ -1574,7 +1246,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLCiudad(string IdDepartamento, int Tipo)
+        private void loadDDLCiudad(String IdDepartamento, int Tipo)
         {
             try
             {
@@ -1602,7 +1274,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLOficinaSucursal(string IdCiudad, int Tipo)
+        private void loadDDLOficinaSucursal(String IdCiudad, int Tipo)
         {
             try
             {
@@ -1649,7 +1321,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLClasificacionGeneral(string IdClasificacionRiesgo, int Tipo)
+        private void loadDDLClasificacionGeneral(String IdClasificacionRiesgo, int Tipo)
         {
             try
             {
@@ -1677,7 +1349,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
         }
 
-        private void loadDDLClasificacionParticular(string IdClasificacionGeneralRiesgo, int Tipo)
+        private void loadDDLClasificacionParticular(String IdClasificacionGeneralRiesgo, int Tipo)
         {
             try
             {
@@ -1749,7 +1421,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             grid.Columns.Add("CodigoControl", typeof(string));
             grid.Columns.Add("NombreControl", typeof(string));
             grid.Columns.Add("DescripcionControl", typeof(string));
-            grid.Columns.Add("Estado", typeof(string));
             InfoGridConsultarControles = grid;
             GridView8.DataSource = InfoGridConsultarControles;
             GridView8.DataBind();
@@ -1763,11 +1434,10 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridConsultarControles.Rows.Add(new object[] { dtInfo.Rows[rows]["IdControl"].ToString().Trim(),
+                    InfoGridConsultarControles.Rows.Add(new Object[] { dtInfo.Rows[rows]["IdControl"].ToString().Trim(),
                                                                        dtInfo.Rows[rows]["CodigoControl"].ToString().Trim(),
                                                                        dtInfo.Rows[rows]["NombreControl"].ToString().Trim(),
-                                                                       dtInfo.Rows[rows]["DescripcionControl"].ToString().Trim(),
-                                                                       dtInfo.Rows[rows]["Estado"].ToString().Trim()
+                                                                       dtInfo.Rows[rows]["DescripcionControl"].ToString().Trim()
                                                                      });
                 }
                 GridView8.DataSource = InfoGridConsultarControles;
@@ -1820,9 +1490,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             grid.Columns.Add("Nombres", typeof(string));
             grid.Columns.Add("NombreHijo", typeof(string));
             grid.Columns.Add("ListaTratamiento", typeof(string));
-            grid.Columns.Add("idResponsableTratamiento", typeof(string));
-            grid.Columns.Add("Estado", typeof(string));
-            grid.Columns.Add("TipoMedicion", typeof(string));
             InfoGridRiesgos = grid;
             GridView1.DataSource = InfoGridRiesgos;
             GridView1.DataBind();
@@ -1843,7 +1510,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridRiesgos.Rows.Add(new object[] {dtInfo.Rows[rows]["IdRiesgo"].ToString().Trim(),
+                    InfoGridRiesgos.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdRiesgo"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["IdRegion"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["IdPais"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["IdDepartamento"].ToString().Trim(),
@@ -1879,10 +1546,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                                                            dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["Nombres"].ToString().Trim(),
                                                            dtInfo.Rows[rows]["NombreHijo"].ToString().Trim(),
-                                                           dtInfo.Rows[rows]["ListaTratamiento"].ToString().Trim(),
-                                                           dtInfo.Rows[rows]["idResponsableTratamiento"].ToString().Trim(),
-                                                           dtInfo.Rows[rows]["Estado"].ToString().Trim(),
-                                                           dtInfo.Rows[rows]["TipoMedicion"].ToString().Trim()
+                                                           dtInfo.Rows[rows]["ListaTratamiento"].ToString().Trim()
                                                           });
                 }
                 GridView1.PageIndex = PagIndexInfoGridRiesgos;
@@ -1904,7 +1568,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridEventoRiesgo.Rows.Add(new object[] {dtInfo.Rows[rows]["IdEvento"].ToString().Trim(),
+                    InfoGridEventoRiesgo.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdEvento"].ToString().Trim(),
                                                                 dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
                                                                 dtInfo.Rows[rows]["DescripcionEvento"].ToString().Trim(),
                                                                 dtInfo.Rows[rows]["FechaDescubrimiento"].ToString().Trim(),
@@ -1941,7 +1605,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridObjetivoRiesgo.Rows.Add(new object[] {dtInfo.Rows[rows]["IdObjetivosRiesgo"].ToString().Trim(),
+                    InfoGridObjetivoRiesgo.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdObjetivosRiesgo"].ToString().Trim(),
                                                                   dtInfo.Rows[rows]["IdRiesgo"].ToString().Trim(),
                                                                   dtInfo.Rows[rows]["IdObjetivos"].ToString().Trim(),
                                                                   dtInfo.Rows[rows]["NombreObjetivos"].ToString().Trim(),
@@ -1980,7 +1644,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridComentarioRiesgo.Rows.Add(new object[] {dtInfo.Rows[rows]["IdComentario"].ToString().Trim(),
+                    InfoGridComentarioRiesgo.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdComentario"].ToString().Trim(),
                                                                     dtInfo.Rows[rows]["NombreUsuario"].ToString().Trim(),
                                                                     dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
                                                                     dtInfo.Rows[rows]["ComentarioCorto"].ToString().Trim(),
@@ -1991,85 +1655,8 @@ namespace ListasSarlaft.UserControls.Riesgos
                 GridView6.DataBind();
             }
             else
-            {
                 strErrMsg = "No hay comentarios para el riesgo";
-            }
         }
-
-        private void loadInfoComentariotto(ref string strErrMsg)
-        {
-            DataTable dtInfo = new DataTable();
-            dtInfo = cRiesgo.loadInfoComentarioTrto(InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim());
-            if (dtInfo.Rows.Count > 0)
-            {
-                for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                {
-                    InfoGridComentarioTratamiento.Rows.Add(new object[] {dtInfo.Rows[rows]["IdComentario"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["NombreUsuario"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["ComentarioCorto"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["Comentario"].ToString().Trim()
-                                                                   });
-                }
-                GridView12.DataSource = InfoGridComentarioTratamiento;
-                GridView12.DataBind();
-            }
-            else
-            {
-                strErrMsg = "No hay comentarios para el riesgo";
-            }
-        }
-
-        private void loadResponsableTratamiento()
-        {
-            string valor = InfoGridRiesgos.Rows[RowGridRiesgos]["idResponsableTratamiento"].ToString().Trim();
-            if (valor != "")
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadResponsableTratamiento(InfoGridRiesgos.Rows[RowGridRiesgos]["idResponsableTratamiento"].ToString().Trim());
-                txtResponsablet_2.Text = dtInfo.Rows[0]["NombreHijo"].ToString().Trim();
-            }
-            else
-            {
-                txtResponsablet_2.Text = string.Empty;
-            }
-
-        }
-
-        private void loadEstado()
-        {
-            // parametrizacion de cbEstado
-            int i = 0;
-            string Estado = InfoGridRiesgos.Rows[RowGridRiesgos]["Estado"].ToString().Trim();
-            if (Estado != string.Empty)
-            {
-                string NombreEstado = string.Empty;
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadEstado(Estado);
-                int cuenta = dtInfo.Rows.Count;
-                if (cuenta > 0)
-                {
-                    NombreEstado = dtInfo.Rows[0]["NombreEstado"].ToString().Trim();
-                    string encontrado = string.Empty;
-                    bool boolEncontro = false;
-                    foreach (object item in cbEstado.Items)
-                    {
-                        encontrado = item.ToString();
-                        if (encontrado == NombreEstado)
-                        {
-                            cbEstado.SelectedIndex = i;
-                            boolEncontro = true;
-                            break;
-                        }
-                        i++;
-                    }
-                    if (boolEncontro == false) { cbEstado.SelectedIndex = 0; }
-                }
-                else { cbEstado.SelectedIndex = 0; }
-            }
-            else { cbEstado.SelectedIndex = 0; }
-        }
-
 
         private void loadGridComentarioRiesgo()
         {
@@ -2080,23 +1667,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             grid.Columns.Add("ComentarioCorto", typeof(string));
             grid.Columns.Add("Comentario", typeof(string));
             InfoGridComentarioRiesgo = grid;
-
             GridView6.DataSource = InfoGridComentarioRiesgo;
             GridView6.DataBind();
-        }
-
-        private void loadGridComentarioTratamieto()
-        {
-            DataTable grid = new DataTable();
-            grid.Columns.Add("IdComentario", typeof(string));
-            grid.Columns.Add("NombreUsuario", typeof(string));
-            grid.Columns.Add("FechaRegistro", typeof(string));
-            grid.Columns.Add("ComentarioCorto", typeof(string));
-            grid.Columns.Add("Comentario", typeof(string));
-            InfoGridComentarioTratamiento = grid;
-
-            GridView12.DataSource = InfoGridComentarioTratamiento;
-            GridView12.DataBind();
         }
 
         private void loadInfoArchivoRiesgo(ref string strErrMsg)
@@ -2107,7 +1679,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridArchivoRiesgo.Rows.Add(new object[] {dtInfo.Rows[rows]["IdArchivo"].ToString().Trim(),
+                    InfoGridArchivoRiesgo.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdArchivo"].ToString().Trim(),
                                                                  dtInfo.Rows[rows]["NombreUsuario"].ToString().Trim(),
                                                                  dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
                                                                  dtInfo.Rows[rows]["UrlArchivo"].ToString().Trim()
@@ -2117,9 +1689,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 GridView4.DataBind();
             }
             else
-            {
                 strErrMsg = "No hay archivos de riesgos";
-            }
         }
 
         private void loadGridArchivoRiesgo()
@@ -2165,7 +1735,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 int rows;
                 for (rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridControlesRiesgo.Rows.Add(new object[] {dtInfo.Rows[rows]["IdControlesRiesgo"].ToString().Trim(),
+                    InfoGridControlesRiesgo.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdControlesRiesgo"].ToString().Trim(),
                                                                    dtInfo.Rows[rows]["IdControl"].ToString().Trim(),
                                                                    dtInfo.Rows[rows]["CodigoControl"].ToString().Trim(),
                                                                    dtInfo.Rows[rows]["NombreControl"].ToString().Trim(),
@@ -2261,7 +1831,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridComentarioPlanAccion.Rows.Add(new object[] {
+                    InfoGridComentarioPlanAccion.Rows.Add(new Object[] {
                         dtInfo.Rows[rows]["IdComentario"].ToString().Trim(),
                         dtInfo.Rows[rows]["NombreUsuario"].ToString().Trim(),
                         dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
@@ -2296,7 +1866,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridArchivoPlanAccion.Rows.Add(new object[] {
+                    InfoGridArchivoPlanAccion.Rows.Add(new Object[] {
                         dtInfo.Rows[rows]["IdArchivo"].ToString().Trim(),
                         dtInfo.Rows[rows]["NombreUsuario"].ToString().Trim(),
                         dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
@@ -2330,7 +1900,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridPlanAccionRiesgo.Rows.Add(new object[] {
+                    InfoGridPlanAccionRiesgo.Rows.Add(new Object[] {
                         dtInfo.Rows[rows]["IdPlanAccion"].ToString().Trim(),
                         dtInfo.Rows[rows]["DescripcionAccion"].ToString().Trim(),
                         dtInfo.Rows[rows]["Responsable"].ToString().Trim(),
@@ -2368,257 +1938,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             GridView3.DataSource = InfoGridPlanAccionRiesgo;
             GridView3.DataBind();
         }
-
-        // InfoGvFrecuenciaImpactoo
-        private void LoadGvFrecuenciaImpacto()
-        {
-            DataTable grid = new DataTable();
-            grid.Columns.Add("FrecuenciaInherente", typeof(string));
-            grid.Columns.Add("ImpactoInherente", typeof(string));
-            grid.Columns.Add("FrecuenciaResidual", typeof(string));
-            grid.Columns.Add("ImpactoResidual", typeof(string));
-            InfoGvFrecuenciaImpactoo = grid;
-            GvFrecuenciaImpacto.DataSource = InfoGvFrecuenciaImpactoo;
-            GvFrecuenciaImpacto.DataBind();
-        }
-
-        private void CargaGvFrecuenciaImpacto()
-        {
-            DataTable dtInfo = new DataTable();
-            string id = InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString();
-
-            dtInfo = cRiesgo.ConsultaFrecuenciaImpacto(Convert.ToInt32(id));
-
-            if (dtInfo.Rows.Count > 0)
-            {
-                for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                {
-                    InfoGvFrecuenciaImpactoo.Rows.Add(new object[] {
-                        dtInfo.Rows[rows]["FrecuenciaInherente"].ToString().Trim(),
-                        dtInfo.Rows[rows]["ImpactoInherente"].ToString().Trim(),
-                        dtInfo.Rows[rows]["FrecuenciaResidual"].ToString().Trim(),
-                        dtInfo.Rows[rows]["ImpactoResidual"].ToString().Trim(),
-                        });
-                }
-                GvFrecuenciaImpacto.DataSource = InfoGvFrecuenciaImpactoo;
-                GvFrecuenciaImpacto.DataBind();
-            }
-        }
-
-
-        private void LoadGvPlanesAsociados()
-        {
-            DataTable grid = new DataTable();
-            grid.Columns.Add("CodigoPlan", typeof(string));
-            grid.Columns.Add("CodigoRiesgo", typeof(string));
-            grid.Columns.Add("Usuario", typeof(string));
-            grid.Columns.Add("FechaRegistro", typeof(string));
-            InfoGvPlanesAsociados = grid;
-            GvPlanesAsociados.DataSource = InfoGvPlanesAsociados;
-            GvPlanesAsociados.DataBind();
-        }
-
-        private void CargaGvPlanesAsociados()
-        {
-            DataTable dtInfo = new DataTable();
-            string CodigoPlan = InfoGridRiesgos.Rows[RowGridRiesgos]["Codigo"].ToString();
-
-
-            dtInfo = cRiesgo.ConsultaPlanesAsociados(CodigoPlan);
-
-            if (dtInfo.Rows.Count > 0)
-            {
-                for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                {
-                    InfoGvPlanesAsociados.Rows.Add(new object[] {
-                        dtInfo.Rows[rows]["CodigoPlan"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CodigoRiesgo"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Usuario"].ToString().Trim(),
-                        dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
-                        });
-                }
-                GvPlanesAsociados.DataSource = InfoGvPlanesAsociados;
-                GvPlanesAsociados.DataBind();
-            }
-        }
-
-        private void TipoMedicion()
-        {
-            DataTable dtInfo = new DataTable();
-            string TipoMedicion = InfoGridRiesgos.Rows[RowGridRiesgos]["TipoMedicion"].ToString().Trim();
-            if (!string.IsNullOrEmpty(TipoMedicion))
-            {
-                if (TipoMedicion == "True")
-                {
-                    RadioTipoCalificacion.SelectedIndex = 1;
-                    Panel16.Visible = false;
-                    PanelCalifExperta.Visible = true;
-                }
-                else
-                {
-                    RadioTipoCalificacion.SelectedIndex = 0;
-                    Panel16.Visible = true;
-                    PanelCalifExperta.Visible = false;
-                }
-            }
-            else
-            {
-                RadioTipoCalificacion.SelectedIndex = 0;
-                Panel16.Visible = true;
-                PanelCalifExperta.Visible = false;
-            }
-        }
-
-        //Ajuste
-        private void CargaGrillaFrecuencias()
-        {
-            DataTable grid = new DataTable();
-
-            grid.Columns.Add("IdVariable", typeof(string));
-            grid.Columns.Add("NombreVariable", typeof(string));
-            grid.Columns.Add("Ponderacion", typeof(string));
-            grid.Columns.Add("Puntuacion", typeof(string));
-
-            GvVariablesFrecuencia.DataSource = grid;
-            GvVariablesFrecuencia.DataBind();
-            Variablesfrecuencia = grid;
-        }
-
-        private void CargaGrillaFrecuenciasCargadas()
-        {
-            DataTable dtInfo = new DataTable();
-            dtInfo = cRiesgo.ConsultaVariablesCategorias();
-            try
-            {
-                if (dtInfo.Rows.Count > 0)
-                {
-                    for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                    {
-                        Variablesfrecuencia.Rows.Add(new object[] {
-                        dtInfo.Rows[rows]["IdVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Ponderacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Puntuacion"].ToString().Trim(),
-                        });
-                    }
-                    GvVariablesFrecuencia.DataSource = Variablesfrecuencia;
-                    GvVariablesFrecuencia.DataBind();
-                }
-
-                for (int i = 0; i < GvVariablesFrecuencia.Rows.Count; i++)
-                {
-                    GridViewRow row = GvVariablesFrecuencia.Rows[i];
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesFrecuencia.DataKeys[i].Values;
-                    int idVariable = Convert.ToInt32(colsNoVisibles[0]);
-
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-
-                    ExpNombreCategoria.Items.Clear();
-                    if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                    {
-                        DataTable DtCV = new DataTable();
-                        DtCV = cRiesgo.ConsultaVariablesCategoriasId(idVariable);
-                        ExpNombreCategoria.Items.Clear();
-                        ExpNombreCategoria.Items.Insert(0, new ListItem("---", "---"));
-
-                        for (int j = 0; j < DtCV.Rows.Count; j++)
-                        {
-                            ExpNombreCategoria.Items.Insert(j + 1, new ListItem(DtCV.Rows[j]["NombreCategoria"].ToString().Trim(), DtCV.Rows[j]["IdCategoria"].ToString()));
-                        }
-
-                        DataTable Dts = cRiesgo.ConsultaFrecuenciasCargadas(Session["idRiesgo"].ToString().Trim());
-                        if (Dts.Rows.Count > 0)
-                        {
-                            string Seleccionado = Dts.Rows[i]["IdCategoria"].ToString();
-                            ExpNombreCategoria.SelectedIndex = ExpNombreCategoria.Items.IndexOf(ExpNombreCategoria.Items.FindByValue(Seleccionado));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error al cargar Grilla Variables - Categoría: " + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
-        private void GrillaVariablesImpacto()
-        {
-            DataTable grid = new DataTable();
-
-            grid.Columns.Add("IdVariable", typeof(string));
-            grid.Columns.Add("NombreVariable", typeof(string));
-            grid.Columns.Add("Peso", typeof(string));
-            grid.Columns.Add("Ponderacion", typeof(string));
-            grid.Columns.Add("Puntuacion", typeof(string));
-
-            GvVariablesImpacto.DataSource = grid;
-            GvVariablesImpacto.DataBind();
-            VariablesImpacto = grid;
-        }
-
-        private void CargaGrillaVariablesImpacto()
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.ConsultaVariablesFrecuencia();
-
-                if (dtInfo.Rows.Count > 0)
-                {
-                    for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                    {
-                        VariablesImpacto.Rows.Add(new object[] {
-                        dtInfo.Rows[rows]["IdVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Ponderacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Puntuacion"].ToString().Trim(),
-                        });
-                    }
-                    GvVariablesImpacto.DataSource = VariablesImpacto;
-                    GvVariablesImpacto.DataBind();
-                }
-
-                for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-                {
-                    GridViewRow row = GvVariablesImpacto.Rows[i];
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesImpacto.DataKeys[i].Values;
-                    int idVariable = Convert.ToInt32(colsNoVisibles[0]);
-
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-                    TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                    ExpNombreCategoria.Items.Clear();
-
-                    if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                    {
-                        DataTable DtCV = new DataTable();
-                        DtCV = cRiesgo.VariablesCategoriasImpacto();
-                        ExpNombreCategoria.Items.Clear();
-                        ExpNombreCategoria.Items.Insert(0, new ListItem("---", "---"));
-
-                        for (int j = 0; j < DtCV.Rows.Count; j++)
-                        {
-                            ExpNombreCategoria.Items.Insert(j + 1, new ListItem(DtCV.Rows[j]["NombreImpacto"].ToString().Trim(), DtCV.Rows[j]["ValorImpacto"].ToString()));
-                        }
-
-                        DataTable Dts = cRiesgo.ConsultaImpactoCargado(Session["idRiesgo"].ToString().Trim());
-                        if (Dts.Rows.Count > 0)
-                        {
-                            string Seleccionado = Dts.Rows[i]["IdImpacto"].ToString();
-                            string ValorPeso = Dts.Rows[i]["Peso"].ToString();
-                            ExpNombreCategoria.SelectedIndex = ExpNombreCategoria.Items.IndexOf(ExpNombreCategoria.Items.FindByValue(Seleccionado));
-                            Peso.Text = ValorPeso;
-                        }
-                    }
-                }
-
-                PanelResultado.Visible = true;
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error al cargar Grilla Variables - Categoría - Impacto: " + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
         #endregion
 
         #endregion Loads
@@ -2669,76 +1988,14 @@ namespace ListasSarlaft.UserControls.Riesgos
                     trLavadoActivos1.Visible = true;
                 }
             }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-
         }
 
-        //yoendy
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList3.Items.Clear();
             DropDownList3.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList2.SelectedValue.ToString().Trim() != "0")
-            {
                 loadDDLClasificacionParticular(DropDownList2.SelectedValue.ToString().Trim(), 1);
-            }
-
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList5_SelectedIndexChanged(object sender, EventArgs e)
@@ -2746,9 +2003,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList61.Items.Clear();
             DropDownList61.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList5.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLObjetivos();
-            }
         }
 
         protected void DropDownList6_SelectedIndexChanged(object sender, EventArgs e)
@@ -2756,39 +2011,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList11.Items.Clear();
             DropDownList11.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList6.SelectedValue.ToString().Trim() != "0")
-            {
                 loadDDLActividad(DropDownList6.SelectedValue.ToString().Trim(), 1);
-            }
-
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList7_SelectedIndexChanged(object sender, EventArgs e)
@@ -2796,9 +2019,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList55.Items.Clear();
             DropDownList55.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList7.SelectedValue.ToString().Trim() != "0")
-            {
                 loadDDLActividad(DropDownList7.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList8_SelectedIndexChanged(object sender, EventArgs e)
@@ -2806,9 +2027,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList14.Items.Clear();
             DropDownList14.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList8.SelectedValue.ToString().Trim() != "0")
-            {
                 loadDDLTipoRiesgoOperativo(DropDownList8.SelectedValue.ToString().Trim(), 1);
-            }
         }
 
         protected void DropDownList9_SelectedIndexChanged(object sender, EventArgs e)
@@ -2820,38 +2039,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList11.Items.Clear();
             DropDownList11.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList9.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLProceso(DropDownList9.SelectedValue.ToString().Trim(), 1);
-            }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList10_SelectedIndexChanged(object sender, EventArgs e)
@@ -2861,38 +2049,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList11.Items.Clear();
             DropDownList11.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList10.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLSubProceso(DropDownList10.SelectedValue.ToString().Trim(), 1);
-            }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList19_SelectedIndexChanged(object sender, EventArgs e)
@@ -2904,9 +2061,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList22.Items.Clear();
             DropDownList22.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList19.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLMacroproceso(DropDownList19.SelectedValue.ToString().Trim(), 3);
-            }
         }
 
         protected void DropDownList20_SelectedIndexChanged(object sender, EventArgs e)
@@ -2916,9 +2071,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList22.Items.Clear();
             DropDownList22.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList20.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLProceso(DropDownList20.SelectedValue.ToString().Trim(), 3);
-            }
         }
 
         protected void DropDownList21_SelectedIndexChanged(object sender, EventArgs e)
@@ -2926,9 +2079,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList22.Items.Clear();
             DropDownList22.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList21.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLSubProceso(DropDownList21.SelectedValue.ToString().Trim(), 3);
-            }
         }
 
         protected void DropDownList41_SelectedIndexChanged(object sender, EventArgs e)
@@ -2943,39 +2094,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList63.Items.Insert(0, new ListItem("---", "---"));
 
             if (DropDownList41.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLPais(DropDownList41.SelectedValue.ToString().Trim(), 1);
-            }
-
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList42_SelectedIndexChanged(object sender, EventArgs e)
@@ -2987,38 +2106,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList63.Items.Clear();
             DropDownList63.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList42.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLDepartamento(DropDownList42.SelectedValue.ToString().Trim(), 1);
-            }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList43_SelectedIndexChanged(object sender, EventArgs e)
@@ -3028,38 +2116,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList63.Items.Clear();
             DropDownList63.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList43.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLCiudad(DropDownList43.SelectedValue.ToString().Trim(), 1);
-            }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList44_SelectedIndexChanged(object sender, EventArgs e)
@@ -3067,39 +2124,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList63.Items.Clear();
             DropDownList63.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList44.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLOficinaSucursal(DropDownList44.SelectedValue.ToString().Trim(), 1);
-            }
-
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList45_SelectedIndexChanged(object sender, EventArgs e)
@@ -3110,35 +2135,6 @@ namespace ListasSarlaft.UserControls.Riesgos
                 Label13.Text = cRiesgo.ValorProbabilidad(DropDownList45.SelectedValue.ToString().Trim());
                 calificacionInherente(1);
             }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList46_SelectedIndexChanged(object sender, EventArgs e)
@@ -3149,35 +2145,6 @@ namespace ListasSarlaft.UserControls.Riesgos
                 Label177.Text = cRiesgo.ValorImpacto(DropDownList46.SelectedValue.ToString().Trim());
                 calificacionInherente(1);
             }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList47_SelectedIndexChanged(object sender, EventArgs e)
@@ -3191,9 +2158,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList51.Items.Clear();
             DropDownList51.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList47.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLPais(DropDownList47.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList48_SelectedIndexChanged(object sender, EventArgs e)
@@ -3205,9 +2170,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList51.Items.Clear();
             DropDownList51.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList48.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLDepartamento(DropDownList48.SelectedValue.ToString().Trim(), 2);
-            }
+
         }
 
         protected void DropDownList49_SelectedIndexChanged(object sender, EventArgs e)
@@ -3217,9 +2181,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList51.Items.Clear();
             DropDownList51.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList49.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLCiudad(DropDownList49.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList50_SelectedIndexChanged(object sender, EventArgs e)
@@ -3227,9 +2189,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList51.Items.Clear();
             DropDownList51.Items.Insert(0, new ListItem("---", "---"));
             if (DropDownList50.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLOficinaSucursal(DropDownList50.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList52_SelectedIndexChanged(object sender, EventArgs e)
@@ -3244,9 +2204,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList55.Items.Insert(0, new ListItem("---", "0"));
 
             if (DropDownList52.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLMacroproceso(DropDownList52.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList53_SelectedIndexChanged(object sender, EventArgs e)
@@ -3258,9 +2216,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList55.Items.Clear();
             DropDownList55.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList53.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLProceso(DropDownList53.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList54_SelectedIndexChanged(object sender, EventArgs e)
@@ -3270,9 +2226,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList55.Items.Clear();
             DropDownList55.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList54.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLSubProceso(DropDownList54.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList56_SelectedIndexChanged(object sender, EventArgs e)
@@ -3323,9 +2277,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList58.Items.Clear();
             DropDownList58.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList57.SelectedValue.ToString().Trim() != "0")
-            {
                 loadDDLClasificacionParticular(DropDownList57.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList59_SelectedIndexChanged(object sender, EventArgs e)
@@ -3334,9 +2286,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList60.Items.Insert(0, new ListItem("---", "0"));
 
             if (DropDownList59.SelectedValue.ToString().Trim() != "0")
-            {
                 loadDDLTipoRiesgoOperativo(DropDownList59.SelectedValue.ToString().Trim(), 2);
-            }
         }
 
         protected void DropDownList66_SelectedIndexChanged(object sender, EventArgs e)
@@ -3360,38 +2310,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList11.Items.Clear();
             DropDownList11.Items.Insert(0, new ListItem("---", "0"));
             if (DropDownList67.SelectedValue.ToString().Trim() != "---")
-            {
                 loadDDLMacroproceso(DropDownList67.SelectedValue.ToString().Trim(), 1);
-            }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-            cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-            string estadoControl = btnEstado.CssClass;
-
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += " Text: " + item.Text;
-                    count++;
-                    estadoControl = "Activo";
-                    btnEstado.CssClass = "Activo";
-                }
-            }
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-                estadoControl = "Inactivo";
-                btnEstado.CssClass = "Inactivo";
-            }
-            if (estadoControl == "Inactivo")
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void DropDownList68_SelectedIndexChanged(object sender, EventArgs e)
@@ -3408,6 +2327,8 @@ namespace ListasSarlaft.UserControls.Riesgos
         #region Gridview
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
+
             switch (e.CommandName)
             {
                 case "Modificar":
@@ -3416,7 +2337,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     try
                     {
                         int Index = Convert.ToInt16(e.CommandArgument);
-                        System.Collections.Specialized.IOrderedDictionary colsNoVisible = GridView1.DataKeys[Index].Values;
+                        var colsNoVisible = GridView1.DataKeys[Index].Values;
                         Session["IdRiesgo"] = colsNoVisible[0].ToString();
                         Session["ListaCausas"] = colsNoVisible[1].ToString();
                         resetValuesModificarRiesgo();
@@ -3434,39 +2355,18 @@ namespace ListasSarlaft.UserControls.Riesgos
                         loadInfoArchivoRiesgo(ref strErrMsg);
                         loadGridComentarioRiesgo();
                         loadInfoComentarioRiesgo(ref strErrMsg);
-                        loadGridComentarioTratamieto();
-                        loadInfoComentariotto(ref strErrMsg);
                         loadGridObjetivoRiesgo();
                         loadInfoObjetivoRiesgo(ref strErrMsg);
                         loadGridPlanAccionRiesgo();
                         loadInfoPlanAccionRiesgo(ref strErrMsg);
                         loadGridEventoRiesgo();
                         loadInfoEventoRiesgo(ref strErrMsg);
-                        LoadGvFrecuenciaImpacto();
-                        CargaGvFrecuenciaImpacto();
-                        LoadGvPlanesAsociados();
-                        CargaGvPlanesAsociados();
-                        TipoMedicion();
-                        CargaGrillaFrecuencias();
-                        CargaGrillaFrecuenciasCargadas();
-                        GrillaVariablesImpacto();
-                        CargaGrillaVariablesImpacto();
-                        ocultarTratamiento();
-
-                        string IdProbabilidad = InfoGridRiesgos.Rows[RowGridRiesgos]["IdProbabilidad"].ToString().Trim();
-                        string IdImpacto = InfoGridRiesgos.Rows[RowGridRiesgos]["IdImpacto"].ToString().Trim();
-
-                        PanelFrecuenciaImpacto(IdProbabilidad, IdImpacto);
-
-                        MtdStard();
-                        MtdInicializarValores();
-                        HabilitaInh();
 
                         Session["IdMacroProcesoRiesgo"] = InfoGridRiesgos.Rows[RowGridRiesgos]["IdMacroProceso"].ToString().Trim();
                         Session["IdProcesoRiesgo"] = InfoGridRiesgos.Rows[RowGridRiesgos]["IdProceso"].ToString().Trim();
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         Mensaje("Error: " + strErrMsg);
                     }
@@ -3487,36 +2387,22 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            string IdRiesgo = string.Empty;
-            string IdControl = string.Empty;
-            try
-            {
-                RowGridControlesRiesgo = Convert.ToInt16(e.CommandArgument);
-                System.Collections.Specialized.IOrderedDictionary colsNoVisible = GridView2.DataKeys[RowGridControlesRiesgo].Values;
-                Session["IdControl"] = colsNoVisible[0].ToString();
-                IdRiesgo = Session["IdRiesgo"].ToString();
-                IdControl = colsNoVisible[0].ToString();
-            }
-            catch(Exception ex)
-            {
-                Mensaje1("Error: "+ex.Message);
-            }
-            
+            RowGridControlesRiesgo = Convert.ToInt16(e.CommandArgument);
+            var colsNoVisible = GridView2.DataKeys[RowGridControlesRiesgo].Values;
+            Session["IdControl"] = colsNoVisible[0].ToString();
+            string IdRiesgo = Session["IdRiesgo"].ToString();
+            string IdControl = colsNoVisible[0].ToString();
             switch (e.CommandName)
             {
                 case "Borrar":
                     if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
                     {
                         if (Session["IdProcesoRiesgo"].ToString() != Session["IdProcesoUsuario"].ToString())
-                        {
                             Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción. El proceso del Usuario no pertenece al proceso del riesgo.");
-                        }
                         else
                         {
                             if (cCuenta.permisosBorrar(PestanaControl) == "False")
-                            {
                                 Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                            }
                             else
                             {
                                 lblMsgBoxOkNo.Text = "Desea eliminar la información de la Base de Datos?";
@@ -3528,9 +2414,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     else
                     {
                         if (cCuenta.permisosBorrar(PestanaControl) == "False")
-                        {
                             Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                        }
                         else
                         {
                             lblMsgBoxOkNo.Text = "Desea eliminar la información de la Base de Datos?";
@@ -3587,9 +2471,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
                                 CheckBox ch = (CheckBox)row.FindControl("CBasociarCausa");
                                 if (dtInfoCausas.Rows.Count > 0)
-                                {
                                     ch.Checked = true;
-                                }
                             }
                         }
                     }
@@ -3629,14 +2511,10 @@ namespace ListasSarlaft.UserControls.Riesgos
                         flag = true;
                     }
                     else
-                    {
                         cRiesgo.deleteCausasvsControles(riesgoControl);
-                    }
                 }
                 if (flag == true)
-                {
                     Mensaje("Causas Asignadas satisfactoriamente");
-                }
             }
             catch (Exception ex)
             {
@@ -3659,7 +2537,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 {
                     for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                     {
-                        InfoGridConsultarCausasRiesgos.Rows.Add(new object[] {dtInfo.Rows[rows]["IdCausas"].ToString().Trim(),
+                        InfoGridConsultarCausasRiesgos.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdCausas"].ToString().Trim(),
                                                                     dtInfo.Rows[rows]["NombreCausas"].ToString().Trim()
                                                                    });
 
@@ -3708,9 +2586,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 case "Modificar":
                     if (cCuenta.permisosActualizar(PestanaPlanAccion) == "False")
-                    {
                         Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                    }
                     else
                     {
                         resetValuesModificarRiesgoPlanAccion();
@@ -3727,7 +2603,6 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void GridView8_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             RowGridConsultarControles = Convert.ToInt16(e.CommandArgument);
-            string estadoControl = InfoGridConsultarControles.Rows[RowGridConsultarControles]["Estado"].ToString().Trim();
             switch (e.CommandName)
             {
                 case "Relacionar":
@@ -3737,15 +2612,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     }
                     else
                     {
-                        if (estadoControl == "True")
-                        {
-                            registrarControlesRiesgo();
-                        }
-                        else
-                        {
-                            Mensaje1("No es posible relacionar el control porque se encuentra en estado Inactivo");
-                        }
-
+                        registrarControlesRiesgo();
                     }
                     break;
             }
@@ -3782,17 +2649,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 case "Ver":
                     verComentario();
-                    break;
-            }
-        }
-
-        protected void GridView12_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            RowGridComentarioRiesgo = Convert.ToInt16(e.CommandArgument);
-            switch (e.CommandName)
-            {
-                case "Ver":
-                    verComentarioTratamiento();
                     break;
             }
         }
@@ -3857,22 +2713,20 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void Button1_Click(object sender, EventArgs e)
         {
             if (cCuenta.permisosConsulta(PestanaEventos) == "False")
-            {
                 Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-            }
             else
             {
                 DataTable dtInfo = new DataTable();
                 dtInfo = cRiesgo.ReporteRiesgos("---", "---", "---", "---", "---", "---", "---", "---", "3",
-                    InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(), "---", cbEstado.SelectedIndex.ToString());
+                    InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(), "---");
                 DataTable InfoGridReporteRiesgosEventos = new DataTable();
                 InfoGridReporteRiesgosEventos = loadGridReporteRiesgosEventos();
 
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    string Causas = "", Consecuencias = "";
+                    String Causas = "", Consecuencias = "";
 
-                    InfoGridReporteRiesgosEventos.Rows.Add(new object[] {
+                    InfoGridReporteRiesgosEventos.Rows.Add(new Object[] {
                         dtInfo.Rows[rows]["CodigoRiesgo"].ToString().Trim(),
                         dtInfo.Rows[rows]["NombreRiesgo"].ToString().Trim(),
                         dtInfo.Rows[rows]["ResponsableRiesgo"].ToString().Trim(),
@@ -3919,9 +2773,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void Button6_Click(object sender, EventArgs e)
         {
             if (cCuenta.permisosConsulta(PestanaControl) == "False")
-            {
                 Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-            }
             else
             {
                 DataTable dt = new DataTable();
@@ -3929,7 +2781,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 dt.Columns.Add("Nombre", typeof(string));
                 for (int rows = 0; rows < InfoGridControlesRiesgo.Rows.Count; rows++)
                 {
-                    dt.Rows.Add(new object[] {
+                    dt.Rows.Add(new Object[] {
                         InfoGridControlesRiesgo.Rows[rows]["CodigoControl"].ToString().Trim(),
                         InfoGridControlesRiesgo.Rows[rows]["NombreControl"].ToString().Trim()
                     });
@@ -3944,16 +2796,12 @@ namespace ListasSarlaft.UserControls.Riesgos
             if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
             {
                 if (Session["IdProcesoRiesgo"].ToString() != Session["IdProcesoUsuario"].ToString())
-                {
                     Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción. El proceso del Usuario no esta asociado al riesgo.");
-                }
                 else
                 {
                     #region Comentado Viejo
                     if (cCuenta.permisosAgregar(PestanaPlanAccion) == "False")
-                    {
                         Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                    }
                     else
                     {
                         resetValuesModificarRiesgoPlanAccion();
@@ -4058,9 +2906,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 #region Comentado Viejo
                 if (cCuenta.permisosAgregar(PestanaPlanAccion) == "False")
-                {
                     Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     resetValuesModificarRiesgoPlanAccion();
@@ -4199,15 +3045,11 @@ namespace ListasSarlaft.UserControls.Riesgos
             try
             {
                 if (cCuenta.permisosAgregar(PestanaPlanAccion) == "False")
-                {
                     Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     if (Convert.ToInt64(TextBox15.Text.Trim().Replace("-", "")) <= Convert.ToInt64(DateTime.Now.Date.ToString("yyyy-MM-dd").Replace("-", "")))
-                    {
                         Mensaje1("Debe ingresar una fecha valida de compromiso.");
-                    }
                     else
                     {
                         //registrarPlanAccionRiesgo();
@@ -4237,189 +3079,42 @@ namespace ListasSarlaft.UserControls.Riesgos
         {
             try
             {
-                if (SeleccionaCalificacion.SelectedIndex == 0)
+                if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
                 {
-                    if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
-                    {
-                        if (DropDownList10.SelectedValue.ToString() != Session["IdProcesoUsuario"].ToString())
-                        {
-                            Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción. El proceso del Usuario no esta asociado al riesgo.");
-                        }
-                        else
-                        {
-                            if (cCuenta.permisosAgregar(IdFormulario) == "False")
-                            {
-                                Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                            }
-                            else
-                            {
-                                registrarRiesgo();
-                                resetValuesAgregarRiesgo();
-                                loadGridRiesgos();
-                                GrillaVariablesCategorias();
-                                CargaGrillaVariablesCategorias();
-                                GrillaVariablesCategoriasImpacto();
-                                CargaGrillaVariablesCategoriasImpacto();
-                                EtiquetaFrecuencia.Visible = false;
-                                ResultadoFrecuencia.Visible = false;
-                                ResultadoDelImpacto.Visible = false;
-                                EtiquetaImpacto.Visible = false;
-
-                                CajaVariableCategoria.Text = string.Empty;
-                                lblFrecuenciaExperta.Text = string.Empty;
-                                PanelVC.Visible = false;
-                                SeleccionaCalificacion.ClearSelection();
-                                PanelCalificacionCualitativa.Visible = false;
-                                PanelCalificacionExperta.Visible = false;
-                                GetLastRiesgo();
-                                AgregarComentarioTratamiento(TxtbJustificacionTratamiento.Text.Trim(), cRiesgo.LoadIdRiesgo(LastRiesgo));
-                                Mensaje("El Riesgo <b><FONT COLOR=BLUE> [" + LastRiesgo + "] </FONT></b> fue registrado con éxito");
-                            }
-                        }
-                    }
+                    if (DropDownList10.SelectedValue.ToString() != Session["IdProcesoUsuario"].ToString())
+                        Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción. El proceso del Usuario no esta asociado al riesgo.");
                     else
                     {
                         if (cCuenta.permisosAgregar(IdFormulario) == "False")
-                        {
                             Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                        }
                         else
                         {
                             registrarRiesgo();
                             resetValuesAgregarRiesgo();
                             loadGridRiesgos();
-                            GrillaVariablesCategorias();
-                            CargaGrillaVariablesCategorias();
-
-                            GrillaVariablesCategoriasImpacto();
-                            CargaGrillaVariablesCategoriasImpacto();
-
-                            CajaVariableCategoria.Text = string.Empty;
-                            lblFrecuenciaExperta.Text = string.Empty;
-                            PanelVC.Visible = false;
-                            SeleccionaCalificacion.ClearSelection();
-                            PanelCalificacionCualitativa.Visible = false;
-                            PanelCalificacionExperta.Visible = false;
-                            GetLastRiesgo();
-                            AgregarComentarioTratamiento(TxtbJustificacionTratamiento.Text.Trim(), cRiesgo.LoadIdRiesgo(LastRiesgo));
-                            Mensaje("El Riesgo <b><FONT COLOR=BLUE> [" + LastRiesgo + "] </FONT></b> fue registrado con éxito");
-                        }
-                    }
-                }
-                else if (SeleccionaCalificacion.SelectedIndex == 1)
-                {
-                    if (!string.IsNullOrEmpty(CajaVariableCategoria.Text))
-                    {
-                        if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
-                        {
-                            if (cCuenta.permisosAgregar(IdFormulario) == "False")
-                            {
-                                Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                            }
-                            else
-                            {
-                                registrarRiesgo();
-                                resetValuesAgregarRiesgo();
-                                loadGridRiesgos();
-                                GrillaVariablesCategorias();
-                                CargaGrillaVariablesCategorias();
-                                CajaVariableCategoria.Text = string.Empty;
-                                lblFrecuenciaExperta.Text = string.Empty;
-                                PanelVC.Visible = false;
-                                SeleccionaCalificacion.ClearSelection();
-                                PanelCalificacionCualitativa.Visible = false;
-                                PanelCalificacionExperta.Visible = false;
-                                GetLastRiesgo();
-                                Mensaje("El Riesgo <b><FONT COLOR=BLUE> [" + LastRiesgo + "] </FONT></b> fue registrado con éxito");
-                            }
-                        }
-                        else
-                        {
-                            registrarRiesgo();
-                            resetValuesAgregarRiesgo();
-                            loadGridRiesgos();
-                            GrillaVariablesCategorias();
-                            CargaGrillaVariablesCategorias();
-                            CajaVariableCategoria.Text = string.Empty;
-                            lblFrecuenciaExperta.Text = string.Empty;
-                            PanelVC.Visible = false;
-                            SeleccionaCalificacion.ClearSelection();
-                            PanelCalificacionCualitativa.Visible = false;
-                            PanelCalificacionExperta.Visible = false;
                             GetLastRiesgo();
                             Mensaje("El Riesgo <b><FONT COLOR=BLUE> [" + LastRiesgo + "] </FONT></b> fue registrado con éxito");
                         }
-                    }
-                    else
-                    {
-                        //yoendy
-                        int count = 0;
-                        string message = string.Empty;
-                        cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                        string estadoControl = btnEstado.CssClass;
-
-                        foreach (ListItem item in CheckBoxList9.Items)
-                        {
-                            if (item.Selected)
-                            {
-                                message += " Text: " + item.Text;
-                                count++;
-                                estadoControl = "Activo";
-                                btnEstado.CssClass = "Activo";
-                            }
-                        }
-                        if (count == 0)
-                        {
-                            txtResponsableT.Text = string.Empty;
-                            estadoControl = "Inactivo";
-                            btnEstado.CssClass = "Inactivo";
-                        }
-                        if (estadoControl == "Inactivo")
-                        {
-                            txtResponsableT.Text = string.Empty;
-                        }
-                        int trans = 14;
-                        string script = @"<script type='text/javascript'> FocusPeriodo(" + trans + "); ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                        TabContainer2.ActiveTabIndex = 4;
                     }
                 }
                 else
                 {
-                    int count = 0;
-                    string message = string.Empty;
-                    cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                    string estadoControl = btnEstado.CssClass;
-
-                    foreach (ListItem item in CheckBoxList9.Items)
+                    if (cCuenta.permisosAgregar(IdFormulario) == "False")
+                        Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
+                    else
                     {
-                        if (item.Selected)
-                        {
-                            message += " Text: " + item.Text;
-                            count++;
-                            estadoControl = "Activo";
-                            btnEstado.CssClass = "Activo";
-                        }
+                        registrarRiesgo();
+                        resetValuesAgregarRiesgo();
+                        loadGridRiesgos();
+                        GetLastRiesgo();
+                        //Mensaje("El Riesgo [" + LastRiesgo + "] fue registrado con éxito");
+                        Mensaje("El Riesgo <b><FONT COLOR=BLUE> [" + LastRiesgo + "] </FONT></b> fue registrado con éxito");
                     }
-                    if (count == 0)
-                    {
-                        txtResponsableT.Text = string.Empty;
-                        estadoControl = "Inactivo";
-                        btnEstado.CssClass = "Inactivo";
-                    }
-                    if (estadoControl == "Inactivo")
-                    {
-                        txtResponsableT.Text = string.Empty;
-                    }
-                    int trans = 14;
-                    string script = @"<script type='text/javascript'> FocusPeriodo(" + trans + "); ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                    TabContainer2.ActiveTabIndex = 4;
                 }
             }
             catch (Exception ex)
             {
-                omb.ShowMessage("Error al registrar riesgo. " + ex.Message.ToString(), 1, "Error");
+                Mensaje1("Error al registrar riesgo. " + ex.Message);
             }
         }
 
@@ -4432,18 +3127,6 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void ImageButton6_Click(object sender, ImageClickEventArgs e)
         {
             resetValuesAgregarRiesgo();
-            GrillaVariablesCategorias();
-            CargaGrillaVariablesCategorias();
-            SeleccionaCalificacion.ClearSelection();
-            PanelCalificacionCualitativa.Visible = false;
-            PanelCalificacionExperta.Visible = false;
-            EtiquetaFrecuencia.Visible = false;
-            ResultadoFrecuencia.Visible = false;
-            ResultadoDelImpacto.Visible = false;
-            EtiquetaImpacto.Visible = false;
-            PanelVC.Visible = false;
-            PanelCalificacionExperta.Visible = false;
-            ExcedeSuma.Visible = false;
         }
 
         protected void ImageButton7_Click(object sender, ImageClickEventArgs e)
@@ -4462,59 +3145,14 @@ namespace ListasSarlaft.UserControls.Riesgos
                 NuevoRiesgo = 1;
                 resetValuesAgregarRiesgo();
                 loadCodigoRiesgo();
-                GrillaVariablesCategorias();
-                CargaGrillaVariablesCategorias();
-                GrillaVariablesCategoriasImpacto();
-                CargaGrillaVariablesCategoriasImpacto();
-                SeleccionaCalificacion.ClearSelection();
                 tbAgregarRiesgo.Visible = true;
                 tbModificarRiesgo.Visible = false;
-                EtiquetaFrecuencia.Visible = false;
-                ResultadoFrecuencia.Visible = false;
-                ResultadoDelImpacto.Visible = false;
-                EtiquetaImpacto.Visible = false;
                 TabContainer1.ActiveTabIndex = 0;
                 TabContainer2.ActiveTabIndex = 0;
-                PanelCalificacionExperta.Visible = false;
-                PanelVC.Visible = false;
-                ExcedeSuma.Visible = false;
-                ExcedeSumaT.Visible = false;
-                int t = DropDownList47.SelectedIndex;
 
             }
-            //yoendy
-            int count = 0;
-            string message = string.Empty;
-
-            cuantosCheckTratamiento = 0;
-            for (int i = 0; i < CheckBoxList9.Items.Count; i++)
-            {
-
-                foreach (ListItem item in CheckBoxList9.Items)
-                {
-                    if (item.Selected)
-                    {
-                        message += " Text: " + item.Text;
-                        count++;
-                    }
-                }
-                cuantosCheckTratamiento++;
-            }
-
-            if (count == 0)
-            {
-                txtResponsableT.Text = string.Empty;
-            }
-            Label95.Visible = true;
-            txtResponsableT.Visible = true;
-            ImageButton20.Visible = true;
-
-            int trans = 10;
-            string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; FocusPeriodo(" + trans + ");" + "</script>";
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
-        //Guardar edicion
         protected void ImageButton9_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -4522,103 +3160,15 @@ namespace ListasSarlaft.UserControls.Riesgos
                 if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
                 {
                     if (Session["IdProcesoRiesgo"].ToString() != Session["IdProcesoUsuario"].ToString())
-                    {
                         Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción. El proceso del Usuario no esta asociado al riesgo.");
-                    }
                     else
                     {
                         if (cCuenta.permisosActualizar(IdFormulario) == "False")
-                        {
                             Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                        }
                         else
-                        {
-                            if (RadioTipoCalificacion.SelectedIndex == 0)
-                            {
-                                modificarRiesgo();
-                                agregarComentarioRiesgo();
-                                AgregarComentarioTratamiento(txtJustificacion.Text.ToString().Trim(), InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim());
-                                mtdGenerarNotificacion();
-                                resetValuesModificarRiesgo();
-                                resetValuesModificarRiesgoControl();
-                                resetValuesModificarRiesgoCalificacion();
-                                resetValuesModificarRiesgoObjetivos();
-                                resetValuesModificarRiesgoPlanAccion();
-                                resetValuesModificarRiesgoEventos();
-                                resetValuesJustificacion();
-                                resetValuesJustificacionPlanAccion();
-                                loadGridRiesgos();
-                                Mensaje("Riesgo actualizado con éxito");
-                            }
-                            else if (RadioTipoCalificacion.SelectedIndex == 1)
-                            {
-                                string Resultado = ValidaCamposMedicion();
-                                if (Resultado == "OK")
-                                {
-                                    string ResultadoImpacto = ValidaCamposMedicionImpacto();
-                                    if (ResultadoImpacto == "OK")
-                                    {
-                                        string SumatoriaMedicion = SumatoriaPeso();
-                                        if (SumatoriaMedicion == "OK")
-                                        {
-                                            CalculaFrecuenciaImpacto();
-                                            modificarRiesgo();
-                                            agregarComentarioRiesgo();
-                                            //AgregarComentarioTratamiento();
-                                            AgregarComentarioTratamiento(txtJustificacion.Text.ToString().Trim(), InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim());
-                                            mtdGenerarNotificacion();
-                                            resetValuesModificarRiesgo();
-                                            resetValuesModificarRiesgoControl();
-                                            resetValuesModificarRiesgoCalificacion();
-                                            resetValuesModificarRiesgoObjetivos();
-                                            resetValuesModificarRiesgoPlanAccion();
-                                            resetValuesModificarRiesgoEventos();
-                                            resetValuesJustificacion();
-                                            resetValuesJustificacionPlanAccion();
-                                            loadGridRiesgos();
-                                            TipoMedicionSeleccionado();
-                                            Mensaje("Riesgo actualizado con éxito");
-                                            ExcedeSumaT.Visible = false;
-                                        }
-                                        else
-                                        {
-                                            int trans = 18;
-                                            string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                                            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                                            ExcedeSumaT.Visible = true;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        int trans = 19;
-                                        string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                                        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                                    }
-                                }
-                                else
-                                {
-                                    int trans = 19;
-                                    string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if (cCuenta.permisosActualizar(IdFormulario) == "False")
-                    {
-                        Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                    }
-                    else
-                    {
-                        if (RadioTipoCalificacion.SelectedIndex == 0)
                         {
                             modificarRiesgo();
                             agregarComentarioRiesgo();
-                            //AgregarComentarioTratamiento();
-                            AgregarComentarioTratamiento(txtJustificacion.Text.ToString().Trim(), InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim());
                             mtdGenerarNotificacion();
                             resetValuesModificarRiesgo();
                             resetValuesModificarRiesgoControl();
@@ -4631,65 +3181,34 @@ namespace ListasSarlaft.UserControls.Riesgos
                             loadGridRiesgos();
                             Mensaje("Riesgo actualizado con éxito");
                         }
-                        else if (RadioTipoCalificacion.SelectedIndex == 1)
-                        {
-                            string Resultado = ValidaCamposMedicion();
-                            if (Resultado == "OK")
-                            {
-                                string ResultadoImpacto = ValidaCamposMedicionImpacto();
-                                if (ResultadoImpacto == "OK")
-                                {
-                                    string SumatoriaMedicion = SumatoriaPeso();
-                                    if (SumatoriaMedicion == "OK")
-                                    {
-                                        CalculaFrecuenciaImpacto();
-                                        modificarRiesgo();
-                                        agregarComentarioRiesgo();
-                                        //AgregarComentarioTratamiento();
-                                        AgregarComentarioTratamiento(txtJustificacion.Text.ToString().Trim(), InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim());
-                                        mtdGenerarNotificacion();
-                                        resetValuesModificarRiesgo();
-                                        resetValuesModificarRiesgoControl();
-                                        resetValuesModificarRiesgoCalificacion();
-                                        resetValuesModificarRiesgoObjetivos();
-                                        resetValuesModificarRiesgoPlanAccion();
-                                        resetValuesModificarRiesgoEventos();
-                                        resetValuesJustificacion();
-                                        resetValuesJustificacionPlanAccion();
-                                        loadGridRiesgos();
-                                        TipoMedicionSeleccionado();
-                                        Mensaje("Riesgo actualizado con éxito");
-                                        ExcedeSumaT.Visible = false;
-                                    }
-                                    else
-                                    {
-                                        int trans = 18;
-                                        string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                                        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                                        ExcedeSumaT.Visible = true;
-                                    }
-                                }
-                                else
-                                {
-                                    int trans = 19;
-                                    string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                                }
-                            }
-                            else
-                            {
-                                int trans = 19;
-                                string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                                ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                            }
-                        }
+                    }
+                }
+                else
+                {
+                    if (cCuenta.permisosActualizar(IdFormulario) == "False")
+                        Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
+                    else
+                    {
+                        modificarRiesgo();
+                        agregarComentarioRiesgo();
+                        mtdGenerarNotificacion();
+                        resetValuesModificarRiesgo();
+                        resetValuesModificarRiesgoControl();
+                        resetValuesModificarRiesgoCalificacion();
+                        resetValuesModificarRiesgoObjetivos();
+                        resetValuesModificarRiesgoPlanAccion();
+                        resetValuesModificarRiesgoEventos();
+                        resetValuesJustificacion();
+                        resetValuesJustificacionPlanAccion();
+                        loadGridRiesgos();
+                        Mensaje("Riesgo actualizado con éxito");
                     }
                 }
                 calificacionResidual();
             }
             catch (Exception ex)
             {
-                Mensaje1("Error al modificar riesgo. " + ex.Message.ToString());
+                Mensaje1("Error al modificar riesgo. " + ex.Message);
             }
         }
 
@@ -4754,9 +3273,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     DropDownList21.SelectedValue.ToString().Trim() == "---" &&
                     DropDownList22.SelectedValue.ToString().Trim() == "---" &&
                     DropDownList4.SelectedValue.ToString().Trim() == "---")
-                {
                     Mensaje1("Debe ingresar por lo menos un parámetro de consulta.");
-                }
                 else
                 {
                     inicializarValores();
@@ -4790,9 +3307,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             try
             {
                 if (cCuenta.permisosAgregar(PestanaPlanAccion) == "False")
-                {
                     Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     if (FileUpload2.HasFile)
@@ -4808,9 +3323,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             Mensaje("El archivo a cargar debe ser en formato PDF.");*/
                     }
                     else
-                    {
                         Mensaje("No hay archivos para cargar.");
-                    }
                 }
             }
             catch (Exception ex)
@@ -4840,9 +3353,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             try
             {
                 if (cCuenta.permisosAgregar(IdFormulario) == "False")
-                {
                     Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     if (FileUpload1.HasFile)
@@ -4858,9 +3369,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             Mensaje1("Archivo sin guardar. Solo archivos en formato .pdf");*/
                     }
                     else
-                    {
                         Mensaje("No hay archivos para cargar.");
-                    }
                 }
             }
             catch (Exception ex)
@@ -4874,11 +3383,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             resetValuesJustificacion();
         }
 
-        protected void ImageButton24_Click(object sender, ImageClickEventArgs e)
-        {
-            resetValuesJustificacionTratamiento();
-        }
-
         protected void ImageButton25_Click(object sender, ImageClickEventArgs e)
         {
             try
@@ -4886,21 +3390,15 @@ namespace ListasSarlaft.UserControls.Riesgos
                 if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
                 {
                     if (Session["IdProcesoRiesgo"].ToString() != Session["IdProcesoUsuario"].ToString())
-                    {
                         Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción. El proceso del Usuario no pertenece al proceso del riesgo.");
-                    }
                     else
                     {
                         if (cCuenta.permisosConsulta(PestanaControl) == "False")
-                        {
                             Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                        }
                         else
                         {
                             if (TextBox18.Text.Trim() == "" && TextBox19.Text.Trim() == "" && TextBox23.Text.Trim() == "")
-                            {
                                 Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
-                            }
                             else
                             {
                                 loadGridConsultarControles();
@@ -4912,15 +3410,11 @@ namespace ListasSarlaft.UserControls.Riesgos
                 else
                 {
                     if (cCuenta.permisosConsulta(PestanaControl) == "False")
-                    {
                         Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                    }
                     else
                     {
                         if (TextBox18.Text.Trim() == "" && TextBox19.Text.Trim() == "" && TextBox23.Text.Trim() == "")
-                        {
                             Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
-                        }
                         else
                         {
                             loadGridConsultarControles();
@@ -4958,9 +3452,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                             Mensaje("Control desasociado con éxito.");
                         }
                         else
-                        {
                             Mensaje(strMessage);
-                        }
                     }
                     catch (Exception ex)
                     {
@@ -5012,9 +3504,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void btnAsignarCausa_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbxCausas.Text.Trim()))
-            {
                 Mensaje("Por favor ingrese alguna causa.");
-            }
             else
             {
                 for (int j = 0; j < CheckBoxList3.Items.Count; j++)
@@ -5033,9 +3523,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         protected void btnAsignarConsecuencia_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbxConsecuencias.Text.Trim()))
-            {
                 Mensaje("Por favor ingrese alguna Consecuencia.");
-            }
             else
             {
                 for (int j = 0; j < CheckBoxList4.Items.Count; j++)
@@ -5061,13 +3549,13 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         #region Metodos
         #region Mensajes
-        private void Mensaje(string Mensaje)
+        private void Mensaje(String Mensaje)
         {
             lblMsgBox.Text = Mensaje;
             mpeMsgBox.Show();
         }
 
-        private void Mensaje1(string Mensaje)
+        private void Mensaje1(String Mensaje)
         {
             lblMsgBox1.Text = Mensaje;
             mpeMsgBox1.Show();
@@ -5118,11 +3606,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList14.Items.Insert(0, new ListItem("---", "0"));
             DropDownList12.SelectedIndex = 0;
             DropDownList13.SelectedIndex = 0;
-            cbEstado.Items.Clear();
-            cbEstado.Items.Insert(0, new ListItem("---", "0"));
-            cbEstadoRiesgo.Items.Clear();
-            cbEstadoRiesgo.Items.Insert(0, new ListItem("---", "0"));
-
             #endregion DROPDOWNS
 
             #region CHECKBOXLISTS
@@ -5145,7 +3628,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             for (int i = 0; i < CheckBoxList9.Items.Count; i++)
             {
                 CheckBoxList9.Items[i].Selected = false;
-                cuantosCheckTratamiento++;
             }
             #endregion CHECKBOXLISTS
 
@@ -5164,7 +3646,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             TextBox41.Text = "";
             TextBox42.Text = "";
             TextBox43.Text = "";
-            txtResponsableT.Text = "";
             Label174.Text = "";
             Panel1.BackColor = System.Drawing.Color.FromName("Transparent");
             tbGridRiesgos.Visible = true;
@@ -5173,37 +3654,17 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             #region TREEVIEWS
             if (TreeView1.SelectedNode != null)
-            {
                 TreeView1.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
-
-            if (TreeView5.SelectedNode != null)
-            {
-                TreeView5.SelectedNode.Selected = false;
-            }
-
-            if (TreeView6.SelectedNode != null)
-            {
-                TreeView6.SelectedNode.Selected = false;
-            }
             #endregion TREEVIEWS
-
-            LoadCBEstados();
         }
 
         private void resetValuesModificarRiesgo()
@@ -5242,7 +3703,7 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             DropDownList66.SelectedIndex = 0;
             DropDownList68.SelectedIndex = 0;
-            cbEstado.SelectedIndex = 0;
+
             #endregion
 
             #region CheckList
@@ -5280,34 +3741,16 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             #region Treeview
             if (TreeView1.SelectedNode != null)
-            {
                 TreeView1.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
-
-            if (TreeView5.SelectedNode != null)
-            {
-                TreeView5.SelectedNode.Selected = false;
-            }
-
-            if (TreeView6.SelectedNode != null)
-            {
-                TreeView6.SelectedNode.Selected = false;
-            }
             #endregion
 
             #region Otros Campos
@@ -5317,7 +3760,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             tbGridRiesgos.Visible = true;
             tbModificarRiesgo.Visible = false;
             tbAgregarRiesgo.Visible = false;
-            ExcedeSumaT.Visible = false;
 
             TextBox2.Text = "";
             TextBox3.Text = "";
@@ -5331,17 +3773,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             lblIdDependencia3.Text = "";
             lblIdDependencia3.Visible = false;
 
-            lblIdDependencia4.Text = "";
-            lblIdDependencia4.Visible = false;
-
-            lblIdDependencia5.Text = "";
-            lblIdDependencia5.Visible = false;
-
-            lblIdDependencia6.Text = "";
-            lblIdDependencia6.Visible = false;
-
             Panel4.BackColor = System.Drawing.Color.FromName("Transparent");
-            ExcedeSumaT.Visible = false;
             #endregion
         }
 
@@ -5352,41 +3784,20 @@ namespace ListasSarlaft.UserControls.Riesgos
             TextBox19.Text = "";
             TextBox23.Text = "";
             lblIdDependencia4.Text = "";
-            lblIdDependencia5.Text = "";
-            lblIdDependencia6.Text = "";
-            txtJustificacion.Text = "";
             loadGridConsultarControles();
 
 
             if (TreeView1.SelectedNode != null)
-            {
                 TreeView1.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
-
-            if (TreeView5.SelectedNode != null)
-            {
-                TreeView5.SelectedNode.Selected = false;
-            }
-
-            if (TreeView6.SelectedNode != null)
-            {
-                TreeView6.SelectedNode.Selected = false;
-            }
         }
 
         private void resetValuesJustificacionPlanAccion()
@@ -5401,13 +3812,6 @@ namespace ListasSarlaft.UserControls.Riesgos
             TextBox16.ReadOnly = false;
             TextBox16.Text = "";
             ImageButton17.Visible = false;
-        }
-
-        private void resetValuesJustificacionTratamiento()
-        {
-            txtJustificacion.ReadOnly = false;
-            txtJustificacion.Text = "";
-            ImageButton24.Visible = false;
         }
 
         private void resetValuesConsulta()
@@ -5436,34 +3840,16 @@ namespace ListasSarlaft.UserControls.Riesgos
 
 
             if (TreeView1.SelectedNode != null)
-            {
                 TreeView1.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
-
-            if (TreeView5.SelectedNode != null)
-            {
-                TreeView5.SelectedNode.Selected = false;
-            }
-            //aqui 
-            if (TreeView6.SelectedNode != null)
-            {
-                TreeView6.SelectedNode.Selected = false;
-            }
         }
 
         private void resetValuesModificarRiesgoObjetivos()
@@ -5472,34 +3858,16 @@ namespace ListasSarlaft.UserControls.Riesgos
             DropDownList61.SelectedIndex = 0;
 
             if (TreeView1.SelectedNode != null)
-            {
                 TreeView1.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
-
-            if (TreeView5.SelectedNode != null)
-            {
-                TreeView5.SelectedNode.Selected = false;
-            }
-
-            if (TreeView6.SelectedNode != null)
-            {
-                TreeView6.SelectedNode.Selected = false;
-            }
         }
 
         private void resetValuesModificarRiesgoPlanAccion()
@@ -5525,34 +3893,16 @@ namespace ListasSarlaft.UserControls.Riesgos
             TextBox22.ReadOnly = false;
 
             if (TreeView1.SelectedNode != null)
-            {
                 TreeView1.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
-
-            if (TreeView5.SelectedNode != null)
-            {
-                TreeView5.SelectedNode.Selected = false;
-            }
-
-            if (TreeView6.SelectedNode != null)
-            {
-                TreeView6.SelectedNode.Selected = false;
-            }
         }
 
         private void resetValuesModificarRiesgoEventos()
@@ -5560,41 +3910,18 @@ namespace ListasSarlaft.UserControls.Riesgos
             Label62.Text = "";
 
             if (TreeView1.SelectedNode != null)
-            {
                 TreeView1.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
-
-            if (TreeView5.SelectedNode != null)
-            {
-                TreeView5.SelectedNode.Selected = false;
-            }
-
-            if (TreeView6.SelectedNode != null)
-            {
-                TreeView6.SelectedNode.Selected = false;
-            }
         }
         #endregion Resets
-
-        private void resetResponsableT()
-        {
-            txtResponsableT.Text = string.Empty;
-        }
 
         #region Objetivo
         private void registrarObjetivoRiesgo()
@@ -5613,18 +3940,6 @@ namespace ListasSarlaft.UserControls.Riesgos
         //{
         //    cRiesgo.desasociarControlesRiesgo(InfoGridControlesRiesgo.Rows[RowGridControlesRiesgo]["IdControlesRiesgo"].ToString().Trim());
         //}
-
-        protected void MtdStard()
-        {
-            string strErrMsg = string.Empty;
-            LoadDDLProbabilidad();
-            MtdLoadFrecuenciavsRiesgos(ref strErrMsg);
-        }
-
-        private void MtdInicializarValores()
-        {
-            PagIndexInfoGridFR = 0;
-        }
 
         private void mtdDesasociarRiesgoControl(string strIdControlRiesgo, ref string strMessage)
         {
@@ -5659,7 +3974,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 #region Ciclo para poner la informacion de los controles desasociados con el riesgo
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    InfoGridAudRiesgoControl.Rows.Add(new object[] {
+                    InfoGridAudRiesgoControl.Rows.Add(new Object[] {
                         dtInfo.Rows[rows]["Id"].ToString().Trim(),
                         dtInfo.Rows[rows]["IdRiesgo"].ToString().Trim(),
                         dtInfo.Rows[rows]["CodigoRiesgo"].ToString().Trim(),
@@ -6038,7 +4353,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         #endregion Calificacion
 
         #region Causas Consecuencias
-        private string causas(string Causas)
+        private String causas(String Causas)
         {
             DataTable dtInfoCausas = new DataTable();
             dtInfoCausas = cRiesgo.causas(Causas);
@@ -6050,7 +4365,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             return Causas;
         }
 
-        private string consecuencias(string Consecuencias)
+        private String consecuencias(String Consecuencias)
         {
             DataTable dtInfoConsecuencias = new DataTable();
             dtInfoConsecuencias = cRiesgo.consecuencias(Consecuencias);
@@ -6064,7 +4379,7 @@ namespace ListasSarlaft.UserControls.Riesgos
         #endregion
 
         #region Notificacion
-        private bool boolEnviarNotificacion(int idEvento, int idRegistro, int idNodoJerarquia, string FechaFinal, string textoAdicional)
+        private Boolean boolEnviarNotificacion(int idEvento, int idRegistro, int idNodoJerarquia, string FechaFinal, string textoAdicional)
         {
             #region Vars
             bool err = false;
@@ -6230,36 +4545,26 @@ namespace ListasSarlaft.UserControls.Riesgos
                     foreach (string substr in Destinatario.Split(';'))
                     {
                         if (!string.IsNullOrEmpty(substr.Trim()))
-                        {
                             message.To.Add(substr);
-                        }
                     }
                     #endregion
 
                     #region Copia
                     if (Copia.Trim() != "")
-                    {
                         foreach (string substr in Copia.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     #region Otros
                     if (Otros.Trim() != "")
-                    {
                         foreach (string substr in Otros.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     message.Subject = Asunto;//subject of email
@@ -6291,7 +4596,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             return (err);
         }
 
-        private bool boolEnviarNotificacionCierre(int idEvento, int idRegistro, int idNodoJerarquia, string FechaFinal, string textoAdicional)
+        private Boolean boolEnviarNotificacionCierre(int idEvento, int idRegistro, int idNodoJerarquia, string FechaFinal, string textoAdicional)
         {
             bool err = false;
             string Destinatario = "", Copia = "", Asunto = "", Otros = "", Cuerpo = "", NroDiasRecordatorio = "";
@@ -6413,36 +4718,26 @@ namespace ListasSarlaft.UserControls.Riesgos
                     foreach (string substr in Destinatario.Split(';'))
                     {
                         if (!string.IsNullOrEmpty(substr.Trim()))
-                        {
                             message.To.Add(substr);
-                        }
                     }
                     #endregion
 
                     #region
                     if (Copia.Trim() != "")
-                    {
                         foreach (string substr in Copia.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     #region
                     if (Otros.Trim() != "")
-                    {
                         foreach (string substr in Otros.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     message.Subject = Asunto;//subject of email
@@ -6537,9 +4832,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 #region Validacion Consulta PA
                 //Valida permisos de consulta de plan de accion.
                 if (cCuenta.permisosConsulta(PestanaPlanAccion) == "False")
-                {
                     Mensaje1("No tiene los permisos suficientes para consultar los planes de acción.");
-                }
                 else
                 {
                     #region Validacion Escritura Justificacion
@@ -6549,9 +4842,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                         #region  Validacion consulta Justificacion
                         //Valida permisos de consulta de justificacion y Adjuntar
                         if (cCuenta.permisosConsulta(strPestanaJustifPDF) == "False")
-                        {
                             Mensaje1("No tiene los permisos para consultar la Justificación y Adjuntar archivos.");
-                        }
                         else
                         {
                             #region Habilita a Ninguno
@@ -6584,9 +4875,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     #region  Validacion consulta Justificacion
                     //Valida permisos de consulta de justificacion y Adjuntar
                     if (cCuenta.permisosConsulta(strPestanaJustifPDF) == "False")
-                    {
                         Mensaje1("No tiene los permisos para consultar la Justificación y Adjuntar archivos.");
-                    }
                     else
                     {
                         #region Habilita a SI Plan Accion NO Justificacion
@@ -6630,18 +4919,14 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList17.SelectedIndex = i;
                 if (DropDownList17.SelectedValue.ToString().Trim() == InfoGridPlanAccionRiesgo.Rows[RowGridPlanAccionRiesgo]["IdTipoRecursoPlanAccion"].ToString().Trim())
-                {
                     break;
-                }
             }
 
             for (int i = 0; i < DropDownList18.Items.Count; i++)
             {
                 DropDownList18.SelectedIndex = i;
                 if (DropDownList18.SelectedValue.ToString().Trim() == InfoGridPlanAccionRiesgo.Rows[RowGridPlanAccionRiesgo]["IdEstadoPlanAccion"].ToString().Trim())
-                {
                     break;
-                }
             }
             #endregion
         }
@@ -6673,9 +4958,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             if (dtInfo != null)
             {
                 if (dtInfo.Rows.Count > 0)
-                {
                     intIdRegistro = Convert.ToInt32(dtInfo.Rows[0][0].ToString());
-                }
             }
 
             return intIdRegistro;
@@ -6816,21 +5099,17 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             #region Nombre Archivo
             if (dtInfo.Rows.Count > 0)
-            {
                 strNombreArchivo = dtInfo.Rows[0]["NumRegistros"].ToString().Trim() +
                     "-" + InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim() +
                     "-" + FileUpload1.FileName.ToString().Trim();
-            }
             else
-            {
                 strNombreArchivo = "1-" + InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim() +
                     "-" + FileUpload1.FileName.ToString().Trim();
-            }
             #endregion Nombre Archivo
 
             Stream fs = FileUpload1.PostedFile.InputStream;
             BinaryReader br = new BinaryReader(fs);
-            byte[] bPdfData = br.ReadBytes((int)fs.Length);
+            Byte[] bPdfData = br.ReadBytes((Int32)fs.Length);
 
             cRiesgo.mtdAgregarArchivoPdf(strIdControl, InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(), strNombreArchivo, bPdfData);
         }
@@ -6866,21 +5145,17 @@ namespace ListasSarlaft.UserControls.Riesgos
 
             #region Nombre Archivo
             if (dtInfo.Rows.Count > 0)
-            {
                 strNombreArchivo = dtInfo.Rows[0]["NumRegistros"].ToString().Trim() +
                     "-" + InfoGridPlanAccionRiesgo.Rows[RowGridPlanAccionRiesgo]["IdPlanAccion"].ToString().Trim() +
                     "-" + FileUpload2.FileName.ToString().Trim();
-            }
             else
-            {
                 strNombreArchivo = "1-" + InfoGridPlanAccionRiesgo.Rows[RowGridPlanAccionRiesgo]["IdPlanAccion"].ToString().Trim() +
                     "-" + FileUpload2.FileName.ToString().Trim();
-            }
             #endregion Nombre Archivo
 
             Stream fs = FileUpload2.PostedFile.InputStream;
             BinaryReader br = new BinaryReader(fs);
-            byte[] bPdfData = br.ReadBytes((int)fs.Length);
+            Byte[] bPdfData = br.ReadBytes((Int32)fs.Length);
 
             cRiesgo.mtdAgregarArchivoPdf(strIdControl, InfoGridPlanAccionRiesgo.Rows[RowGridPlanAccionRiesgo]["IdPlanAccion"].ToString().Trim(), strNombreArchivo, bPdfData);
         }
@@ -6975,13 +5250,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                 dtInfo = cRiesgo.GetLastRiesgo();
 
                 if (dtInfo.Rows.Count > 0)
-                {
                     LastRiesgo = "R" + dtInfo.Rows[0]["UltRiesgo"].ToString().Trim();
-                }
                 else
-                {
                     LastRiesgo = "R1";
-                }
             }
             catch (Exception ex)
             {
@@ -7004,13 +5275,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                 }
 
                 if (dtInfo.Rows.Count > 0)
-                {
                     TextBox8.Text = "R" + dtInfo.Rows[0]["LastLegislacion"].ToString().Trim();
-                }
                 else
-                {
                     TextBox8.Text = "R1";
-                }
             }
             catch (Exception ex)
             {
@@ -7031,7 +5298,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     Mensaje("Control relacionado con éxito.");
                     mtdGenerarNotificacionControl(InfoGridRiesgos.Rows[RowGridRiesgos]["Codigo"].ToString().Trim(), InfoGridRiesgos.Rows[RowGridRiesgos]["Nombre"].ToString().Trim());
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //Mensaje("Error: Se está intentando registrar varias veces el mismo control.<br /><br />Por favor consulte nuevamente el Riesgo.");
                     loadGridControlesRiesgo();
@@ -7040,9 +5307,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 }
             }
             else
-            {
                 Mensaje("El control ya se encuentra relacionado.");
-            }
         }
         private void mtdGenerarNotificacionControl(string CodigoRiesgo, string NombreRiesgo)
         {
@@ -7090,114 +5355,70 @@ namespace ListasSarlaft.UserControls.Riesgos
             cRiesgo.agregarComentarioRiesgo(TextBox16.Text.ToString().Trim(), InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim());
         }
 
-        //comentarioTratamiento
-        private void AgregarComentarioTratamiento(string strComentario, string strIdRiesgo)
-        {
-            //cRiesgo.agregarComentarioTratamiento(txtJustificacion.Text.ToString().Trim(), InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim());
-            cRiesgo.agregarComentarioTratamiento(strComentario, strIdRiesgo);
-        }
-
         private void modificarRiesgo()
         {
             #region Variables
-            string ListaCausas = "";
-            string ListaConsecuencias = "";
-            string ListaRiesgoAsociadoLA = "";
-            string ListaFactorRiesgoLAFT = "";
-            string ListaTratamiento = "";
-            string responsableTratamiento = InfoGridRiesgos.Rows[RowGridRiesgos]["idResponsableTratamiento"].ToString().Trim();
+            String ListaCausas = "";
+            String ListaConsecuencias = "";
+            String ListaRiesgoAsociadoLA = "";
+            String ListaFactorRiesgoLAFT = "";
+            String ListaTratamiento = "";
             #endregion Variables
-            if (lblIdDependencia6.Text != "")
-            {
-                responsableTratamiento = lblIdDependencia6.Text;
-            }
-            if (responsableTratamiento == "")
-            {
-                responsableTratamiento = null;
-            }
+
             #region Ciclo Checkbox
             for (int i = 0; i < CheckBoxList3.Items.Count; i++)
             {
                 if (CheckBoxList3.Items[i].Selected)
-                {
                     ListaCausas += CheckBoxList3.Items[i].Value.ToString().Trim() + "|";
-                }
             }
 
             for (int i = 0; i < CheckBoxList4.Items.Count; i++)
             {
                 if (CheckBoxList4.Items[i].Selected)
-                {
                     ListaConsecuencias += CheckBoxList4.Items[i].Value.ToString().Trim() + "|";
-                }
             }
 
             for (int i = 0; i < CheckBoxList7.Items.Count; i++)
             {
                 if (CheckBoxList7.Items[i].Selected)
-                {
                     ListaRiesgoAsociadoLA += CheckBoxList7.Items[i].Value.ToString().Trim() + "|";
-                }
             }
 
             for (int i = 0; i < CheckBoxList8.Items.Count; i++)
             {
                 if (CheckBoxList8.Items[i].Selected)
-                {
                     ListaFactorRiesgoLAFT += CheckBoxList8.Items[i].Value.ToString().Trim() + "|";
-                }
+
             }
 
             for (int i = 0; i < CheckBoxList10.Items.Count; i++)
             {
                 if (CheckBoxList10.Items[i].Selected)
-                {
                     ListaTratamiento += CheckBoxList10.Items[i].Value.ToString().Trim() + "|";
-                }
-            }
 
+            }
             #endregion Ciclo Checkbox
-            //buscando Estados
-            string NombreEstado = cbEstado.SelectedValue;
-            int IdEstado = BuscarIdEstado(NombreEstado);
 
-            if (RadioTipoCalificacion.SelectedIndex == 0)
-            {
-                cRiesgo.modificarRiesgo(DropDownList47.SelectedValue.ToString().Trim(), DropDownList48.SelectedValue.ToString().Trim(),
-               DropDownList49.SelectedValue.ToString().Trim(), DropDownList50.SelectedValue.ToString().Trim(), DropDownList51.SelectedValue.ToString().Trim(),
-               DropDownList52.SelectedValue.ToString().Trim(), DropDownList53.SelectedValue.ToString().Trim(), DropDownList54.SelectedValue.ToString().Trim(),
-               DropDownList7.SelectedValue.ToString().Trim(), DropDownList55.SelectedValue.ToString().Trim(), DropDownList56.SelectedValue.ToString().Trim(),
-               DropDownList57.SelectedValue.ToString().Trim(), DropDownList58.SelectedValue.ToString().Trim(), DropDownList59.SelectedValue.ToString().Trim(),
-               DropDownList60.SelectedValue.ToString().Trim(), DropDownList15.SelectedValue.ToString().Trim(), DropDownList16.SelectedValue.ToString().Trim(),
-               ListaRiesgoAsociadoLA, ListaFactorRiesgoLAFT, TextBox3.Text.Trim(), TextBox4.Text.Trim(), ListaCausas, ListaConsecuencias, lblIdDependencia3.Text.Trim(),
-               DropDownList66.SelectedValue.ToString().Trim(), TextBox5.Text.Trim(), TextBox6.Text.Trim(), DropDownList68.SelectedValue.ToString().Trim(),
-               TextBox7.Text.Trim(), TextBox10.Text.Trim(), ListaTratamiento, InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(),
-               TextBox16.Text.ToString().Trim(), txtJustificacion.Text, lblIdDependencia6.Text, responsableTratamiento, IdEstado, 0);
-            }
-            else if (RadioTipoCalificacion.SelectedIndex == 1)
-            {
-                cRiesgo.modificarRiesgo(DropDownList47.SelectedValue.ToString().Trim(), DropDownList48.SelectedValue.ToString().Trim(),
-               DropDownList49.SelectedValue.ToString().Trim(), DropDownList50.SelectedValue.ToString().Trim(), DropDownList51.SelectedValue.ToString().Trim(),
-               DropDownList52.SelectedValue.ToString().Trim(), DropDownList53.SelectedValue.ToString().Trim(), DropDownList54.SelectedValue.ToString().Trim(),
-               DropDownList7.SelectedValue.ToString().Trim(), DropDownList55.SelectedValue.ToString().Trim(), DropDownList56.SelectedValue.ToString().Trim(),
-               DropDownList57.SelectedValue.ToString().Trim(), DropDownList58.SelectedValue.ToString().Trim(), DropDownList59.SelectedValue.ToString().Trim(),
-               DropDownList60.SelectedValue.ToString().Trim(), DropDownList15.SelectedValue.ToString().Trim(), DropDownList16.SelectedValue.ToString().Trim(),
-               ListaRiesgoAsociadoLA, ListaFactorRiesgoLAFT, TextBox3.Text.Trim(), TextBox4.Text.Trim(), ListaCausas, ListaConsecuencias, lblIdDependencia3.Text.Trim(),
-               IdFrecuenciaEvento.ToString().Trim(), TextBox5.Text.Trim(), TextBox6.Text.Trim(), IdImpactoEvento.ToString().Trim(),
-               TextBox7.Text.Trim(), TextBox10.Text.Trim(), ListaTratamiento, InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(),
-               TextBox16.Text.ToString().Trim(), txtJustificacion.Text, lblIdDependencia6.Text, responsableTratamiento, IdEstado, 1);
-            }
+            cRiesgo.modificarRiesgo(DropDownList47.SelectedValue.ToString().Trim(), DropDownList48.SelectedValue.ToString().Trim(),
+                DropDownList49.SelectedValue.ToString().Trim(), DropDownList50.SelectedValue.ToString().Trim(), DropDownList51.SelectedValue.ToString().Trim(),
+                DropDownList52.SelectedValue.ToString().Trim(), DropDownList53.SelectedValue.ToString().Trim(), DropDownList54.SelectedValue.ToString().Trim(),
+                DropDownList7.SelectedValue.ToString().Trim(), DropDownList55.SelectedValue.ToString().Trim(), DropDownList56.SelectedValue.ToString().Trim(),
+                DropDownList57.SelectedValue.ToString().Trim(), DropDownList58.SelectedValue.ToString().Trim(), DropDownList59.SelectedValue.ToString().Trim(),
+                DropDownList60.SelectedValue.ToString().Trim(), DropDownList15.SelectedValue.ToString().Trim(), DropDownList16.SelectedValue.ToString().Trim(),
+                ListaRiesgoAsociadoLA, ListaFactorRiesgoLAFT, TextBox3.Text.Trim(), TextBox4.Text.Trim(), ListaCausas, ListaConsecuencias, lblIdDependencia3.Text.Trim(),
+                DropDownList66.SelectedValue.ToString().Trim(), TextBox5.Text.Trim(), TextBox6.Text.Trim(), DropDownList68.SelectedValue.ToString().Trim(),
+                TextBox7.Text.Trim(), TextBox10.Text.Trim(), ListaTratamiento, InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgo"].ToString().Trim(),
+                TextBox16.Text.ToString().Trim());
         }
 
         private void registrarRiesgo()
         {
             #region Variables
-            string ListaCausas = "";
-            string ListaConsecuencias = "";
-            string ListaRiesgoAsociadoLA = "";
-            string ListaFactorRiesgoLAFT = "";
-            string ListaTratamiento = "";
-            string responsableTratamiento = string.Empty;
+            String ListaCausas = "";
+            String ListaConsecuencias = "";
+            String ListaRiesgoAsociadoLA = "";
+            String ListaFactorRiesgoLAFT = "";
+            String ListaTratamiento = "";
             #endregion Variables
 
             #region Ciclos de CheckBox
@@ -7238,10 +5459,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             }
             #endregion Ciclos de CheckBox
 
-
-            if (SeleccionaCalificacion.SelectedIndex == 0)
-            {
-                cRiesgo.registrarRiesgo(DropDownList41.SelectedValue.ToString().Trim(), DropDownList42.SelectedValue.ToString().Trim(),
+            cRiesgo.registrarRiesgo(DropDownList41.SelectedValue.ToString().Trim(), DropDownList42.SelectedValue.ToString().Trim(),
                 DropDownList43.SelectedValue.ToString().Trim(), DropDownList44.SelectedValue.ToString().Trim(), DropDownList63.SelectedValue.ToString().Trim(),
                 DropDownList67.SelectedValue.ToString().Trim(), DropDownList9.SelectedValue.ToString().Trim(), DropDownList10.SelectedValue.ToString().Trim(),
                 DropDownList6.SelectedValue.ToString().Trim(), DropDownList11.SelectedValue.ToString().Trim(), DropDownList1.SelectedValue.ToString().Trim(),
@@ -7249,50 +5467,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 DropDownList14.SelectedValue.ToString().Trim(), DropDownList12.SelectedValue.ToString().Trim(), DropDownList13.SelectedValue.ToString().Trim(),
                 ListaRiesgoAsociadoLA, ListaFactorRiesgoLAFT, TextBox8.Text.Trim(), TextBox9.Text.Trim(), TextBox1.Text.Trim(), ListaCausas, ListaConsecuencias,
                 lblIdDependencia2.Text.Trim(), DropDownList45.SelectedValue.ToString().Trim(), TextBox40.Text.Trim(), TextBox41.Text.Trim(),
-                DropDownList46.SelectedValue.ToString().Trim(), TextBox42.Text.Trim(), TextBox43.Text.Trim(), ListaTratamiento, lblIdDependencia5.Text,
-                cbEstadoRiesgo.SelectedIndex.ToString(), "0");
-            }
-            else if (SeleccionaCalificacion.SelectedIndex == 1)
-            {
-                //Aqui 
-                cRiesgo.registrarRiesgo(DropDownList41.SelectedValue.ToString().Trim(), DropDownList42.SelectedValue.ToString().Trim(),
-                DropDownList43.SelectedValue.ToString().Trim(), DropDownList44.SelectedValue.ToString().Trim(), DropDownList63.SelectedValue.ToString().Trim(),
-                DropDownList67.SelectedValue.ToString().Trim(), DropDownList9.SelectedValue.ToString().Trim(), DropDownList10.SelectedValue.ToString().Trim(),
-                DropDownList6.SelectedValue.ToString().Trim(), DropDownList11.SelectedValue.ToString().Trim(), DropDownList1.SelectedValue.ToString().Trim(),
-                DropDownList2.SelectedValue.ToString().Trim(), DropDownList3.SelectedValue.ToString().Trim(), DropDownList8.SelectedValue.ToString().Trim(),
-                DropDownList14.SelectedValue.ToString().Trim(), DropDownList12.SelectedValue.ToString().Trim(), DropDownList13.SelectedValue.ToString().Trim(),
-                ListaRiesgoAsociadoLA, ListaFactorRiesgoLAFT, TextBox8.Text.Trim(), TextBox9.Text.Trim(), TextBox1.Text.Trim(), ListaCausas, ListaConsecuencias,
-                lblIdDependencia2.Text.Trim(), IdFrecuenciaEvento.ToString().Trim(), "0", "0",
-                IdImpactoEvento.ToString().Trim(), "0", "0", ListaTratamiento, lblIdDependencia5.Text,
-                cbEstadoRiesgo.SelectedIndex.ToString(), "1");
-
-                DataTable dtInfo = cRiesgo.GetLastRiesgo();
-                int IdRiesgo = Convert.ToInt32(dtInfo.Rows[0]["UltRiesgo"].ToString().Trim());
-
-                for (int i = 0; i < GvVariablesCategorias.Rows.Count; i++)
-                {
-                    int Transaccion = 0;
-                    GridViewRow row = GvVariablesCategorias.Rows[i];
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesCategorias.DataKeys[i].Values;
-                    int IdVariable = Convert.ToInt32(colsNoVisibles[0]);
-                    int IdCategoria = Convert.ToInt32(ExpNombreCategoria.SelectedValue);
-                    cRiesgo.RegistrarVariableFrecuencia(IdRiesgo, IdVariable, IdCategoria, 0, Transaccion);
-                }
-
-                for (int i = 0; i < GvVariablesCategoriasImpacto.Rows.Count; i++)
-                {
-                    int Transaccion = 1;
-                    GridViewRow row = GvVariablesCategoriasImpacto.Rows[i];
-                    TextBox Peso = (TextBox)row.FindControl("Peso");
-                    DropDownList ExpImpacto = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesCategoriasImpacto.DataKeys[i].Values;
-                    int IdVariableImpacto = Convert.ToInt32(colsNoVisibles[0]);
-                    int ValorPeso = Convert.ToInt32(Peso.Text);
-                    int IdCalificacion = Convert.ToInt32(ExpImpacto.SelectedValue);
-                    cRiesgo.RegistrarVariableFrecuencia(IdRiesgo, IdVariableImpacto, IdCalificacion, ValorPeso, Transaccion);
-                }
-            }
+                DropDownList46.SelectedValue.ToString().Trim(), TextBox42.Text.Trim(), TextBox43.Text.Trim(), ListaTratamiento);
         }
 
         private void detalleRiesgoSeleccionado()
@@ -7307,18 +5482,12 @@ namespace ListasSarlaft.UserControls.Riesgos
                 if (InfoGridRiesgos.Rows.Count > 0)
                 {
                     if (DropDownList47.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdRegion"].ToString().Trim())
-                    {
                         break;
-                    }
                     else
-                    {
                         DropDownList47.SelectedIndex = 0;
-                    }
                 }
                 else
-                {
                     DropDownList47.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7328,13 +5497,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList48.SelectedIndex = i;
                 if (DropDownList48.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdPais"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList48.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7344,13 +5509,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList49.SelectedIndex = i;
                 if (DropDownList49.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdDepartamento"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList49.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7360,13 +5521,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList50.SelectedIndex = i;
                 if (DropDownList50.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdCiudad"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList50.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7376,13 +5533,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList51.SelectedIndex = i;
                 if (DropDownList51.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdOficinaSucursal"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList51.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7391,13 +5544,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList52.SelectedIndex = i;
                 if (DropDownList52.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdCadenaValor"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList52.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7407,13 +5556,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList53.SelectedIndex = i;
                 if (DropDownList53.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdMacroproceso"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList53.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7423,13 +5568,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList54.SelectedIndex = i;
                 if (DropDownList54.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdProceso"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList54.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7439,13 +5580,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList7.SelectedIndex = i;
                 if (DropDownList7.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdSubProceso"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList7.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7455,13 +5592,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList55.SelectedIndex = i;
                 if (DropDownList55.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdActividad"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList55.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7470,13 +5603,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList56.SelectedIndex = i;
                 if (DropDownList56.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdClasificacionRiesgo"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList56.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7486,13 +5615,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList57.SelectedIndex = i;
                 if (DropDownList57.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdClasificacionGeneralRiesgo"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList57.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7502,13 +5627,9 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList58.SelectedIndex = i;
                 if (DropDownList58.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdClasificacionParticularRiesgo"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList58.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7535,13 +5656,10 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList59.SelectedIndex = i;
                 if (DropDownList59.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdFactorRiesgoOperativo"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList59.SelectedIndex = 0;
-                }
+
             }
             #endregion
 
@@ -7551,9 +5669,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList60.SelectedIndex = i;
                 if (DropDownList60.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdTipoRiesgoOperativo"].ToString().Trim())
-                {
                     break;
-                }
                 else
                 {
                     DropDownList60.SelectedIndex = 0;
@@ -7581,19 +5697,16 @@ namespace ListasSarlaft.UserControls.Riesgos
             {
                 DropDownList16.SelectedIndex = i;
                 if (DropDownList16.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdRiesgoAsociadoOperativo"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList16.SelectedIndex = 0;
-                }
+
             }
             #endregion
 
             #region Riesgo asociado LA
             char[] delimiter = { '|' };
-            string[] ListaRiesgoAsociadoLA = InfoGridRiesgos.Rows[RowGridRiesgos]["ListaRiesgoAsociadoLA"].ToString().Trim().Split(delimiter);
+            String[] ListaRiesgoAsociadoLA = InfoGridRiesgos.Rows[RowGridRiesgos]["ListaRiesgoAsociadoLA"].ToString().Trim().Split(delimiter);
             for (int i = 0; i < ListaRiesgoAsociadoLA.Length; i++)
             {
                 for (int j = 0; j < CheckBoxList7.Items.Count; j++)
@@ -7607,7 +5720,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             #endregion
 
             #region Riesgo asociado LAFT
-            string[] ListaFactorRiesgoLAFT = InfoGridRiesgos.Rows[RowGridRiesgos]["ListaFactorRiesgoLAFT"].ToString().Trim().Split(delimiter);
+            String[] ListaFactorRiesgoLAFT = InfoGridRiesgos.Rows[RowGridRiesgos]["ListaFactorRiesgoLAFT"].ToString().Trim().Split(delimiter);
             for (int i = 0; i < ListaFactorRiesgoLAFT.Length; i++)
             {
                 for (int j = 0; j < CheckBoxList8.Items.Count; j++)
@@ -7641,13 +5754,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                 if (!string.IsNullOrEmpty(listaCausas[i].ToString().Trim()))
                 {
                     if (string.IsNullOrEmpty(strCausa))
-                    {
                         strCausa = listaCausas[i].ToString().Trim();
-                    }
                     else
-                    {
                         strCausa = strCausa + "," + listaCausas[i].ToString().Trim();
-                    }
                 }
                 #endregion
 
@@ -7668,19 +5777,15 @@ namespace ListasSarlaft.UserControls.Riesgos
             try
             {
                 if (!string.IsNullOrEmpty(strCausa))
-                {
                     dtInfo = cRiesgo.mtdLoadCausas(strCausa);
-                }
 
                 ckbCausaAsoc.Items.Clear();
                 if (dtInfo != null)
-                {
                     for (int i = 0; i < dtInfo.Rows.Count; i++)
                     {
                         ckbCausaAsoc.Items.Insert(i, new ListItem(dtInfo.Rows[i]["NombreCausas"].ToString().Trim(), dtInfo.Rows[i]["IdCausas"].ToString().Trim()));
                         ckbCausaAsoc.Items[i].Selected = true;
                     }
-                }
             }
             catch (Exception ex)
             {
@@ -7698,13 +5803,9 @@ namespace ListasSarlaft.UserControls.Riesgos
                 if (!string.IsNullOrEmpty(listaConsecuencias[i].ToString().Trim()))
                 {
                     if (string.IsNullOrEmpty(strConsecuencias))
-                    {
                         strConsecuencias = listaConsecuencias[i].ToString().Trim();
-                    }
                     else
-                    {
                         strConsecuencias = strConsecuencias + "," + listaConsecuencias[i].ToString().Trim();
-                    }
                 }
                 #endregion
 
@@ -7725,19 +5826,15 @@ namespace ListasSarlaft.UserControls.Riesgos
             try
             {
                 if (!string.IsNullOrEmpty(strConsecuencias))
-                {
                     dtInfo = cRiesgo.mtdLoadConsecuencias(strConsecuencias);
-                }
 
                 ckbConsecuenciaAsoc.Items.Clear();
                 if (dtInfo != null)
-                {
                     for (int i = 0; i < dtInfo.Rows.Count; i++)
                     {
                         ckbConsecuenciaAsoc.Items.Insert(i, new ListItem(dtInfo.Rows[i]["NombreConsecuencia"].ToString().Trim(), dtInfo.Rows[i]["IdConsecuencia"].ToString().Trim()));
                         ckbConsecuenciaAsoc.Items[i].Selected = true;
                     }
-                }
             }
             catch (Exception ex)
             {
@@ -7746,24 +5843,16 @@ namespace ListasSarlaft.UserControls.Riesgos
             #endregion
             #endregion
 
-            // Yoendy -responsable tratamiento
             #region Dependencia
             TextBox21.Text = InfoGridRiesgos.Rows[RowGridRiesgos]["NombreHijo"].ToString().Trim();
             lblIdDependencia3.Text = InfoGridRiesgos.Rows[RowGridRiesgos]["IdResponsableRiesgo"].ToString().Trim();
-
-            loadResponsableTratamiento();
-            loadEstado();
             for (int i = 0; i < DropDownList66.Items.Count; i++)
             {
                 DropDownList66.SelectedIndex = i;
                 if (DropDownList66.SelectedValue.ToString().Trim() == InfoGridRiesgos.Rows[RowGridRiesgos]["IdProbabilidad"].ToString().Trim())
-                {
                     break;
-                }
                 else
-                {
                     DropDownList66.SelectedIndex = 0;
-                }
             }
             #endregion
 
@@ -7797,7 +5886,7 @@ namespace ListasSarlaft.UserControls.Riesgos
             Label193.Text = cRiesgo.ValorImpacto(DropDownList68.SelectedValue.ToString().Trim());
             TextBox7.Text = InfoGridRiesgos.Rows[RowGridRiesgos]["PerdidaEconomicaDesde"].ToString().Trim();
             TextBox10.Text = InfoGridRiesgos.Rows[RowGridRiesgos]["PerdidaEconomicaHasta"].ToString().Trim();
-            string[] listaTratamiento = InfoGridRiesgos.Rows[RowGridRiesgos]["ListaTratamiento"].ToString().Trim().Split(delimiter);
+            String[] listaTratamiento = InfoGridRiesgos.Rows[RowGridRiesgos]["ListaTratamiento"].ToString().Trim().Split(delimiter);
             for (int i = 0; i < listaTratamiento.Length; i++)
             {
                 for (int j = 0; j < CheckBoxList10.Items.Count; j++)
@@ -7846,7 +5935,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                         for (int rows = 4; rows > 0; rows--)
                         {
                             maximo = minimo + delta;
-                            dtIntervalos.Rows.Add(new object[] { minimo.ToString().Trim(), maximo.ToString().Trim(), rows.ToString() });
+                            dtIntervalos.Rows.Add(new Object[] { minimo.ToString().Trim(), maximo.ToString().Trim(), rows.ToString() });
                             minimo = maximo;
                         }
                         dtIntervalos.Rows[0]["limiteInferior"] = "0";
@@ -7854,14 +5943,10 @@ namespace ListasSarlaft.UserControls.Riesgos
                         InfoIntervalos = dtIntervalos;
                     }
                     else
-                    {
                         Mensaje1("No hay información en las tablas maestras de parametrización. ");
-                    }
                 }
                 else
-                {
                     Mensaje1("No hay información en las tablas maestras de parametrización. ");
-                }
             }
             catch (Exception ex)
             {
@@ -7871,19 +5956,10 @@ namespace ListasSarlaft.UserControls.Riesgos
 
         private void verComentario()
         {
-
             TextBox16.Text = InfoGridComentarioRiesgo.Rows[RowGridComentarioRiesgo]["Comentario"].ToString().Trim();
             TextBox16.ReadOnly = true;
             ImageButton17.Visible = true;
         }
-
-        private void verComentarioTratamiento()
-        {
-            txtJustificacion.Text = InfoGridComentarioTratamiento.Rows[RowGridComentarioRiesgo]["Comentario"].ToString().Trim();
-            txtJustificacion.ReadOnly = true;
-            ImageButton24.Visible = true;
-        }
-
 
         private void inicializarValores()
         {
@@ -7898,10 +5974,8 @@ namespace ListasSarlaft.UserControls.Riesgos
             Response.ContentEncoding = System.Text.Encoding.Default;
             System.IO.StringWriter stringWrite = new System.IO.StringWriter();
             System.Web.UI.HtmlTextWriter htmlWrite = new System.Web.UI.HtmlTextWriter(stringWrite);
-            System.Web.UI.WebControls.DataGrid dg = new System.Web.UI.WebControls.DataGrid
-            {
-                DataSource = dt
-            };
+            System.Web.UI.WebControls.DataGrid dg = new System.Web.UI.WebControls.DataGrid();
+            dg.DataSource = dt;
             dg.DataBind();
             dg.RenderControl(htmlWrite);
             Response.Write(stringWrite.ToString());
@@ -7970,9 +6044,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     CountControlProbabilidad = 1;
                 }
                 else
-                {
                     valorFinalProbabilidad = DesviacionProbabilidad;
-                }
 
                 if (CountControlImpacto == 0)
                 {
@@ -7980,9 +6052,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                     CountControlImpacto = 1;
                 }
                 else
-                {
                     valorFinalImpacto = DesviacionImpacto;
-                }
 
                 //Se define el nuevo valor de la Probabilidad
                 //valorProbabilidad = (valorFinalProbabilidad / InfoGridControlesRiesgo.Rows.Count);
@@ -8122,1331 +6192,5 @@ namespace ListasSarlaft.UserControls.Riesgos
             str = "window.open('ViewImg/ViewImg.aspx?op=1','Visualizar','Width=1200,Height=680,left=50,top=0,scrollbars=yes,scrollbars=yes,resizable=yes')";
             Response.Write("<script languaje=javascript>" + str + "</script>");
         }
-
-        protected void Check_Clicked(object sender, EventArgs e)
-        {
-            string chequeado = string.Empty;
-            chequeado = lblIdDependencia5.Text;
-
-            if (CheckBoxList9.SelectedValue == "1")
-            {
-                string valor = string.Empty;
-            }
-        }
-
-        protected void OnCheckBox_Changed(object sender, EventArgs e)
-        {
-            string message = "";
-            int count = 0;
-            foreach (ListItem item in CheckBoxList9.Items)
-            {
-                if (item.Selected)
-                {
-                    message += "Value: " + item.Value;
-                    message += " Text: " + item.Text;
-                    message += "\\n";
-                    count++;
-                }
-            }
-            //if (count > 0)
-            //{
-            //    Label95.Visible = true;
-            //    txtResponsableT.Visible = true;
-            //    ImageButton20.Visible = true;
-            //}
-            //else
-            //{
-            //    Label95.Visible = false;
-            //    txtResponsableT.Visible = false;
-            //    ImageButton20.Visible = false;
-            //}
-        }
-
-        protected void CheckBoxList9_Click(object sender, EventArgs e)
-        {
-            //Label95.Visible = false;
-            //txtResponsableT.Visible = false;
-            //ImageButton20.Visible = false;
-
-        }
-
-        private void LoadCBEstados()
-        {
-            try
-            {
-
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadCBEstados();
-                for (int i = 0; i < dtInfo.Rows.Count; i++)
-                {
-                    cbEstadoRiesgo.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreEstado"].ToString().Trim()));
-                    cbEstado.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreEstado"].ToString().Trim()));
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje1("Error al cargar Estados. " + ex.Message);
-            }
-        }
-
-        //buscar estado
-        private int BuscarIdEstado(string NombreEstado)
-        {
-            DataTable dtInfo = new DataTable();
-            int resultado = 0;
-            try
-            {
-                dtInfo = cRiesgo.BuscarEstado(NombreEstado);
-                resultado = Convert.ToInt32(dtInfo.Rows[0]["IdEstado"].ToString().Trim());
-
-            }
-            catch (Exception ex)
-            {
-                Mensaje1("Error al buscar Id Estados. " + ex.Message);
-            }
-            return resultado;
-
-        }
-
-        // Frecuencia vs eventos yoendy
-        protected void GVfrecuenciavsEventos_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            PagIndexInfoGridFR = e.NewPageIndex;
-            GVfrecuenciavsEventos.PageIndex = PagIndexInfoGridFR;
-            GVfrecuenciavsEventos.DataBind();
-            string strErrMsg = "";
-            MtdLoadFrecuenciavsEventos(ref strErrMsg);
-        }
-
-        // Yoendy 
-        protected void GVfrecuenciavsEventos_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            cEvento cEvento = new cEvento();
-            clsBLLFrecuenciavsEventos cFrequencyEvents = new clsBLLFrecuenciavsEventos();
-            RowGridConsultarRiesgos = Convert.ToInt16(e.CommandArgument);
-            GridViewRow row = GVfrecuenciavsEventos.Rows[RowGridConsultarRiesgos];
-            System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVfrecuenciavsEventos.DataKeys[RowGridConsultarRiesgos].Values;
-            int idRiesgo = Convert.ToInt32(InfoGridRiesgos.Rows[RowGridRiesgos]["idRiesgo"]);
-            int codFrecuencia = Convert.ToInt32(colsNoVisible[0]);
-            string EventosMaximos = InfoGrid.Rows[RowGridConsultarRiesgos]["intEventosMaximos"].ToString();
-            int idImpacto = Convert.ToInt32(InfoGridRiesgos.Rows[RowGridRiesgos]["idImpacto"]);
-            string NombreFrecuencia = InfoGrid.Rows[RowGridConsultarRiesgos]["strNombreFrecuencia"].ToString();
-
-            RowGrid = Convert.ToInt16(e.CommandArgument);
-            switch (e.CommandName)
-            {
-                case "Relacionar":
-                    if (cCuenta.permisosAgregar(PestanaControl) == "False")
-                    {
-                        {
-                            Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                        }
-                    }
-                    else
-                    {
-                        lblMsgBox2.Text = "Ingrese el nuevo valor de la Frecuencia Máxima para: " + "<B>" + NombreFrecuencia + "</B>";
-                        valorMaxActual.Text = EventosMaximos;
-                        parametroFreqMax.Focus();
-                        mpeMsgBox2.Show();
-                    }
-                    break;
-            }
-        }
-
-        //carga de todas las frecuencias
-        private bool MtdLoadFrecuenciavsEventos(ref string strErrMsg)
-        {
-            #region Vars
-            bool booResult = false;
-
-            List<clsDTOFrecuenciavsEventos> lstFrequencyEvents = new List<clsDTOFrecuenciavsEventos>();
-            clsBLLFrecuenciavsEventos cFrequencyEvents = new clsBLLFrecuenciavsEventos();
-            #endregion Vars
-            lstFrequencyEvents = cFrequencyEvents.mtdConsultarFrecuenciavsEventos(ref lstFrequencyEvents, ref strErrMsg);
-
-            if (lstFrequencyEvents != null)
-            {
-                MtdLoadFrecuenciavsEventos();
-                mtdLoadFrecuenciavsEventos(lstFrequencyEvents);
-                GVfrecuenciavsEventos.DataSource = lstFrequencyEvents;
-                GVfrecuenciavsEventos.PageIndex = pagIndexInfoGridFR;
-                GVfrecuenciavsEventos.DataBind();
-                booResult = true;
-            }
-            else
-            {
-                strErrMsg = "No hay frecuencias registradas";
-            }
-
-            return booResult;
-        }
-
-        //carga por idRiesgo 
-        private bool MtdLoadFrecuenciavsRiesgos(ref string strErrMsg)
-        {
-            #region Vars
-            bool booResult = false;
-
-            List<clsDTOFrecuenciavsEventos> lstFrequencyEvents = new List<clsDTOFrecuenciavsEventos>();
-            clsBLLFrecuenciavsEventos cFrequencyEvents = new clsBLLFrecuenciavsEventos();
-            int idRiesgo = Convert.ToInt32(InfoGridRiesgos.Rows[RowGridRiesgos]["idRiesgo"]);
-            #endregion Vars
-            lstFrequencyEvents = cFrequencyEvents.consultaFrecuenciaxRiesgo(ref lstFrequencyEvents, ref idRiesgo, ref strErrMsg);
-
-            foreach (clsDTOFrecuenciavsEventos row in lstFrequencyEvents)
-            {
-                listFreqVsEven.Add(row);
-            }
-
-            if (lstFrequencyEvents != null)
-            {
-                MtdLoadFrecuenciavsEventos();
-                mtdLoadFrecuenciavsEventos(lstFrequencyEvents);
-                GVfrecuenciavsEventos.DataSource = lstFrequencyEvents;
-                GVfrecuenciavsEventos.PageIndex = pagIndexInfoGridFR;
-                GVfrecuenciavsEventos.DataBind();
-                booResult = true;
-            }
-            else
-            {
-                strErrMsg = "No hay frecuencias registradas";
-            }
-
-            return booResult;
-        }
-
-
-        private void MtdLoadFrecuenciavsEventos()
-        {
-            DataTable grid = new DataTable();
-
-            grid.Columns.Add("intIdFrecuenciaEventos", typeof(string));
-            grid.Columns.Add("intEventosMaximos", typeof(string));
-            grid.Columns.Add("intCodigoFrecuencia", typeof(string));
-            grid.Columns.Add("strNombreFrecuencia", typeof(string));
-            grid.Columns.Add("dtFechaRegistro", typeof(string));
-            grid.Columns.Add("intIdUsuario", typeof(string));
-            grid.Columns.Add("strUsuario", typeof(string));
-
-            GVfrecuenciavsEventos.DataSource = grid;
-            GVfrecuenciavsEventos.DataBind();
-            InfoGrid = grid;
-
-        }
-
-        private void mtdLoadFrecuenciavsEventos(List<clsDTOFrecuenciavsEventos> lstFrequencyEvents)
-        {
-            string strErrMsg = string.Empty;
-            //clsControlInfraestructuraBLL cCrlInfra = new clsControlInfraestructuraBLL();
-
-            foreach (clsDTOFrecuenciavsEventos objFrequencyEvents in lstFrequencyEvents)
-            {
-
-                InfoGrid.Rows.Add(new object[] {
-                    objFrequencyEvents.intIdFrecuenciaEventos.ToString().Trim(),
-                    objFrequencyEvents.intEventosMaximos.ToString().Trim(),
-                    objFrequencyEvents.intCodigoFrecuencia.ToString().Trim(),
-                    objFrequencyEvents.strNombreFrecuencia.ToString().Trim(),
-                    objFrequencyEvents.dtFechaRegistro.ToString().Trim(),
-                    objFrequencyEvents.intIdUsuario.ToString().Trim(),
-                    objFrequencyEvents.strUsuario.ToString().Trim()
-                    });
-            }
-        }
-
-        protected void mtdShowUpdate(int Rowgrid)
-        {
-            //loadDDLProbabilidad();
-            GridViewRow row = GVfrecuenciavsEventos.Rows[RowGrid];
-            System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVfrecuenciavsEventos.DataKeys[RowGrid].Values;
-            txtId.Text = row.Cells[0].Text;
-            TXmaxEvent.Text = row.Cells[1].Text;
-            DDLfrecuencia.SelectedValue = colsNoVisible[0].ToString();
-            tbxUsuarioCreacion.Text = colsNoVisible[2].ToString();
-            txtFecha.Text = colsNoVisible[1].ToString();
-        }
-
-        private bool ValidarLimiteRiesgos(int IdRiesgo, int IdFrecuencia, int IdImpacto)
-        {
-            bool validar = false;
-            cEvento cEvento = new cEvento();
-            DataTable dtInfo = cEvento.mtdTotalRiesgosxEventoFrecuencia(IdRiesgo);
-            int EventosMaximos = 0, CuantasFreqExisten = Convert.ToInt32(dtInfo.Rows[0]["CantRiesgo"].ToString());
-            dtInfo = cEvento.LimiteRiesgosxEvento(IdFrecuencia); //parametrizacion general            
-            DataTable tbl_new = cEvento.MtdLimiteRiesgosxEventoNew(IdRiesgo); //parametrizacion nueva
-
-            if (dtInfo.Rows.Count > 0) { EventosMaximos = Convert.ToInt32(dtInfo.Rows[0]["EventosMaximos"].ToString()); }
-
-            if (!string.IsNullOrEmpty(tbl_new.Rows[0]["cantFrecuenciaNew"].ToString()))
-            {
-                int FreqMaxRecuperada = Convert.ToInt32(tbl_new.Rows[0]["cantFrecuenciaNew"].ToString());
-                if (dtInfo.Rows.Count > 0)
-                {//revisar aqui, no estoy seguro de esta validación , como botener los maximos por riesgos? 
-                    if (FreqMaxRecuperada > EventosMaximos)
-                    {
-                        EventosMaximos = FreqMaxRecuperada;
-                    }
-                }
-            }
-
-            if (dtInfo.Rows.Count > 0)
-            {
-                if (CuantasFreqExisten >= EventosMaximos)
-                {
-                    validar = false;
-                }
-                else
-                {
-                    validar = true;
-                }
-            }
-            return validar;
-        }
-
-        protected void btnCancelar2_Click(object sender, EventArgs e)
-        {
-            parametroFreqMax.Text = string.Empty;
-        }
-
-        protected void btnAceptar2_Click(object sender, EventArgs e)
-        {
-            #region variables
-            int freqMaxNueva = Convert.ToInt32(parametroFreqMax.Text);
-            cEvento cEvento = new cEvento();
-            clsBLLFrecuenciavsEventos cFrequencyEvents = new clsBLLFrecuenciavsEventos();
-            GridViewRow row = GVfrecuenciavsEventos.Rows[RowGridConsultarRiesgos];
-            System.Collections.Specialized.IOrderedDictionary colsNoVisible = GVfrecuenciavsEventos.DataKeys[RowGridConsultarRiesgos].Values;
-            int idRiesgo = Convert.ToInt32(InfoGridRiesgos.Rows[RowGridRiesgos]["idRiesgo"]);
-            int codFrecuencia = Convert.ToInt32(colsNoVisible[1]);
-            int idusuario = Convert.ToInt32(Session["IdUsuario"].ToString());
-            string EventosMaximosGeneral = InfoGrid.Rows[RowGridConsultarRiesgos]["intEventosMaximos"].ToString();
-            string NombreFrecuencia = InfoGrid.Rows[RowGridConsultarRiesgos]["strNombreFrecuencia"].ToString();
-            #endregion variables
-
-            if (NombreFrecuencia.Contains("<span style= 'font-weight: bold; color: red;'>"))
-            {
-                NombreFrecuencia = NombreFrecuencia.Remove(0, 46);
-                NombreFrecuencia = NombreFrecuencia.Replace("</span>", "");
-            }
-
-            int existe = cFrequencyEvents.ActualizaFreqMax(idRiesgo, codFrecuencia, Convert.ToInt32(freqMaxNueva), NombreFrecuencia, idusuario);
-            if (existe > 0)
-            {
-                omb.ShowMessage("Se actualizó el parametro correctamente!", 3, "Atención");
-                parametroFreqMax.Text = string.Empty;
-                MtdStard();
-                HabilitaInh();
-            }
-            else
-            {
-                omb.ShowMessage("Error al actualizar  ", 1, "Atención");
-            }
-        }
-
-        //yoendy 
-        public void HabilitaInh()
-        {
-            for (int rowIndex = 0; rowIndex < GVfrecuenciavsEventos.Rows.Count; rowIndex++)
-            {
-                GridViewRow row = GVfrecuenciavsEventos.Rows[rowIndex];
-                Label lbl = ((Label)row.FindControl("booHabilitado"));
-                ImageButton ImgBnt = ((ImageButton)row.FindControl("ImgBtnInha"));
-                ImgBnt.ImageUrl = "~/Imagenes/Icons/select.png";
-                string nombreFrecuencia = listFreqVsEven[rowIndex].strNombreFrecuencia.ToString();
-
-                if (!nombreFrecuencia.Contains("<span style"))
-                {
-                    ImgBnt.Enabled = false;
-                }
-            }
-        }
-
-        protected void Exportar_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = InfoGvPlanesAsociados;
-
-                if (dt.Rows.Count > 0)
-                {
-                    exportExcel(dt, Response, "Reporte Planes de Acción " + DateTime.Now + "");
-                }
-                else
-                {
-                    omb.ShowMessage("No se encontraron valores para exportar!", 2, "Atención");
-                }
-            }
-            catch (Exception)
-            {
-                //  omb.ShowMessage("Error al exportar el reporte de planes de acción:" + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
-        //yoendy - Frecuencia- Impacto
-        protected void SeleccionaCalificacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (SeleccionaCalificacion.SelectedIndex == 0)
-            {
-                PanelCalificacionCualitativa.Visible = true;
-                PanelCalificacionExperta.Visible = false;
-
-                int count = 0;
-                string message = string.Empty;
-                cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                string estadoControl = btnEstado.CssClass;
-
-                foreach (ListItem item in CheckBoxList9.Items)
-                {
-                    if (item.Selected)
-                    {
-                        message += " Text: " + item.Text;
-                        count++;
-                        estadoControl = "Activo";
-                        btnEstado.CssClass = "Activo";
-                    }
-                }
-                if (count == 0)
-                {
-                    txtResponsableT.Text = string.Empty;
-                    estadoControl = "Inactivo";
-                    btnEstado.CssClass = "Inactivo";
-                }
-                if (estadoControl == "Inactivo")
-                {
-                    txtResponsableT.Text = string.Empty;
-                }
-                int trans = 10;
-                string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; FocusPeriodo(" + trans + ");" + "</script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                TabContainer2.ActiveTabIndex = 4;
-            }
-            else if (SeleccionaCalificacion.SelectedIndex == 1)
-            {
-                PanelCalificacionCualitativa.Visible = false;
-                PanelCalificacionExperta.Visible = true;
-
-                int count = 0;
-                string message = string.Empty;
-                cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                string estadoControl = btnEstado.CssClass;
-
-                foreach (ListItem item in CheckBoxList9.Items)
-                {
-                    if (item.Selected)
-                    {
-                        message += " Text: " + item.Text;
-                        count++;
-                        estadoControl = "Activo";
-                        btnEstado.CssClass = "Activo";
-                    }
-                }
-                if (count == 0)
-                {
-                    txtResponsableT.Text = string.Empty;
-                    estadoControl = "Inactivo";
-                    btnEstado.CssClass = "Inactivo";
-                }
-                if (estadoControl == "Inactivo")
-                {
-                    txtResponsableT.Text = string.Empty;
-                }
-
-                int trans = 10;
-                string script = @"<script type='text/javascript'>ocultaRespTratamiento(" + cuantosCheckTratamiento + "); FocusPeriodo(" + trans + "); " + "</script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                TabContainer2.ActiveTabIndex = 4;
-            }
-        }
-
-        private void GrillaVariablesCategorias()
-        {
-            DataTable grid = new DataTable();
-
-            grid.Columns.Add("IdVariable", typeof(string));
-            grid.Columns.Add("NombreVariable", typeof(string));
-            grid.Columns.Add("Ponderacion", typeof(string));
-            grid.Columns.Add("Puntuacion", typeof(string));
-
-            GvVariablesCategorias.DataSource = grid;
-            GvVariablesCategorias.DataBind();
-            VariablesCategoria = grid;
-        }
-
-        private void CargaGrillaVariablesCategorias()
-        {
-            DataTable dtInfo = new DataTable();
-            dtInfo = cRiesgo.ConsultaVariablesCategorias();
-            try
-            {
-                if (dtInfo.Rows.Count > 0)
-                {
-                    for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                    {
-                        VariablesCategoria.Rows.Add(new object[] {
-                        dtInfo.Rows[rows]["IdVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Ponderacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Puntuacion"].ToString().Trim(),
-                        });
-                    }
-                    GvVariablesCategorias.DataSource = VariablesCategoria;
-                    GvVariablesCategorias.DataBind();
-                }
-
-                for (int i = 0; i < GvVariablesCategorias.Rows.Count; i++)
-                {
-                    GridViewRow row = GvVariablesCategorias.Rows[i];
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesCategorias.DataKeys[i].Values;
-                    int idVariable = Convert.ToInt32(colsNoVisibles[0]);
-
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-
-                    ExpNombreCategoria.Items.Clear();
-                    if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                    {
-                        DataTable DtCV = new DataTable();
-                        DtCV = cRiesgo.ConsultaVariablesCategoriasId(idVariable);
-                        ExpNombreCategoria.Items.Clear();
-                        ExpNombreCategoria.Items.Insert(0, new ListItem("---", "---"));
-
-                        for (int j = 0; j < DtCV.Rows.Count; j++)
-                        {
-                            ExpNombreCategoria.Items.Insert(j + 1, new ListItem(DtCV.Rows[j]["NombreCategoria"].ToString().Trim(), DtCV.Rows[j]["IdCategoria"].ToString()));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error al cargar Grilla Variables - Categoría: " + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
-        private void GrillaVariablesCategoriasImpacto()
-        {
-            DataTable grid = new DataTable();
-
-            grid.Columns.Add("IdVariable", typeof(string));
-            grid.Columns.Add("NombreVariable", typeof(string));
-            grid.Columns.Add("Peso", typeof(string));
-            grid.Columns.Add("Ponderacion", typeof(string));
-            grid.Columns.Add("Puntuacion", typeof(string));
-
-            GvVariablesCategoriasImpacto.DataSource = grid;
-            GvVariablesCategoriasImpacto.DataBind();
-            VariablesCategoriaImpacto = grid;
-        }
-
-        private void CargaGrillaVariablesCategoriasImpacto()
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.ConsultaVariablesFrecuencia();
-
-                if (dtInfo.Rows.Count > 0)
-                {
-                    for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                    {
-                        VariablesCategoriaImpacto.Rows.Add(new object[] {
-                        dtInfo.Rows[rows]["IdVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreVariable"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Ponderacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Puntuacion"].ToString().Trim(),
-                        });
-                    }
-                    GvVariablesCategoriasImpacto.DataSource = VariablesCategoriaImpacto;
-                    GvVariablesCategoriasImpacto.DataBind();
-                }
-
-                for (int i = 0; i < GvVariablesCategoriasImpacto.Rows.Count; i++)
-                {
-                    GridViewRow row = GvVariablesCategoriasImpacto.Rows[i];
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesCategoriasImpacto.DataKeys[i].Values;
-                    int idVariable = Convert.ToInt32(colsNoVisibles[0]);
-
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-                    ExpNombreCategoria.Items.Clear();
-
-                    if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                    {
-                        DataTable DtCV = new DataTable();
-                        DtCV = cRiesgo.VariablesCategoriasImpacto();
-                        ExpNombreCategoria.Items.Clear();
-                        ExpNombreCategoria.Items.Insert(0, new ListItem("---", "---"));
-
-                        for (int j = 0; j < DtCV.Rows.Count; j++)
-                        {
-                            ExpNombreCategoria.Items.Insert(j + 1, new ListItem(DtCV.Rows[j]["NombreImpacto"].ToString().Trim(), DtCV.Rows[j]["ValorImpacto"].ToString()));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error al cargar Grilla Variables - Categoría - Impacto: " + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
-        protected void ExpCalcular_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int PesoAcumulado = 0;
-                for (int i = 0; i < GvVariablesCategoriasImpacto.Rows.Count; i++)
-                {
-                    GridViewRow row = GvVariablesCategoriasImpacto.Rows[i];
-                    TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                    PesoAcumulado = PesoAcumulado + Convert.ToInt32(Peso.Text);
-                }
-
-                if (PesoAcumulado <= 100)
-                {
-                    if (PesoAcumulado == 100)
-                    {
-                        ExcedeSuma.Visible = false;
-                        int PuntajeMaximoActumulado = 0, PuntajeMaximoVariables = 0;
-                        for (int i = 0; i < GvVariablesCategorias.Rows.Count; i++)
-                        {
-                            GridViewRow row = GvVariablesCategorias.Rows[i];
-                            System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesCategorias.DataKeys[i].Values;
-                            int idVariable = Convert.ToInt32(colsNoVisibles[0]);
-                            int PonderacionVariable = Convert.ToInt32(colsNoVisibles[2]);
-                            int Puntaje = Convert.ToInt32(colsNoVisibles[3]);
-                            int PuntajeMaximo = 0;
-
-                            DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-                            if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                            {
-                                string idCategoria = ExpNombreCategoria.SelectedItem.Value;
-                                string NombreCategoria = ExpNombreCategoria.SelectedItem.ToString();
-                                DataTable DtCV = new DataTable();
-                                DtCV = cRiesgo.ConsultaCategoriasId(Convert.ToInt32(idCategoria));
-                                int PonderacionCategoria = Convert.ToInt32(DtCV.Rows[0]["Ponderacion"]);
-                                PuntajeMaximo = (PonderacionCategoria * PonderacionVariable);
-                                PuntajeMaximoActumulado = (PuntajeMaximo + PuntajeMaximoActumulado);
-                                PuntajeMaximoVariables += Puntaje;
-                            }
-                        }
-
-                        int resultado = ((PuntajeMaximoActumulado * 100) / PuntajeMaximoVariables);
-                        DataTable dt = cRiesgo.CalculaRangoVariablesCategorias(resultado);
-                        int IdProbabilidad = Convert.ToInt32(dt.Rows[0]["idFrecuenciaEvento"]);
-                        string ResultadoNombreFrecuencia = dt.Rows[0]["NombreFrecuenciaEvento"].ToString();
-                        ResultadoFrecuencia.Text = ResultadoNombreFrecuencia;
-                        EtiquetaFrecuencia.Visible = true;
-                        ResultadoFrecuencia.Visible = true;
-                        IdFrecuenciaEvento = IdProbabilidad;
-
-                        int PuntajeImpacto = 0;
-                        PuntajeMaximoActumulado = 0;
-                        PuntajeMaximoVariables = 0;
-                        for (int i = 0; i < GvVariablesCategoriasImpacto.Rows.Count; i++)
-                        {
-                            GridViewRow row = GvVariablesCategoriasImpacto.Rows[i];
-                            TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                            int ValorPeso = Convert.ToInt32(Peso.Text);
-                            DropDownList ExpNombreImpacto = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-
-                            if (ExpNombreImpacto.SelectedValue.ToString().Trim() != "---")
-                            {
-                                string ValorImpacto = ExpNombreImpacto.SelectedItem.Value;
-                                string NombreImpacto = ExpNombreImpacto.SelectedItem.ToString();
-                                PuntajeImpacto = ValorPeso * Convert.ToInt32(ValorImpacto);
-                                PuntajeMaximoVariables = PuntajeImpacto + PuntajeMaximoVariables;
-                            }
-                        }
-
-                        int ResultadoImpacto = Convert.ToInt32(Math.Round(Convert.ToDouble(PuntajeMaximoVariables) / 100));
-                        DataTable dtImpacto = cRiesgo.RangoVariablesCategoriasImpacto(ResultadoImpacto);
-                        int IdImpacto = Convert.ToInt32(dtImpacto.Rows[0]["ValorImpacto"]);
-                        string ResultadoNombreImpacto = dtImpacto.Rows[0]["NombreImpacto"].ToString();
-                        ResultadoDelImpacto.Text = ResultadoNombreImpacto;
-                        ResultadoDelImpacto.Visible = true;
-                        EtiquetaImpacto.Visible = true;
-                        IdImpactoEvento = IdImpacto;
-
-                        DataTable dtInfo = new DataTable();
-                        dtInfo = cRiesgo.calificacionInherente(IdProbabilidad.ToString().Trim(), IdImpacto.ToString().Trim());
-                        PanelVC.Visible = true;
-                        CajaVariableCategoria.Text = dtInfo.Rows[0]["NombreRiesgoInherente"].ToString().Trim();
-                        PanelVC.BackColor = System.Drawing.Color.FromName(dtInfo.Rows[0]["Color"].ToString().Trim());
-
-                    }
-                    else
-                    {
-                        ExcedeSuma.Visible = true;
-                        int count = 0;
-                        string message = string.Empty;
-                        cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                        string estadoControl = btnEstado.CssClass;
-
-                        foreach (ListItem item in CheckBoxList9.Items)
-                        {
-                            if (item.Selected)
-                            {
-                                message += " Text: " + item.Text;
-                                count++;
-                                estadoControl = "Activo";
-                                btnEstado.CssClass = "Activo";
-                            }
-                        }
-                        if (count == 0)
-                        {
-                            txtResponsableT.Text = string.Empty;
-                            estadoControl = "Inactivo";
-                            btnEstado.CssClass = "Inactivo";
-                        }
-                        if (estadoControl == "Inactivo")
-                        {
-                            txtResponsableT.Text = string.Empty;
-                        }
-                        string script = @"<script type='text/javascript'>  ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                    }
-                }
-
-                else
-                {
-                    ExcedeSuma.Visible = true;
-                    int count = 0;
-                    string message = string.Empty;
-                    cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                    string estadoControl = btnEstado.CssClass;
-
-                    foreach (ListItem item in CheckBoxList9.Items)
-                    {
-                        if (item.Selected)
-                        {
-                            message += " Text: " + item.Text;
-                            count++;
-                            estadoControl = "Activo";
-                            btnEstado.CssClass = "Activo";
-                        }
-                    }
-                    if (count == 0)
-                    {
-                        txtResponsableT.Text = string.Empty;
-                        estadoControl = "Inactivo";
-                        btnEstado.CssClass = "Inactivo";
-                    }
-                    if (estadoControl == "Inactivo")
-                    {
-                        txtResponsableT.Text = string.Empty;
-                    }
-                    string script = @"<script type='text/javascript'>  ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                }
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error al calcular: " + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
-        protected void RadioTipoCalificacion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RadioTipoCalificacion.SelectedIndex == 0)
-            {
-                Panel16.Visible = true;
-                PanelCalifExperta.Visible = false;
-            }
-            else if (RadioTipoCalificacion.SelectedIndex == 1)
-            {
-                Panel16.Visible = false;
-                PanelCalifExperta.Visible = true;
-            }
-        }
-
-        private void PanelFrecuenciaImpacto(string IdProbabilidad, string IdImpacto)
-        {
-            DataTable dtInfo = new DataTable();
-            dtInfo = cRiesgo.calificacionInherente(IdProbabilidad, IdImpacto);
-            PanelResultado.Visible = true;
-            CajaVariableCategoriaT.Text = dtInfo.Rows[0]["NombreRiesgoInherente"].ToString().Trim();
-            PanelResultado.BackColor = System.Drawing.Color.FromName(dtInfo.Rows[0]["Color"].ToString().Trim());
-        }
-
-        protected void CalcularFI_Click(object sender, EventArgs e)
-        {
-            int PesoAcumulado = 0;
-            for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-            {
-                GridViewRow row = GvVariablesImpacto.Rows[i];
-                TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                PesoAcumulado = PesoAcumulado + Convert.ToInt32(Peso.Text);
-            }
-
-            if (PesoAcumulado <= 100)
-            {
-                if (PesoAcumulado == 100)
-                {
-                    ExcedeSumaT.Visible = false;
-                    int PuntajeMaximoActumulado = 0, PuntajeMaximoVariables = 0;
-                    for (int i = 0; i < GvVariablesFrecuencia.Rows.Count; i++)
-                    {
-                        GridViewRow row = GvVariablesFrecuencia.Rows[i];
-                        System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesFrecuencia.DataKeys[i].Values;
-                        int idVariable = Convert.ToInt32(colsNoVisibles[0]);
-                        int PonderacionVariable = Convert.ToInt32(colsNoVisibles[2]);
-                        int Puntaje = Convert.ToInt32(colsNoVisibles[3]);
-                        int PuntajeMaximo = 0;
-
-                        DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-                        if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                        {
-                            string idCategoria = ExpNombreCategoria.SelectedItem.Value;
-                            string NombreCategoria = ExpNombreCategoria.SelectedItem.ToString();
-                            DataTable DtCV = new DataTable();
-                            DtCV = cRiesgo.ConsultaCategoriasId(Convert.ToInt32(idCategoria));
-                            int PonderacionCategoria = Convert.ToInt32(DtCV.Rows[0]["Ponderacion"]);
-                            PuntajeMaximo = (PonderacionCategoria * PonderacionVariable);
-                            PuntajeMaximoActumulado = (PuntajeMaximo + PuntajeMaximoActumulado);
-                            PuntajeMaximoVariables += Puntaje;
-                        }
-                    }
-
-                    int resultado = ((PuntajeMaximoActumulado * 100) / PuntajeMaximoVariables);
-                    DataTable dt = cRiesgo.CalculaRangoVariablesCategorias(resultado);
-                    int IdProbabilidad = Convert.ToInt32(dt.Rows[0]["idFrecuenciaEvento"]);
-                    string ResultadoNombreFrecuencia = dt.Rows[0]["NombreFrecuenciaEvento"].ToString();
-                    ResultadoFrecuenciaEditar.Text = ResultadoNombreFrecuencia;
-                    EtiquetaFrecuantaEditar.Visible = true;
-                    ResultadoFrecuenciaEditar.Visible = true;
-                    IdFrecuenciaEvento = IdProbabilidad;
-
-                    int PuntajeImpacto = 0;
-                    PuntajeMaximoActumulado = 0;
-                    PuntajeMaximoVariables = 0;
-                    for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-                    {
-                        GridViewRow row = GvVariablesImpacto.Rows[i];
-                        TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                        int ValorPeso = Convert.ToInt32(Peso.Text);
-                        DropDownList ExpNombreImpacto = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-
-                        if (ExpNombreImpacto.SelectedValue.ToString().Trim() != "---")
-                        {
-                            string ValorImpacto = ExpNombreImpacto.SelectedItem.Value;
-                            string NombreImpacto = ExpNombreImpacto.SelectedItem.ToString();
-                            PuntajeImpacto = ValorPeso * Convert.ToInt32(ValorImpacto);
-                            PuntajeMaximoVariables = PuntajeImpacto + PuntajeMaximoVariables;
-                        }
-                    }
-
-                    int ResultadoImpacto = Convert.ToInt32(Math.Round(Convert.ToDouble(PuntajeMaximoVariables) / 100));
-                    DataTable dtImpacto = cRiesgo.RangoVariablesCategoriasImpacto(ResultadoImpacto);
-                    int IdImpacto = Convert.ToInt32(dtImpacto.Rows[0]["ValorImpacto"]);
-                    string ResultadoNombreImpacto = dtImpacto.Rows[0]["NombreImpacto"].ToString();
-                    ResultadoDelImpactoT.Text = ResultadoNombreImpacto;
-                    ResultadoDelImpactoT.Visible = true;
-                    EtiquetaImpactoT.Visible = true;
-                    IdImpactoEvento = IdImpacto;
-
-                    DataTable dtInfo = new DataTable();
-                    dtInfo = cRiesgo.calificacionInherente(IdProbabilidad.ToString().Trim(), IdImpacto.ToString().Trim());
-                    PanelResultado.Visible = true;
-                    CajaVariableCategoriaT.Text = dtInfo.Rows[0]["NombreRiesgoInherente"].ToString().Trim();
-                    PanelResultado.BackColor = System.Drawing.Color.FromName(dtInfo.Rows[0]["Color"].ToString().Trim());
-                    ExcedeSumaT.Visible = false;
-                }
-                else
-                {
-                    ExcedeSuma.Visible = true;
-                    int count = 0;
-                    string message = string.Empty;
-                    cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                    string estadoControl = btnEstado.CssClass;
-
-                    foreach (ListItem item in CheckBoxList9.Items)
-                    {
-                        if (item.Selected)
-                        {
-                            message += " Text: " + item.Text;
-                            count++;
-                            estadoControl = "Activo";
-                            btnEstado.CssClass = "Activo";
-                        }
-                    }
-                    if (count == 0)
-                    {
-                        txtResponsableT.Text = string.Empty;
-                        estadoControl = "Inactivo";
-                        btnEstado.CssClass = "Inactivo";
-                    }
-                    if (estadoControl == "Inactivo")
-                    {
-                        txtResponsableT.Text = string.Empty;
-                    }
-                    int trans = 18;
-                    string script = @"<script type='text/javascript'> FocusPeriodo(" + trans + "); ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                    ExcedeSumaT.Visible = true;
-                }
-            }
-            else
-            {
-                ExcedeSuma.Visible = true;
-                int count = 0;
-                string message = string.Empty;
-                cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                string estadoControl = btnEstado.CssClass;
-
-                foreach (ListItem item in CheckBoxList9.Items)
-                {
-                    if (item.Selected)
-                    {
-                        message += " Text: " + item.Text;
-                        count++;
-                        estadoControl = "Activo";
-                        btnEstado.CssClass = "Activo";
-                    }
-                }
-                if (count == 0)
-                {
-                    txtResponsableT.Text = string.Empty;
-                    estadoControl = "Inactivo";
-                    btnEstado.CssClass = "Inactivo";
-                }
-                if (estadoControl == "Inactivo")
-                {
-                    txtResponsableT.Text = string.Empty;
-                }
-                int trans = 18;
-                string script = @"<script type='text/javascript'> FocusPeriodo(" + trans + "); ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                ExcedeSumaT.Visible = true;
-            }
-        }
-
-        private void TipoMedicionSeleccionado()
-        {
-            try
-            {
-                for (int i = 0; i < GvVariablesFrecuencia.Rows.Count; i++)
-                {
-                    int Transaccion = 2;
-                    GridViewRow row = GvVariablesFrecuencia.Rows[i];
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesFrecuencia.DataKeys[i].Values;
-                    int IdVariable = Convert.ToInt32(colsNoVisibles[0]);
-                    int PonderacionVariable = Convert.ToInt32(colsNoVisibles[2]);
-                    int Puntaje = Convert.ToInt32(colsNoVisibles[3]);
-
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-                    string IdRiesgo = Session["IdRiesgo"].ToString().Trim();
-                    string IdCategoria = ExpNombreCategoria.SelectedValue.ToString();
-                    DataTable DtCV = new DataTable();
-                    cRiesgo.RegistrarVariableFrecuencia(Convert.ToInt32(IdRiesgo), IdVariable, Convert.ToInt32(IdCategoria), 0, Transaccion);
-                }
-
-                for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-                {
-                    int Transaccion = 3;
-                    GridViewRow row = GvVariablesImpacto.Rows[i];
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesImpacto.DataKeys[i].Values;
-                    int IdVariable = Convert.ToInt32(colsNoVisibles[0]);
-
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-                    TextBox Peso = ((TextBox)row.FindControl("Peso"));
-
-                    string ValorPeso = Peso.Text;
-                    string IdRiesgo = Session["IdRiesgo"].ToString().Trim();
-                    string IdCategoria = ExpNombreCategoria.SelectedValue.ToString();
-                    DataTable DtCV = new DataTable();
-                    cRiesgo.RegistrarVariableFrecuencia(Convert.ToInt32(IdRiesgo), IdVariable, Convert.ToInt32(IdCategoria), Convert.ToInt32(ValorPeso), Transaccion);
-                }
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error en el método TipoMedicionSeleccionado() : " + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
-        private string ValidaCamposMedicion()
-        {
-            string Resultado = string.Empty;
-            try
-            {
-                for (int i = 0; i < GvVariablesFrecuencia.Rows.Count; i++)
-                {
-
-                    GridViewRow row = GvVariablesFrecuencia.Rows[i];
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-                    if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                    {
-                        Resultado = "OK";
-                        continue;
-                    }
-                    else
-                    {
-                        Resultado = "NO";
-                        break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                omb.ShowMessage("Error en el método ValidaCamposMedicion() : " + ex.Message.ToString(), 1, "Error");
-            }
-            return Resultado;
-        }
-
-        private string ValidaCamposMedicionImpacto()
-        {
-            string Resultado = string.Empty;
-            try
-            {
-                for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-                {
-
-                    GridViewRow row = GvVariablesImpacto.Rows[i];
-                    DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-                    TextBox Peso = ((TextBox)row.FindControl("Peso"));
-
-                    if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                    {
-                        if (!string.IsNullOrEmpty(Peso.Text))
-                        {
-                            Resultado = "OK";
-                            continue;
-                        }
-                        else
-                        {
-                            Resultado = "NO";
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        Resultado = "NO";
-                        break;
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-                omb.ShowMessage("Error en el método ValidaCamposMedicion() : " + ex.Message.ToString(), 1, "Error");
-            }
-            return Resultado;
-        }
-
-        private string SumatoriaPeso()
-        {
-            string Resultado = string.Empty;
-
-            try
-            {
-                int PesoAcumulado = 0;
-                for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-                {
-                    GridViewRow row = GvVariablesImpacto.Rows[i];
-                    TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                    PesoAcumulado = PesoAcumulado + Convert.ToInt32(Peso.Text);
-                }
-                if (PesoAcumulado > 100 || PesoAcumulado < 100)
-                {
-                    Resultado = "NO";
-                }
-                else
-                {
-                    Resultado = "OK";
-                }
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error en el método SumatoriaPeso() : " + ex.Message.ToString(), 1, "Error");
-            }
-
-            return Resultado;
-        }
-
-        private string CalculaFrecuenciaImpacto()
-        {
-            string Resultado = string.Empty;
-            try
-            {
-                int PesoAcumulado = 0;
-                for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-                {
-                    GridViewRow row = GvVariablesImpacto.Rows[i];
-                    TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                    PesoAcumulado = PesoAcumulado + Convert.ToInt32(Peso.Text);
-                }
-
-                if (PesoAcumulado <= 100)
-                {
-                    if (PesoAcumulado == 100)
-                    {
-                        ExcedeSumaT.Visible = false;
-                        int PuntajeMaximoActumulado = 0, PuntajeMaximoVariables = 0;
-                        for (int i = 0; i < GvVariablesFrecuencia.Rows.Count; i++)
-                        {
-                            GridViewRow row = GvVariablesFrecuencia.Rows[i];
-                            System.Collections.Specialized.IOrderedDictionary colsNoVisibles = GvVariablesFrecuencia.DataKeys[i].Values;
-                            int idVariable = Convert.ToInt32(colsNoVisibles[0]);
-                            int PonderacionVariable = Convert.ToInt32(colsNoVisibles[2]);
-                            int Puntaje = Convert.ToInt32(colsNoVisibles[3]);
-                            int PuntajeMaximo = 0;
-
-                            DropDownList ExpNombreCategoria = ((DropDownList)row.FindControl("ExpNombreCategoria"));
-                            if (ExpNombreCategoria.SelectedValue.ToString().Trim() != "---")
-                            {
-                                string idCategoria = ExpNombreCategoria.SelectedItem.Value;
-                                string NombreCategoria = ExpNombreCategoria.SelectedItem.ToString();
-                                DataTable DtCV = new DataTable();
-                                DtCV = cRiesgo.ConsultaCategoriasId(Convert.ToInt32(idCategoria));
-                                int PonderacionCategoria = Convert.ToInt32(DtCV.Rows[0]["Ponderacion"]);
-                                PuntajeMaximo = (PonderacionCategoria * PonderacionVariable);
-                                PuntajeMaximoActumulado = (PuntajeMaximo + PuntajeMaximoActumulado);
-                                PuntajeMaximoVariables += Puntaje;
-                            }
-                        }
-
-                        int resultado = ((PuntajeMaximoActumulado * 100) / PuntajeMaximoVariables);
-                        DataTable dt = cRiesgo.CalculaRangoVariablesCategorias(resultado);
-                        int IdProbabilidad = Convert.ToInt32(dt.Rows[0]["idFrecuenciaEvento"]);
-                        string ResultadoNombreFrecuencia = dt.Rows[0]["NombreFrecuenciaEvento"].ToString();
-                        ResultadoFrecuenciaEditar.Text = ResultadoNombreFrecuencia;
-                        EtiquetaFrecuantaEditar.Visible = true;
-                        ResultadoFrecuenciaEditar.Visible = true;
-                        IdFrecuenciaEvento = IdProbabilidad;
-
-                        int PuntajeImpacto = 0;
-                        PuntajeMaximoActumulado = 0;
-                        PuntajeMaximoVariables = 0;
-                        for (int i = 0; i < GvVariablesImpacto.Rows.Count; i++)
-                        {
-                            GridViewRow row = GvVariablesImpacto.Rows[i];
-                            TextBox Peso = ((TextBox)row.FindControl("Peso"));
-                            int ValorPeso = Convert.ToInt32(Peso.Text);
-                            DropDownList ExpNombreImpacto = ((DropDownList)row.FindControl("ExpNombreCategoriaImpacto"));
-
-                            if (ExpNombreImpacto.SelectedValue.ToString().Trim() != "---")
-                            {
-                                string ValorImpacto = ExpNombreImpacto.SelectedItem.Value;
-                                string NombreImpacto = ExpNombreImpacto.SelectedItem.ToString();
-                                PuntajeImpacto = ValorPeso * Convert.ToInt32(ValorImpacto);
-                                PuntajeMaximoVariables = PuntajeImpacto + PuntajeMaximoVariables;
-                            }
-                        }
-
-                        int ResultadoImpacto = Convert.ToInt32(Math.Round(Convert.ToDouble(PuntajeMaximoVariables) / 100));
-                        DataTable dtImpacto = cRiesgo.RangoVariablesCategoriasImpacto(ResultadoImpacto);
-                        int IdImpacto = Convert.ToInt32(dtImpacto.Rows[0]["ValorImpacto"]);
-                        string ResultadoNombreImpacto = dtImpacto.Rows[0]["NombreImpacto"].ToString();
-                        ResultadoDelImpactoT.Text = ResultadoNombreImpacto;
-                        ResultadoDelImpactoT.Visible = true;
-                        EtiquetaImpactoT.Visible = true;
-                        IdImpactoEvento = IdImpacto;
-
-                        DataTable dtInfo = new DataTable();
-                        dtInfo = cRiesgo.calificacionInherente(IdProbabilidad.ToString().Trim(), IdImpacto.ToString().Trim());
-                        PanelResultado.Visible = true;
-                        CajaVariableCategoriaT.Text = dtInfo.Rows[0]["NombreRiesgoInherente"].ToString().Trim();
-                        PanelResultado.BackColor = System.Drawing.Color.FromName(dtInfo.Rows[0]["Color"].ToString().Trim());
-                        ExcedeSumaT.Visible = false;
-                    }
-                    else
-                    {
-                        ExcedeSuma.Visible = true;
-                        int count = 0;
-                        string message = string.Empty;
-                        cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                        string estadoControl = btnEstado.CssClass;
-
-                        foreach (ListItem item in CheckBoxList9.Items)
-                        {
-                            if (item.Selected)
-                            {
-                                message += " Text: " + item.Text;
-                                count++;
-                                estadoControl = "Activo";
-                                btnEstado.CssClass = "Activo";
-                            }
-                        }
-                        if (count == 0)
-                        {
-                            txtResponsableT.Text = string.Empty;
-                            estadoControl = "Inactivo";
-                            btnEstado.CssClass = "Inactivo";
-                        }
-                        if (estadoControl == "Inactivo")
-                        {
-                            txtResponsableT.Text = string.Empty;
-                        }
-                        int trans = 18;
-                        string script = @"<script type='text/javascript'> FocusPeriodo(" + trans + "); ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                        ExcedeSumaT.Visible = true;
-                    }
-                }
-                else
-                {
-                    ExcedeSuma.Visible = true;
-                    int count = 0;
-                    string message = string.Empty;
-                    cuantosCheckTratamiento = CheckBoxList9.Items.Count;
-                    string estadoControl = btnEstado.CssClass;
-
-                    foreach (ListItem item in CheckBoxList9.Items)
-                    {
-                        if (item.Selected)
-                        {
-                            message += " Text: " + item.Text;
-                            count++;
-                            estadoControl = "Activo";
-                            btnEstado.CssClass = "Activo";
-                        }
-                    }
-                    if (count == 0)
-                    {
-                        txtResponsableT.Text = string.Empty;
-                        estadoControl = "Inactivo";
-                        btnEstado.CssClass = "Inactivo";
-                    }
-                    if (estadoControl == "Inactivo")
-                    {
-                        txtResponsableT.Text = string.Empty;
-                    }
-                    int trans = 18;
-                    string script = @"<script type='text/javascript'> FocusPeriodo(" + trans + "); ocultaRespTratamiento(" + cuantosCheckTratamiento + ") ; " + "</script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                    ExcedeSumaT.Visible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("Error en el método CalculaFrecuenciaImpacto() : " + ex.Message.ToString(), 1, "Error");
-            }
-            return Resultado;
-        }
-
-        protected void CheckBoxList10_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RequiredFieldValidator13.ValidationGroup = "modificarRiesgo";
-            RequiredFieldValidator14.ValidationGroup = "modificarRiesgo";
-        }
-
-        protected void EditarTratamiento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MostrarTratamiento();
-        }
-
-        protected void NoEditarTratamiento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ocultarTratamiento();
-            
-        }
-
-        protected void ocultarTratamiento()
-        {
-            Panel9.Enabled = false;
-            Panel13.Visible = false;
-            NoEditarTratamiento.Checked = true;
-            EditarTratamiento.Checked = false;
-        }
-
-        protected void MostrarTratamiento()
-        {
-            Panel9.Enabled = true;
-            Panel13.Visible = true;
-            NoEditarTratamiento.Checked = false;
-            EditarTratamiento.Checked = true;
-        }
-
-        protected void imgConsultarControles_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                if ((Session["VerTodosProcesos"].ToString() == "0") || (Session["VerTodosProcesos"].ToString() == string.Empty))
-                {
-                    if (Session["IdProcesoRiesgo"].ToString() != Session["IdProcesoUsuario"].ToString())
-                    {
-                        Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción. El proceso del Usuario no pertenece al proceso del riesgo.");
-                    }
-                    else
-                    {
-                        if (cCuenta.permisosConsulta(PestanaControl) == "False")
-                        {
-                            Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                        }
-                        else
-                        {
-                            if (TextBox18.Text.Trim() == "" && TextBox19.Text.Trim() == "" && TextBox23.Text.Trim() == "")
-                            {
-                                Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
-                            }
-                            else
-                            {
-                                loadGridConsultarControles();
-                                loadInfoConsultarControles();
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if (cCuenta.permisosConsulta(PestanaControl) == "False")
-                    {
-                        Mensaje1("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                    }
-                    else
-                    {
-                        if (TextBox18.Text.Trim() == "" && TextBox19.Text.Trim() == "" && TextBox23.Text.Trim() == "")
-                        {
-                            Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
-                        }
-                        else
-                        {
-                            loadGridConsultarControles();
-                            loadInfoConsultarControles();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje1("Error al realizar la consulta. " + ex.Message);
-            }
-        }
-
-        protected void GridView2_PreRender(object sender, EventArgs e)
-        {
-            for (int rowIndex = 0; rowIndex < GridView2.Rows.Count; rowIndex++)
-            {
-                string idControl = GridView2.DataKeys[rowIndex].Value.ToString();
-                GridViewRow row = GridView2.Rows[rowIndex];
-                
-                for (int cellIndex = 0; cellIndex < row.Cells.Count; cellIndex++)
-                {
-                    if (cellIndex == 4)
-                    {
-                        string ListCausas = Session["ListaCausas"].ToString();
-                        string IdRiesgo = Session["IdRiesgo"].ToString();
-
-                        ListCausas = ListCausas.Replace("|", ",");
-                        DataTable dtInfo = new DataTable();
-
-                        dtInfo = cRiesgo.loadInfoRiesgosCausasNew(ListCausas, idControl, IdRiesgo);
-                        foreach(DataRow rowCausa in dtInfo.Rows)
-                        {
-                            DataTable dtInfoCausas = new DataTable();
-                            int IdCausa = Convert.ToInt32(rowCausa[0].ToString());
-                            dtInfoCausas = cRiesgo.LoadCausasvsControles(Convert.ToInt32(IdRiesgo), Convert.ToInt32(idControl), IdCausa);
-                            if(dtInfoCausas.Rows.Count > 0)
-                            {
-                                Image ImgBnt = ((Image)row.FindControl("ImgBtnInact"));
-                                ImgBnt.ImageUrl = "~/Imagenes/Icons/suc.png";
-                            }
-                        }
-                                                     
-                    }
-                }
-            }
-        }
-    } // Fin nombre de espacios
+    }
 }

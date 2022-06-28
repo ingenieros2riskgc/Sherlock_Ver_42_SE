@@ -1417,7 +1417,7 @@ namespace ListasSarlaft.UserControls.Riesgos
                 {
                     InicializarValoresGvRiesgos();
                     CargaGvEventos();
-                    LlenarGvEventos();
+                    //LlenarGvEventos();
                     GvFiltroEventos.Visible = true;
 
                     int trans = 10;
@@ -2592,118 +2592,118 @@ namespace ListasSarlaft.UserControls.Riesgos
             GvFiltroEventos.DataBind();
         }
 
-        private void LlenarGvEventos()
-        {
-            DataTable dtInfo = new DataTable();
-            int IdUsuario = Convert.ToInt32(Session["IdUsuario"]);           
-            int IdUsuarioJerarquia = Convert.ToInt32(Session["IdJerarquia"].ToString());
+        //private void LlenarGvEventos()
+        //{
+        //    DataTable dtInfo = new DataTable();
+        //    int IdUsuario = Convert.ToInt32(Session["IdUsuario"]);           
+        //    int IdUsuarioJerarquia = Convert.ToInt32(Session["IdJerarquia"].ToString());
 
-            cEvento cEvento = new cEvento();
-            DataTable DtIdArea = cEvento.TipoArea(Convert.ToString(IdUsuarioJerarquia));
-            string IdPadre = DtIdArea.Rows[0]["IdPadre"].ToString();
-            string TipoArea = DtIdArea.Rows[0]["TipoArea"].ToString();
+        //    cEvento cEvento = new cEvento();
+        //    DataTable DtIdArea = cEvento.TipoArea(Convert.ToString(IdUsuarioJerarquia));
+        //    string IdPadre = DtIdArea.Rows[0]["IdPadre"].ToString();
+        //    string TipoArea = DtIdArea.Rows[0]["TipoArea"].ToString();
 
            
-            dtInfo = Eventos.loadInfoEventos(Sanitizer.GetSafeHtmlFragment(CodigoEvento.Text.Trim()), Sanitizer.GetSafeHtmlFragment(DescripcionEvento.Text.Trim()),
-                CadenaValorEvento.SelectedValue.ToString().Trim(), MacroprocesoEvento.SelectedValue.ToString().Trim(), ProcesoEvento.SelectedValue.ToString().Trim(),
-                SubprocesoEvento.SelectedValue.ToString().Trim(), IdUsuarioJerarquia, IdUsuario, TipoArea);
+        //    dtInfo = cEvento.loadInfoEventos(Sanitizer.GetSafeHtmlFragment(TextBox29.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox30.Text.Trim()),
+        //        DropDownList19.SelectedValue.ToString().Trim(), DropDownList20.SelectedValue.ToString().Trim(), DropDownList21.SelectedValue.ToString().Trim(),
+        //        DropDownList22.SelectedValue.ToString().Trim(), IdUsuarioJerarquia);
 
 
 
-            if (dtInfo.Rows.Count > 0)
-            {
-                for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                {
-                    lblEventosEncontrados.Visible = true;
-                    TbEventos.Visible = true;
-                    InfoGridEventos.Rows.Add(new Object[] {
-                                                            dtInfo.Rows[rows]["IdEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdEmpresa"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdRegion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdPais"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdDepartamento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdCiudad"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdOficinaSucursal"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["DetalleUbicacion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["DescripcionEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdServicio"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdSubServicio"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["FechaInicio"].ToString().Trim(),
-                                                            //dtInfo.Rows[rows]["HoraInicio"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["HorI"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["MinI"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["amI"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["FechaFinalizacion"].ToString().Trim(),
-                                                            //dtInfo.Rows[rows]["HoraFinalizacion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["HorF"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["MinF"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["amF"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["FechaDescubrimiento"].ToString().Trim(),
-                                                            //dtInfo.Rows[rows]["HoraDescubrimiento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["HorD"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["MinD"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["amD"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdCanal"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdGeneraEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["GeneraEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["GeneradorEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["cuantiaperdida"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["FechaEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["Usuario"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdCadenaValor"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdMacroproceso"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdProceso"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdSubProceso"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdActividad"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ResponsableEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ResponsableSolucion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdClase"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["NombreClaseEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdSubClase"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["NombreTipoPerdidaEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["AfectaContinudad"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdEstado"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["Observaciones"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ResponsableContabilidad"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["NombreResContabilidad"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["CuentaPUC"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["CuentaOrden"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["CuentaPerdida"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["Moneda1"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["TasaCambio1"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ValorPesos1"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ValorRecuperadoTotal"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["Moneda2"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["TasaCambio2"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ValorPesos2"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ValorRecuperadoSeguro"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ValorPesos3"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["Recuperacion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["ValorRecuperacion"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdLineaProceso"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["IdSubLineaProceso"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["MasLineas"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["NomGeneradorEvento"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["FechaContab"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["HoraContab"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["MinContab"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["amContab"].ToString().Trim()
-                                                          });
-                }
+        //    if (dtInfo.Rows.Count > 0)
+        //    {
+        //        for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
+        //        {
+        //            lblEventosEncontrados.Visible = true;
+        //            TbEventos.Visible = true;
+        //            InfoGridEventos.Rows.Add(new Object[] {
+        //                                                    dtInfo.Rows[rows]["IdEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdEmpresa"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdRegion"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdPais"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdDepartamento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdCiudad"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdOficinaSucursal"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["DetalleUbicacion"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["DescripcionEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdServicio"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdSubServicio"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["FechaInicio"].ToString().Trim(),
+        //                                                    //dtInfo.Rows[rows]["HoraInicio"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["HorI"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["MinI"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["amI"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["FechaFinalizacion"].ToString().Trim(),
+        //                                                    //dtInfo.Rows[rows]["HoraFinalizacion"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["HorF"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["MinF"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["amF"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["FechaDescubrimiento"].ToString().Trim(),
+        //                                                    //dtInfo.Rows[rows]["HoraDescubrimiento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["HorD"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["MinD"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["amD"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdCanal"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdGeneraEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["GeneraEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["GeneradorEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["cuantiaperdida"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["FechaEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["Usuario"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdCadenaValor"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdMacroproceso"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdProceso"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdSubProceso"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdActividad"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ResponsableEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ResponsableSolucion"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdClase"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["NombreClaseEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdSubClase"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["NombreTipoPerdidaEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["AfectaContinudad"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdEstado"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["Observaciones"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ResponsableContabilidad"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["NombreResContabilidad"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["CuentaPUC"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["CuentaOrden"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["CuentaPerdida"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["Moneda1"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["TasaCambio1"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ValorPesos1"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ValorRecuperadoTotal"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["Moneda2"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["TasaCambio2"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ValorPesos2"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ValorRecuperadoSeguro"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ValorPesos3"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["Recuperacion"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["ValorRecuperacion"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdLineaProceso"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["IdSubLineaProceso"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["MasLineas"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["NomGeneradorEvento"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["FechaContab"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["HoraContab"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["MinContab"].ToString().Trim(),
+        //                                                    dtInfo.Rows[rows]["amContab"].ToString().Trim()
+        //                                                  });
+        //        }
 
-                GvFiltroEventos.PageIndex = pagIndexInfoGridEventos;
-                GvFiltroEventos.DataSource = InfoGridEventos;
-                GvFiltroEventos.DataBind();
-            }
-            else
-            {
-                CargaGvEventos();
-                lblEventosEncontrados.Visible = false;
-                TbEventos.Visible = false;
-                omb.ShowMessage("El usuario no tiene eventos reportados", 2, "Atención");
-            }
-        }
+        //        GvFiltroEventos.PageIndex = pagIndexInfoGridEventos;
+        //        GvFiltroEventos.DataSource = InfoGridEventos;
+        //        GvFiltroEventos.DataBind();
+        //    }
+        //    else
+        //    {
+        //        CargaGvEventos();
+        //        lblEventosEncontrados.Visible = false;
+        //        TbEventos.Visible = false;
+        //        omb.ShowMessage("El usuario no tiene eventos reportados", 2, "Atención");
+        //    }
+        //}
 
         // Carga de Archivos
         private void CargarArchivoPlanes()

@@ -316,12 +316,6 @@ namespace ListasSarlaft.UserControls.Eventos
             grid.Columns.Add("Valor Recurso Plan Acción", typeof(string));
             grid.Columns.Add("Estado Plan Acción", typeof(string));
             grid.Columns.Add("Fecha Compromiso Plan Acción", typeof(string));
-            grid.Columns.Add("NombreImpactoCualitativo", typeof(string));
-            grid.Columns.Add("FechaRecuperacion", typeof(string));
-            grid.Columns.Add("HoraRecuperacion", typeof(string));
-            grid.Columns.Add("CuantiaRecup", typeof(string));
-            grid.Columns.Add("CuantiaOtraRecup", typeof(string));
-            grid.Columns.Add("CuantiaNeta", typeof(string));
 
             InfoGridReporteRiesgosEventos = grid;
             GridView3.DataSource = InfoGridReporteRiesgosEventos;
@@ -399,13 +393,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         dtInfo.Rows[rows]["Tipo Recurso Plan Accion"].ToString().Trim(),
                         dtInfo.Rows[rows]["Valor Recurso Plan Acción"].ToString().Trim(),
                         dtInfo.Rows[rows]["Estado Plan Acción"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Fecha Compromiso Plan Acción"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreImpactoCualitativo"].ToString().Trim(),
-                        dtInfo.Rows[rows]["FechaRecuperacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["HoraRecuperacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CuantiaRecup"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CuantiaOtraRecup"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CuantiaNeta"].ToString().Trim()
+                        dtInfo.Rows[rows]["Fecha Compromiso Plan Acción"].ToString().Trim()
                         });
                 }
 
@@ -458,7 +446,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
                         dtInfo.Rows[rows]["Empresa"].ToString().Trim(),
                         dtInfo.Rows[rows]["FechaNoHuboEvento"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreResponsable"].ToString().Trim(),                                                                  
+                        dtInfo.Rows[rows]["NombreResponsable"].ToString().Trim(),
                         dtInfo.Rows[rows]["Cargo"].ToString().Trim(),
                         dtInfo.Rows[rows]["Area"].ToString().Trim()
                         });
@@ -532,13 +520,6 @@ namespace ListasSarlaft.UserControls.Eventos
             grid.Columns.Add("Recuperación ", typeof(string));
             grid.Columns.Add("Fuente de la Recuperación", typeof(string));
             grid.Columns.Add("Fecha Contabilización", typeof(string));
-            grid.Columns.Add("NombreImpactoCualitativo", typeof(string));
-            grid.Columns.Add("CodigosEventosAsociados", typeof(string));
-            grid.Columns.Add("FechaRecuperacion", typeof(string));
-            grid.Columns.Add("HoraRecuperacion", typeof(string));
-            grid.Columns.Add("CuantiaRecup", typeof(string));
-            grid.Columns.Add("CuantiaOtraRecup", typeof(string));
-            grid.Columns.Add("CuantiaNeta", typeof(string));
 
             InfoGridReporteRiesgosControles = grid;
             GridView2.DataSource = InfoGridReporteRiesgosControles;
@@ -559,7 +540,6 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    string codigosEventos = cEvento.mtdGetCodEventAsociados(Convert.ToInt32(dtInfo.Rows[rows]["IdEvento"].ToString().Trim()));
                     InfoGridReporteRiesgosControles.Rows.Add(new Object[] {
                         dtInfo.Rows[rows]["Código"].ToString().Trim(),
                         dtInfo.Rows[rows]["Empresa"].ToString().Trim(),
@@ -611,14 +591,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         dtInfo.Rows[rows]["Valor en Pesos 2"].ToString().Trim(),
                         dtInfo.Rows[rows]["Recuperación"].ToString().Trim(),
                         dtInfo.Rows[rows]["Fuente de la Recuperación"].ToString().Trim(),
-                        dtInfo.Rows[rows]["Fecha Contabilización"].ToString().Trim(),
-                        dtInfo.Rows[rows]["NombreImpactoCualitativo"].ToString().Trim(),
-                        codigosEventos,
-                        dtInfo.Rows[rows]["FechaRecuperacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["HoraRecuperacion"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CuantiaRecup"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CuantiaOtraRecup"].ToString().Trim(),
-                        dtInfo.Rows[rows]["CuantiaNeta"].ToString().Trim()
+                        dtInfo.Rows[rows]["Fecha Contabilización"].ToString().Trim()
                         });
                 }
 

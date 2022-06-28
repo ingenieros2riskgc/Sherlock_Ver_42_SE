@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ListasSarlaft.UserControls.Riesgos {
-    
-    
-    public partial class Riesgos {
-        
+namespace ListasSarlaft.UserControls.Riesgos
+{
+
+
+    public partial class Riesgos
+    {
+
         /// <summary>
         /// Control SqlDataSource200.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource200;
-        
+
         /// <summary>
         /// Control SqlDataSource201.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource201;
-        
+
         /// <summary>
         /// Control omb.
         /// </summary>
@@ -38,115 +40,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::ListasSarlaft.UserControls.Sitio.OKMessageBox omb;
-        
-        /// <summary>
-        /// Control mpeMsgBox2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpeMsgBox2;
-        
-        /// <summary>
-        /// Control btndummy2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btndummy2;
-        
-        /// <summary>
-        /// Control pnlMsgBox2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMsgBox2;
-        
-        /// <summary>
-        /// Control td2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell td2;
-        
-        /// <summary>
-        /// Control lblMsgBoxOkNoAI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsgBoxOkNoAI;
-        
-        /// <summary>
-        /// Control imgInfo2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgInfo2;
-        
-        /// <summary>
-        /// Control lblMsgBox2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsgBox2;
-        
-        /// <summary>
-        /// Control lblMaximos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMaximos;
-        
-        /// <summary>
-        /// Control valorMaxActual.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label valorMaxActual;
-        
-        /// <summary>
-        /// Control parametroFreqMax.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox parametroFreqMax;
-        
-        /// <summary>
-        /// Control btnAceptar2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAceptar2;
-        
-        /// <summary>
-        /// Control btnCancelar2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar2;
-        
+
         /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
@@ -155,7 +49,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+
         /// <summary>
         /// Control popupCausas.
         /// </summary>
@@ -164,7 +58,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel popupCausas;
-        
+
         /// <summary>
         /// Control UpdateProgress4.
         /// </summary>
@@ -173,7 +67,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdateProgress UpdateProgress4;
-        
+
         /// <summary>
         /// Control ImageButton19.
         /// </summary>
@@ -182,7 +76,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton19;
-        
+
         /// <summary>
         /// Control GVcausasRiesgos.
         /// </summary>
@@ -191,7 +85,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GVcausasRiesgos;
-        
+
         /// <summary>
         /// Control LtextoCausas.
         /// </summary>
@@ -200,7 +94,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LtextoCausas;
-        
+
         /// <summary>
         /// Control Bok.
         /// </summary>
@@ -209,7 +103,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Bok;
-        
+
         /// <summary>
         /// Control Label140.
         /// </summary>
@@ -218,7 +112,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label140;
-        
+
         /// <summary>
         /// Control LCodRiesgo.
         /// </summary>
@@ -227,7 +121,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LCodRiesgo;
-        
+
         /// <summary>
         /// Control tbGridRiesgos.
         /// </summary>
@@ -236,7 +130,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTable tbGridRiesgos;
-        
+
         /// <summary>
         /// Control Label69.
         /// </summary>
@@ -245,7 +139,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label69;
-        
+
         /// <summary>
         /// Control TextBox11.
         /// </summary>
@@ -254,7 +148,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox11;
-        
+
         /// <summary>
         /// Control Label70.
         /// </summary>
@@ -263,7 +157,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label70;
-        
+
         /// <summary>
         /// Control TextBox17.
         /// </summary>
@@ -272,7 +166,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox17;
-        
+
         /// <summary>
         /// Control Label71.
         /// </summary>
@@ -281,7 +175,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label71;
-        
+
         /// <summary>
         /// Control DropDownList19.
         /// </summary>
@@ -290,7 +184,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList19;
-        
+
         /// <summary>
         /// Control Label72.
         /// </summary>
@@ -299,7 +193,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label72;
-        
+
         /// <summary>
         /// Control DropDownList20.
         /// </summary>
@@ -308,7 +202,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList20;
-        
+
         /// <summary>
         /// Control Label73.
         /// </summary>
@@ -317,7 +211,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label73;
-        
+
         /// <summary>
         /// Control DropDownList21.
         /// </summary>
@@ -326,7 +220,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList21;
-        
+
         /// <summary>
         /// Control Label74.
         /// </summary>
@@ -335,7 +229,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label74;
-        
+
         /// <summary>
         /// Control DropDownList22.
         /// </summary>
@@ -344,7 +238,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList22;
-        
+
         /// <summary>
         /// Control Label80.
         /// </summary>
@@ -353,7 +247,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label80;
-        
+
         /// <summary>
         /// Control DropDownList4.
         /// </summary>
@@ -362,7 +256,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
-        
+
         /// <summary>
         /// Control Label94.
         /// </summary>
@@ -371,7 +265,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label94;
-        
+
         /// <summary>
         /// Control BtnCalificacionMasiva.
         /// </summary>
@@ -380,7 +274,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnCalificacionMasiva;
-        
+
         /// <summary>
         /// Control ImageButton1.
         /// </summary>
@@ -389,7 +283,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
-        
+
         /// <summary>
         /// Control ImageButton18.
         /// </summary>
@@ -398,7 +292,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton18;
-        
+
         /// <summary>
         /// Control GridView1.
         /// </summary>
@@ -407,7 +301,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
-        
+
         /// <summary>
         /// Control ImageButton8.
         /// </summary>
@@ -416,7 +310,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton8;
-        
+
         /// <summary>
         /// Control tbModificarRiesgo.
         /// </summary>
@@ -425,7 +319,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTable tbModificarRiesgo;
-        
+
         /// <summary>
         /// Control TabContainer1.
         /// </summary>
@@ -434,7 +328,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabContainer TabContainer1;
-        
+
         /// <summary>
         /// Control TabPanel1.
         /// </summary>
@@ -443,7 +337,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel1;
-        
+
         /// <summary>
         /// Control Image1.
         /// </summary>
@@ -452,7 +346,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image1;
-        
+
         /// <summary>
         /// Control Label11.
         /// </summary>
@@ -461,7 +355,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label11;
-        
+
         /// <summary>
         /// Control Panel111.
         /// </summary>
@@ -470,7 +364,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel111;
-        
+
         /// <summary>
         /// Control Label16.
         /// </summary>
@@ -479,7 +373,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label16;
-        
+
         /// <summary>
         /// Control DropDownList47.
         /// </summary>
@@ -488,7 +382,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList47;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator27.
         /// </summary>
@@ -497,7 +391,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator27;
-        
+
         /// <summary>
         /// Control Label22.
         /// </summary>
@@ -506,7 +400,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label22;
-        
+
         /// <summary>
         /// Control DropDownList48.
         /// </summary>
@@ -515,7 +409,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList48;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator28.
         /// </summary>
@@ -524,7 +418,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator28;
-        
+
         /// <summary>
         /// Control Label23.
         /// </summary>
@@ -533,7 +427,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label23;
-        
+
         /// <summary>
         /// Control DropDownList49.
         /// </summary>
@@ -542,7 +436,16 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList49;
-        
+
+        /// <summary>
+        /// Control RequiredFieldValidator29.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator29;
+
         /// <summary>
         /// Control Label24.
         /// </summary>
@@ -551,7 +454,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label24;
-        
+
         /// <summary>
         /// Control DropDownList50.
         /// </summary>
@@ -560,7 +463,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList50;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator30.
         /// </summary>
@@ -569,7 +472,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator30;
-        
+
         /// <summary>
         /// Control Label25.
         /// </summary>
@@ -578,7 +481,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label25;
-        
+
         /// <summary>
         /// Control DropDownList51.
         /// </summary>
@@ -587,7 +490,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList51;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator31.
         /// </summary>
@@ -596,7 +499,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator31;
-        
+
         /// <summary>
         /// Control CollapsiblePanelExtender1.
         /// </summary>
@@ -605,7 +508,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender1;
-        
+
         /// <summary>
         /// Control Image2.
         /// </summary>
@@ -614,7 +517,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image2;
-        
+
         /// <summary>
         /// Control Label15.
         /// </summary>
@@ -623,7 +526,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label15;
-        
+
         /// <summary>
         /// Control Panel222.
         /// </summary>
@@ -632,7 +535,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel222;
-        
+
         /// <summary>
         /// Control Label26.
         /// </summary>
@@ -641,7 +544,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label26;
-        
+
         /// <summary>
         /// Control ImageButton28.
         /// </summary>
@@ -650,7 +553,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton28;
-        
+
         /// <summary>
         /// Control ModalPopupExtender2.
         /// </summary>
@@ -659,7 +562,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender2;
-        
+
         /// <summary>
         /// Control Panel3.
         /// </summary>
@@ -668,7 +571,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel3;
-        
+
         /// <summary>
         /// Control Label51.
         /// </summary>
@@ -677,7 +580,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label51;
-        
+
         /// <summary>
         /// Control Image3.
         /// </summary>
@@ -686,7 +589,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image3;
-        
+
         /// <summary>
         /// Control ImageButton29.
         /// </summary>
@@ -695,7 +598,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton29;
-        
+
         /// <summary>
         /// Control Label150.
         /// </summary>
@@ -704,7 +607,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label150;
-        
+
         /// <summary>
         /// Control Label151.
         /// </summary>
@@ -713,7 +616,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label151;
-        
+
         /// <summary>
         /// Control Label152.
         /// </summary>
@@ -722,7 +625,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label152;
-        
+
         /// <summary>
         /// Control ListBox4.
         /// </summary>
@@ -731,7 +634,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox4;
-        
+
         /// <summary>
         /// Control ListBox5.
         /// </summary>
@@ -740,7 +643,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox5;
-        
+
         /// <summary>
         /// Control ListBox6.
         /// </summary>
@@ -749,7 +652,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox6;
-        
+
         /// <summary>
         /// Control Label153.
         /// </summary>
@@ -758,7 +661,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label153;
-        
+
         /// <summary>
         /// Control DropDownList52.
         /// </summary>
@@ -767,7 +670,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList52;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator32.
         /// </summary>
@@ -776,7 +679,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator32;
-        
+
         /// <summary>
         /// Control Label154.
         /// </summary>
@@ -785,7 +688,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label154;
-        
+
         /// <summary>
         /// Control DropDownList53.
         /// </summary>
@@ -794,7 +697,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList53;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator33.
         /// </summary>
@@ -803,7 +706,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator33;
-        
+
         /// <summary>
         /// Control Label155.
         /// </summary>
@@ -812,7 +715,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label155;
-        
+
         /// <summary>
         /// Control DropDownList54.
         /// </summary>
@@ -821,7 +724,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList54;
-        
+
         /// <summary>
         /// Control Label44.
         /// </summary>
@@ -830,7 +733,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label44;
-        
+
         /// <summary>
         /// Control DropDownList7.
         /// </summary>
@@ -839,7 +742,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
-        
+
         /// <summary>
         /// Control Label156.
         /// </summary>
@@ -848,7 +751,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label156;
-        
+
         /// <summary>
         /// Control DropDownList55.
         /// </summary>
@@ -857,7 +760,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList55;
-        
+
         /// <summary>
         /// Control CollapsiblePanelExtender2.
         /// </summary>
@@ -866,7 +769,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender2;
-        
+
         /// <summary>
         /// Control Image4.
         /// </summary>
@@ -875,7 +778,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image4;
-        
+
         /// <summary>
         /// Control Label118.
         /// </summary>
@@ -884,7 +787,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label118;
-        
+
         /// <summary>
         /// Control Panel444.
         /// </summary>
@@ -893,7 +796,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel444;
-        
+
         /// <summary>
         /// Control Label157.
         /// </summary>
@@ -902,7 +805,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label157;
-        
+
         /// <summary>
         /// Control DropDownList56.
         /// </summary>
@@ -911,7 +814,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList56;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator36.
         /// </summary>
@@ -920,7 +823,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator36;
-        
+
         /// <summary>
         /// Control Label158.
         /// </summary>
@@ -929,7 +832,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label158;
-        
+
         /// <summary>
         /// Control DropDownList57.
         /// </summary>
@@ -938,7 +841,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList57;
-        
+
         /// <summary>
         /// Control Label159.
         /// </summary>
@@ -947,7 +850,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label159;
-        
+
         /// <summary>
         /// Control DropDownList58.
         /// </summary>
@@ -956,7 +859,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList58;
-        
+
         /// <summary>
         /// Control trRiesgoOperativo3.
         /// </summary>
@@ -965,7 +868,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trRiesgoOperativo3;
-        
+
         /// <summary>
         /// Control Label160.
         /// </summary>
@@ -974,7 +877,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label160;
-        
+
         /// <summary>
         /// Control DropDownList59.
         /// </summary>
@@ -983,7 +886,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList59;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator39.
         /// </summary>
@@ -992,7 +895,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator39;
-        
+
         /// <summary>
         /// Control Label161.
         /// </summary>
@@ -1001,7 +904,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label161;
-        
+
         /// <summary>
         /// Control DropDownList60.
         /// </summary>
@@ -1010,7 +913,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList60;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator40.
         /// </summary>
@@ -1019,7 +922,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator40;
-        
+
         /// <summary>
         /// Control trRiesgoOperativo4.
         /// </summary>
@@ -1028,7 +931,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trRiesgoOperativo4;
-        
+
         /// <summary>
         /// Control trRO1.
         /// </summary>
@@ -1037,7 +940,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trRO1;
-        
+
         /// <summary>
         /// Control Label47.
         /// </summary>
@@ -1046,7 +949,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label47;
-        
+
         /// <summary>
         /// Control DropDownList15.
         /// </summary>
@@ -1055,7 +958,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList15;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator54.
         /// </summary>
@@ -1064,7 +967,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator54;
-        
+
         /// <summary>
         /// Control Label48.
         /// </summary>
@@ -1073,7 +976,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label48;
-        
+
         /// <summary>
         /// Control DropDownList16.
         /// </summary>
@@ -1082,7 +985,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList16;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator55.
         /// </summary>
@@ -1091,7 +994,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator55;
-        
+
         /// <summary>
         /// Control trLavadoActivos2.
         /// </summary>
@@ -1100,7 +1003,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trLavadoActivos2;
-        
+
         /// <summary>
         /// Control Label53.
         /// </summary>
@@ -1109,7 +1012,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label53;
-        
+
         /// <summary>
         /// Control CheckBoxList7.
         /// </summary>
@@ -1118,7 +1021,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList7;
-        
+
         /// <summary>
         /// Control Label54.
         /// </summary>
@@ -1127,7 +1030,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label54;
-        
+
         /// <summary>
         /// Control CheckBoxList8.
         /// </summary>
@@ -1136,7 +1039,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList8;
-        
+
         /// <summary>
         /// Control Label162.
         /// </summary>
@@ -1145,7 +1048,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label162;
-        
+
         /// <summary>
         /// Control TextBox2.
         /// </summary>
@@ -1154,7 +1057,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
-        
+
         /// <summary>
         /// Control Label163.
         /// </summary>
@@ -1163,7 +1066,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label163;
-        
+
         /// <summary>
         /// Control TextBox3.
         /// </summary>
@@ -1172,7 +1075,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox3;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator41.
         /// </summary>
@@ -1181,7 +1084,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator41;
-        
+
         /// <summary>
         /// Control Label164.
         /// </summary>
@@ -1190,7 +1093,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label164;
-        
+
         /// <summary>
         /// Control TextBox4.
         /// </summary>
@@ -1199,7 +1102,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox4;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator42.
         /// </summary>
@@ -1208,34 +1111,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator42;
-        
-        /// <summary>
-        /// Control Label100.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label100;
-        
-        /// <summary>
-        /// Control cbEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cbEstado;
-        
-        /// <summary>
-        /// Control RVEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RVEstado;
-        
+
         /// <summary>
         /// Control Label88.
         /// </summary>
@@ -1244,7 +1120,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label88;
-        
+
         /// <summary>
         /// Control Label89.
         /// </summary>
@@ -1253,7 +1129,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label89;
-        
+
         /// <summary>
         /// Control PnlCausasAsoc.
         /// </summary>
@@ -1262,7 +1138,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PnlCausasAsoc;
-        
+
         /// <summary>
         /// Control ckbCausaAsoc.
         /// </summary>
@@ -1271,7 +1147,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList ckbCausaAsoc;
-        
+
         /// <summary>
         /// Control Label90.
         /// </summary>
@@ -1280,7 +1156,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label90;
-        
+
         /// <summary>
         /// Control PnlConsecuenciasAsoc.
         /// </summary>
@@ -1289,7 +1165,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PnlConsecuenciasAsoc;
-        
+
         /// <summary>
         /// Control ckbConsecuenciaAsoc.
         /// </summary>
@@ -1298,7 +1174,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList ckbConsecuenciaAsoc;
-        
+
         /// <summary>
         /// Control btnModCausasConsecuencias.
         /// </summary>
@@ -1307,7 +1183,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnModCausasConsecuencias;
-        
+
         /// <summary>
         /// Control Label165.
         /// </summary>
@@ -1316,7 +1192,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label165;
-        
+
         /// <summary>
         /// Control checkBoxPanel1.
         /// </summary>
@@ -1325,7 +1201,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel checkBoxPanel1;
-        
+
         /// <summary>
         /// Control tbxCausas.
         /// </summary>
@@ -1334,7 +1210,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxCausas;
-        
+
         /// <summary>
         /// Control tbxCausas_AutoCompleteExtender.
         /// </summary>
@@ -1343,7 +1219,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.AutoCompleteExtender tbxCausas_AutoCompleteExtender;
-        
+
         /// <summary>
         /// Control btnAsignarCausa.
         /// </summary>
@@ -1352,7 +1228,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAsignarCausa;
-        
+
         /// <summary>
         /// Control CheckBoxList3.
         /// </summary>
@@ -1361,7 +1237,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList3;
-        
+
         /// <summary>
         /// Control Label166.
         /// </summary>
@@ -1370,7 +1246,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label166;
-        
+
         /// <summary>
         /// Control checkBoxPanel2.
         /// </summary>
@@ -1379,7 +1255,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel checkBoxPanel2;
-        
+
         /// <summary>
         /// Control tbxConsecuencias.
         /// </summary>
@@ -1388,7 +1264,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxConsecuencias;
-        
+
         /// <summary>
         /// Control tbxConsecuencias_AutoCompleteExtender.
         /// </summary>
@@ -1397,7 +1273,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.AutoCompleteExtender tbxConsecuencias_AutoCompleteExtender;
-        
+
         /// <summary>
         /// Control btnAsignarConsecuencia.
         /// </summary>
@@ -1406,7 +1282,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAsignarConsecuencia;
-        
+
         /// <summary>
         /// Control CheckBoxList4.
         /// </summary>
@@ -1415,7 +1291,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList4;
-        
+
         /// <summary>
         /// Control Label6.
         /// </summary>
@@ -1424,7 +1300,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label6;
-        
+
         /// <summary>
         /// Control TextBox21.
         /// </summary>
@@ -1433,7 +1309,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox21;
-        
+
         /// <summary>
         /// Control lblIdDependencia3.
         /// </summary>
@@ -1442,7 +1318,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdDependencia3;
-        
+
         /// <summary>
         /// Control imgDependencia3.
         /// </summary>
@@ -1451,7 +1327,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgDependencia3;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator8.
         /// </summary>
@@ -1460,7 +1336,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
-        
+
         /// <summary>
         /// Control popupDependencia3.
         /// </summary>
@@ -1469,7 +1345,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.PopupControlExtender popupDependencia3;
-        
+
         /// <summary>
         /// Control pnlDependencia3.
         /// </summary>
@@ -1478,7 +1354,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDependencia3;
-        
+
         /// <summary>
         /// Control dd.
         /// </summary>
@@ -1487,7 +1363,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label dd;
-        
+
         /// <summary>
         /// Control btnClosepp3.
         /// </summary>
@@ -1496,7 +1372,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnClosepp3;
-        
+
         /// <summary>
         /// Control TreeView3.
         /// </summary>
@@ -1505,7 +1381,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TreeView TreeView3;
-        
+
         /// <summary>
         /// Control BtnOk3.
         /// </summary>
@@ -1514,7 +1390,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnOk3;
-        
+
         /// <summary>
         /// Control CollapsiblePanelExtender4.
         /// </summary>
@@ -1523,7 +1399,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender4;
-        
+
         /// <summary>
         /// Control Image9.
         /// </summary>
@@ -1532,7 +1408,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image9;
-        
+
         /// <summary>
         /// Control Label83.
         /// </summary>
@@ -1541,34 +1417,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label83;
-        
-        /// <summary>
-        /// Control Label107.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label107;
-        
-        /// <summary>
-        /// Control EditarTratamiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton EditarTratamiento;
-        
-        /// <summary>
-        /// Control NoEditarTratamiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton NoEditarTratamiento;
-        
+
         /// <summary>
         /// Control Panel9.
         /// </summary>
@@ -1577,7 +1426,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel9;
-        
+
         /// <summary>
         /// Control Label84.
         /// </summary>
@@ -1586,7 +1435,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label84;
-        
+
         /// <summary>
         /// Control Panel10.
         /// </summary>
@@ -1595,7 +1444,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel10;
-        
+
         /// <summary>
         /// Control CheckBoxList10.
         /// </summary>
@@ -1604,169 +1453,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList10;
-        
-        /// <summary>
-        /// Control Label96.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label96;
-        
-        /// <summary>
-        /// Control txtResponsablet_2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtResponsablet_2;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator14.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
-        
-        /// <summary>
-        /// Control lblIdDependencia6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIdDependencia6;
-        
-        /// <summary>
-        /// Control ImageButton22.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton22;
-        
-        /// <summary>
-        /// Control PopupControlExtender2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.PopupControlExtender PopupControlExtender2;
-        
-        /// <summary>
-        /// Control Panel12.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel12;
-        
-        /// <summary>
-        /// Control Label99.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label99;
-        
-        /// <summary>
-        /// Control ImageButton23.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton23;
-        
-        /// <summary>
-        /// Control TreeView6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView TreeView6;
-        
-        /// <summary>
-        /// Control Button3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
-        
-        /// <summary>
-        /// Control Panel13.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel13;
-        
-        /// <summary>
-        /// Control Label98.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label98;
-        
-        /// <summary>
-        /// Control txtJustificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJustificacion;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator13.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
-        
-        /// <summary>
-        /// Control ImageButton24.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton24;
-        
-        /// <summary>
-        /// Control GridView12.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView12;
-        
-        /// <summary>
-        /// Control CollapsiblePanelExtender8.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender8;
-        
+
         /// <summary>
         /// Control CollapsiblePanelExtender7.
         /// </summary>
@@ -1775,7 +1462,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender7;
-        
+
         /// <summary>
         /// Control Image5.
         /// </summary>
@@ -1784,7 +1471,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image5;
-        
+
         /// <summary>
         /// Control Label149.
         /// </summary>
@@ -1793,16 +1480,16 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label149;
-        
+
         /// <summary>
-        /// Control PanelContendorMedicion.
+        /// Control Panel555.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelContendorMedicion;
-        
+        protected global::System.Web.UI.WebControls.Panel Panel555;
+
         /// <summary>
         /// Control Label169.
         /// </summary>
@@ -1811,34 +1498,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label169;
-        
-        /// <summary>
-        /// Control PanelMedicion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelMedicion;
-        
-        /// <summary>
-        /// Control RadioTipoCalificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioTipoCalificacion;
-        
-        /// <summary>
-        /// Control Panel16.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel16;
-        
+
         /// <summary>
         /// Control Label170.
         /// </summary>
@@ -1847,7 +1507,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label170;
-        
+
         /// <summary>
         /// Control DropDownList66.
         /// </summary>
@@ -1856,7 +1516,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList66;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator47.
         /// </summary>
@@ -1865,7 +1525,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator47;
-        
+
         /// <summary>
         /// Control Label171.
         /// </summary>
@@ -1874,7 +1534,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label171;
-        
+
         /// <summary>
         /// Control Label172.
         /// </summary>
@@ -1883,7 +1543,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label172;
-        
+
         /// <summary>
         /// Control Label173.
         /// </summary>
@@ -1892,7 +1552,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label173;
-        
+
         /// <summary>
         /// Control TextBox5.
         /// </summary>
@@ -1901,7 +1561,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox5;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator48.
         /// </summary>
@@ -1910,7 +1570,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator48;
-        
+
         /// <summary>
         /// Control Label178.
         /// </summary>
@@ -1919,7 +1579,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label178;
-        
+
         /// <summary>
         /// Control TextBox6.
         /// </summary>
@@ -1928,7 +1588,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox6;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator49.
         /// </summary>
@@ -1937,7 +1597,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator49;
-        
+
         /// <summary>
         /// Control CompareValidator3.
         /// </summary>
@@ -1946,7 +1606,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator3;
-        
+
         /// <summary>
         /// Control Label179.
         /// </summary>
@@ -1955,7 +1615,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label179;
-        
+
         /// <summary>
         /// Control trImgFrecuenciaUps.
         /// </summary>
@@ -1964,7 +1624,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trImgFrecuenciaUps;
-        
+
         /// <summary>
         /// Control Label92.
         /// </summary>
@@ -1973,7 +1633,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label92;
-        
+
         /// <summary>
         /// Control ImbViewJPGfrecuenciaIns.
         /// </summary>
@@ -1982,7 +1642,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImbViewJPGfrecuenciaIns;
-        
+
         /// <summary>
         /// Control Label180.
         /// </summary>
@@ -1991,7 +1651,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label180;
-        
+
         /// <summary>
         /// Control DropDownList68.
         /// </summary>
@@ -2000,7 +1660,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList68;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator50.
         /// </summary>
@@ -2009,7 +1669,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator50;
-        
+
         /// <summary>
         /// Control Label181.
         /// </summary>
@@ -2018,7 +1678,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label181;
-        
+
         /// <summary>
         /// Control Label193.
         /// </summary>
@@ -2027,7 +1687,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label193;
-        
+
         /// <summary>
         /// Control Label194.
         /// </summary>
@@ -2036,7 +1696,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label194;
-        
+
         /// <summary>
         /// Control TextBox7.
         /// </summary>
@@ -2045,7 +1705,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
-        
+
         /// <summary>
         /// Control Label195.
         /// </summary>
@@ -2054,7 +1714,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label195;
-        
+
         /// <summary>
         /// Control TextBox10.
         /// </summary>
@@ -2063,7 +1723,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox10;
-        
+
         /// <summary>
         /// Control CompareValidator4.
         /// </summary>
@@ -2072,7 +1732,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator4;
-        
+
         /// <summary>
         /// Control trImgImpactoUps.
         /// </summary>
@@ -2081,7 +1741,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trImgImpactoUps;
-        
+
         /// <summary>
         /// Control Label93.
         /// </summary>
@@ -2090,7 +1750,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label93;
-        
+
         /// <summary>
         /// Control ImbViewJPGimpactoIns.
         /// </summary>
@@ -2099,34 +1759,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImbViewJPGimpactoIns;
-        
-        /// <summary>
-        /// Control Label102.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label102;
-        
-        /// <summary>
-        /// Control Panel14.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel14;
-        
-        /// <summary>
-        /// Control GvFrecuenciaImpacto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvFrecuenciaImpacto;
-        
+
         /// <summary>
         /// Control Label196.
         /// </summary>
@@ -2135,7 +1768,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label196;
-        
+
         /// <summary>
         /// Control Panel4.
         /// </summary>
@@ -2144,7 +1777,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel4;
-        
+
         /// <summary>
         /// Control Label197.
         /// </summary>
@@ -2153,151 +1786,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label197;
-        
-        /// <summary>
-        /// Control PanelCalifExperta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelCalifExperta;
-        
-        /// <summary>
-        /// Control Table1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable Table1;
-        
-        /// <summary>
-        /// Control Label106.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label106;
-        
-        /// <summary>
-        /// Control GvVariablesFrecuencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvVariablesFrecuencia;
-        
-        /// <summary>
-        /// Control EtiquetaFrecuantaEditar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EtiquetaFrecuantaEditar;
-        
-        /// <summary>
-        /// Control ResultadoFrecuenciaEditar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ResultadoFrecuenciaEditar;
-        
-        /// <summary>
-        /// Control Label109.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label109;
-        
-        /// <summary>
-        /// Control GvVariablesImpacto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvVariablesImpacto;
-        
-        /// <summary>
-        /// Control ExcedeSumaT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ExcedeSumaT;
-        
-        /// <summary>
-        /// Control EtiquetaImpactoT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EtiquetaImpactoT;
-        
-        /// <summary>
-        /// Control ResultadoDelImpactoT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ResultadoDelImpactoT;
-        
-        /// <summary>
-        /// Control CalcularFI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CalcularFI;
-        
-        /// <summary>
-        /// Control Label113.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label113;
-        
-        /// <summary>
-        /// Control EtiquetaResultadoFI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EtiquetaResultadoFI;
-        
-        /// <summary>
-        /// Control PanelResultado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelResultado;
-        
-        /// <summary>
-        /// Control CajaVariableCategoriaT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CajaVariableCategoriaT;
-        
+
         /// <summary>
         /// Control CollapsiblePanelExtender5.
         /// </summary>
@@ -2306,7 +1795,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender5;
-        
+
         /// <summary>
         /// Control Image8.
         /// </summary>
@@ -2315,7 +1804,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image8;
-        
+
         /// <summary>
         /// Control Label65.
         /// </summary>
@@ -2324,7 +1813,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label65;
-        
+
         /// <summary>
         /// Control Panel777.
         /// </summary>
@@ -2333,7 +1822,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel777;
-        
+
         /// <summary>
         /// Control Label67.
         /// </summary>
@@ -2342,7 +1831,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label67;
-        
+
         /// <summary>
         /// Control TextBox16.
         /// </summary>
@@ -2351,7 +1840,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox16;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator64.
         /// </summary>
@@ -2360,7 +1849,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator64;
-        
+
         /// <summary>
         /// Control ImageButton17.
         /// </summary>
@@ -2369,7 +1858,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton17;
-        
+
         /// <summary>
         /// Control GridView6.
         /// </summary>
@@ -2378,7 +1867,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView6;
-        
+
         /// <summary>
         /// Control CollapsiblePanelExtender6.
         /// </summary>
@@ -2387,7 +1876,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender6;
-        
+
         /// <summary>
         /// Control Image6.
         /// </summary>
@@ -2396,7 +1885,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image6;
-        
+
         /// <summary>
         /// Control Label63.
         /// </summary>
@@ -2405,7 +1894,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label63;
-        
+
         /// <summary>
         /// Control Panel666.
         /// </summary>
@@ -2414,7 +1903,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel666;
-        
+
         /// <summary>
         /// Control Label66.
         /// </summary>
@@ -2423,7 +1912,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label66;
-        
+
         /// <summary>
         /// Control FileUpload1.
         /// </summary>
@@ -2432,7 +1921,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
+
         /// <summary>
         /// Control ImageButton16.
         /// </summary>
@@ -2441,7 +1930,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton16;
-        
+
         /// <summary>
         /// Control GridView4.
         /// </summary>
@@ -2450,7 +1939,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView4;
-        
+
         /// <summary>
         /// Control CollapsiblePanelExtender3.
         /// </summary>
@@ -2459,7 +1948,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender3;
-        
+
         /// <summary>
         /// Control ImageButton9.
         /// </summary>
@@ -2468,7 +1957,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton9;
-        
+
         /// <summary>
         /// Control ImageButton10.
         /// </summary>
@@ -2477,7 +1966,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton10;
-        
+
         /// <summary>
         /// Control TabPanel2.
         /// </summary>
@@ -2486,7 +1975,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel2;
-        
+
         /// <summary>
         /// Control Label36.
         /// </summary>
@@ -2495,7 +1984,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label36;
-        
+
         /// <summary>
         /// Control Label37.
         /// </summary>
@@ -2504,7 +1993,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label37;
-        
+
         /// <summary>
         /// Control Label77.
         /// </summary>
@@ -2513,7 +2002,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label77;
-        
+
         /// <summary>
         /// Control Label75.
         /// </summary>
@@ -2522,7 +2011,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label75;
-        
+
         /// <summary>
         /// Control TextBox18.
         /// </summary>
@@ -2531,7 +2020,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox18;
-        
+
         /// <summary>
         /// Control Label76.
         /// </summary>
@@ -2540,7 +2029,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label76;
-        
+
         /// <summary>
         /// Control TextBox19.
         /// </summary>
@@ -2549,7 +2038,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox19;
-        
+
         /// <summary>
         /// Control Label81.
         /// </summary>
@@ -2558,7 +2047,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label81;
-        
+
         /// <summary>
         /// Control TextBox23.
         /// </summary>
@@ -2567,7 +2056,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox23;
-        
+
         /// <summary>
         /// Control lblIdDependencia4.
         /// </summary>
@@ -2576,7 +2065,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdDependencia4;
-        
+
         /// <summary>
         /// Control imgDependencia4.
         /// </summary>
@@ -2585,7 +2074,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgDependencia4;
-        
+
         /// <summary>
         /// Control popupDependencia4.
         /// </summary>
@@ -2594,7 +2083,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.PopupControlExtender popupDependencia4;
-        
+
         /// <summary>
         /// Control pnlDependencia4.
         /// </summary>
@@ -2603,7 +2092,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDependencia4;
-        
+
         /// <summary>
         /// Control btnClosepp4.
         /// </summary>
@@ -2612,7 +2101,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnClosepp4;
-        
+
         /// <summary>
         /// Control TreeView4.
         /// </summary>
@@ -2621,7 +2110,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TreeView TreeView4;
-        
+
         /// <summary>
         /// Control BtnOk4.
         /// </summary>
@@ -2630,7 +2119,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnOk4;
-        
+
         /// <summary>
         /// Control ImageButton25.
         /// </summary>
@@ -2639,7 +2128,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton25;
-        
+
         /// <summary>
         /// Control ImageButton5.
         /// </summary>
@@ -2648,7 +2137,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton5;
-        
+
         /// <summary>
         /// Control GridView8.
         /// </summary>
@@ -2657,7 +2146,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView8;
-        
+
         /// <summary>
         /// Control Label40.
         /// </summary>
@@ -2666,7 +2155,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label40;
-        
+
         /// <summary>
         /// Control Button6.
         /// </summary>
@@ -2675,7 +2164,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button6;
-        
+
         /// <summary>
         /// Control GridView2.
         /// </summary>
@@ -2684,7 +2173,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView2;
-        
+
         /// <summary>
         /// Control hidForModel.
         /// </summary>
@@ -2693,7 +2182,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidForModel;
-        
+
         /// <summary>
         /// Control modalPopup.
         /// </summary>
@@ -2702,7 +2191,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender modalPopup;
-        
+
         /// <summary>
         /// Control Label87.
         /// </summary>
@@ -2711,7 +2200,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label87;
-        
+
         /// <summary>
         /// Control GridView11.
         /// </summary>
@@ -2720,7 +2209,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView11;
-        
+
         /// <summary>
         /// Control TabPanel3.
         /// </summary>
@@ -2729,7 +2218,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel3;
-        
+
         /// <summary>
         /// Control Label32.
         /// </summary>
@@ -2738,7 +2227,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label32;
-        
+
         /// <summary>
         /// Control Label33.
         /// </summary>
@@ -2747,7 +2236,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label33;
-        
+
         /// <summary>
         /// Control Label27.
         /// </summary>
@@ -2756,7 +2245,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label27;
-        
+
         /// <summary>
         /// Control Panel5.
         /// </summary>
@@ -2765,7 +2254,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel5;
-        
+
         /// <summary>
         /// Control Label28.
         /// </summary>
@@ -2774,7 +2263,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label28;
-        
+
         /// <summary>
         /// Control Label34.
         /// </summary>
@@ -2783,7 +2272,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label34;
-        
+
         /// <summary>
         /// Control Panel6.
         /// </summary>
@@ -2792,7 +2281,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel6;
-        
+
         /// <summary>
         /// Control Label35.
         /// </summary>
@@ -2801,7 +2290,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label35;
-        
+
         /// <summary>
         /// Control Label38.
         /// </summary>
@@ -2810,7 +2299,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label38;
-        
+
         /// <summary>
         /// Control Panel7.
         /// </summary>
@@ -2819,7 +2308,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel7;
-        
+
         /// <summary>
         /// Control Label39.
         /// </summary>
@@ -2828,7 +2317,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label39;
-        
+
         /// <summary>
         /// Control TabPanel5.
         /// </summary>
@@ -2837,7 +2326,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel5;
-        
+
         /// <summary>
         /// Control Label55.
         /// </summary>
@@ -2846,7 +2335,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label55;
-        
+
         /// <summary>
         /// Control Label56.
         /// </summary>
@@ -2855,7 +2344,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label56;
-        
+
         /// <summary>
         /// Control Label85.
         /// </summary>
@@ -2864,7 +2353,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label85;
-        
+
         /// <summary>
         /// Control DropDownList5.
         /// </summary>
@@ -2873,7 +2362,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator12.
         /// </summary>
@@ -2882,7 +2371,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
-        
+
         /// <summary>
         /// Control Label185.
         /// </summary>
@@ -2891,7 +2380,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label185;
-        
+
         /// <summary>
         /// Control DropDownList61.
         /// </summary>
@@ -2900,7 +2389,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList61;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator56.
         /// </summary>
@@ -2909,7 +2398,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator56;
-        
+
         /// <summary>
         /// Control ImageButton11.
         /// </summary>
@@ -2918,7 +2407,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton11;
-        
+
         /// <summary>
         /// Control ImageButton12.
         /// </summary>
@@ -2927,7 +2416,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton12;
-        
+
         /// <summary>
         /// Control Label198.
         /// </summary>
@@ -2936,7 +2425,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label198;
-        
+
         /// <summary>
         /// Control GridView7.
         /// </summary>
@@ -2945,7 +2434,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView7;
-        
+
         /// <summary>
         /// Control TabPanel6.
         /// </summary>
@@ -2954,52 +2443,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel6;
-        
-        /// <summary>
-        /// Control Panel15.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel15;
-        
-        /// <summary>
-        /// Control Label103.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label103;
-        
-        /// <summary>
-        /// Control TbGvRiesgoAsociado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable TbGvRiesgoAsociado;
-        
-        /// <summary>
-        /// Control GvPlanesAsociados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvPlanesAsociados;
-        
-        /// <summary>
-        /// Control Exportar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Exportar;
-        
+
         /// <summary>
         /// Control Label50.
         /// </summary>
@@ -3008,7 +2452,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label50;
-        
+
         /// <summary>
         /// Control Label119.
         /// </summary>
@@ -3017,7 +2461,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label119;
-        
+
         /// <summary>
         /// Control Label121.
         /// </summary>
@@ -3026,7 +2470,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label121;
-        
+
         /// <summary>
         /// Control GridView3.
         /// </summary>
@@ -3035,7 +2479,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView3;
-        
+
         /// <summary>
         /// Control ImageButton2.
         /// </summary>
@@ -3044,7 +2488,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
-        
+
         /// <summary>
         /// Control trAddPlanAccion.
         /// </summary>
@@ -3053,7 +2497,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trAddPlanAccion;
-        
+
         /// <summary>
         /// Control Label49.
         /// </summary>
@@ -3062,7 +2506,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label49;
-        
+
         /// <summary>
         /// Control TextBox12.
         /// </summary>
@@ -3071,7 +2515,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox12;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator59.
         /// </summary>
@@ -3080,7 +2524,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator59;
-        
+
         /// <summary>
         /// Control Label57.
         /// </summary>
@@ -3089,7 +2533,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label57;
-        
+
         /// <summary>
         /// Control TextBox13.
         /// </summary>
@@ -3098,7 +2542,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox13;
-        
+
         /// <summary>
         /// Control lblIdDependencia1.
         /// </summary>
@@ -3107,7 +2551,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdDependencia1;
-        
+
         /// <summary>
         /// Control imgDependencia1.
         /// </summary>
@@ -3116,7 +2560,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgDependencia1;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator57.
         /// </summary>
@@ -3125,7 +2569,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator57;
-        
+
         /// <summary>
         /// Control popupDependencia1.
         /// </summary>
@@ -3134,7 +2578,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.PopupControlExtender popupDependencia1;
-        
+
         /// <summary>
         /// Control pnlDependencia1.
         /// </summary>
@@ -3143,7 +2587,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDependencia1;
-        
+
         /// <summary>
         /// Control btnClosepp1.
         /// </summary>
@@ -3152,7 +2596,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnClosepp1;
-        
+
         /// <summary>
         /// Control TreeView1.
         /// </summary>
@@ -3161,7 +2605,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TreeView TreeView1;
-        
+
         /// <summary>
         /// Control BtnOk1.
         /// </summary>
@@ -3170,7 +2614,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnOk1;
-        
+
         /// <summary>
         /// Control Label58.
         /// </summary>
@@ -3179,7 +2623,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label58;
-        
+
         /// <summary>
         /// Control DropDownList17.
         /// </summary>
@@ -3188,7 +2632,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList17;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator60.
         /// </summary>
@@ -3197,7 +2641,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator60;
-        
+
         /// <summary>
         /// Control Label59.
         /// </summary>
@@ -3206,7 +2650,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label59;
-        
+
         /// <summary>
         /// Control TextBox14.
         /// </summary>
@@ -3215,7 +2659,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox14;
-        
+
         /// <summary>
         /// Control Label61.
         /// </summary>
@@ -3224,7 +2668,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label61;
-        
+
         /// <summary>
         /// Control DropDownList18.
         /// </summary>
@@ -3233,7 +2677,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList18;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator63.
         /// </summary>
@@ -3242,7 +2686,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator63;
-        
+
         /// <summary>
         /// Control Label60.
         /// </summary>
@@ -3251,7 +2695,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label60;
-        
+
         /// <summary>
         /// Control TextBox15.
         /// </summary>
@@ -3260,7 +2704,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox15;
-        
+
         /// <summary>
         /// Control TextBox15_CalendarExtender.
         /// </summary>
@@ -3269,7 +2713,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender TextBox15_CalendarExtender;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator62.
         /// </summary>
@@ -3278,7 +2722,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator62;
-        
+
         /// <summary>
         /// Control trAdjComPlaAcci.
         /// </summary>
@@ -3287,7 +2731,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trAdjComPlaAcci;
-        
+
         /// <summary>
         /// Control TabContainer3.
         /// </summary>
@@ -3296,7 +2740,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabContainer TabContainer3;
-        
+
         /// <summary>
         /// Control TabPanel7.
         /// </summary>
@@ -3305,7 +2749,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel7;
-        
+
         /// <summary>
         /// Control Label78.
         /// </summary>
@@ -3314,7 +2758,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label78;
-        
+
         /// <summary>
         /// Control TextBox22.
         /// </summary>
@@ -3323,7 +2767,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox22;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator11.
         /// </summary>
@@ -3332,7 +2776,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
-        
+
         /// <summary>
         /// Control ImageButton7.
         /// </summary>
@@ -3341,7 +2785,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton7;
-        
+
         /// <summary>
         /// Control GridView9.
         /// </summary>
@@ -3350,7 +2794,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView9;
-        
+
         /// <summary>
         /// Control TabPanel10.
         /// </summary>
@@ -3359,7 +2803,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel10;
-        
+
         /// <summary>
         /// Control Label79.
         /// </summary>
@@ -3368,7 +2812,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label79;
-        
+
         /// <summary>
         /// Control FileUpload2.
         /// </summary>
@@ -3377,7 +2821,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload2;
-        
+
         /// <summary>
         /// Control ImageButton15.
         /// </summary>
@@ -3386,7 +2830,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton15;
-        
+
         /// <summary>
         /// Control GridView10.
         /// </summary>
@@ -3395,7 +2839,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView10;
-        
+
         /// <summary>
         /// Control ImageButton13.
         /// </summary>
@@ -3404,7 +2848,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton13;
-        
+
         /// <summary>
         /// Control ImageButton3.
         /// </summary>
@@ -3413,7 +2857,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
-        
+
         /// <summary>
         /// Control ImageButton14.
         /// </summary>
@@ -3422,7 +2866,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton14;
-        
+
         /// <summary>
         /// Control TabPanel4.
         /// </summary>
@@ -3431,7 +2875,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel4;
-        
+
         /// <summary>
         /// Control Label52.
         /// </summary>
@@ -3440,7 +2884,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label52;
-        
+
         /// <summary>
         /// Control Label62.
         /// </summary>
@@ -3449,7 +2893,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label62;
-        
+
         /// <summary>
         /// Control Label64.
         /// </summary>
@@ -3458,7 +2902,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label64;
-        
+
         /// <summary>
         /// Control Button1.
         /// </summary>
@@ -3467,7 +2911,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// Control GridView5.
         /// </summary>
@@ -3476,187 +2920,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView5;
-        
-        /// <summary>
-        /// Control TabPanel13.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanel13;
-        
-        /// <summary>
-        /// Control BodyGridFVE.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BodyGridFVE;
-        
-        /// <summary>
-        /// Control GVfrecuenciavsEventos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GVfrecuenciavsEventos;
-        
-        /// <summary>
-        /// Control BodyFormFVE.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BodyFormFVE;
-        
-        /// <summary>
-        /// Control Lcodigo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lcodigo;
-        
-        /// <summary>
-        /// Control txtId.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtId;
-        
-        /// <summary>
-        /// Control LMaxEvent.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LMaxEvent;
-        
-        /// <summary>
-        /// Control TXmaxEvent.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TXmaxEvent;
-        
-        /// <summary>
-        /// Control RFVmaxEvent.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVmaxEvent;
-        
-        /// <summary>
-        /// Control REVmaxEvent.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator REVmaxEvent;
-        
-        /// <summary>
-        /// Control LCodigoFrecuencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LCodigoFrecuencia;
-        
-        /// <summary>
-        /// Control DDLfrecuencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLfrecuencia;
-        
-        /// <summary>
-        /// Control RVcodigoFrecuencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RVcodigoFrecuencia;
-        
-        /// <summary>
-        /// Control Lusuario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lusuario;
-        
-        /// <summary>
-        /// Control tbxUsuarioCreacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxUsuarioCreacion;
-        
-        /// <summary>
-        /// Control LfechaCreacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LfechaCreacion;
-        
-        /// <summary>
-        /// Control txtFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFecha;
-        
-        /// <summary>
-        /// Control IBinsertGVC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton IBinsertGVC;
-        
-        /// <summary>
-        /// Control IBupdateGVC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton IBupdateGVC;
-        
-        /// <summary>
-        /// Control btnImgCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnImgCancelar;
-        
+
         /// <summary>
         /// Control tbAgregarRiesgo.
         /// </summary>
@@ -3665,7 +2929,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTable tbAgregarRiesgo;
-        
+
         /// <summary>
         /// Control TabContainer2.
         /// </summary>
@@ -3674,7 +2938,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabContainer TabContainer2;
-        
+
         /// <summary>
         /// Control TabPanel8.
         /// </summary>
@@ -3683,7 +2947,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel8;
-        
+
         /// <summary>
         /// Control Label141.
         /// </summary>
@@ -3692,7 +2956,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label141;
-        
+
         /// <summary>
         /// Control DropDownList41.
         /// </summary>
@@ -3701,7 +2965,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList41;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator1.
         /// </summary>
@@ -3710,7 +2974,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
+
         /// <summary>
         /// Control Label142.
         /// </summary>
@@ -3719,7 +2983,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label142;
-        
+
         /// <summary>
         /// Control DropDownList42.
         /// </summary>
@@ -3728,7 +2992,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList42;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator2.
         /// </summary>
@@ -3737,7 +3001,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
+
         /// <summary>
         /// Control Label143.
         /// </summary>
@@ -3746,7 +3010,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label143;
-        
+
         /// <summary>
         /// Control DropDownList43.
         /// </summary>
@@ -3755,7 +3019,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList43;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator3.
         /// </summary>
@@ -3764,7 +3028,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-        
+
         /// <summary>
         /// Control Label144.
         /// </summary>
@@ -3773,7 +3037,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label144;
-        
+
         /// <summary>
         /// Control DropDownList44.
         /// </summary>
@@ -3782,7 +3046,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList44;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator4.
         /// </summary>
@@ -3791,7 +3055,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-        
+
         /// <summary>
         /// Control Label9.
         /// </summary>
@@ -3800,7 +3064,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label9;
-        
+
         /// <summary>
         /// Control DropDownList63.
         /// </summary>
@@ -3809,7 +3073,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList63;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator5.
         /// </summary>
@@ -3818,7 +3082,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
-        
+
         /// <summary>
         /// Control TabPanel12.
         /// </summary>
@@ -3827,7 +3091,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel12;
-        
+
         /// <summary>
         /// Control Label191.
         /// </summary>
@@ -3836,7 +3100,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label191;
-        
+
         /// <summary>
         /// Control ImageButton26.
         /// </summary>
@@ -3845,7 +3109,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton26;
-        
+
         /// <summary>
         /// Control ModalPopupExtender1.
         /// </summary>
@@ -3854,7 +3118,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender1;
-        
+
         /// <summary>
         /// Control Panel2.
         /// </summary>
@@ -3863,7 +3127,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel2;
-        
+
         /// <summary>
         /// Control Label68.
         /// </summary>
@@ -3872,7 +3136,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label68;
-        
+
         /// <summary>
         /// Control Image7.
         /// </summary>
@@ -3881,7 +3145,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image7;
-        
+
         /// <summary>
         /// Control ImageButton27.
         /// </summary>
@@ -3890,7 +3154,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton27;
-        
+
         /// <summary>
         /// Control Label188.
         /// </summary>
@@ -3899,7 +3163,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label188;
-        
+
         /// <summary>
         /// Control Label189.
         /// </summary>
@@ -3908,7 +3172,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label189;
-        
+
         /// <summary>
         /// Control Label190.
         /// </summary>
@@ -3917,7 +3181,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label190;
-        
+
         /// <summary>
         /// Control ListBox1.
         /// </summary>
@@ -3926,7 +3190,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox1;
-        
+
         /// <summary>
         /// Control ListBox2.
         /// </summary>
@@ -3935,7 +3199,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox2;
-        
+
         /// <summary>
         /// Control ListBox3.
         /// </summary>
@@ -3944,7 +3208,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ListBox3;
-        
+
         /// <summary>
         /// Control Label192.
         /// </summary>
@@ -3953,7 +3217,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label192;
-        
+
         /// <summary>
         /// Control DropDownList67.
         /// </summary>
@@ -3962,7 +3226,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList67;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator26.
         /// </summary>
@@ -3971,7 +3235,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator26;
-        
+
         /// <summary>
         /// Control Label18.
         /// </summary>
@@ -3980,7 +3244,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label18;
-        
+
         /// <summary>
         /// Control DropDownList9.
         /// </summary>
@@ -3989,7 +3253,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList9;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator21.
         /// </summary>
@@ -3998,7 +3262,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator21;
-        
+
         /// <summary>
         /// Control Label19.
         /// </summary>
@@ -4007,7 +3271,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label19;
-        
+
         /// <summary>
         /// Control DropDownList10.
         /// </summary>
@@ -4016,7 +3280,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList10;
-        
+
         /// <summary>
         /// Control Label43.
         /// </summary>
@@ -4025,7 +3289,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label43;
-        
+
         /// <summary>
         /// Control DropDownList6.
         /// </summary>
@@ -4034,7 +3298,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
-        
+
         /// <summary>
         /// Control Label20.
         /// </summary>
@@ -4043,7 +3307,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label20;
-        
+
         /// <summary>
         /// Control DropDownList11.
         /// </summary>
@@ -4052,7 +3316,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList11;
-        
+
         /// <summary>
         /// Control TabPanel9.
         /// </summary>
@@ -4061,7 +3325,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel9;
-        
+
         /// <summary>
         /// Control Label2.
         /// </summary>
@@ -4070,7 +3334,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-        
+
         /// <summary>
         /// Control DropDownList1.
         /// </summary>
@@ -4079,7 +3343,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator6.
         /// </summary>
@@ -4088,7 +3352,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
-        
+
         /// <summary>
         /// Control Label3.
         /// </summary>
@@ -4097,7 +3361,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-        
+
         /// <summary>
         /// Control DropDownList2.
         /// </summary>
@@ -4106,7 +3370,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
-        
+
         /// <summary>
         /// Control Label4.
         /// </summary>
@@ -4115,7 +3379,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-        
+
         /// <summary>
         /// Control DropDownList3.
         /// </summary>
@@ -4124,7 +3388,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
-        
+
         /// <summary>
         /// Control trRiesgoOperativo1.
         /// </summary>
@@ -4133,7 +3397,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trRiesgoOperativo1;
-        
+
         /// <summary>
         /// Control Label175.
         /// </summary>
@@ -4142,7 +3406,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label175;
-        
+
         /// <summary>
         /// Control DropDownList8.
         /// </summary>
@@ -4151,7 +3415,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator24.
         /// </summary>
@@ -4160,7 +3424,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator24;
-        
+
         /// <summary>
         /// Control Label176.
         /// </summary>
@@ -4169,7 +3433,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label176;
-        
+
         /// <summary>
         /// Control DropDownList14.
         /// </summary>
@@ -4178,7 +3442,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList14;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator25.
         /// </summary>
@@ -4187,7 +3451,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator25;
-        
+
         /// <summary>
         /// Control trRiesgoOperativo2.
         /// </summary>
@@ -4196,7 +3460,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trRiesgoOperativo2;
-        
+
         /// <summary>
         /// Control trRO2.
         /// </summary>
@@ -4205,7 +3469,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trRO2;
-        
+
         /// <summary>
         /// Control Label41.
         /// </summary>
@@ -4214,7 +3478,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label41;
-        
+
         /// <summary>
         /// Control DropDownList12.
         /// </summary>
@@ -4223,7 +3487,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList12;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator43.
         /// </summary>
@@ -4232,7 +3496,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator43;
-        
+
         /// <summary>
         /// Control Label42.
         /// </summary>
@@ -4241,7 +3505,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label42;
-        
+
         /// <summary>
         /// Control DropDownList13.
         /// </summary>
@@ -4250,7 +3514,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList13;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator44.
         /// </summary>
@@ -4259,7 +3523,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator44;
-        
+
         /// <summary>
         /// Control trLavadoActivos1.
         /// </summary>
@@ -4268,7 +3532,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trLavadoActivos1;
-        
+
         /// <summary>
         /// Control Label45.
         /// </summary>
@@ -4277,7 +3541,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label45;
-        
+
         /// <summary>
         /// Control CheckBoxList5.
         /// </summary>
@@ -4286,7 +3550,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList5;
-        
+
         /// <summary>
         /// Control Label46.
         /// </summary>
@@ -4295,7 +3559,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label46;
-        
+
         /// <summary>
         /// Control CheckBoxList6.
         /// </summary>
@@ -4304,7 +3568,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList6;
-        
+
         /// <summary>
         /// Control Label1.
         /// </summary>
@@ -4313,7 +3577,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// Control TextBox8.
         /// </summary>
@@ -4322,7 +3586,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox8;
-        
+
         /// <summary>
         /// Control Label187.
         /// </summary>
@@ -4331,7 +3595,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label187;
-        
+
         /// <summary>
         /// Control TextBox9.
         /// </summary>
@@ -4340,7 +3604,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox9;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator9.
         /// </summary>
@@ -4349,7 +3613,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
-        
+
         /// <summary>
         /// Control Label7.
         /// </summary>
@@ -4358,7 +3622,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label7;
-        
+
         /// <summary>
         /// Control TextBox1.
         /// </summary>
@@ -4367,7 +3631,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator10.
         /// </summary>
@@ -4376,34 +3640,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
-        
-        /// <summary>
-        /// Control Label101.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label101;
-        
-        /// <summary>
-        /// Control cbEstadoRiesgo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cbEstadoRiesgo;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator19.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
-        
+
         /// <summary>
         /// Control Label8.
         /// </summary>
@@ -4412,7 +3649,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label8;
-        
+
         /// <summary>
         /// Control checkBoxPanel3.
         /// </summary>
@@ -4421,7 +3658,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel checkBoxPanel3;
-        
+
         /// <summary>
         /// Control CheckBoxList1.
         /// </summary>
@@ -4430,7 +3667,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
-        
+
         /// <summary>
         /// Control Label10.
         /// </summary>
@@ -4439,7 +3676,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label10;
-        
+
         /// <summary>
         /// Control checkBoxPanel4.
         /// </summary>
@@ -4448,7 +3685,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel checkBoxPanel4;
-        
+
         /// <summary>
         /// Control CheckBoxList2.
         /// </summary>
@@ -4457,7 +3694,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList2;
-        
+
         /// <summary>
         /// Control Label5.
         /// </summary>
@@ -4466,7 +3703,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
-        
+
         /// <summary>
         /// Control TextBox20.
         /// </summary>
@@ -4475,7 +3712,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox20;
-        
+
         /// <summary>
         /// Control lblIdDependencia2.
         /// </summary>
@@ -4484,7 +3721,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdDependencia2;
-        
+
         /// <summary>
         /// Control imgDependencia2.
         /// </summary>
@@ -4493,7 +3730,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgDependencia2;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator7.
         /// </summary>
@@ -4502,7 +3739,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
-        
+
         /// <summary>
         /// Control popupDependencia2.
         /// </summary>
@@ -4511,7 +3748,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.PopupControlExtender popupDependencia2;
-        
+
         /// <summary>
         /// Control pnlDependencia2.
         /// </summary>
@@ -4520,7 +3757,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDependencia2;
-        
+
         /// <summary>
         /// Control btnClosepp2.
         /// </summary>
@@ -4529,7 +3766,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnClosepp2;
-        
+
         /// <summary>
         /// Control TreeView2.
         /// </summary>
@@ -4538,7 +3775,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TreeView TreeView2;
-        
+
         /// <summary>
         /// Control BtnOk2.
         /// </summary>
@@ -4547,7 +3784,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnOk2;
-        
+
         /// <summary>
         /// Control TabPanel11.
         /// </summary>
@@ -4556,7 +3793,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel11;
-        
+
         /// <summary>
         /// Control Label82.
         /// </summary>
@@ -4565,7 +3802,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label82;
-        
+
         /// <summary>
         /// Control Panel8.
         /// </summary>
@@ -4574,7 +3811,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel8;
-        
+
         /// <summary>
         /// Control CheckBoxList9.
         /// </summary>
@@ -4583,142 +3820,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList9;
-        
-        /// <summary>
-        /// Control btnEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEstado;
-        
-        /// <summary>
-        /// Control Label95.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label95;
-        
-        /// <summary>
-        /// Control txtResponsableT.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtResponsableT;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator20.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
-        
-        /// <summary>
-        /// Control lblIdDependencia5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIdDependencia5;
-        
-        /// <summary>
-        /// Control ImageButton20.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton20;
-        
-        /// <summary>
-        /// Control PopupControlExtender1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::AjaxControlToolkit.PopupControlExtender PopupControlExtender1;
-        
-        /// <summary>
-        /// Control Panel11.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel11;
-        
-        /// <summary>
-        /// Control Label97.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label97;
-        
-        /// <summary>
-        /// Control ImageButton21.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton21;
-        
-        /// <summary>
-        /// Control TreeView5.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView TreeView5;
-        
-        /// <summary>
-        /// Control Button2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
-        
-        /// <summary>
-        /// Control Label108.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label108;
-        
-        /// <summary>
-        /// Control TxtbJustificacionTratamiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtbJustificacionTratamiento;
-        
-        /// <summary>
-        /// Control ReqVltorJustificacionTratamiento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqVltorJustificacionTratamiento;
-        
+
         /// <summary>
         /// Control TabPanel14.
         /// </summary>
@@ -4727,52 +3829,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel TabPanel14;
-        
-        /// <summary>
-        /// Control Label104.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label104;
-        
-        /// <summary>
-        /// Control Seleccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Seleccion;
-        
-        /// <summary>
-        /// Control SeleccionaCalificacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList SeleccionaCalificacion;
-        
-        /// <summary>
-        /// Control PanelCalificacionCualitativa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelCalificacionCualitativa;
-        
-        /// <summary>
-        /// Control TblCC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable TblCC;
-        
+
         /// <summary>
         /// Control Label17.
         /// </summary>
@@ -4781,7 +3838,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label17;
-        
+
         /// <summary>
         /// Control Label29.
         /// </summary>
@@ -4790,7 +3847,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label29;
-        
+
         /// <summary>
         /// Control DropDownList45.
         /// </summary>
@@ -4799,7 +3856,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList45;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator15.
         /// </summary>
@@ -4808,7 +3865,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
-        
+
         /// <summary>
         /// Control Label12.
         /// </summary>
@@ -4817,7 +3874,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label12;
-        
+
         /// <summary>
         /// Control Label13.
         /// </summary>
@@ -4826,7 +3883,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label13;
-        
+
         /// <summary>
         /// Control Label31.
         /// </summary>
@@ -4835,7 +3892,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label31;
-        
+
         /// <summary>
         /// Control TextBox40.
         /// </summary>
@@ -4844,7 +3901,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox40;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator17.
         /// </summary>
@@ -4853,7 +3910,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator17;
-        
+
         /// <summary>
         /// Control Label145.
         /// </summary>
@@ -4862,7 +3919,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label145;
-        
+
         /// <summary>
         /// Control TextBox41.
         /// </summary>
@@ -4871,7 +3928,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox41;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator16.
         /// </summary>
@@ -4880,7 +3937,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
-        
+
         /// <summary>
         /// Control CompareValidator1.
         /// </summary>
@@ -4889,7 +3946,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
-        
+
         /// <summary>
         /// Control Label146.
         /// </summary>
@@ -4898,7 +3955,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label146;
-        
+
         /// <summary>
         /// Control trImgFrecuenciaIns.
         /// </summary>
@@ -4907,7 +3964,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trImgFrecuenciaIns;
-        
+
         /// <summary>
         /// Control lbhlTextImg.
         /// </summary>
@@ -4916,7 +3973,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbhlTextImg;
-        
+
         /// <summary>
         /// Control ImbViewJPGfrecuencia.
         /// </summary>
@@ -4925,7 +3982,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImbViewJPGfrecuencia;
-        
+
         /// <summary>
         /// Control Label30.
         /// </summary>
@@ -4934,7 +3991,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label30;
-        
+
         /// <summary>
         /// Control DropDownList46.
         /// </summary>
@@ -4943,7 +4000,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList46;
-        
+
         /// <summary>
         /// Control RequiredFieldValidator18.
         /// </summary>
@@ -4952,7 +4009,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
-        
+
         /// <summary>
         /// Control Label14.
         /// </summary>
@@ -4961,7 +4018,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label14;
-        
+
         /// <summary>
         /// Control Label177.
         /// </summary>
@@ -4970,7 +4027,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label177;
-        
+
         /// <summary>
         /// Control Label147.
         /// </summary>
@@ -4979,7 +4036,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label147;
-        
+
         /// <summary>
         /// Control TextBox42.
         /// </summary>
@@ -4988,7 +4045,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox42;
-        
+
         /// <summary>
         /// Control Label148.
         /// </summary>
@@ -4997,7 +4054,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label148;
-        
+
         /// <summary>
         /// Control TextBox43.
         /// </summary>
@@ -5006,7 +4063,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox43;
-        
+
         /// <summary>
         /// Control CompareValidator2.
         /// </summary>
@@ -5015,7 +4072,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator2;
-        
+
         /// <summary>
         /// Control trImgImpactoIns.
         /// </summary>
@@ -5024,7 +4081,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trImgImpactoIns;
-        
+
         /// <summary>
         /// Control Label91.
         /// </summary>
@@ -5033,7 +4090,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label91;
-        
+
         /// <summary>
         /// Control ImbViewJPGimpacto.
         /// </summary>
@@ -5042,7 +4099,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImbViewJPGimpacto;
-        
+
         /// <summary>
         /// Control Label21.
         /// </summary>
@@ -5051,7 +4108,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label21;
-        
+
         /// <summary>
         /// Control Panel1.
         /// </summary>
@@ -5060,7 +4117,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
-        
+
         /// <summary>
         /// Control Label174.
         /// </summary>
@@ -5069,151 +4126,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label174;
-        
-        /// <summary>
-        /// Control PanelCalificacionExperta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelCalificacionExperta;
-        
-        /// <summary>
-        /// Control TbCalificacionExperta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable TbCalificacionExperta;
-        
-        /// <summary>
-        /// Control Label115.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label115;
-        
-        /// <summary>
-        /// Control GvVariablesCategorias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvVariablesCategorias;
-        
-        /// <summary>
-        /// Control EtiquetaFrecuencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EtiquetaFrecuencia;
-        
-        /// <summary>
-        /// Control ResultadoFrecuencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ResultadoFrecuencia;
-        
-        /// <summary>
-        /// Control Label105.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label105;
-        
-        /// <summary>
-        /// Control GvVariablesCategoriasImpacto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvVariablesCategoriasImpacto;
-        
-        /// <summary>
-        /// Control ExcedeSuma.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ExcedeSuma;
-        
-        /// <summary>
-        /// Control EtiquetaImpacto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EtiquetaImpacto;
-        
-        /// <summary>
-        /// Control ResultadoDelImpacto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ResultadoDelImpacto;
-        
-        /// <summary>
-        /// Control ExpCalcular.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExpCalcular;
-        
-        /// <summary>
-        /// Control Label122.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label122;
-        
-        /// <summary>
-        /// Control lblFrecuenciaExperta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFrecuenciaExperta;
-        
-        /// <summary>
-        /// Control PanelVC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelVC;
-        
-        /// <summary>
-        /// Control CajaVariableCategoria.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CajaVariableCategoria;
-        
+
         /// <summary>
         /// Control ImageButton4.
         /// </summary>
@@ -5222,7 +4135,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton4;
-        
+
         /// <summary>
         /// Control ImageButton6.
         /// </summary>
@@ -5231,7 +4144,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton6;
-        
+
         /// <summary>
         /// Control mpeMsgBox.
         /// </summary>
@@ -5240,7 +4153,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpeMsgBox;
-        
+
         /// <summary>
         /// Control btndummy.
         /// </summary>
@@ -5249,7 +4162,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btndummy;
-        
+
         /// <summary>
         /// Control pnlMsgBox.
         /// </summary>
@@ -5258,7 +4171,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlMsgBox;
-        
+
         /// <summary>
         /// Control tdCaption.
         /// </summary>
@@ -5267,7 +4180,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableCell tdCaption;
-        
+
         /// <summary>
         /// Control lblCaption.
         /// </summary>
@@ -5276,7 +4189,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCaption;
-        
+
         /// <summary>
         /// Control imgInfo.
         /// </summary>
@@ -5285,7 +4198,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgInfo;
-        
+
         /// <summary>
         /// Control lblMsgBox.
         /// </summary>
@@ -5294,7 +4207,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsgBox;
-        
+
         /// <summary>
         /// Control btnAceptar.
         /// </summary>
@@ -5303,7 +4216,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptar;
-        
+
         /// <summary>
         /// Control mpeMsgBoxOkNo.
         /// </summary>
@@ -5312,7 +4225,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpeMsgBoxOkNo;
-        
+
         /// <summary>
         /// Control btndummyOkNo.
         /// </summary>
@@ -5321,7 +4234,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btndummyOkNo;
-        
+
         /// <summary>
         /// Control lbldummyOkNo.
         /// </summary>
@@ -5330,7 +4243,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbldummyOkNo;
-        
+
         /// <summary>
         /// Control pnlMsgBoxOkNo.
         /// </summary>
@@ -5339,7 +4252,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlMsgBoxOkNo;
-        
+
         /// <summary>
         /// Control tdCaptionOkNo.
         /// </summary>
@@ -5348,7 +4261,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableCell tdCaptionOkNo;
-        
+
         /// <summary>
         /// Control lblCaptionOkNo.
         /// </summary>
@@ -5357,7 +4270,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCaptionOkNo;
-        
+
         /// <summary>
         /// Control imgInfoOkNo.
         /// </summary>
@@ -5366,7 +4279,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgInfoOkNo;
-        
+
         /// <summary>
         /// Control lblMsgBoxOkNo.
         /// </summary>
@@ -5375,7 +4288,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsgBoxOkNo;
-        
+
         /// <summary>
         /// Control btnAceptarOkNo.
         /// </summary>
@@ -5384,7 +4297,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptarOkNo;
-        
+
         /// <summary>
         /// Control btnCancelarOkNo.
         /// </summary>
@@ -5393,7 +4306,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarOkNo;
-        
+
         /// <summary>
         /// Control mpeMsgBox1.
         /// </summary>
@@ -5402,7 +4315,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpeMsgBox1;
-        
+
         /// <summary>
         /// Control btndummy1.
         /// </summary>
@@ -5411,7 +4324,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btndummy1;
-        
+
         /// <summary>
         /// Control pnlMsgBox1.
         /// </summary>
@@ -5420,7 +4333,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlMsgBox1;
-        
+
         /// <summary>
         /// Control td1.
         /// </summary>
@@ -5429,7 +4342,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableCell td1;
-        
+
         /// <summary>
         /// Control Label86.
         /// </summary>
@@ -5438,7 +4351,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label86;
-        
+
         /// <summary>
         /// Control imgInfo1.
         /// </summary>
@@ -5447,7 +4360,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgInfo1;
-        
+
         /// <summary>
         /// Control lblMsgBox1.
         /// </summary>
@@ -5456,7 +4369,7 @@ namespace ListasSarlaft.UserControls.Riesgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMsgBox1;
-        
+
         /// <summary>
         /// Control btnAceptar1.
         /// </summary>

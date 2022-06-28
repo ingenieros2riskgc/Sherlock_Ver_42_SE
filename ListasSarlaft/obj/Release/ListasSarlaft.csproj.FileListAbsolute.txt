@@ -66,8 +66,6 @@ C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\S
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\DAL.pdb
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\DTO.pdb
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\DLL.pdb
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\AntiXSSLibrary.xml
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\HtmlSanitizationLibrary.xml
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Release\ListasSarlaft.csproj.AssemblyReference.cache
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Release\RdlCompile.cache
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Release\RdlCompile.compiled

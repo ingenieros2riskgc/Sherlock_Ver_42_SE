@@ -750,7 +750,6 @@
       <DependentUpon>dsRptPerfiles.xsd</DependentUpon>
     </None>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\Sherlock.pubxml" />
     <None Include="Properties\PublishProfiles\Sherlock3.5.0.pubxml" />

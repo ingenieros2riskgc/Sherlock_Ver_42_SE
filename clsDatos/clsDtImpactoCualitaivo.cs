@@ -135,23 +135,23 @@ namespace clsDatos
             return dtInformacion;
         }
 
-        public DataTable loadNombreImpCual()
-        {
-            DataTable dtInformacion = new DataTable();
-            clsDatabase cDatabase = new clsDatabase();
+        //public DataTable loadNombreImpCual()
+        //{
+        //    DataTable dtInformacion = new DataTable();
+        //    clsDatabase cDatabase = new clsDatabase();
 
-            try
-            {
-                cDatabase.conectar();
-                dtInformacion = cDatabase.ejecutarConsulta("select distinct Nombre from Riesgos.tblImpactoCualitativo");
-                cDatabase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDatabase.desconectar();
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
+        //    try
+        //    {
+        //        cDatabase.conectar();
+        //        dtInformacion = cDatabase.ejecutarConsulta("select distinct Nombre from Riesgos.tblImpactoCualitativo");
+        //        cDatabase.desconectar();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        cDatabase.desconectar();
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return dtInformacion;
+        //}
     }
 }

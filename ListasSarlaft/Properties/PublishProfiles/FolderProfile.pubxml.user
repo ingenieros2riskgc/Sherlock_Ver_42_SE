@@ -4,12 +4,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\Administrador\Desktop\publicacion se 9 de junio</_PublishTargetUrl>
-    <History>True|2022-06-09T15:33:43.4778005Z;</History>
+    <_PublishTargetUrl>C:\Users\Administrador\Desktop\publicacion SE 28 junio</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Archivos/Error/Error.txt">
-      <publishTime>06/09/2022 16:24:31</publishTime>
+      <publishTime>06/23/2022 15:13:22</publishTime>
     </File>
     <File Include="BDupdate/CambiosBD.xlsx">
       <publishTime>03/08/2022 14:57:43</publishTime>
@@ -24,16 +23,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/08/2022 14:57:44</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>06/09/2022 10:33:31</publishTime>
+      <publishTime>06/28/2022 10:33:53</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>06/09/2022 10:33:31</publishTime>
+      <publishTime>06/28/2022 10:33:53</publishTime>
     </File>
     <File Include="bin/DLL.dll">
-      <publishTime>06/09/2022 10:33:31</publishTime>
+      <publishTime>06/28/2022 10:33:54</publishTime>
     </File>
     <File Include="bin/DLL.pdb">
-      <publishTime>06/09/2022 10:33:31</publishTime>
+      <publishTime>06/28/2022 10:33:54</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>03/08/2022 14:57:44</publishTime>
@@ -57,13 +56,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/08/2022 14:57:45</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.dll">
-      <publishTime>06/10/2022 08:47:47</publishTime>
+      <publishTime>06/28/2022 10:33:59</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.pdb">
-      <publishTime>06/10/2022 08:47:47</publishTime>
+      <publishTime>06/28/2022 10:33:59</publishTime>
     </File>
     <File Include="bin/ListasSarlaft.XmlSerializers.dll">
-      <publishTime>06/10/2022 08:47:50</publishTime>
+      <publishTime>06/28/2022 10:34:00</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.Common.dll">
       <publishTime>03/08/2022 14:57:45</publishTime>
@@ -1869,7 +1868,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/08/2022 14:57:44</publishTime>
     </File>
     <File Include="UserControls/Eventos/Eventos.ascx">
-      <publishTime>03/08/2022 14:57:44</publishTime>
+      <publishTime>06/28/2022 08:53:36</publishTime>
     </File>
     <File Include="UserControls/Eventos/EventosVsUsuario.ascx">
       <publishTime>03/08/2022 14:57:44</publishTime>
@@ -2316,7 +2315,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/08/2022 14:57:44</publishTime>
     </File>
     <File Include="UserControls/Riesgos/CuadroMando/CuadroMando.ascx">
-      <publishTime>03/08/2022 14:57:44</publishTime>
+      <publishTime>06/28/2022 08:39:40</publishTime>
     </File>
     <File Include="UserControls/Riesgos/CuadroMando/Eventos/Eventos.ascx">
       <publishTime>03/08/2022 14:57:44</publishTime>
@@ -2448,7 +2447,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/08/2022 14:57:44</publishTime>
     </File>
     <File Include="UserControls/Riesgos/Riesgos.ascx">
-      <publishTime>06/01/2022 16:05:59</publishTime>
+      <publishTime>06/28/2022 08:39:41</publishTime>
     </File>
     <File Include="UserControls/Riesgos/Seguimiento/SeguimientoRiesgoIndicador.ascx">
       <publishTime>03/08/2022 14:57:44</publishTime>
@@ -2592,7 +2591,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/08/2022 14:57:44</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/09/2022 10:33:40</publishTime>
+      <publishTime>06/28/2022 10:34:01</publishTime>
     </File>
   </ItemGroup>
 </Project>

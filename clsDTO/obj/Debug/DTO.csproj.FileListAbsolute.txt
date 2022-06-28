@@ -8,4 +8,3 @@ C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDTO\bin\Debug\DT
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDTO\obj\Debug\DTO.dll
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDTO\obj\Debug\DTO.pdb
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\clsDTO\obj\Debug\DTO.csproj.AssemblyReference.cache

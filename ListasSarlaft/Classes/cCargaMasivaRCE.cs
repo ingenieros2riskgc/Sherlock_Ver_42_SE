@@ -10,7 +10,6 @@ using ListasSarlaft.Classes;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using ListasSarlaft.Classes.DTO.Riesgos.CargaMasiva;
 
 namespace ListasSarlaft.Classes
 {
@@ -22,7 +21,6 @@ namespace ListasSarlaft.Classes
         private Object thisLock = new Object();
         //private OleDbParameter[] parameters;
         //private OleDbParameter parameter;
-
 
         private string[] strMonths = new string[12] { "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" },
             strMeses = new string[12] { "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" };
@@ -49,41 +47,14 @@ namespace ListasSarlaft.Classes
             }
             return dtInformacion;
         }
-        public DataTable DataEventos()
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT [IdEvento],[FechaEvento],TRIM([CodigoEvento]),[IdRegion],[IdPais],[IdDepartamento],[IdCiudad],[IdOficinaSucursal]" +
-      ",[IdCadenaValor],[IdMacroproceso],[IdProceso],[IdSubProceso],[IdActividad],[ResponsableEvento]"+
-      ",[ProcesoInvolucrado],[AplicativoInvolucrado],[DescripcionEvento],[IdClaseEvento],[IdTipoPerdidaEvento]"+
-      ",[ServicioProductoAfectado],[FechaInicio],[HoraInicio],[FechaFinalizacion],[HoraFinalizacion],[FechaDescubrimiento]"+
-      ",[HoraDescubrimiento],[ResponsableContabilidad],[CuentaPUC],[CuentaOrden],[CuentaPerdida],[Moneda1]"+
-      ",[TasaCambio1],[ValorPesos1],[ValorRecuperadoTotal],[Moneda2],[TasaCambio2],[ValorPesos2],[ValorRecuperadoSeguro]"+
-      ",[ValorPesos3],[Observaciones],[FuenteRecuperacion],[DetalleUbicacion],[IdServicio]"+
-      ",[IdSubServicio],[IdCanal],[IdGeneraEvento],[IdFuncionario],[IdClase],[IdSubClase],[AfectaContinudad]"+
-      ",[IdEstado],[Recuperacion],[ValorRecuperacion],[IdEmpresa],[IdUsuario],[CuantiaPerdida],[GeneraEvento]"+
-      ",[IdLineaProceso],[IdSubLineaProceso],[MasLineas],[NomGeneradorEvento],[FechaContabilidad],[HoraContabilidad] "+
-  "FROM[Riesgos].[Eventos] "+
-"where IdCadenaValor is null");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
         public DataTable DataProcesosRiesgo()
         {
             DataTable dtInformacion = new DataTable();
 
             try
             {
+
+
                 cDataBase.conectar();
                 dtInformacion = cDataBase.ejecutarConsulta("SELECT [IdCadenaValor],[NombreCadenaValor],[IdMacroProceso],[MacroProceso],[IdProceso],[Proceso]" +
                 ",[IdSubproceso],[SubProceso],[IdActividad] ,[NombreActividad] FROM [Riesgos].[vwProcesosRiesgos]");
@@ -103,6 +74,8 @@ namespace ListasSarlaft.Classes
 
             try
             {
+
+
                 cDataBase.conectar();
                 dtInformacion = cDataBase.ejecutarConsulta("SELECT [IdClasificacionRiesgo] as 'Id Riesgo Global',[NombreClasificacionRiesgo] as 'Riesgo Global',[IdClasificacionGeneralRiesgo],[NombreClasificacionGeneralRiesgo]" +
                 ",[IdClasificacionParticularRiesgo],[NombreClasificacionParticularRiesgo] FROM [Riesgos].[vwClasificacionRiesgos]");
@@ -179,27 +152,6 @@ namespace ListasSarlaft.Classes
             }
             return dtInformacion;
         }
-
-        public DataTable DataExisteJerarquia(int idHijo)
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("select top 1 idHijo from [Parametrizacion].[JerarquiaOrganizacional] " +
-                " where idHijo = " + idHijo);
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
         public DataTable DataRiesgoAsociadoLA()
         {
             DataTable dtInformacion = new DataTable();
@@ -248,6 +200,8 @@ namespace ListasSarlaft.Classes
 
             try
             {
+
+
                 cDataBase.conectar();
                 dtInformacion = cDataBase.ejecutarConsulta("SELECT IdCausas, NombreCausas FROM Parametrizacion.Causas ");
                 cDataBase.desconectar();
@@ -308,6 +262,8 @@ namespace ListasSarlaft.Classes
 
             try
             {
+
+
                 cDataBase.conectar();
                 dtInformacion = cDataBase.ejecutarConsulta("SELECT IdTratamiento, NombreTratamiento FROM Parametrizacion.Tratamiento");
                 cDataBase.desconectar();
@@ -340,7 +296,7 @@ namespace ListasSarlaft.Classes
             }
             return dtInformacion;
         }
-        public DataTable DataImpacto() 
+        public DataTable DataImpacto()
         {
             DataTable dtInformacion = new DataTable();
 
@@ -360,216 +316,6 @@ namespace ListasSarlaft.Classes
             }
             return dtInformacion;
         }
-
-        // Yoendy
-        public DataTable DataEstado()
-        { 
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT PT.IdEstado, \n"
-           + "       PT.NombreEstado\n"
-           + "       FROM [Parametrizacion].[EstadosRiesgo] AS PT;");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-        public DataTable DataEstadoEventos()
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT PT.IdEstado, \n"
-           + "       PT.Descripcion\n"
-           + "       FROM [Eventos].[Estado] AS PT;");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-        public DataTable DataProcesos()
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT * FROM [Parametrizacion].[Procesos]");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataPerdida()
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT * FROM [Parametrizacion].[TipoPerdidaEvento] where Estado = 1");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataContinuidad()
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT * FROM [Parametrizacion].[Continuidad]");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataMoneda()
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT * FROM [Parametrizacion].[Moneda]");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataRecuperacion() 
-        {
-            DataTable dtInformacion = new DataTable();
-
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT * FROM [Parametrizacion].[Recuperacion]");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataClaseRiesgo()
-        {
-            DataTable dtInformacion = new DataTable();
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT IdClase, Descripcion FROM Eventos.Clase ORDER BY Descripcion");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataSubClaseRiesgo()
-        {
-            DataTable dtInformacion = new DataTable();
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT IdSubClase, SubDescripcion FROM Eventos.SubClase ORDER BY SubDescripcion");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataLineaOperativa()
-        {
-            DataTable dtInformacion = new DataTable();
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT IdLineaNegocio, Descripcion FROM Eventos.LineaNegocio ORDER BY Descripcion");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-        public DataTable DataSubLineaOperativa()
-        {
-            DataTable dtInformacion = new DataTable();
-            try
-            {
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta("SELECT IdSubLineaNegocio, SubDescripcion FROM Eventos.SubLineaNegocio  ORDER BY SubDescripcion");
-                cDataBase.desconectar();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
-
         public DataTable lastCod()
         {
             DataTable dtInformacion = new DataTable();
@@ -683,27 +429,6 @@ namespace ListasSarlaft.Classes
         {
             DataTable dtInformacion = new DataTable();
             string strRiesgo = "SELECT [CodigoEvento],[DescripcionEvento],[NomGeneradorEvento] FROM [Riesgos].[Eventos] where IdEvento > " + IdEvento;
-            try
-            {
-                lock (thisLock)
-                {
-                    cDataBase.conectar();
-                    dtInformacion = cDataBase.ejecutarConsulta(/*strConsultaModificacion + "; " +*/ strRiesgo);
-                    cDataBase.desconectar();
-                }
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-        public DataTable GridEventosMod(string IdEvento)
-        {
-            DataTable dtInformacion = new DataTable();
-            string strRiesgo = "SELECT [CodigoEvento],[DescripcionEvento],[NomGeneradorEvento] FROM [Riesgos].[Eventos] where IdEvento in (" + IdEvento;
             try
             {
                 lock (thisLock)
@@ -1089,7 +814,7 @@ namespace ListasSarlaft.Classes
             String IdRiesgoAsociadoOperativo, String ListaRiesgoAsociadoLA, String ListaFactorRiesgoLAFT,
             String Nombre, String Descripcion, String ListaCausas, String ListaConsecuencias, String IdResponsableRiesgo,
             String IdProbabilidad, String OcurrenciaEventoDesde, String OcurrenciaEventoHasta, String IdImpacto, String PerdidaEconomicaDesde,
-            String PerdidaEconomicaHasta, String ListaTratamiento, int IdUsuario, string fechaRegistro, string estado)
+            String PerdidaEconomicaHasta, String ListaTratamiento, int IdUsuario, string fechaRegistro)
         {
             #region Variables
             string strConsultaInsert = string.Empty, strCamposInsert = string.Empty, strValoresInsert = string.Empty;
@@ -1110,15 +835,15 @@ namespace ListasSarlaft.Classes
                     "IdSubProceso, IdActividad, IdClasificacionRiesgo, IdClasificacionGeneralRiesgo, IdClasificacionParticularRiesgo, IdFactorRiesgoOperativo, " +
                     "IdTipoRiesgoOperativo, IdTipoEventoOperativo, IdRiesgoAsociadoOperativo, ListaRiesgoAsociadoLA, ListaFactorRiesgoLAFT, " +
                     "Codigo, Nombre, Descripcion, ListaCausas, ListaConsecuencias, IdResponsableRiesgo, IdProbabilidad, IdProbabilidadResidual, OcurrenciaEventoDesde, " +
-                    "OcurrenciaEventoHasta, IdImpacto, IdImpactoResidual, PerdidaEconomicaDesde, PerdidaEconomicaHasta, Anulado, FechaRegistro, IdUsuario, ListaTratamiento, estado)";
+                    "OcurrenciaEventoHasta, IdImpacto, IdImpactoResidual, PerdidaEconomicaDesde, PerdidaEconomicaHasta, Anulado, FechaRegistro, IdUsuario, ListaTratamiento)";
                 strValoresInsert = "";
-                strConsultaInsert = string.Format("INSERT INTO Riesgos.Riesgo {0}  VALUES ({2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},N'{19}',N'{20}',{21},N'{22}',N'{23}',N'{24}',N'{25}',{26},{27},{28},N'{29}',N'{30}',{31},{32},N'{33}',N'{34}',0,GETDATE(),{35},N'{36}', {37})",
+                strConsultaInsert = string.Format("INSERT INTO Riesgos.Riesgo {0}  VALUES ({2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},N'{19}',N'{20}',{21},N'{22}',N'{23}',N'{24}',N'{25}',{26},{27},{28},N'{29}',N'{30}',{31},{32},N'{33}',N'{34}',0,GETDATE(),{35},N'{36}')",
                     strCamposInsert, strValoresInsert,
                     IdRegion, IdPais, IdDepartamento, IdCiudad, IdOficinaSucursal, IdCadenaValor, IdMacroproceso, IdProceso, IdSubProceso, IdActividad,
                     IdClasificacionRiesgo, IdClasificacionGeneralRiesgo, IdClasificacionParticularRiesgo, IdFactorRiesgoOperativo, IdTipoRiesgoOperativo,
                     IdTipoEventoOperativo, IdRiesgoAsociadoOperativo, ListaRiesgoAsociadoLA, ListaFactorRiesgoLAFT, strCodigoRiesgo, Nombre, Descripcion, ListaCausas,
                     ListaConsecuencias, IdResponsableRiesgo, IdProbabilidad, IdProbabilidad, OcurrenciaEventoDesde, OcurrenciaEventoHasta, IdImpacto, IdImpacto,
-                    PerdidaEconomicaDesde, PerdidaEconomicaHasta, IdUsuario, ListaTratamiento, estado);
+                    PerdidaEconomicaDesde, PerdidaEconomicaHasta, IdUsuario, ListaTratamiento);
                 #endregion Inserts
 
                 lock (thisLock)
@@ -1140,7 +865,7 @@ namespace ListasSarlaft.Classes
             String DescripcionEvento, String IdServicio, String IdSubServicio, String FechaInicio,
             String HoraInicio, String FechaFinalizacion, String HoraFinalizacion, String FechaDescubrimiento,
             String HoraDescubrimiento, String IdCanal, String IdGeneraEvento, String GeneraEvento,
-            String cuantiaperdida, String FechaEvento, String NomGeneradorEvento, int IdUsuario/*, string ImpactoCualitativo*/)
+            String cuantiaperdida, String FechaEvento, String NomGeneradorEvento, int IdUsuario)
         {
             #region Variables
 
@@ -1166,14 +891,8 @@ namespace ListasSarlaft.Classes
                 lock (thisLock)
                 {
                     strCodigoEvento = string.Format("(CASE WHEN (SELECT MAX(CAST(SUBSTRING(CodigoEvento, 3, 10)AS INT)) + 1 FROM Riesgos.Eventos WHERE CodigoEvento LIKE '{0}%')IS NULL THEN '{0}1' ELSE (SELECT '{0}'+ CAST ((SELECT MAX(CAST(SUBSTRING(CodigoEvento, 3, 10)AS INT)) + 1 FROM Riesgos.Eventos WHERE CodigoEvento LIKE '{0}%') AS NVARCHAR(50))) END )", strPrefixEvento);
-                    strCamposInsert = "(CodigoEvento, IdEmpresa, IdRegion, IdPais, IdDepartamento, IdCiudad, IdOficinaSucursal, DetalleUbicacion, DescripcionEvento, IdServicio, IdSubServicio, FechaInicio, HoraInicio, FechaFinalizacion, HoraFinalizacion, FechaDescubrimiento, HoraDescubrimiento, IdCanal, IdGeneraEvento, GeneraEvento, cuantiaperdida, FechaEvento, NomGeneradorEvento, IdUsuario" +
-                        /*",NombreImpactoCualitativo" +*/
-                        ")";
-                    strValoresInsert = "(" + strCodigoEvento + ",'" + IdEmpresa + "','" + IdRegion + "','" + IdPais + "','" + IdDepartamento + "','" + IdCiudad + "','" + IdOficinaSucursal + "','" + DetalleUbicacion + "','" + DescripcionEvento + "','" + IdServicio + "','" + IdSubServicio + "',CONVERT(datetime, '" + FechaInicio + "', 120),'" + HoraInicio + "',CONVERT(datetime,'" + FechaFinalizacion + "', 120),'"
-                                        + HoraFinalizacion + "',CONVERT(datetime, '" + FechaDescubrimiento + "', 120),'" + HoraDescubrimiento + "','" + IdCanal + "','" + IdGeneraEvento + "'," + NomGeneradorEvento + ",'" + cuantiaperdida + "',CONVERT(datetime, '" + FechaEvento + "', 120),'"
-                                       + GeneraEvento + "','" + IdUsuario + "'" +
-                                       //",'" + ImpactoCualitativo + "'" +
-                                       ")";
+                    strCamposInsert = "(CodigoEvento, IdEmpresa, IdRegion, IdPais, IdDepartamento, IdCiudad, IdOficinaSucursal, DetalleUbicacion, DescripcionEvento, IdServicio, IdSubServicio, FechaInicio, HoraInicio, FechaFinalizacion, HoraFinalizacion, FechaDescubrimiento, HoraDescubrimiento, IdCanal, IdGeneraEvento, GeneraEvento, cuantiaperdida, FechaEvento, NomGeneradorEvento, IdUsuario)";
+                    strValoresInsert = "(" + strCodigoEvento + ",'" + IdEmpresa + "','" + IdRegion + "','" + IdPais + "','" + IdDepartamento + "','" + IdCiudad + "','" + IdOficinaSucursal + "','" + DetalleUbicacion + "','" + DescripcionEvento + "','" + IdServicio + "','" + IdSubServicio + "','" + FechaInicio + "','" + HoraInicio + "','" + FechaFinalizacion + "','" + HoraFinalizacion + "', '" + FechaDescubrimiento + "','" + HoraDescubrimiento + "','" + IdCanal + "','" + IdGeneraEvento + "','" + GeneraEvento + "','" + cuantiaperdida + "','" + FechaEvento + "','" + NomGeneradorEvento + "','" + IdUsuario + "')";
                     strConsulta = string.Format("INSERT INTO Riesgos.Eventos {0} VALUES {1}", strCamposInsert, strValoresInsert);
 
                     cDataBase.conectar();
@@ -1189,7 +908,6 @@ namespace ListasSarlaft.Classes
                 throw new Exception(ex.Message);
             }
         }
-
 
         public void registrarControl(string NombreControl, string DescripcionControl,
             string ObjetivoControl, string Responsable, string IdPeriodicidad, string IdTest,
@@ -1274,31 +992,6 @@ namespace ListasSarlaft.Classes
             }
             return dtInformacion;
         }
-
-        public DataTable ultimoCodigoEvento(string strPrefixEvento)
-        {
-            DataTable dtInformacion = new DataTable();
-            string strCodigoEvento = string.Empty, strConsulta = string.Empty;
-            try
-            {
-                #region Traer Valor Evento
-                strConsulta = string.Format("select (CASE WHEN (SELECT MAX(CAST(SUBSTRING(CodigoEvento, 3, 10)AS INT))  FROM Riesgos.Eventos WHERE CodigoEvento LIKE '{0}%')IS NULL THEN '{0}' ELSE (SELECT '{0}'+ CAST ((SELECT MAX(CAST(SUBSTRING(CodigoEvento, 3, 10)AS INT))  FROM Riesgos.Eventos WHERE CodigoEvento LIKE '{0}%') AS NVARCHAR(50))) END )", strPrefixEvento);
-                cDataBase.conectar();
-                dtInformacion = cDataBase.ejecutarConsulta(strConsulta);
-                cDataBase.desconectar();
-
-                //CodigoEvento = strPrefixEvento + dtInformacion.Rows[0]["LastEvent"].ToString().Trim();
-                #endregion Traer Valor Evento
-            }
-            catch (Exception ex)
-            {
-                cDataBase.desconectar();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-            return dtInformacion;
-        }
-
         public DataTable LastCodRiesgovsControl()
         {
             DataTable dtInformacion = new DataTable();
@@ -1422,7 +1115,7 @@ namespace ListasSarlaft.Classes
 
             return bInfo;
         }
-        public byte[] mtdDescargarPlantillaEventosCreacion()
+        public byte[] mtdDescargarPlantillaEventos()
         {
             #region Vars
             byte[] bInfo = null;
@@ -1431,55 +1124,7 @@ namespace ListasSarlaft.Classes
 
             try
             {
-                strConsulta = string.Format("SELECT [UrlArchivo],[ArchivoExcel] FROM [Riesgos].[RiesgosPlantillaMasiva] where [IdArchivos] = 11");
-
-                cDataBase.mtdConectarSql();
-                bInfo = cDataBase.mtdEjecutarConsultaSqlPdf(strConsulta);
-                cDataBase.mtdDesconectarSql();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.mtdDesconectarSql();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-
-            return bInfo;
-        }
-        public byte[] mtdDescargarPlantillaEventosDatosComplementarios()
-        {
-            #region Vars
-            byte[] bInfo = null;
-            string strConsulta = string.Empty;
-            #endregion Vars
-
-            try
-            {
-                strConsulta = string.Format("SELECT [UrlArchivo],[ArchivoExcel] FROM [Riesgos].[RiesgosPlantillaMasiva] where [IdArchivos] = 13");
-
-                cDataBase.mtdConectarSql();
-                bInfo = cDataBase.mtdEjecutarConsultaSqlPdf(strConsulta);
-                cDataBase.mtdDesconectarSql();
-            }
-            catch (Exception ex)
-            {
-                cDataBase.mtdDesconectarSql();
-                cError.errorMessage(ex.Message + ", " + ex.StackTrace);
-                throw new Exception(ex.Message);
-            }
-
-            return bInfo;
-        }
-        public byte[] mtdDescargarPlantillaEventosConDatosComplementarios()
-        {
-            #region Vars
-            byte[] bInfo = null;
-            string strConsulta = string.Empty;
-            #endregion Vars
-
-            try
-            {
-                strConsulta = string.Format("SELECT [UrlArchivo],[ArchivoExcel] FROM [Riesgos].[RiesgosPlantillaMasiva] where [IdArchivos] = 14");
+                strConsulta = string.Format("SELECT [UrlArchivo],[ArchivoExcel] FROM [Riesgos].[RiesgosPlantillaMasiva] where [IdArchivos] = 6");
 
                 cDataBase.mtdConectarSql();
                 bInfo = cDataBase.mtdEjecutarConsultaSqlPdf(strConsulta);
@@ -1630,108 +1275,7 @@ namespace ListasSarlaft.Classes
             {
                 throw ex;
             }
-        }
 
-        public int cargaEvento(string nombreSp, string parametro, string @path_local)
-        {
-            int resultado = 0;
-            List<SqlParameter> parametros = new List<SqlParameter>()
-                {
-                    new SqlParameter() { ParameterName = "@archivo_carga", SqlDbType = SqlDbType.VarChar, Value = parametro },
-                    new SqlParameter() { ParameterName = "@path_local", SqlDbType = SqlDbType.VarChar, Value = @path_local },
-                };
-
-
-            resultado = cDataBase.ejecutarQueryReturn("EXEC " + nombreSp + " '" + parametro + "','" + @path_local + "'");
-            
-            ////Autenticacion mismo servidor
-            //resultado = cDataBase.EjecutarSPParametros(nombreSp, parametros);
-
-            return resultado;
-        }
-        public void InsertEventoCompleto(clsDTOEventos objevento)
-        {
-            #region Variables
-            string strConsultaModificacion = string.Empty, strCamposModificacion = string.Empty;
-            string strConsultaInsertar = string.Empty, strCamposInsertar = string.Empty;
-            
-            #endregion Variables
-            try
-            {
-                #region Inserts
-
-                List<SqlParameter> parametros = new List<SqlParameter>()
-                {
-                    new SqlParameter() { ParameterName = "@strPrefixEvento ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strPrefixEvento },
-new SqlParameter() { ParameterName = "@IdEmpresa ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdEmpresa },
-new SqlParameter() { ParameterName = "@IdRegion ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdRegion },
-new SqlParameter() { ParameterName = "@IdPais ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdPais },
-new SqlParameter() { ParameterName = "@IdDepartamento ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdDepartamento },
-new SqlParameter() { ParameterName = "@IdCiudad ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdCiudad },
-new SqlParameter() { ParameterName = "@IdOficinaSucursal  ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdOficinaSucursal },
-new SqlParameter() { ParameterName = "@DetalleUbicacion ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strDetalleUbicacion },
-new SqlParameter() { ParameterName = "@DescripcionEvento ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strDescripcionEvento },
-new SqlParameter() { ParameterName = "@IdServicio ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdServicio },
-new SqlParameter() { ParameterName = "@IdSubServicio ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdSubServicio },
-new SqlParameter() { ParameterName = "@FechaInicio  ", SqlDbType = SqlDbType.DateTime, Value =  objevento.dtFechaInicio },
-new SqlParameter() { ParameterName = "@HoraInicio  ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strHoraInicio },
-new SqlParameter() { ParameterName = "@FechaFinalizacion ", SqlDbType = SqlDbType.DateTime, Value =  objevento.dtFechaFinalizacion },
-new SqlParameter() { ParameterName = "@HoraFinalizacion ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strHoraFinalizacion },
-new SqlParameter() { ParameterName = "@FechaDescubrimiento ", SqlDbType = SqlDbType.DateTime, Value =  objevento.dtFechaDescubrimiento },
-new SqlParameter() { ParameterName = "@HoraDescubrimiento", SqlDbType = SqlDbType.VarChar, Value =  objevento.strHoraDescubrimiento },
-new SqlParameter() { ParameterName = "@IdCanal  ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdCanal },
-new SqlParameter() { ParameterName = "@IdGeneraEvento ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdGeneraEvento },
-new SqlParameter() { ParameterName = "@GeneraEvento ", SqlDbType = SqlDbType.Int, Value =  objevento.intGeneraEvento },
-new SqlParameter() { ParameterName = "@NomGeneradorEvento", SqlDbType = SqlDbType.VarChar, Value =  objevento.strNomGeneradorEvento },
-new SqlParameter() { ParameterName = "@cuantiaperdida", SqlDbType = SqlDbType.VarChar, Value =  objevento.strCuantiaperdida },
-new SqlParameter() { ParameterName = "@idCadenaValor", SqlDbType = SqlDbType.Int, Value =  objevento.intIdCadenaValor },
-new SqlParameter() { ParameterName = "@idMacroProceso", SqlDbType = SqlDbType.Int, Value =  objevento.intIdMacroProceso },
-new SqlParameter() { ParameterName = "@idProceso", SqlDbType = SqlDbType.Int, Value =  objevento.intIdProceso },
-new SqlParameter() { ParameterName = "@idSubproceso ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdSubproceso },
-new SqlParameter() { ParameterName = "@idActividad ", SqlDbType = SqlDbType.VarChar, Value =  objevento.intIdActividad },
-new SqlParameter() { ParameterName = "@IdClase ", SqlDbType = SqlDbType.Int, Value =   objevento.intIdClase},
-new SqlParameter() { ParameterName = "@IdSubClase ", SqlDbType = SqlDbType.VarChar, Value =  objevento.intIdSubClase },
-new SqlParameter() { ParameterName = "@IdTipoPerdidaEvento ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdTipoPerdidaEvento },
-new SqlParameter() { ParameterName = "@IdLineaProceso ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdLineaProceso },
-new SqlParameter() { ParameterName = "@IdSubLineaProceso ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdSubLineaProceso },
-new SqlParameter() { ParameterName = "@AfectaContinudad", SqlDbType = SqlDbType.Bit, Value =  objevento.intAfectaContinudad },
-new SqlParameter() { ParameterName = "@IdEstado ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdEstado },
-new SqlParameter() { ParameterName = "@Observaciones ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strObservaciones },
-new SqlParameter() { ParameterName = "@CuentaPUC", SqlDbType = SqlDbType.VarChar, Value =  objevento.strCuentaPUC },
-new SqlParameter() { ParameterName = "@CuentaOrden", SqlDbType = SqlDbType.VarChar, Value =  objevento.strCuentaOrden },
-new SqlParameter() { ParameterName = "@TasaCambio1 ", SqlDbType = SqlDbType.VarChar, Value = objevento.strTasaCambio1 },
-new SqlParameter() { ParameterName = "@ValorPesos1", SqlDbType = SqlDbType.VarChar, Value =  objevento.strValorPesos1 },
-new SqlParameter() { ParameterName = "@ValorRecuperadoTotal", SqlDbType = SqlDbType.VarChar, Value = objevento.strValorRecuperadoTotal },
-new SqlParameter() { ParameterName = "@Moneda2 ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strMoneda2 },
-new SqlParameter() { ParameterName = "@TasaCambio2  ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strTasaCambio2 },
-new SqlParameter() { ParameterName = "@ValorPesos2", SqlDbType = SqlDbType.VarChar, Value =  objevento.strValorPesos2 },
-new SqlParameter() { ParameterName = "@Recuperacion", SqlDbType = SqlDbType.VarChar, Value =  objevento.intRecuperacion },
-new SqlParameter() { ParameterName = "@FechaContabilidad ", SqlDbType = SqlDbType.DateTime, Value =  objevento.dtFechaContabilidad },
-new SqlParameter() { ParameterName = "@HoraContabilidad ", SqlDbType = SqlDbType.VarChar, Value =  objevento.strHoraContabilidad },
-new SqlParameter() { ParameterName = "@IdUsuario ", SqlDbType = SqlDbType.Int, Value =  objevento.intIdUsuario },
-new SqlParameter() { ParameterName = "@fechaEvento ", SqlDbType = SqlDbType.DateTime, Value =  objevento.dtfechaEvento },
-new SqlParameter() { ParameterName = "@ImpactoCualitativo ", SqlDbType = SqlDbType.NVarChar, Value =  objevento.strImpactoCualitativo },
-
-new SqlParameter() { ParameterName = "@FechaRecuperacion", SqlDbType = SqlDbType.DateTime, Value =  objevento.dtFechaRecuperacion },
-new SqlParameter() { ParameterName = "@HoraRecuperacion", SqlDbType = SqlDbType.VarChar, Value =  objevento.strHoraRecuperacion },
-new SqlParameter() { ParameterName = "@CuantiaRecuperacion", SqlDbType = SqlDbType.VarChar, Value =  objevento.strCuantiaRecup },
-new SqlParameter() { ParameterName = "@CuantiaOtraRecuperacion", SqlDbType = SqlDbType.VarChar, Value =  objevento.strCuantiaOtraRecup },
-new SqlParameter() { ParameterName = "@CuantiaNeta", SqlDbType = SqlDbType.VarChar, Value =  objevento.strCuantiaNeta },
-                };
-                //int scope = cDataBase.EjecutarSPParametrosReturnInteger("[Riesgos].[ControlInsertarActualizar]", parametros);
-                cDataBase.EjecutarSPParametrosSinRetorno("[Eventos].[ev_RegistrarEventoCompleto]", parametros);
-                //return scope;
-                #endregion Inserts
-            }
-            catch (Exception ex)
-            {
-                cError.errorMessage(ex.Message);
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                cDataBase.desconectar();
-            }
         }
     }
 }

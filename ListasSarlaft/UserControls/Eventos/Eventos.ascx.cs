@@ -1,41 +1,40 @@
-﻿using clsDatos;
-using ListasSarlaft.Classes;
-using Microsoft.Security.Application;
-using System;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.IO;
-using System.Net.Mail;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
-using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
+using System.Data;
+using System.Data.SqlClient;
+using ListasSarlaft.Classes;
+using System.IO;
+using Microsoft.Security.Application;
+using System.Configuration;
 
 namespace ListasSarlaft.UserControls.Eventos
 {
     public partial class Eventos : System.Web.UI.UserControl
     {
         #region Variables Globales
-        private string IdFormulario = "5019";
-        private string IdFormularioCrearevento = "5011";
-        private string IdFormularioDatosComple = "5012";
-        private string IdFormularioContabiliza = "5013";
-        private string IdFormularioNohuboevent = "5014";
-
+        string IdFormulario = "5019";
+        string IdFormularioCrearevento = "5011";
+        string IdFormularioDatosComple = "5012";
+        string IdFormularioContabiliza = "5013";
+        string IdFormularioNohuboevent = "5014";
         //string HayResponsableNotificacion = string.Empty;
 
-        private string FechaFin = string.Empty;
-        private string NombreResponsable = string.Empty;
-        private string personalizado = string.Empty;
-        private int cantEventosMaximos = 0;
-        private int cantEventosFrecuenciaExisten = 0;
-        private string strCodigoNHEvento = string.Empty, strCodigoEvento = string.Empty;
-        private cRiesgo cRiesgo = new cRiesgo();
-        private cEvento cEvento = new cEvento();
-        private cControl cControl = new cControl();
-        private cCuenta cCuenta = new cCuenta();
-        clsDtImpactoCualitativo clsDt = new clsDtImpactoCualitativo();
+        string FechaFin = string.Empty;
+        string NombreResponsable = string.Empty;
+        string strCodigoNHEvento = string.Empty, strCodigoEvento = string.Empty;
+
+        cRiesgo cRiesgo = new cRiesgo();
+        cEvento cEvento = new cEvento();
+        cControl cControl = new cControl();
+        cCuenta cCuenta = new cCuenta();
 
         //private static int LastInsertId;
         private static int LastInsertIdCE;
@@ -147,21 +146,6 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        private int idEventoActual;
-        private int IdEventoActual
-        {
-            get
-            {
-                idEventoActual = (int)ViewState["idEventoActual"];
-                return idEventoActual;
-            }
-            set
-            {
-                idEventoActual = value;
-                ViewState["idEventoActual"] = idEventoActual;
-            }
-        }
-
         private DataTable infoGridArchivoEvento;
         private DataTable InfoGridArchivoEvento
         {
@@ -222,37 +206,6 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        private DataTable infoGridEventosAsociados;
-        private DataTable InfoGridEventosAsociados
-        {
-            get
-            {
-                infoGridEventosAsociados = (DataTable)ViewState["infoGridEventosAsociados"];
-                return infoGridEventosAsociados;
-            }
-            set
-            {
-                infoGridEventosAsociados = value;
-                ViewState["infoGridEventosAsociados"] = infoGridEventosAsociados;
-            }
-        }
-
-        private DataTable infoGridEventoAsociado;
-        private DataTable InfoGridEventoAsociado
-        {
-            get
-            {
-                infoGridEventoAsociado = (DataTable)ViewState["infoGridEventoAsociado"];
-                return infoGridEventoAsociado;
-            }
-            set
-            {
-                infoGridEventoAsociado = value;
-                ViewState["infoGridEventoAsociado"] = infoGridEventoAsociado;
-            }
-        }
-
-
         private int rowGridEventos;
         private int RowGridEventos
         {
@@ -265,36 +218,6 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 rowGridEventos = value;
                 ViewState["rowGridEventos"] = rowGridEventos;
-            }
-        }
-
-        private int rowGridEventosAsociar;
-        private int RowGridEventosAsociar
-        {
-            get
-            {
-                rowGridEventosAsociar = (int)ViewState["rowGridEventosAsociar"];
-                return rowGridEventosAsociar;
-            }
-            set
-            {
-                rowGridEventosAsociar = value;
-                ViewState["rowGridEventosAsociar"] = rowGridEventosAsociar;
-            }
-        }
-
-        private int transaccion;
-        private int Transaccion
-        {
-            get
-            {
-                transaccion = (int)ViewState["transaccion"];
-                return transaccion;
-            }
-            set
-            {
-                transaccion = value;
-                ViewState["transaccion"] = transaccion;
             }
         }
 
@@ -343,36 +266,6 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        private int pagIndexInfoGridEventosAsociar;
-        private int PagIndexInfoGridEventosAsociar
-        {
-            get
-            {
-                pagIndexInfoGridEventosAsociar = (int)ViewState["pagIndexInfoGridEventosAsociar"];
-                return pagIndexInfoGridEventosAsociar;
-            }
-            set
-            {
-                pagIndexInfoGridEventosAsociar = value;
-                ViewState["pagIndexInfoGridEventosAsociar"] = pagIndexInfoGridEventosAsociar;
-            }
-        }
-
-        private int pagIndexInfoGridEventoAsociado;
-        private int PagIndexInfoGridEventoAsociado
-        {
-            get
-            {
-                pagIndexInfoGridEventoAsociado = (int)ViewState["pagIndexInfoGridEventoAsociado"];
-                return pagIndexInfoGridEventoAsociado;
-            }
-            set
-            {
-                pagIndexInfoGridEventoAsociado = value;
-                ViewState["pagIndexInfoGridEventoAsociado"] = pagIndexInfoGridEventoAsociado;
-            }
-        }
-
         private DataTable infoGridConsultarRiesgos;
         private DataTable InfoGridConsultarRiesgos
         {
@@ -385,21 +278,6 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 infoGridConsultarRiesgos = value;
                 ViewState["infoGridConsultarRiesgos"] = infoGridConsultarRiesgos;
-            }
-        }
-
-        private DataTable infoGridPlanesAsociados;
-        private DataTable InfoGridPlanesAsociados
-        {
-            get
-            {
-                infoGridPlanesAsociados = (DataTable)ViewState["infoGridPlanesAsociados"];
-                return infoGridPlanesAsociados;
-            }
-            set
-            {
-                infoGridPlanesAsociados = value;
-                ViewState["infoGridPlanesAsociados"] = infoGridPlanesAsociados;
             }
         }
 
@@ -450,125 +328,38 @@ namespace ListasSarlaft.UserControls.Eventos
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (cCuenta.permisosConsulta(IdFormulario) == "False")
+                Response.Redirect("~/Formularios/Sarlaft/Admin/HomeAdmin.aspx?Denegar=1");
+
             Page.Form.Attributes.Add("enctype", "multipart/form-data");
             ScriptManager scrtManager = ScriptManager.GetCurrent(this.Page);
             scrtManager.RegisterPostBackControl(ImageButton16);
-            scrtManager.RegisterPostBackControl(ddlImpCual);
             scrtManager.RegisterPostBackControl(GridView4);
-            scrtManager.RegisterPostBackControl(TreeView2);
-            //scrtManager.RegisterAsyncPostBackControl(TreeView2);
 
             if (!Page.IsPostBack)
             {
-                int? IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-                if (IdUsuario == 0)
-                {
-                    IdUsuario = null;
-                }
-                if (string.IsNullOrEmpty(IdUsuario.ToString().Trim()))
-                {
-                    Response.Redirect("~/Formularios/Sarlaft/Admin/HomeAdmin.aspx?Denegar=1");
-                }
-                else
-                {
-                    if (cCuenta.permisosConsulta(IdFormulario) == "NOPERMISO")
-                    {
-                        Response.Redirect("~/Formularios/Sarlaft/Admin/HomeAdmin.aspx?NP=2");
-                    }
-                    resetValuesCamposEventos();
-                    TabContainerEventos.ActiveTabIndex = 0;
-                    inicializarValores();
-                    loadDDLRegion();
-                    loadDDLCadenaValor();
-                    loadDDLTipoPerdidaEvento();
-                    ValidarObligatoriedadDatosContables();
-                    loadDDLTipoRecursoPlanAccion();
-                    loadDDLEstadoPlanAccion();
-                    PopulateTreeView();
-                    loadDDLServicio();
-                    loadDDLClaseRiesgo();
-                    loadDDLEstado();
-                    loadDDLCanal();
-                    loadDDLGenerador();
-                    loadDDLLineaNegocio();
-                    mtdLoadDDLEmpresa();
-                    loadDDLMailEvent();
-                    loadDDLClasificacion();
-                    //mtdLoadGridAudEventoRiesgo();
-                    //mtdLoadInfoAudEventoRiesgo();
-                    //loadGridEventos();
-                    //loadInfoEventosvsUsuario();
-                    int trans = 10;
-                    string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                }
-            }
-        }
-
-        private void ValidarObligatoriedadDatosContables()
-        {
-            if (DropDownList8.SelectedValue == "1")
-            {
-                RequiredFieldValidator33.ValidationGroup = "Addne_2";
-                RequiredFieldValidator17.ValidationGroup = "Addne_2";
-                RequiredFieldValidator32.ValidationGroup = "Addne_2";
-                RequiredFieldValidator20.ValidationGroup = "Addne_2";
-                RequiredFieldValidator18.ValidationGroup = "Addne_2";
-                RequiredFieldValidator22.ValidationGroup = "Addne_2";
-                RequiredFieldValidator25.ValidationGroup = "Addne_2";
-                RequiredFieldValidator19.ValidationGroup = "Addne_2";
-                RequiredFieldValidator27.ValidationGroup = "Addne_2";
-                RequiredFieldValidator30.ValidationGroup = "Addne_2";
-                RequiredFieldValidator32.ValidationGroup = "Addne_2";
-                RequiredFieldValidator34.ValidationGroup = "Addne_2";
-                RequiredFieldValidator35.ValidationGroup = "Addne_2";
-                RequiredFieldValidator36.ValidationGroup = "Addne_2";
-                RequiredFieldValidator33.Visible = true;
-                RequiredFieldValidator17.Visible = true;
-                RequiredFieldValidator32.Visible = true;
-                RequiredFieldValidator20.Visible = true;
-                RequiredFieldValidator18.Visible = true;
-                RequiredFieldValidator22.Visible = true;
-                RequiredFieldValidator25.Visible = true;
-                RequiredFieldValidator19.Visible = true;
-                RequiredFieldValidator27.Visible = true;
-                RequiredFieldValidator30.Visible = true;
-                RequiredFieldValidator32.Visible = true;
-                RequiredFieldValidator34.Visible = true;
-                RequiredFieldValidator35.Visible = true;
-                RequiredFieldValidator36.Visible = true;
-            }
-            else
-            {
-                RequiredFieldValidator33.ValidationGroup = null;
-                RequiredFieldValidator17.ValidationGroup = null;
-                RequiredFieldValidator20.ValidationGroup = null;
-                RequiredFieldValidator18.ValidationGroup = null;
-                RequiredFieldValidator32.ValidationGroup = null;
-                RequiredFieldValidator62.ValidationGroup = null;
-                RequiredFieldValidator22.ValidationGroup = null;
-                RequiredFieldValidator25.ValidationGroup = null;
-                RequiredFieldValidator19.ValidationGroup = null;
-                RequiredFieldValidator27.ValidationGroup = null;
-                RequiredFieldValidator30.ValidationGroup = null;
-                RequiredFieldValidator32.ValidationGroup = null;
-                RequiredFieldValidator34.ValidationGroup = null;
-                RequiredFieldValidator35.ValidationGroup = null;
-                RequiredFieldValidator36.ValidationGroup = null;
-                RequiredFieldValidator33.Visible = false;
-                RequiredFieldValidator17.Visible = false;
-                RequiredFieldValidator32.Visible = false;
-                RequiredFieldValidator20.Visible = false;
-                RequiredFieldValidator18.Visible = false;
-                RequiredFieldValidator22.Visible = false;
-                RequiredFieldValidator25.Visible = false;
-                RequiredFieldValidator19.Visible = false;
-                RequiredFieldValidator27.Visible = false;
-                RequiredFieldValidator30.Visible = false;
-                RequiredFieldValidator32.Visible = false;
-                RequiredFieldValidator34.Visible = false;
-                RequiredFieldValidator35.Visible = false;
-                RequiredFieldValidator36.Visible = false;
+                resetValuesCamposEventos();
+                TabContainerEventos.ActiveTabIndex = 0;
+                inicializarValores();
+                loadDDLRegion();
+                loadDDLCadenaValor();
+                loadDDLTipoPerdidaEvento();
+                loadDDLTipoRecursoPlanAccion();
+                loadDDLEstadoPlanAccion();
+                loadGridEventos();
+                PopulateTreeView();
+                loadDDLServicio();
+                loadDDLClaseRiesgo();
+                loadDDLEstado();
+                loadDDLCanal();
+                loadDDLGenerador();
+                loadDDLLineaNegocio();
+                mtdLoadDDLEmpresa();
+                loadDDLMailEvent();
+                //mtdLoadGridAudEventoRiesgo();
+                //mtdLoadInfoAudEventoRiesgo();
+                loadInfoEventosvsUsuario();
+                GridView1.Visible = false;
             }
         }
 
@@ -600,22 +391,6 @@ namespace ListasSarlaft.UserControls.Eventos
                 infoGridAudEventoRiesgo = value;
                 ViewState["infoGridAudEventoRiesgo"] = infoGridAudEventoRiesgo;
             }
-        }
-
-        private void mtdCargaImpCual()
-        {
-            DataTable dtInfo = new DataTable();
-
-            dtInfo = clsDt.loadNombreImpCual();
-
-            for (int i = 0; i < dtInfo.Rows.Count; i++)
-            {
-                ddlImpCual.Items.Insert(i, new ListItem(dtInfo.Rows[i]["Nombre"].ToString().Trim()));
-            }
-        }
-
-        protected void ddlImpCual_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
 
         private void mtdLoadGridAudEventoRiesgo()
@@ -678,7 +453,7 @@ namespace ListasSarlaft.UserControls.Eventos
                 case "Desasociar":
                     try
                     {
-                        lblMsgBoxOkNo.Text = "¿Desea eliminar la información de la Base de Datos?";
+                        lblMsgBoxOkNo.Text = "Desea eliminar la información de la Base de Datos?";
                         mpeMsgBoxOkNo.Show();
                     }
                     catch (Exception ex)
@@ -704,32 +479,16 @@ namespace ListasSarlaft.UserControls.Eventos
                     mtdLoadGridAudEventoRiesgo();
                     mtdLoadInfoAudEventoRiesgo();
                     TBoxJustificacion.Text = string.Empty;
-                    omb.ShowMessage("Desasociación de Riesgo a Evento realizada correctamente!", 3, "Atención");
+                    Mensaje("Desasociación de Riesgo a Evento correctamente");
                 }
                 else
-                {
                     Mensaje(strMessage);
-                }
             }
             catch (Exception ex)
             {
                 Mensaje("Error al eliminar la información. " + ex.Message);
             }
-        }
 
-        protected void btnAceptarOkNo1_Click(object sender, EventArgs e)
-        {
-            switch (lbldummyOkNo.Text.Trim())
-            {
-                case "Eventos":
-                    try
-                    {
-                        //Mensaje("Evento asociado correctamente" + "<a style='font-weight: bold;color: #3a4ee0;'></a>"); 
-                        break;
-                    }
-                    catch { break; }
-
-            }
         }
 
 
@@ -802,21 +561,13 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             TextBox34.Text = TreeViewlast.SelectedNode.Text;
             lblIdDependencia1.Text = TreeViewlast.SelectedNode.Value;
+
         }
 
         protected void TreeView2_SelectedNodeChanged(object sender, EventArgs e)
         {
             TextBox33.Text = TreeView2.SelectedNode.Text.Trim();
             lblIdDependencia2.Text = TreeView2.SelectedNode.Value;
-            pnlDependencia2.Style["display"] = "none!important";
-            pnlDependencia2.Style["visibility"] = "hidden!important";
-
-
-            //string script = @"<script type='text/javascript'>
-            //      $find('this.popup3').hidePopup(); return false;
-            //  </script>";
-
-            //ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
         }
 
         protected void TreeView3_SelectedNodeChanged(object sender, EventArgs e)
@@ -830,16 +581,9 @@ namespace ListasSarlaft.UserControls.Eventos
             TextBox51.Text = TreeView4.SelectedNode.Text.Trim();
             lblIdDependencia4.Text = TreeView4.SelectedNode.Value;
         }
-
-        protected void TreeView2_Click(object sender, EventArgs e)
-        {
-            string valor = string.Empty;
-        }
-
         #endregion Treeview
 
         #region Load DDL
-
         private void loadDDLTipoRecursoPlanAccion()
         {
             try
@@ -1115,7 +859,7 @@ namespace ListasSarlaft.UserControls.Eventos
         }
 
         private void loadDDLCadenaValor()
-        {//yoendy llena combo Cadena valor
+        {
             try
             {
                 DataTable dtInfo = new DataTable();
@@ -1124,8 +868,6 @@ namespace ListasSarlaft.UserControls.Eventos
                 {
                     DropDownList67.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreCadenaValor"].ToString().Trim(), dtInfo.Rows[i]["IdCadenaValor"].ToString()));
                     DropDownList19.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreCadenaValor"].ToString().Trim(), dtInfo.Rows[i]["IdCadenaValor"].ToString()));
-                    cbCadenaValor.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreCadenaValor"].ToString().Trim(), dtInfo.Rows[i]["IdCadenaValor"].ToString()));
-                    DDLCadenaValor.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreCadenaValor"].ToString().Trim(), dtInfo.Rows[i]["IdCadenaValor"].ToString()));
                 }
             }
             catch (Exception ex)
@@ -1133,43 +875,6 @@ namespace ListasSarlaft.UserControls.Eventos
                 Mensaje("Error al cargar cadena valor. " + ex.Message);
             }
         }
-
-        private void cargaCadenaValor()
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadDDLCadenaValor();
-
-                for (int i = 0; i < dtInfo.Rows.Count; i++)
-                {
-                    //cbCadenaValor.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreCadenaValor"].ToString().Trim(), dtInfo.Rows[i]["IdCadenaValor"].ToString()));                  
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje("Error al cargar cadena valor. " + ex.Message);
-            }
-        }
-
-        private void resetCombos()
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadDDLCadenaValor();
-                limpiaCombos();
-                for (int i = 0; i < dtInfo.Rows.Count; i++)
-                {
-                    cbCadenaValor.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreCadenaValor"].ToString().Trim(), dtInfo.Rows[i]["IdCadenaValor"].ToString()));
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje("Error al resetear combos. " + ex.Message);
-            }
-        }
-
 
         private void loadDDLDepartamento(String IdPais, int Tipo)
         {
@@ -1220,7 +925,8 @@ namespace ListasSarlaft.UserControls.Eventos
             try
             {
                 DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadDDLOficinaSucursal(IdCiudad);
+                if (IdCiudad != "---")
+                    dtInfo = cRiesgo.loadDDLOficinaSucursal(IdCiudad);
                 switch (Tipo)
                 {
                     case 1:
@@ -1254,15 +960,6 @@ namespace ListasSarlaft.UserControls.Eventos
                             }
                         }
                         break;
-                    case 2:
-                        if (DDLCadenaValor.SelectedValue != "---")
-                        {
-                            for (int i = 0; i < dtInfo.Rows.Count; i++)
-                            {
-                                DDLMacroproceso.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreMacroproceso"].ToString().Trim(), dtInfo.Rows[i]["IdMacroproceso"].ToString()));
-                            }
-                        }
-                        break;
                     case 3:
                         if (DropDownList19.SelectedValue != "---")
                         {
@@ -1280,30 +977,6 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        private void cargaMacroproceso(String IdCadenaValor, int Tipo)
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadDDLMacroproceso(IdCadenaValor);
-
-                if (cbCadenaValor.SelectedValue != "---")
-                {
-                    for (int i = 0; i < dtInfo.Rows.Count; i++)
-                    {
-                        cbMacroproceso.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreMacroproceso"].ToString().Trim(), dtInfo.Rows[i]["IdMacroproceso"].ToString()));
-                    }
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                Mensaje("Error al cargar macroproceso. " + ex.Message);
-            }
-        }
-
-
         private void loadDDLProceso(String IdMacroproceso, int Tipo)
         {
             try
@@ -1314,35 +987,17 @@ namespace ListasSarlaft.UserControls.Eventos
                 {
                     case 1:
                         if (DropDownList9.SelectedValue != "---")
-                        {
                             for (int i = 0; i < dtInfo.Rows.Count; i++)
                             {
                                 DropDownList10.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProceso"].ToString().Trim(), dtInfo.Rows[i]["IdProceso"].ToString()));
                             }
-                        }
-
                         break;
-
-                    case 2:
-                        if (DDLMacroproceso.SelectedValue != "---")
-                        {
-                            for (int i = 0; i < dtInfo.Rows.Count; i++)
-                            {
-                                DDLProceso.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProceso"].ToString().Trim(), dtInfo.Rows[i]["IdProceso"].ToString()));
-                            }
-                        }
-
-                        break;
-
                     case 3:
                         if (DropDownList20.SelectedValue != "---")
-                        {
                             for (int i = 0; i < dtInfo.Rows.Count; i++)
                             {
                                 DropDownList21.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProceso"].ToString().Trim(), dtInfo.Rows[i]["IdProceso"].ToString()));
                             }
-                        }
-
                         break;
                 }
             }
@@ -1351,52 +1006,6 @@ namespace ListasSarlaft.UserControls.Eventos
                 Mensaje("Error al cargar proceso. " + ex.Message);
             }
         }
-
-
-        // carga combo proceso
-
-        private void cargaProceso(String IdMacroproceso, int Tipo)
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadDDLProceso(IdMacroproceso);
-
-                if (cbMacroproceso.SelectedValue != "---")
-                {
-                    for (int i = 0; i < dtInfo.Rows.Count; i++)
-                    {
-                        cbProceso.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreProceso"].ToString().Trim(), dtInfo.Rows[i]["IdProceso"].ToString()));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje("Error al cargar proceso. " + ex.Message);
-            }
-        }
-
-        private void cargaSubproceso(String IdProceso, int Tipo)
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadDDLSubProceso(IdProceso);
-
-                if (cbProceso.SelectedValue != "---")
-                {
-                    for (int i = 0; i < dtInfo.Rows.Count; i++)
-                    {
-                        cbSubproceso.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreSubProceso"].ToString().Trim(), dtInfo.Rows[i]["IdSubProceso"].ToString()));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje("Error al cargar subproceso. " + ex.Message);
-            }
-        }
-
 
         private void loadDDLSubProceso(String IdProceso, int Tipo)
         {
@@ -1408,35 +1017,17 @@ namespace ListasSarlaft.UserControls.Eventos
                 {
                     case 1:
                         if (DropDownList10.SelectedValue != "---")
-                        {
                             for (int i = 0; i < dtInfo.Rows.Count; i++)
                             {
                                 DropDownList6.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreSubProceso"].ToString().Trim(), dtInfo.Rows[i]["IdSubProceso"].ToString()));
                             }
-                        }
-
                         break;
-
-                    case 2:
-                        if (DDLProceso.SelectedValue != "---")
-                        {
-                            for (int i = 0; i < dtInfo.Rows.Count; i++)
-                            {
-                                DDLSubproceso.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreSubProceso"].ToString().Trim(), dtInfo.Rows[i]["IdSubProceso"].ToString()));
-                            }
-                        }
-
-                        break;
-
                     case 3:
                         if (DropDownList21.SelectedValue != "---")
-                        {
                             for (int i = 0; i < dtInfo.Rows.Count; i++)
                             {
                                 DropDownList22.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreSubProceso"].ToString().Trim(), dtInfo.Rows[i]["IdSubProceso"].ToString()));
                             }
-                        }
-
                         break;
                 }
             }
@@ -1597,56 +1188,6 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        protected void DDLCadenaValor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DDLMacroproceso.Items.Clear();
-            DDLMacroproceso.Items.Insert(0, new ListItem("---", "---"));
-            DDLProceso.Items.Clear();
-            DDLProceso.Items.Insert(0, new ListItem("---", "---"));
-            DDLSubproceso.Items.Clear();
-            DDLSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            if (DDLCadenaValor.SelectedValue.ToString().Trim() != "---")
-            {
-                loadDDLMacroproceso(DDLCadenaValor.SelectedValue.ToString().Trim(), 2);
-            }
-        }
-
-        protected void cbCadenaValor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbMacroproceso.Items.Clear();
-            cbMacroproceso.Items.Insert(0, new ListItem("---", "---"));
-            cbProceso.Items.Clear();
-            cbProceso.Items.Insert(0, new ListItem("---", "---"));
-            cbSubproceso.Items.Clear();
-            cbSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            if (cbCadenaValor.SelectedValue.ToString().Trim() != "---")
-            {
-                cargaMacroproceso(cbCadenaValor.SelectedValue.ToString().Trim(), 3);
-            }
-        }
-
-        protected void cbMacroproceso_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbProceso.Items.Clear();
-            cbProceso.Items.Insert(0, new ListItem("---", "---"));
-            cbSubproceso.Items.Clear();
-            cbSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            if (cbMacroproceso.SelectedValue.ToString().Trim() != "---")
-            {
-                cargaProceso(cbMacroproceso.SelectedValue.ToString().Trim(), 3);
-            }
-        }
-
-        protected void cbProceso_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbSubproceso.Items.Clear();
-            cbSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            if (cbProceso.SelectedValue.ToString().Trim() != "---")
-            {
-                cargaSubproceso(cbProceso.SelectedValue.ToString().Trim(), 3);
-            }
-        }
-
         protected void DropDownList20_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList21.Items.Clear();
@@ -1659,18 +1200,6 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        protected void DDLMacroproceso_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DDLProceso.Items.Clear();
-            DDLProceso.Items.Insert(0, new ListItem("---", "---"));
-            DDLSubproceso.Items.Clear();
-            DDLSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            if (DDLMacroproceso.SelectedValue.ToString().Trim() != "---")
-            {
-                loadDDLProceso(DDLMacroproceso.SelectedValue.ToString().Trim(), 2);
-            }
-        }
-
         protected void DropDownList21_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList22.Items.Clear();
@@ -1678,16 +1207,6 @@ namespace ListasSarlaft.UserControls.Eventos
             if (DropDownList21.SelectedValue.ToString().Trim() != "---")
             {
                 loadDDLSubProceso(DropDownList21.SelectedValue.ToString().Trim(), 3);
-            }
-        }
-
-        protected void DDLProceso_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DDLSubproceso.Items.Clear();
-            DDLSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            if (DDLProceso.SelectedValue.ToString().Trim() != "---")
-            {
-                loadDDLSubProceso(DDLProceso.SelectedValue.ToString().Trim(), 2);
             }
         }
 
@@ -1871,34 +1390,18 @@ namespace ListasSarlaft.UserControls.Eventos
             ImageButton6.Visible = false;
             ImageButton8.Visible = false;
 
-            DropDownList32.SelectedIndex = 0;
-            DropDownList35.SelectedIndex = 0;
-            DropDownList36.SelectedIndex = 0;
-            TextBox2.Text = "";
-
-            TextBox3.Text = "";
-            TextBox4.Text = "";
-            TextBox5.Text = "";
-
             if (TreeViewlast.SelectedNode != null)
-            {
                 TreeViewlast.SelectedNode.Selected = false;
-            }
 
             if (TreeView2.SelectedNode != null)
-            {
                 TreeView2.SelectedNode.Selected = false;
-            }
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
 
             if (TreeView4.SelectedNode != null)
-            {
                 TreeView4.SelectedNode.Selected = false;
-            }
+
         }
 
         private void resetValuesCamposEventos()
@@ -1943,9 +1446,7 @@ namespace ListasSarlaft.UserControls.Eventos
             lblExisteResponsableNotificacion.Text = string.Empty;
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
         }
 
         private void resetValuesRiesgoEventos()
@@ -1953,8 +1454,6 @@ namespace ListasSarlaft.UserControls.Eventos
             trRiesgosEventos.Visible = false;
             TextBox31.Text = "";
             TextBox32.Text = "";
-            resetCombos();
-            cbRiesgosGlobales.SelectedIndex = 0;
         }
 
         private void resetValuesConsulta()
@@ -2003,25 +1502,8 @@ namespace ListasSarlaft.UserControls.Eventos
             trAdjComPlaAcci.Visible = false;
 
             if (TreeView3.SelectedNode != null)
-            {
                 TreeView3.SelectedNode.Selected = false;
-            }
-        }
 
-        private void ResetValuesAsociados()
-        {
-            FiltrosEventos.Visible = false;
-            BusquedaEventos.Visible = false;
-            TblAsociarEventos.Visible = false;
-            TxtCod.Text = "";
-            TxtDesc.Text = "";
-            DDLCadenaValor.SelectedIndex = 0;
-            DDLMacroproceso.Items.Clear();
-            DDLMacroproceso.Items.Insert(0, new ListItem("---", "---"));
-            DDLProceso.Items.Clear();
-            DDLProceso.Items.Insert(0, new ListItem("---", "---"));
-            DDLSubproceso.Items.Clear();
-            DDLSubproceso.Items.Insert(0, new ListItem("---", "---"));
         }
         #endregion Reset
 
@@ -2029,9 +1511,7 @@ namespace ListasSarlaft.UserControls.Eventos
         protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
         {
             if (cCuenta.permisosAgregar(IdFormulario) == "False")
-            {
                 Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-            }
             else
             {
                 resetValuesEventoPlanAccion();
@@ -2042,66 +1522,43 @@ namespace ListasSarlaft.UserControls.Eventos
 
         protected void ImageButton6_Click(object sender, ImageClickEventArgs e)
         {
-            Transaccion = 0;
+
             if (cCuenta.permisosAgregar(IdFormularioCrearevento) == "False")
-            {
                 Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-            }
             else
             {
                 TabContainerEventos.Tabs[1].Visible = true;
                 TabContainerEventos.Tabs[2].Visible = true;
-                string Horaini = string.Empty, Horafin = string.Empty, Horades = string.Empty, HoraRecuperacion = string.Empty;
+                string Horaini = string.Empty, Horafin = string.Empty, Horades = string.Empty;
 
                 if (DropDownList12.SelectedValue != "---" && DropDownList13.SelectedValue != "---" && DropDownList14.SelectedValue != "---")
-                {
                     Horaini = DropDownList12.SelectedItem.Text.ToString() + ":" + DropDownList13.SelectedItem.Text.ToString() + " " + DropDownList14.SelectedItem.Text.ToString().Trim();
-                }
 
                 if (DropDownList68.SelectedValue != "---" && DropDownList69.SelectedValue != "---" && DropDownList70.SelectedValue != "---")
-                {
                     Horafin = "'" + DropDownList68.SelectedItem.Text.ToString() + ":" + DropDownList69.SelectedItem.Text.ToString() + " " + DropDownList70.SelectedItem.Text.ToString() + "'";
-                }
                 else
-                {
                     Horafin = "NULL";
-                }
-                if(ddlHoraRecuperacion.SelectedValue != "---" && ddlMinutoRecuperacion.SelectedValue != "---" && ddlHorarioRecuperacion.SelectedValue != "---")
-                {
-                    HoraRecuperacion = "'" + ddlHoraRecuperacion.SelectedItem.Text.ToString() + ":" + ddlMinutoRecuperacion.SelectedItem.Text.ToString() + " " + ddlHorarioRecuperacion.SelectedItem.Text.ToString();
-                }
 
                 if (DropDownList71.SelectedValue != "---" && DropDownList72.SelectedValue != "---" && DropDownList73.SelectedValue != "---")
-                {
                     Horades = DropDownList71.SelectedItem.Text.ToString() + ":" + DropDownList72.SelectedItem.Text.ToString() + " " + DropDownList73.SelectedItem.Text.ToString().Trim();
-                }
 
                 if (Sanitizer.GetSafeHtmlFragment(TextBox47.Text) == "")
-                {
                     FechaFin = "Null";
-                }
                 else
-                {
                     FechaFin = "CONVERT(datetime,'" + Sanitizer.GetSafeHtmlFragment(TextBox47.Text.Trim()) + " 12:00:00:000" + "', 120)";
-                }
 
                 try
                 {
                     strCodigoEvento = string.Empty;
-                    string FechaRecuperacion = Sanitizer.GetSafeHtmlFragment(txtFechaRecuperacion.Text) + " " + HoraRecuperacion;
-                    //DateTime dtFechaRecuperacion = Convert.ToDateTime(FechaRecuperacion + " " + HoraRecuperacion);
-                    double CuantiaRecuperadaSeguros = Convert.ToDouble(txtCuantiaRecuperadaSeguros.Text);
-                    double CuantiaOtrasRecuperaciones = Convert.ToDouble(txtCuantiaOtrasRecuperaciones.Text);
-                    double CuantiaNetaRecuperaciones = Convert.ToDouble(txtCuantiaNetaRecuperaciones.Text);
                     if (Convert.ToInt32(Session["IdUsuario"].ToString()) > 0)
                     {
                         cEvento.agregarEvento(ref strCodigoEvento, ddlEmpresa1.SelectedValue.ToString().Trim(), DropDownList1.SelectedValue.ToString().Trim(),
-                         DropDownList2.SelectedValue.ToString().Trim(), DropDownList3.SelectedValue.ToString().Trim(), DropDownList4.SelectedValue.ToString().Trim(),
-                         DropDownList5.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox43.Text), Sanitizer.GetSafeHtmlFragment(TextBox44.Text), DropDownList24.SelectedValue.ToString().Trim(),
-                         DropDownList25.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox45.Text.Trim()) + " 12:00:00:000", Horaini, FechaFin, Horafin,
-                         Sanitizer.GetSafeHtmlFragment(TextBox49.Text.Trim()) + " 12:00:00:000", Horades, DropDownList26.SelectedValue.ToString().Trim(), DropDownList27.SelectedValue.ToString().Trim(),
-                         lblIdDependencia4.Text, Sanitizer.GetSafeHtmlFragment(TextBox52.Text), Sanitizer.GetSafeHtmlFragment(TextBox39.Text.Trim()) + " 12:00:00:000", Sanitizer.GetSafeHtmlFragment(TextBox51.Text.Trim()), Convert.ToInt32(Session["IdUsuario"].ToString()),
-                         ddlImpCual.SelectedValue.ToString().Trim(),FechaRecuperacion, CuantiaRecuperadaSeguros, CuantiaOtrasRecuperaciones, CuantiaNetaRecuperaciones);
+                            DropDownList2.SelectedValue.ToString().Trim(), DropDownList3.SelectedValue.ToString().Trim(), DropDownList4.SelectedValue.ToString().Trim(),
+                            DropDownList5.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox43.Text), Sanitizer.GetSafeHtmlFragment(TextBox44.Text), DropDownList24.SelectedValue.ToString().Trim(),
+                            DropDownList25.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox45.Text.Trim()) + " 12:00:00:000", Horaini, FechaFin, Horafin,
+                            Sanitizer.GetSafeHtmlFragment(TextBox49.Text.Trim()) + " 12:00:00:000", Horades, DropDownList26.SelectedValue.ToString().Trim(), DropDownList27.SelectedValue.ToString().Trim(),
+                            lblIdDependencia4.Text, Sanitizer.GetSafeHtmlFragment(TextBox52.Text), Sanitizer.GetSafeHtmlFragment(TextBox39.Text.Trim()) + " 12:00:00:000", Sanitizer.GetSafeHtmlFragment(TextBox51.Text.Trim()), Convert.ToInt32(Session["IdUsuario"].ToString()));
+
                         try
                         {
                             boolEnviarNotificacion(17, Convert.ToInt16("0"), Convert.ToInt16(Session["idJerarquia"].ToString()), "",
@@ -2114,20 +1571,11 @@ namespace ListasSarlaft.UserControls.Eventos
 
                         Label55.Text = strCodigoEvento.Trim();
 
-                        DataTable dt = BuscarIdEvento(Label55.Text.Trim());
-                        string IdEvento = dt.Rows[0]["IdEvento"].ToString();
-                        IdEventoActual = Convert.ToInt32(IdEvento);
-                        RowGridEventoRiesgo = 0;
                         /*loadGridEventos();
                         loadInfoEventos();*/
-                        //loadGridEventos();
-                        //loadInfoEventosvsUsuario();
-                        loadGridComentarioEvento();
-                        loadInfoComentarioEvento();
-                        loadGridRiesgoEvento();
-                        loadInfoRiesgoEvento();
-                        //AQUI 
-                        trRiesgosEventos.Visible = true;
+                        loadGridEventos();
+                        loadInfoEventosvsUsuario();
+
                         ImageButton6.Visible = false;
                         ImageButton8.Visible = true;
 
@@ -2135,9 +1583,7 @@ namespace ListasSarlaft.UserControls.Eventos
                         Mensaje(strMensaje);
 
                         if (TreeView4.SelectedNode != null)
-                        {
                             TreeView4.SelectedNode.Selected = false;
-                        }
                     }
                     else
                     {
@@ -2159,92 +1605,56 @@ namespace ListasSarlaft.UserControls.Eventos
         protected void ImageButton8_Click(object sender, ImageClickEventArgs e)
         {
             if (cCuenta.permisosAgregar(IdFormularioCrearevento) == "False")
-            {
                 Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-            }
             else
             {
                 string Horaini = string.Empty, Horafin = string.Empty, Horades = string.Empty;
 
                 if (DropDownList12.SelectedValue != "---" && DropDownList13.SelectedValue != "---" && DropDownList14.SelectedValue != "---")
-                {
                     Horaini = DropDownList12.SelectedItem.Text.ToString() + ":" + DropDownList13.SelectedItem.Text.ToString() + " " + DropDownList14.SelectedItem.Text.ToString().Trim();
-                }
 
                 if (DropDownList68.SelectedValue != "---" && DropDownList69.SelectedValue != "---" && DropDownList70.SelectedValue != "---")
-                {
                     Horafin = DropDownList68.SelectedItem.Text.ToString() + ":" + DropDownList69.SelectedItem.Text.ToString() + " " + DropDownList70.SelectedItem.Text.ToString().Trim();
-                }
 
                 if (DropDownList71.SelectedValue != "" && DropDownList72.SelectedValue != "---" && DropDownList73.SelectedValue != "---")
-                {
                     Horades = DropDownList71.SelectedItem.Text.ToString() + ":" + DropDownList72.SelectedItem.Text.ToString() + " " + DropDownList73.SelectedItem.Text.ToString().Trim();
-                }
 
                 //valida si la fecha finalizacion es o no NULL
                 if (Sanitizer.GetSafeHtmlFragment(TextBox47.Text) == "")
-                {
                     FechaFin = "Null";
-                }
                 else
-                {
                     FechaFin = "CONVERT(datetime,'" + Sanitizer.GetSafeHtmlFragment(TextBox47.Text.Trim()) + " 12:00:00:000" + "', 120)";
-                }
                 //Valida si el responsable es o no funcionario
 
                 if (DropDownList27.SelectedValue != "1")
-                {
                     NombreResponsable = "'" + Sanitizer.GetSafeHtmlFragment(TextBox51.Text.Trim()) + "'";
-                }
                 else
-                {
                     NombreResponsable = "Null";
-                }
 
                 try
                 {
                     //Camilo
                     cEvento.ModificaEventoTab1(ddlEmpresa1.SelectedValue.ToString().Trim(), DropDownList1.SelectedValue.ToString().Trim(), DropDownList2.SelectedValue.ToString().Trim(),
-                    DropDownList3.SelectedValue.ToString().Trim(), DropDownList4.SelectedValue.ToString().Trim(), DropDownList5.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox43.Text),
-                    Sanitizer.GetSafeHtmlFragment(TextBox44.Text), DropDownList24.SelectedValue.ToString().Trim(), DropDownList25.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox45.Text.Trim()) + " 12:00:00:000",
-                    Horaini, FechaFin, Horafin, TextBox49.Text.Trim() + " 12:00:00:000", Horades, DropDownList26.SelectedValue.ToString().Trim(),
-                    DropDownList27.SelectedValue.ToString().Trim(), lblIdDependencia4.Text, Sanitizer.GetSafeHtmlFragment(TextBox52.Text), Label55.Text.Trim(), NombreResponsable,
-                    ddlImpCual.SelectedValue.ToString().Trim());
+                        DropDownList3.SelectedValue.ToString().Trim(), DropDownList4.SelectedValue.ToString().Trim(), DropDownList5.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox43.Text),
+                        Sanitizer.GetSafeHtmlFragment(TextBox44.Text), DropDownList24.SelectedValue.ToString().Trim(), DropDownList25.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox45.Text.Trim()) + " 12:00:00:000",
+                        Horaini, FechaFin, Horafin, TextBox49.Text.Trim() + " 12:00:00:000", Horades, DropDownList26.SelectedValue.ToString().Trim(),
+                        DropDownList27.SelectedValue.ToString().Trim(), lblIdDependencia4.Text, Sanitizer.GetSafeHtmlFragment(TextBox52.Text), Label55.Text.Trim(), NombreResponsable);
 
                     /*loadGridEventos();
                     loadInfoEventos();*/
-                    //loadGridEventos();
-                    //loadInfoEventosvsUsuario();
-                    cargardatosevento(Transaccion);
+                    loadGridEventos();
+                    loadInfoEventosvsUsuario();
+                    cargardatosevento();
                     trRiesgosEventos.Visible = true;
                     trAdjComPlaAcci.Visible = true;
 
-                    if (Transaccion == 1)
-                    {
-                        agregarComentarioEvento();
-                        loadGridComentarioEvento();
-                        loadInfoComentarioEvento();
-                    }
-                    else if (Transaccion == 0)
-                    {
-                        DataTable dt = BuscarIdEvento(Label55.Text.Trim());
-                        string IdEvento = dt.Rows[0]["IdEvento"].ToString();
-                        IdEventoActual = Convert.ToInt32(IdEvento);
-                        AgregarComentarioEventoPorCod(IdEvento);
-
-                        loadGridComentarioEvento();
-                        loadInfoComentarioEventoNuevo(IdEvento);
-                    }
-
+                    agregarComentarioEvento();
+                    /*loadGridEventos();
+                    loadInfoEventos();*/
                     Mensaje("Evento actualizado correctamente");
-                    ImageButton6.Visible = false; // NUEVO
-                    ImageButton8.Visible = true;  // MODIFICAR
-                    TextBox11.Text = string.Empty;
 
                     if (TreeView4.SelectedNode != null)
-                    {
                         TreeView4.SelectedNode.Selected = false;
-                    }
                 }
                 catch (Exception a)
                 {
@@ -2257,19 +1667,14 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                if (TextBox31.Text.Trim() == "" && TextBox17.Text.Trim() == "" &&
-                      cbCadenaValor.SelectedValue.ToString().Trim() == "---" &&
-                      cbMacroproceso.SelectedValue.ToString().Trim() == "---" &&
-                      cbProceso.SelectedValue.ToString().Trim() == "---" &&
-                      cbSubproceso.SelectedValue.ToString().Trim() == "---" &&
-                      cbRiesgosGlobales.SelectedValue.ToString().Trim() == "---")
-                {
+                if (Sanitizer.GetSafeHtmlFragment(TextBox31.Text.Trim()) == "" && Sanitizer.GetSafeHtmlFragment(TextBox32.Text.Trim()) == "")
                     Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
-                }
                 else
                 {
                     loadGridConsultarRiesgos();
                     loadInfoConsultarRiesgos();
+                    //mtdLoadGridAudEventoRiesgo();
+                    //mtdLoadInfoAudEventoRiesgo();
                 }
             }
             catch (Exception ex)
@@ -2277,25 +1682,10 @@ namespace ListasSarlaft.UserControls.Eventos
                 Mensaje("Error al realizar la consulta. " + ex.Message);
             }
         }
-        public void limpiaCombos()
-        {
-            cbCadenaValor.Items.Clear();
-            cbCadenaValor.Items.Insert(0, new ListItem("---", "---"));
-            cbMacroproceso.Items.Clear();
-            cbMacroproceso.Items.Insert(0, new ListItem("---", "---"));
-            cbProceso.Items.Clear();
-            cbProceso.Items.Insert(0, new ListItem("---", "---"));
-            cbSubproceso.Items.Clear();
-            cbSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            //  cbRiesgosGlobales.SelectedIndex = 0;
-        }
-
-
 
         protected void ImageButton10_Click(object sender, ImageClickEventArgs e)
-        {//limpia combos
+        {
             resetValuesRiesgoEventos();
-            //limpiaCombos();
             trRiesgosEventos.Visible = true;
             loadGridConsultarRiesgos();
         }
@@ -2310,21 +1700,17 @@ namespace ListasSarlaft.UserControls.Eventos
             try
             {
                 if (cCuenta.permisosActualizar(IdFormularioCrearevento) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     actualizarPlanAccionEvento();
                     agregarComentarioPlanAccion();
                     if (DropDownList18.SelectedItem.ToString().Trim() == "Cerrado")
-                    {
                         boolEnviarNotificacion(10, Convert.ToInt16(InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["IdPlanAccion"].ToString().Trim()), Convert.ToInt16(lblIdDependencia3.Text.Trim()), "",
                             "Descripción de la Acción: " + Sanitizer.GetSafeHtmlFragment(TextBox20.Text.Trim()) +
                             "<br />Fecha de Compromiso: " + Sanitizer.GetSafeHtmlFragment(TextBox37.Text.Trim()) +
                             "<br />Fecha de Cierre: " + DateTime.Now.ToString("u") +
                             "<br />Número del Evento al cual está asociado el Plan de Acción: " + InfoGridEventos.Rows[RowGridEventos]["CodigoEvento"].ToString().Trim() + "<br /><br />");
-                    }
 
                     resetValuesEventoPlanAccion();
                     loadGridPlanAccionEvento();
@@ -2342,59 +1728,18 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                int? IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-                if (IdUsuario == 0)
-                {
-                    IdUsuario = null;
-                }
-                if (string.IsNullOrEmpty(IdUsuario.ToString().Trim()))
-                {
-                    Response.Redirect("~/Formularios/Sarlaft/Admin/HomeAdmin.aspx?Denegar=1");
-                }
-                else
-                {
-                    if (cCuenta.permisosConsulta(IdFormularioCrearevento) == "False")
-                    {
-                        Response.Redirect("~/Formularios/Sarlaft/Admin/HomeAdmin.aspx?NP=2");
-                    }
-                    else
-                    {
-                        if (Sanitizer.GetSafeHtmlFragment(TextBox29.Text.Trim()) == "" && Sanitizer.GetSafeHtmlFragment(TextBox30.Text.Trim()) == "" && DropDownList19.SelectedValue.ToString().Trim() == "---" && DropDownList20.SelectedValue.ToString().Trim() == "---" && DropDownList21.SelectedValue.ToString().Trim() == "---" && DropDownList22.SelectedValue.ToString().Trim() == "---")
-                        {
-                            Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
-                        }
-                        else
-                        {
-                            inicializarValores();
-                            resetValuesCamposEventos();
-                            resetValuesRiesgoEventos();
-                            resetValuesJustificacionEvento();
-                            resetValuesEventoPlanAccion();
-                            loadGridEventos();
-                            loadInfoEventos();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje("Error al realizar la consulta. " + ex.Message);
-            }
-        }
-
-        protected void BuscarEventosAsociar_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                int? IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-                if (Sanitizer.GetSafeHtmlFragment(TxtCod.Text.Trim()) == "" && Sanitizer.GetSafeHtmlFragment(TxtDesc.Text.Trim()) == "" && DDLCadenaValor.SelectedValue.ToString().Trim() == "---" && DDLMacroproceso.SelectedValue.ToString().Trim() == "---" && DDLProceso.SelectedValue.ToString().Trim() == "---" && DDLSubproceso.SelectedValue.ToString().Trim() == "---")
-                {
+                if (Sanitizer.GetSafeHtmlFragment(TextBox29.Text.Trim()) == "" && Sanitizer.GetSafeHtmlFragment(TextBox30.Text.Trim()) == "" && DropDownList19.SelectedValue.ToString().Trim() == "---" && DropDownList20.SelectedValue.ToString().Trim() == "---" && DropDownList21.SelectedValue.ToString().Trim() == "---" && DropDownList22.SelectedValue.ToString().Trim() == "---")
                     Mensaje("Debe ingresar por lo menos un parámetro de consulta.");
-                }
                 else
                 {
-                    loadGridEventosAsociar();
-                    loadInfoEventosAsociados();
+                    inicializarValores();
+                    resetValuesCamposEventos();
+                    resetValuesRiesgoEventos();
+                    resetValuesJustificacionEvento();
+                    resetValuesEventoPlanAccion();
+
+                    loadGridEventos();
+                    loadInfoEventos();
                 }
             }
             catch (Exception ex)
@@ -2402,45 +1747,32 @@ namespace ListasSarlaft.UserControls.Eventos
                 Mensaje("Error al realizar la consulta. " + ex.Message);
             }
         }
-
-        protected void imgBtnInsertar_Click(object sender, ImageClickEventArgs e)
-        {
-            FiltrosEventos.Visible = true;
-            BusquedaEventos.Visible = true;
-        }
-
-
-
 
         protected void ImageButton13_Click(object sender, ImageClickEventArgs e)
         {
             try
             {
                 if (cCuenta.permisosAgregar(IdFormularioCrearevento) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
-                    if (Convert.ToInt64(Sanitizer.GetSafeHtmlFragment(TextBox37.Text.Trim().Replace("-", ""))) <= Convert.ToInt64(DateTime.Now.Date.ToString("yyyy-MM-dd").Replace("-", "")))
-                    {
+                    /*if (Convert.ToInt64(Sanitizer.GetSafeHtmlFragment(TextBox37.Text.Trim().Replace("-", ""))) <= Convert.ToInt64(DateTime.Now.Date.ToString("yyyy-MM-dd").Replace("-", "")))
                         Mensaje("Debe ingresar una fecha compromiso valida.");
-                    }
                     else
-                    {
-                        int IdRegistro = mtdRegistrarPlanAccionEvento();
-                        string strTextoAdicional = string.Format("Descripción de la Acción: {0}<br />Fecha de Compromiso: {1}" +
-                            "<br />Número del Evento al cual está asociado el Plan de Acción: {2}<br /><br />",
-                            Sanitizer.GetSafeHtmlFragment(TextBox20.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox37.Text.Trim()), InfoGridEventos.Rows[RowGridEventos]["CodigoEvento"].ToString().Trim());
+                    {*/
+                    int IdRegistro = mtdRegistrarPlanAccionEvento();
+                    string strTextoAdicional = string.Format("Descripción de la Acción: {0}<br />Fecha de Compromiso: {1}" +
+                        "<br />Número del Evento al cual está asociado el Plan de Acción: {2}<br /><br />",
+                        Sanitizer.GetSafeHtmlFragment(TextBox20.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox37.Text.Trim()), InfoGridEventos.Rows[RowGridEventos]["CodigoEvento"].ToString().Trim());
 
-                        boolEnviarNotificacion(10, IdRegistro, Convert.ToInt16(lblIdDependencia3.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox37.Text.Trim()) + " 12:00:00:000",
-                           strTextoAdicional);
+                    boolEnviarNotificacion(10, IdRegistro, Convert.ToInt16(lblIdDependencia3.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox37.Text.Trim()) + " 12:00:00:000",
+                       strTextoAdicional);
 
-                        resetValuesEventoPlanAccion();
-                        loadGridPlanAccionEvento();
-                        loadInfoPlanAccionEvento();
-                        Mensaje("Plan de acción creado con éxito.");
-                    }
+                    resetValuesEventoPlanAccion();
+                    loadGridPlanAccionEvento();
+                    loadInfoPlanAccionEvento();
+                    Mensaje("Plan de acción creado con éxito.");
+                    //}
                 }
             }
             catch (Exception ex)
@@ -2459,22 +1791,20 @@ namespace ListasSarlaft.UserControls.Eventos
             try
             {
                 if (cCuenta.permisosAgregar(IdFormulario) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     if (FileUpload2.HasFile)
                     {
+
                         loadFilePlanAccion();
                         loadGridArchivoPlanAccion();
                         loadInfoArchivoPlanAccion();
                         Mensaje("Archivo cargado exitósamente.");
+
                     }
                     else
-                    {
                         Mensaje("No hay archivos para cargar.");
-                    }
                 }
             }
             catch (Exception ex)
@@ -2482,7 +1812,6 @@ namespace ListasSarlaft.UserControls.Eventos
                 Mensaje("Error al agregar el archivo. " + ex.Message);
             }
         }
-
 
         protected void ImageButton15_Click(object sender, ImageClickEventArgs e)
         {
@@ -2492,23 +1821,7 @@ namespace ListasSarlaft.UserControls.Eventos
             resetValuesJustificacionEvento();
             resetValuesEventoPlanAccion();
             loadGridEventos();
-            loadGridEventos();
-            //loadInfoEventosvsUsuario();
             TbEventos.Visible = false;
-        }
-
-        protected void Cancelar_Click(object sender, ImageClickEventArgs e)
-        {
-            TxtCod.Text = "";
-            TxtDesc.Text = "";
-            DDLCadenaValor.SelectedIndex = 0;
-            DDLMacroproceso.Items.Clear();
-            DDLMacroproceso.Items.Insert(0, new ListItem("---", "---"));
-            DDLProceso.Items.Clear();
-            DDLProceso.Items.Insert(0, new ListItem("---", "---"));
-            DDLSubproceso.Items.Clear();
-            DDLSubproceso.Items.Insert(0, new ListItem("---", "---"));
-            TblAsociarEventos.Visible = false;
         }
 
         protected void ImageButton16_Click(object sender, ImageClickEventArgs e)
@@ -2516,9 +1829,7 @@ namespace ListasSarlaft.UserControls.Eventos
             try
             {
                 if (cCuenta.permisosAgregar(IdFormulario) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     if (FileUpload1.HasFile)
@@ -2534,9 +1845,7 @@ namespace ListasSarlaft.UserControls.Eventos
                             Mensaje("El archivo a cargar debe ser en formato PDF.");*/
                     }
                     else
-                    {
                         Mensaje("No hay archivos para cargar.");
-                    }
                 }
             }
             catch (Exception ex)
@@ -2554,88 +1863,29 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                if (DropDownList8.SelectedValue == "1")
-                {
-                    if (Sanitizer.GetSafeHtmlFragment(TextBox33.Text) == string.Empty || Sanitizer.GetSafeHtmlFragment(TextBox14.Text) == string.Empty ||
-                        Sanitizer.GetSafeHtmlFragment(TextBox15.Text) == string.Empty || Sanitizer.GetSafeHtmlFragment(TextBox21.Text) == string.Empty ||
-                        Sanitizer.GetSafeHtmlFragment(TextBox22.Text) == string.Empty || Sanitizer.GetSafeHtmlFragment(TextBox23.Text) == string.Empty ||
-                        DropDownList75.SelectedValue == "---" || Sanitizer.GetSafeHtmlFragment(TextBox25.Text) == string.Empty || Sanitizer.GetSafeHtmlFragment(TextBox26.Text) == string.Empty ||
-                        Sanitizer.GetSafeHtmlFragment(TextBox1.Text) == string.Empty || DropDownList7.SelectedValue == "---" || DropDownList30.SelectedValue == "---"
-                        || DropDownList31.SelectedValue == "---")
-                    {
-                        Mensaje("Se deben diligenciar los campos de la pestaña contabilización, son de carácter obligatorio.");
-                    }
-
-                    else
-                    {
-                        if (cCuenta.permisosActualizar(IdFormularioDatosComple) == "False")
-                        {
-                            Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                        }
-                        else
-                        {
-                            cEvento.modificarEvento(DropDownList67.SelectedValue.ToString(), DropDownList9.SelectedValue.ToString(), DropDownList10.SelectedValue.ToString(), DropDownList6.SelectedValue.ToString(), DropDownList11.SelectedValue.ToString(), lblIdDependencia1.Text, DropDownList33.SelectedValue.ToString(), DropDownList34.SelectedValue.ToString(), DropDownList8.SelectedValue.ToString(), DropDownList15.SelectedValue.ToString(), DropDownList16.SelectedValue.ToString(), TextBox53.Text.Trim(), Label55.Text, DropDownList23.SelectedItem.Value, DropDownList29.SelectedItem.Value, TextBox17.Text.Trim());
-                            if (lblIdDependencia1.Text != "" && string.IsNullOrEmpty(lblExisteResponsableNotificacion.Text))
-                            {
-                                boolEnviarNotificacion(9, Convert.ToInt16("0"), Convert.ToInt16(lblIdDependencia1.Text.Trim()), "", "Ha sido asignado como responsable del Evento: <br/><B>Código Evento: </B>" + Label55.Text.Trim() + "<br/><B> Descripción del evento: </B>" + TextBox44.Text.Trim() + "<br/>En la aplicación de Sherlock para la Gestión de Riesgos y Control Interno.<br />");
-                            }
-
-                            loadGridEventos();
-                            loadInfoEventos();
-                            Mensaje("Evento actualizado correctamente");
-                            cEvento.modificarEvento(DropDownList67.SelectedValue.ToString().Trim(), DropDownList9.SelectedValue.ToString().Trim(), DropDownList10.SelectedValue.ToString().Trim(), DropDownList6.SelectedValue.ToString().Trim(), DropDownList11.SelectedValue.ToString().Trim(), lblIdDependencia1.Text, DropDownList33.SelectedValue.ToString().Trim(), DropDownList34.SelectedValue.ToString().Trim(), DropDownList8.SelectedValue.ToString().Trim(), DropDownList15.SelectedValue.ToString().Trim(), DropDownList16.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox53.Text.Trim()), Label55.Text, DropDownList23.SelectedItem.Value, DropDownList29.SelectedItem.Value, Sanitizer.GetSafeHtmlFragment(TextBox17.Text.Trim()));
-                            if (lblIdDependencia1.Text != "")
-                            {
-                                boolEnviarNotificacion(9, Convert.ToInt16("0"), Convert.ToInt16(lblIdDependencia1.Text.Trim()), "", "Ha sido asignado como responsable del Evento: <br /><B>Código Evento: </B>" + Label55.Text.Trim() + "<br/><B> Descripción del evento: </B>" + TextBox44.Text.Trim() + "<br/>En la aplicación de Sherlock para la Gestión de Riesgos y Control Interno.<br/>");
-                            }
-
-                            /*loadGridEventos();
-                            loadInfoEventos();*/
-                            loadGridEventos();
-                            loadInfoEventosvsUsuario();
-                            Mensaje("Evento actualizado correctamente");
-
-                            if (TreeViewlast.SelectedNode != null)
-                            {
-                                TreeViewlast.SelectedNode.Selected = false;
-                            }
-                        }
-                    }
-                }
+                if (cCuenta.permisosActualizar(IdFormularioDatosComple) == "False")
+                    Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
                 else
                 {
-                    if (cCuenta.permisosActualizar(IdFormularioDatosComple) == "False")
-                    {
-                        Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                    }
-                    else
-                    {
-                        cEvento.modificarEvento(DropDownList67.SelectedValue.ToString(), DropDownList9.SelectedValue.ToString(), DropDownList10.SelectedValue.ToString(), DropDownList6.SelectedValue.ToString(), DropDownList11.SelectedValue.ToString(), lblIdDependencia1.Text, DropDownList33.SelectedValue.ToString(), DropDownList34.SelectedValue.ToString(), DropDownList8.SelectedValue.ToString(), DropDownList15.SelectedValue.ToString(), DropDownList16.SelectedValue.ToString(), TextBox53.Text.Trim(), Label55.Text, DropDownList23.SelectedItem.Value, DropDownList29.SelectedItem.Value, TextBox17.Text.Trim());
-                        if (lblIdDependencia1.Text != "" && string.IsNullOrEmpty(lblExisteResponsableNotificacion.Text))
-                        {
-                            boolEnviarNotificacion(9, Convert.ToInt16("0"), Convert.ToInt16(lblIdDependencia1.Text.Trim()), "", "Ha sido asignado como responsable del Evento: <br/><B>Código Evento: </B>" + Label55.Text.Trim() + "<br/><B> Descripción del evento: </B>" + TextBox44.Text.Trim() + "<br/>En la aplicación de Sherlock para la Gestión de Riesgos y Control Interno.<br />");
-                        }
+                    cEvento.modificarEvento(DropDownList67.SelectedValue.ToString(), DropDownList9.SelectedValue.ToString(), DropDownList10.SelectedValue.ToString(), DropDownList6.SelectedValue.ToString(), DropDownList11.SelectedValue.ToString(), lblIdDependencia1.Text, DropDownList33.SelectedValue.ToString(), DropDownList34.SelectedValue.ToString(), DropDownList8.SelectedValue.ToString(), DropDownList15.SelectedValue.ToString(), DropDownList16.SelectedValue.ToString(), TextBox53.Text.Trim(), Label55.Text, DropDownList23.SelectedItem.Value, DropDownList29.SelectedItem.Value, TextBox17.Text.Trim());
+                    if (lblIdDependencia1.Text != "" && string.IsNullOrEmpty(lblExisteResponsableNotificacion.Text))
+                        boolEnviarNotificacion(9, Convert.ToInt16("0"), Convert.ToInt16(lblIdDependencia1.Text.Trim()), "", "Ha sido asignado como responsable del Evento: <br/><B>Código Evento: </B>" + Label55.Text.Trim() + "<br/><B> Descripción del evento: </B>" + TextBox44.Text.Trim() + "<br/>En la aplicación de Sherlock para la Gestión de Riesgos y Control Interno.<br />");
 
-                        loadGridEventos();
-                        loadInfoEventos();
-                        Mensaje("Evento actualizado correctamente");
-                        cEvento.modificarEvento(DropDownList67.SelectedValue.ToString().Trim(), DropDownList9.SelectedValue.ToString().Trim(), DropDownList10.SelectedValue.ToString().Trim(), DropDownList6.SelectedValue.ToString().Trim(), DropDownList11.SelectedValue.ToString().Trim(), lblIdDependencia1.Text, DropDownList33.SelectedValue.ToString().Trim(), DropDownList34.SelectedValue.ToString().Trim(), DropDownList8.SelectedValue.ToString().Trim(), DropDownList15.SelectedValue.ToString().Trim(), DropDownList16.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox53.Text.Trim()), Label55.Text, DropDownList23.SelectedItem.Value, DropDownList29.SelectedItem.Value, Sanitizer.GetSafeHtmlFragment(TextBox17.Text.Trim()));
-                        if (lblIdDependencia1.Text != "")
-                        {
-                            boolEnviarNotificacion(9, Convert.ToInt16("0"), Convert.ToInt16(lblIdDependencia1.Text.Trim()), "", "Ha sido asignado como responsable del Evento: <br /><B>Código Evento: </B>" + Label55.Text.Trim() + "<br/><B> Descripción del evento: </B>" + TextBox44.Text.Trim() + "<br/>En la aplicación de Sherlock para la Gestión de Riesgos y Control Interno.<br/>");
-                        }
+                    loadGridEventos();
+                    loadInfoEventos();
+                    Mensaje("Evento actualizado correctamente");
+                    cEvento.modificarEvento(DropDownList67.SelectedValue.ToString().Trim(), DropDownList9.SelectedValue.ToString().Trim(), DropDownList10.SelectedValue.ToString().Trim(), DropDownList6.SelectedValue.ToString().Trim(), DropDownList11.SelectedValue.ToString().Trim(), lblIdDependencia1.Text, DropDownList33.SelectedValue.ToString().Trim(), DropDownList34.SelectedValue.ToString().Trim(), DropDownList8.SelectedValue.ToString().Trim(), DropDownList15.SelectedValue.ToString().Trim(), DropDownList16.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox53.Text.Trim()), Label55.Text, DropDownList23.SelectedItem.Value, DropDownList29.SelectedItem.Value, Sanitizer.GetSafeHtmlFragment(TextBox17.Text.Trim()));
+                    if (lblIdDependencia1.Text != "")
+                        boolEnviarNotificacion(9, Convert.ToInt16("0"), Convert.ToInt16(lblIdDependencia1.Text.Trim()), "", "Ha sido asignado como responsable del Evento: <br /><B>Código Evento: </B>" + Label55.Text.Trim() + "<br/><B> Descripción del evento: </B>" + TextBox44.Text.Trim() + "<br/>En la aplicación de Sherlock para la Gestión de Riesgos y Control Interno.<br/>");
 
-                        /*loadGridEventos();
-                        loadInfoEventos();*/
-                        loadGridEventos();
-                        loadInfoEventosvsUsuario();
-                        Mensaje("Evento actualizado correctamente");
+                    /*loadGridEventos();
+                    loadInfoEventos();*/
+                    loadGridEventos();
+                    loadInfoEventosvsUsuario();
+                    Mensaje("Evento actualizado correctamente");
 
-                        if (TreeViewlast.SelectedNode != null)
-                        {
-                            TreeViewlast.SelectedNode.Selected = false;
-                        }
-                    }
+                    if (TreeViewlast.SelectedNode != null)
+                        TreeViewlast.SelectedNode.Selected = false;
                 }
             }
             catch (Exception a)
@@ -2649,97 +1899,53 @@ namespace ListasSarlaft.UserControls.Eventos
             bool booIsFecha = true;
 
             try
-            {//validator yoendy
-
-                ValidarObligatoriedadDatosContables();
-
+            {
                 if (cCuenta.permisosActualizar(IdFormularioContabiliza) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
-                    
-                        if (TextBox1.Text == string.Empty)
-                        {
-                            booIsFecha = false;
-                        }
+                    if (TextBox1.Text == string.Empty)
+                        booIsFecha = false;
+                    if (Sanitizer.GetSafeHtmlFragment(TextBox1.Text) == string.Empty)
+                        booIsFecha = false;
 
-                        if (Sanitizer.GetSafeHtmlFragment(TextBox1.Text) == string.Empty)
-                        {
-                            booIsFecha = false;
-                        }
+                    string strFechaContab = string.Empty, strHoraContab = string.Empty, fechaRecuperacion = string.Empty;
 
-                        string strFechaContab = string.Empty, strHoraContab = string.Empty;
+                    if (!string.IsNullOrEmpty(Sanitizer.GetSafeHtmlFragment(TextBox1.Text.Trim())))
+                        strFechaContab = Sanitizer.GetSafeHtmlFragment(TextBox1.Text.Trim()) + " 12:00:000";
+                    if (!string.IsNullOrEmpty(TextBox1.Text.Trim()))
+                        strFechaContab = TextBox1.Text.Trim() + " 12:00:000";
 
-                        if (!string.IsNullOrEmpty(Sanitizer.GetSafeHtmlFragment(TextBox1.Text.Trim())))
-                        {
-                            strFechaContab = Sanitizer.GetSafeHtmlFragment(TextBox1.Text.Trim()) + " 12:00:00:000";
-                        }
+                    if (DropDownList7.SelectedValue != "---" &&
+                        DropDownList30.SelectedValue != "---" &&
+                        DropDownList31.SelectedValue != "---")
+                        strHoraContab = string.Format("{0}:{1} {2}",
+                            DropDownList7.SelectedItem.Text.ToString(), DropDownList30.SelectedItem.Text.ToString(), DropDownList31.SelectedItem.Text.ToString());
+                    if (!string.IsNullOrEmpty(Sanitizer.GetSafeHtmlFragment(txtFechaRecuperacion.Text.Trim())))
+                        fechaRecuperacion = Sanitizer.GetSafeHtmlFragment(txtFechaRecuperacion.Text.Trim());
+                    if (ddlHoraRecuperacion.SelectedValue != "---" &&
+                          ddlMinutoRecuperacion.SelectedValue != "---" &&
+                          ddlHorarioRecuperacion.SelectedValue != "---")
+                        fechaRecuperacion = string.Format("{3} {0}:{1} {2}",
+                            ddlHoraRecuperacion.SelectedItem.Text.ToString(), ddlMinutoRecuperacion.SelectedItem.Text.ToString(), ddlHorarioRecuperacion.SelectedItem.Text.ToString(), fechaRecuperacion);
+                    cEvento.mtdModificarEvento2(lblIdDependencia2.Text, Sanitizer.GetSafeHtmlFragment(TextBox14.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox15.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox16.Text.Trim()),
+                    DropDownList74.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox21.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox22.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox23.Text.Trim()),
+                    DropDownList75.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox25.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox26.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox27.Text.Trim()),
+                    Sanitizer.GetSafeHtmlFragment(TextBox28.Text.Trim()), DropDownList28.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox46.Text.Trim()), Label55.Text,
+                    booIsFecha, strFechaContab, strHoraContab, fechaRecuperacion,
+                    Convert.ToDouble(Sanitizer.GetSafeHtmlFragment(txtCuantiaRecuperadaSeguros.Text.Trim())),
+                    Convert.ToDouble(Sanitizer.GetSafeHtmlFragment(txtCuantiaOtrasRecuperaciones.Text.Trim())),
+                    Convert.ToDouble(Sanitizer.GetSafeHtmlFragment(txtCuantiaNetaRecuperaciones.Text.Trim()))
+                    );
 
-                        if (!string.IsNullOrEmpty(TextBox1.Text.Trim()))
-                        {
-                            strFechaContab = TextBox1.Text.Trim() + " 12:00:00:000";
-                        }
+                    /*loadGridEventos();
+                    loadInfoEventos();*/
+                    loadGridEventos();
+                    loadInfoEventosvsUsuario();
+                    Mensaje("Evento actualizado correctamente");
 
-                        if (DropDownList7.SelectedValue != "---" &&
-                            DropDownList30.SelectedValue != "---" &&
-                            DropDownList31.SelectedValue != "---")
-                        {
-                            strHoraContab = string.Format("{0}:{1} {2}",
-                                DropDownList7.SelectedItem.Text.ToString(),
-                                DropDownList30.SelectedItem.Text.ToString(),
-                                DropDownList31.SelectedItem.Text.ToString());
-                        }
-
-                        string strFechaRecup = string.Empty, strHoraRecup = string.Empty;
-
-                        if (!string.IsNullOrEmpty(Sanitizer.GetSafeHtmlFragment(TextBox2.Text.Trim())))
-                        {
-                            strFechaRecup = Sanitizer.GetSafeHtmlFragment(TextBox2.Text.Trim()) + " 12:00:00:000";
-                        }
-
-                        if (!string.IsNullOrEmpty(TextBox2.Text.Trim()))
-                        {
-                            strFechaRecup = TextBox2.Text.Trim() + " 12:00:00:000";
-                        }
-
-                        if (
-                            DropDownList32.SelectedValue != "---" &&
-                            DropDownList35.SelectedValue != "---" &&
-                            DropDownList36.SelectedValue != "---")
-                        {
-                            strHoraRecup = string.Format("{0}:{1} {2}",
-                                DropDownList32.SelectedItem.Text.ToString(),
-                                DropDownList35.SelectedItem.Text.ToString(),
-                                DropDownList36.SelectedItem.Text.ToString());
-                        }
-
-                        string CuantiaRecup = TextBox3.Text.Trim();
-                        string CuantiaOtraRecup = TextBox4.Text.Trim();
-                        string CuantiaNeta = TextBox5.Text.Trim();
-
-
-                        cEvento.mtdModificarEvento2(lblIdDependencia2.Text, Sanitizer.GetSafeHtmlFragment(TextBox14.Text.Trim()),
-                            Sanitizer.GetSafeHtmlFragment(TextBox15.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox16.Text.Trim()),
-                            DropDownList74.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox21.Text.Trim()),
-                            Sanitizer.GetSafeHtmlFragment(TextBox22.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox23.Text.Trim()),
-                            DropDownList75.SelectedValue.ToString().Trim(), Sanitizer.GetSafeHtmlFragment(TextBox25.Text.Trim()),
-                            Sanitizer.GetSafeHtmlFragment(TextBox26.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox27.Text.Trim()),
-                            Sanitizer.GetSafeHtmlFragment(TextBox28.Text.Trim()), DropDownList28.SelectedValue.ToString().Trim(),
-                            Sanitizer.GetSafeHtmlFragment(TextBox46.Text.Trim()), Label55.Text,
-                            booIsFecha, strFechaContab, strHoraContab, strFechaRecup, strHoraRecup, CuantiaRecup, CuantiaOtraRecup, CuantiaNeta);
-
-                        /*loadGridEventos();
-                        loadInfoEventos();*/
-                        loadGridEventos();
-                        loadInfoEventosvsUsuario();
-                        Mensaje("Evento actualizado correctamente");
-
-                        if (TreeView2.SelectedNode != null)
-                        {
-                            TreeView2.SelectedNode.Selected = false;
-                        }
+                    if (TreeView2.SelectedNode != null)
+                        TreeView2.SelectedNode.Selected = false;
                 }
             }
             catch (Exception a)
@@ -2757,9 +1963,7 @@ namespace ListasSarlaft.UserControls.Eventos
         protected void BtnGuardaNoeventos_Click(object sender, ImageClickEventArgs e)
         {
             if (cCuenta.permisosActualizar(IdFormularioNohuboevent) == "False")
-            {
                 Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-            }
             else
             {
                 agregarNHEvento();
@@ -2793,13 +1997,9 @@ namespace ListasSarlaft.UserControls.Eventos
             dtInfo = cControl.loadCodigoArchivoControl();
 
             if (dtInfo.Rows.Count > 0)
-            {
                 nameFile = dtInfo.Rows[0]["NumRegistros"].ToString().Trim() + "-" + InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["IdPlanAccion"].ToString().Trim() + "-" + FileUpload2.FileName.ToString().Trim();
-            }
             else
-            {
                 nameFile = "1-" + InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["IdPlanAccion"].ToString().Trim() + "-" + FileUpload2.FileName.ToString().Trim();
-            }
 
             FileUpload2.SaveAs(Server.MapPath("~/Archivos/PDFsPlanAccionEventos/") + nameFile);
             cEvento.agregarArchivoPlanAccion(InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["IdPlanAccion"].ToString().Trim(), nameFile);
@@ -2808,15 +2008,7 @@ namespace ListasSarlaft.UserControls.Eventos
         private void loadInfoArchivoEvento()
         {
             DataTable dtInfo = new DataTable();
-            if (Transaccion == 0)
-            {
-                dtInfo = cEvento.loadInfoArchivoEvento(Convert.ToString(IdEventoActual));
-            }
-            else
-            {
-                dtInfo = cEvento.loadInfoArchivoEvento(Session["IdEvento"].ToString().Trim());
-            }
-
+            dtInfo = cEvento.loadInfoArchivoEvento(InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim());
             if (dtInfo.Rows.Count > 0)
             {
                 for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
@@ -2848,38 +2040,7 @@ namespace ListasSarlaft.UserControls.Eventos
         private void loadInfoComentarioEvento()
         {
             DataTable dtInfo = new DataTable();
-            if (Transaccion == 0)
-            {
-                //dtInfo = cEvento.loadInfoComentarioEvento(strCodigoEvento);
-            }
-            else
-            {
-                dtInfo = cEvento.loadInfoComentarioEvento(Session["IdEvento"].ToString().Trim());
-            }
-
-
-            if (dtInfo.Rows.Count > 0)
-            {
-                for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                {
-                    InfoGridComentarioEvento.Rows.Add(new Object[] {dtInfo.Rows[rows]["IdComentario"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["NombreUsuario"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["ComentarioCorto"].ToString().Trim(),
-                                                                    dtInfo.Rows[rows]["Comentario"].ToString().Trim()
-                                                                   });
-                }
-
-                GridView6.DataSource = InfoGridComentarioEvento;
-                GridView6.DataBind();
-            }
-        }
-
-        private void loadInfoComentarioEventoNuevo(string IdEvento)
-        {
-            DataTable dtInfo = new DataTable();
-
-            dtInfo = cEvento.loadInfoComentarioEvento(IdEvento);
+            dtInfo = cEvento.loadInfoComentarioEvento(InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim());
 
             if (dtInfo.Rows.Count > 0)
             {
@@ -2911,31 +2072,10 @@ namespace ListasSarlaft.UserControls.Eventos
             GridView6.DataBind();
         }
 
-        private void loadGridRiesgoEvento()
-        {
-            DataTable grid = new DataTable();
-            grid.Columns.Add("IdEventoRiesgo", typeof(string));
-            grid.Columns.Add("IdRiesgo", typeof(string));
-            grid.Columns.Add("Codigo", typeof(string));
-            grid.Columns.Add("Nombre", typeof(string));
-            grid.Columns.Add("FechaRegistro", typeof(string));
-            InfoGridRiesgoEvento = grid;
-            GridView2.DataSource = InfoGridRiesgoEvento;
-            GridView2.DataBind();
-        }
-
         private void loadInfoRiesgoEvento()
         {
             DataTable dtInfo = new DataTable();
-            if (Transaccion == 0)
-            {
-                dtInfo = cEvento.loadInfoRiesgoEvento(Convert.ToString(idEventoActual));
-            }
-            else
-            {
-                dtInfo = cEvento.loadInfoRiesgoEvento(InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim());
-            }
-
+            dtInfo = cEvento.loadInfoRiesgoEvento(InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim());
 
             if (dtInfo.Rows.Count > 0)
             {
@@ -2954,17 +2094,23 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-        private void loadInfoConsultarRiesgos()
-        {//filtros modificados
-            DataTable dtInfo = new DataTable();
-            string cadenaValor = cbCadenaValor.SelectedValue;
-            string Macroproceso = cbMacroproceso.SelectedValue;
-            string idProceso = cbProceso.SelectedValue;
-            string Subproceso = cbSubproceso.SelectedValue;
-            string rGlobales = cbRiesgosGlobales.SelectedValue;
+        private void loadGridRiesgoEvento()
+        {
+            DataTable grid = new DataTable();
+            grid.Columns.Add("IdEventoRiesgo", typeof(string));
+            grid.Columns.Add("IdRiesgo", typeof(string));
+            grid.Columns.Add("Codigo", typeof(string));
+            grid.Columns.Add("Nombre", typeof(string));
+            grid.Columns.Add("FechaRegistro", typeof(string));
+            InfoGridRiesgoEvento = grid;
+            GridView2.DataSource = InfoGridRiesgoEvento;
+            GridView2.DataBind();
+        }
 
-            dtInfo = cRiesgo.loadInfoRiesgos(Sanitizer.GetSafeHtmlFragment(TextBox31.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox32.Text.Trim()),
-                                             cadenaValor, Macroproceso, idProceso, Subproceso, rGlobales);
+        private void loadInfoConsultarRiesgos()
+        {
+            DataTable dtInfo = new DataTable();
+            dtInfo = cRiesgo.loadInfoRiesgos(Sanitizer.GetSafeHtmlFragment(TextBox31.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox32.Text.Trim()), "---", "---", "---", "---", "---");
 
             if (dtInfo.Rows.Count > 0)
             {
@@ -2987,17 +2133,14 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 GridView8.Visible = false;
                 loadGridConsultarRiesgos();
-                Mensaje("El usuario no tiene riesgos reportados con los parámetros de búsqueda seleccionados.");
+                Mensaje("El usuario no tiene eventos reportados.");
             }
         }
         private void loadInfoConsultarRiesgosProceso()
         {
             DataTable dtInfo = new DataTable();
             if (InfoGridConsultarRiesgos.Rows.Count > 0)
-            {
                 loadGridConsultarRiesgos();
-            }
-
             string CadenaValor = DropDownList67.SelectedValue;
             string MacroProceso = DropDownList9.SelectedValue;
             string Proceso = DropDownList10.SelectedValue;
@@ -3077,39 +2220,6 @@ namespace ListasSarlaft.UserControls.Eventos
             GVcausasRiesgos.DataSource = InfoGridConsultarCausasRiesgos;
             GVcausasRiesgos.DataBind();
         }
-
-        private void loadPlanesAsociados()
-        {
-            DataTable grid = new DataTable();
-            grid.Columns.Add("CodigoPlan", typeof(string));
-            grid.Columns.Add("CodigoEvento", typeof(string));
-            grid.Columns.Add("Usuario", typeof(string));
-            grid.Columns.Add("FechaRegistro", typeof(string));
-            InfoGridPlanesAsociados = grid;
-            GvPlanesAsociados.DataSource = InfoGridPlanesAsociados;
-            GvPlanesAsociados.DataBind();
-        }
-
-        private void loadGvRiesgosAsociados()
-        {
-            DataTable dtInfo = new DataTable();
-            dtInfo = cEvento.ConsultaPlanesAsociados(InfoGridEventos.Rows[RowGridEventos]["CodigoEvento"].ToString().Trim());
-            if (dtInfo.Rows.Count > 0)
-            {
-                for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                {
-                    InfoGridPlanesAsociados.Rows.Add(new Object[] {dtInfo.Rows[rows]["CodigoPlan"].ToString().Trim(),
-                                                                     dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
-                                                                     dtInfo.Rows[rows]["Usuario"].ToString().Trim(),
-                                                                     dtInfo.Rows[rows]["FechaRegistro"].ToString().Trim()
-                                                                    });
-                }
-
-                GvPlanesAsociados.DataSource = InfoGridPlanesAsociados;
-                GvPlanesAsociados.DataBind();
-            }
-        }
-
         private void loadInfoArchivoPlanAccion()
         {
             DataTable dtInfo = new DataTable();
@@ -3252,192 +2362,32 @@ namespace ListasSarlaft.UserControls.Eventos
             grid.Columns.Add("HoraContab", typeof(string));
             grid.Columns.Add("MinContab", typeof(string));
             grid.Columns.Add("amContab", typeof(string));
-            grid.Columns.Add("NombreImpactoCualitativo", typeof(string));
-            grid.Columns.Add("FechaRecup", typeof(string));
-            grid.Columns.Add("HoraRecup", typeof(string));
-            grid.Columns.Add("MinRecup", typeof(string));
-            grid.Columns.Add("amRecup", typeof(string));
-            grid.Columns.Add("CuantiaRecup", typeof(string));
-            grid.Columns.Add("CuantiaOtraRecup", typeof(string));
-            grid.Columns.Add("CuantiaNeta", typeof(string));
+            grid.Columns.Add("fechaRecuperacion", typeof(string));
+            grid.Columns.Add("cuantiaRecuperadaSeguros", typeof(string));
+            grid.Columns.Add("cuantiaOtrasRecuperaciones", typeof(string));
+            grid.Columns.Add("cuantiaNetaRecuperaciones", typeof(string));
             InfoGridEventos = grid;
             GridView1.DataSource = InfoGridEventos;
             GridView1.DataBind();
         }
 
-        private void loadGridEventosAsociar()
-        {
-            DataTable grid = new DataTable();
-            grid.Columns.Add("IdEvento", typeof(string));
-            grid.Columns.Add("CodigoEvento", typeof(string));
-            grid.Columns.Add("DescripcionEvento", typeof(string));
-            grid.Columns.Add("IdClase", typeof(string));
-            grid.Columns.Add("NombreClaseEvento", typeof(string));
-            grid.Columns.Add("NombreTipoPerdidaEvento", typeof(string));
-            InfoGridEventosAsociados = grid;
-            GridViewAsociar.DataSource = InfoGridEventosAsociados;
-            GridViewAsociar.DataBind();
-        }
-
-        private void loadGridEventosAsociados()
-        {
-            DataTable grid = new DataTable();
-            grid.Columns.Add("IdEvento", typeof(string));
-            grid.Columns.Add("CodigoEvento", typeof(string));
-            grid.Columns.Add("DescripcionEvento", typeof(string));
-            grid.Columns.Add("NombreClaseEvento", typeof(string));
-            grid.Columns.Add("NombreTipoPerdidaEvento", typeof(string));
-            InfoGridEventoAsociado = grid;
-            GridViewEventosAsociados.DataSource = InfoGridEventoAsociado;
-            GridViewEventosAsociados.DataBind();
-        }
-
-        private void loadInfoEventosAsociados()
-        {
-            //Del usuario logueado
-            DataTable dtInfo = new DataTable();
-            int IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-
-            if (!string.IsNullOrEmpty(Session["IdJerarquia"].ToString()))
-            {
-                int IdUsuarioJerarquia = Convert.ToInt32(Session["IdJerarquia"].ToString());
-
-
-
-                DataTable DtIdArea = cEvento.TipoArea(IdUsuarioJerarquia.ToString().TrimEnd());
-                if (DtIdArea.Rows.Count > 0)
-                {
-                    string IdPadre = DtIdArea.Rows[0]["IdPadre"].ToString();
-                    string TipoArea = DtIdArea.Rows[0]["TipoArea"].ToString();
-
-
-
-                    dtInfo = cEvento.loadInfoEventos(Sanitizer.GetSafeHtmlFragment(TxtCod.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TxtDesc.Text.Trim()),
-                                     DDLCadenaValor.SelectedValue.ToString().Trim(), DDLMacroproceso.SelectedValue.ToString().Trim(), DDLProceso.SelectedValue.ToString().Trim(),
-                                     DDLSubproceso.SelectedValue.ToString().Trim(), IdUsuarioJerarquia, IdUsuario, TipoArea);
-
-                    if (dtInfo.Rows.Count > 0)
-                    {
-                        for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                        {
-                            TblAsociarEventos.Visible = true;
-                            InfoGridEventosAsociados.Rows.Add(new Object[] {
-                                dtInfo.Rows[rows]["IdEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["DescripcionEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["IdClase"].ToString().Trim(),
-                                dtInfo.Rows[rows]["NombreClaseEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["NombreTipoPerdidaEvento"].ToString().Trim(),
-                            });
-                        }
-
-                        GridViewAsociar.PageIndex = PagIndexInfoGridEventosAsociar;
-                        GridViewAsociar.DataSource = InfoGridEventosAsociados;
-                        GridViewAsociar.DataBind();
-                    }
-                    else
-                    {
-                        loadGridEventosAsociar();
-                        TblAsociarEventos.Visible = false;
-                        Mensaje("El evento no tiene eventos asociados.");
-                    }
-                }
-                else
-                {
-                    Mensaje("El usuario no tiene nodo de Jerarquia o Área asignada ");
-                }
-            }
-            else
-            {
-                Mensaje("El usuario no tiene nodo de Jerarquia asignado");
-            }
-        }
-
-        private void loadInfoGridEventosAsociados()
-        {
-            //Del usuario logueado
-            DataTable dtInfo = new DataTable();
-            int IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-
-            if (!string.IsNullOrEmpty(Session["IdJerarquia"].ToString()))
-            {
-                int IdUsuarioJerarquia = Convert.ToInt32(Session["IdJerarquia"].ToString());
-
-
-
-                DataTable DtIdArea = cEvento.TipoArea(IdUsuarioJerarquia.ToString().TrimEnd());
-                if (DtIdArea.Rows.Count > 0)
-                {
-                    string IdPadre = DtIdArea.Rows[0]["IdPadre"].ToString();
-                    string TipoArea = DtIdArea.Rows[0]["TipoArea"].ToString();
-
-
-
-                    dtInfo = cEvento.loadInfoEventosAsociados(Sanitizer.GetSafeHtmlFragment(Label55.Text.Trim()));
-
-                    if (dtInfo.Rows.Count > 0)
-                    {
-                        for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                        {
-                            TblAsociados.Visible = true;
-                            InfoGridEventoAsociado.Rows.Add(new Object[] {
-                                dtInfo.Rows[rows]["IdEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["DescripcionEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["NombreClaseEvento"].ToString().Trim(),
-                                dtInfo.Rows[rows]["NombreTipoPerdidaEvento"].ToString().Trim(),
-                            });
-                        }
-
-                        GridViewEventosAsociados.PageIndex = PagIndexInfoGridEventoAsociado;
-                        GridViewEventosAsociados.DataSource = InfoGridEventoAsociado;
-                        GridViewEventosAsociados.DataBind();
-                    }
-                    else
-                    {
-                        loadGridEventosAsociados();
-                        TblAsociados.Visible = false;
-                        Mensaje("El evento no tiene eventos asociados.");
-                    }
-                }
-                else
-                {
-                    Mensaje("El usuario no tiene nodo de Jerarquia o Área asignada ");
-                }
-            }
-            else
-            {
-                Mensaje("El usuario no tiene nodo de Jerarquia asignado");
-            }
-        }
-
         private void loadInfoEventos()
         {
-            //Del usuario logueado
             DataTable dtInfo = new DataTable();
-            int IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
+            int IdUsuarioJerarquia = Convert.ToInt32(Session["IdJerarquia"].ToString());
+            dtInfo = cEvento.loadInfoEventos(Sanitizer.GetSafeHtmlFragment(TextBox29.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox30.Text.Trim()),
+                DropDownList19.SelectedValue.ToString().Trim(), DropDownList20.SelectedValue.ToString().Trim(), DropDownList21.SelectedValue.ToString().Trim(),
+                DropDownList22.SelectedValue.ToString().Trim(), IdUsuarioJerarquia);
 
-            if (!string.IsNullOrEmpty(Session["IdJerarquia"].ToString()))
+
+
+            if (dtInfo.Rows.Count > 0)
             {
-                int IdUsuarioJerarquia = Convert.ToInt32(Session["IdJerarquia"].ToString());
-                DataTable DtIdArea = cEvento.TipoArea(IdUsuarioJerarquia.ToString().TrimEnd());
-                if (DtIdArea.Rows.Count > 0)
+                for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
                 {
-                    string IdPadre = DtIdArea.Rows[0]["IdPadre"].ToString();
-                    string TipoArea = DtIdArea.Rows[0]["TipoArea"].ToString();
-
-                    dtInfo = cEvento.loadInfoEventos(Sanitizer.GetSafeHtmlFragment(TextBox29.Text.Trim()), Sanitizer.GetSafeHtmlFragment(TextBox30.Text.Trim()),
-                                    DropDownList19.SelectedValue.ToString().Trim(), DropDownList20.SelectedValue.ToString().Trim(), DropDownList21.SelectedValue.ToString().Trim(),
-                                    DropDownList22.SelectedValue.ToString().Trim(), IdUsuarioJerarquia, IdUsuario, TipoArea);
-
-
-
-                    if (dtInfo.Rows.Count > 0)
-                    {
-                        for (int rows = 0; rows < dtInfo.Rows.Count; rows++)
-                        {
-                            TbEventos.Visible = true;
-                            InfoGridEventos.Rows.Add(new Object[] {
+                    TbEventos.Visible = true;
+                    GridView1.Visible = true;
+                    InfoGridEventos.Rows.Add(new Object[] {
                                                             dtInfo.Rows[rows]["IdEvento"].ToString().Trim(),
                                                             dtInfo.Rows[rows]["CodigoEvento"].ToString().Trim(),
                                                             dtInfo.Rows[rows]["IdEmpresa"].ToString().Trim(),
@@ -3509,41 +2459,25 @@ namespace ListasSarlaft.UserControls.Eventos
                                                             dtInfo.Rows[rows]["FechaContab"].ToString().Trim(),
                                                             dtInfo.Rows[rows]["HoraContab"].ToString().Trim(),
                                                             dtInfo.Rows[rows]["MinContab"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["amContab"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["NombreImpactoCualitativo"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["FechaRecup"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["HoraRecup"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["MinRecup"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["amRecup"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["CuantiaRecup"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["CuantiaOtraRecup"].ToString().Trim(),
-                                                            dtInfo.Rows[rows]["CuantiaNeta"].ToString().Trim()
-
+                                                            dtInfo.Rows[rows]["amContab"].ToString().Trim()
+                                                           // dtInfo.Rows[rows]["FechaRecup"].ToString().Trim(),
+                                                          // dtInfo.Rows[rows]["CuantiaRecuperadaSeguro"].ToString().Trim(),
+                                                          // dtInfo.Rows[rows]["cuantiaOtrasRecuperaciones"].ToString().Trim(),
+                                                          //  dtInfo.Rows[rows]["CuantiaNetaRecuperacion"].ToString().Trim()
                                                           });
-                        }
+                }
 
-                        GridView1.PageIndex = PagIndexInfoGridEventos;
-                        GridView1.DataSource = InfoGridEventos;
-                        GridView1.DataBind();
-                    }
-                    else
-                    {
-                        loadGridEventos();
-                        TbEventos.Visible = false;
-                        Mensaje("No hay datos de eventos reportados.");
-                    }
-                }
-                else
-                {
-                    Mensaje("El usuario no tiene nodo de Jerarquia o Área asignada ");
-                }
+                GridView1.PageIndex = PagIndexInfoGridEventos;
+                GridView1.DataSource = InfoGridEventos;
+                GridView1.DataBind();
             }
             else
             {
-                Mensaje("El usuario no tiene nodo de Jerarquia asignado");
+                loadGridEventos();
+                TbEventos.Visible = false;
+                Mensaje("El usuario no tiene eventos reportados.");
             }
         }
-
         private void loadInfoEventosvsUsuario()
         {
             DataTable dtInfo = new DataTable();
@@ -3639,7 +2573,7 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 loadGridEventos();
                 TbEventos.Visible = false;
-                Mensaje("No hay datos de eventos para este usuario.");
+                Mensaje("El usuario no tiene eventos reportados.");
             }
         }
         private void loadCodigoEvento()
@@ -3651,13 +2585,9 @@ namespace ListasSarlaft.UserControls.Eventos
                 dtInfo = cEvento.loadCodigoEvento();
 
                 if (dtInfo.Rows.Count > 0)
-                {
                     Label55.Text = "E" + dtInfo.Rows[0]["NumRegistros"].ToString().Trim();
-                }
                 else
-                {
                     Label55.Text = "E1";
-                }
             }
             catch (Exception ex)
             {
@@ -3673,13 +2603,9 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 dtInfo = cEvento.loadCodigoNHEvento();
                 if (dtInfo.Rows.Count > 0)
-                {
                     Label113.Text = "NHE" + dtInfo.Rows[0]["NumRegistros"].ToString().Trim();
-                }
                 else
-                {
                     Label113.Text = "NHE1";
-                }
             }
             catch (Exception ex)
             {
@@ -3737,8 +2663,6 @@ namespace ListasSarlaft.UserControls.Eventos
         private void inicializarValores()
         {
             PagIndexInfoGridEventos = 0;
-            PagIndexInfoGridEventosAsociar = 0;
-            PagIndexInfoGridEventoAsociado = 0;
         }
 
         private void Mensaje(String Mensaje)
@@ -3755,17 +2679,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
         private void agregarComentarioEvento()
         {
-            cEvento.agregarComentarioEvento(Sanitizer.GetSafeHtmlFragment(TextBox11.Text.ToString().Trim()), Session["IdEvento"].ToString().Trim());
-        }
-        private DataTable BuscarIdEvento(string CodEvento)
-        {
-            DataTable dt = cEvento.BuscarIdEvento(CodEvento);
-            return dt;
-        }
-
-        private void AgregarComentarioEventoPorCod(string IdEvento)
-        {
-            cEvento.agregarComentarioEvento(Sanitizer.GetSafeHtmlFragment(TextBox11.Text.ToString().Trim()), IdEvento);
+            cEvento.agregarComentarioEvento(Sanitizer.GetSafeHtmlFragment(TextBox11.Text.ToString().Trim()), InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim());
         }
 
         private void agregarComentarioPlanAccion()
@@ -3773,745 +2687,552 @@ namespace ListasSarlaft.UserControls.Eventos
             cEvento.agregarComentarioPlanAccion(Sanitizer.GetSafeHtmlFragment(TextBox38.Text.Trim()), InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["IdPlanAccion"].ToString().Trim());
         }
 
-        private void cargardatosevento(int Transaccion)
+        private void cargardatosevento()
         {
             TbConEventos.Visible = true;
             TabContainerEventos.Tabs[1].Visible = true;
             TabContainerEventos.Tabs[2].Visible = true;
-
+            ImageButton6.Visible = false;
+            ImageButton8.Visible = true;
             trRiesgosEventos.Visible = true;
+            //tab 1
+            Label55.Text = InfoGridEventos.Rows[RowGridEventos]["CodigoEvento"].ToString().Trim();
+            TextBox43.Text = InfoGridEventos.Rows[RowGridEventos]["DetalleUbicacion"].ToString().Trim();
+            TextBox44.Text = InfoGridEventos.Rows[RowGridEventos]["DescripcionEvento"].ToString().Trim();
+            //Fecha Inicio
+            TextBox45.Text = InfoGridEventos.Rows[RowGridEventos]["FechaInicio"].ToString().Trim();
 
-            if (Transaccion == 1)
+            for (int i = 0; i < DropDownList12.Items.Count; i++)
             {
-                #region VaAEditar
-                //tab 1 Aqui
-                Label55.Text = InfoGridEventos.Rows[RowGridEventos]["CodigoEvento"].ToString().Trim();
-                TextBox43.Text = InfoGridEventos.Rows[RowGridEventos]["DetalleUbicacion"].ToString().Trim();
-                TextBox44.Text = Server.HtmlDecode(InfoGridEventos.Rows[RowGridEventos]["DescripcionEvento"].ToString().Trim());
-                //Fecha Inicio
-                TextBox45.Text = InfoGridEventos.Rows[RowGridEventos]["FechaInicio"].ToString().Trim();
-
-                for (int i = 0; i < DropDownList12.Items.Count; i++)
-                {
-                    DropDownList12.SelectedIndex = i;
-                    if (DropDownList12.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HorI"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList12.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList13.Items.Count; i++)
-                {
-                    DropDownList13.SelectedIndex = i;
-                    if (DropDownList13.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinI"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList13.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList14.Items.Count; i++)
-                {
-                    DropDownList14.SelectedIndex = i;
-                    if (DropDownList14.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amI"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList14.SelectedIndex = 0;
-                    }
-                }
-
-                //Fecha Finalizacion
-                TextBox47.Text = InfoGridEventos.Rows[RowGridEventos]["FechaFinalizacion"].ToString().Trim();
-                for (int i = 0; i < DropDownList68.Items.Count; i++)
-                {
-                    DropDownList68.SelectedIndex = i;
-                    if (DropDownList68.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HorF"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList68.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList69.Items.Count; i++)
-                {
-                    DropDownList69.SelectedIndex = i;
-                    if (DropDownList69.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinF"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList69.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList70.Items.Count; i++)
-                {
-                    DropDownList70.SelectedIndex = i;
-                    if (DropDownList70.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amF"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList70.SelectedIndex = 0;
-                    }
-                }
-
-                //Fecha Descubrimiento
-                TextBox49.Text = InfoGridEventos.Rows[RowGridEventos]["FechaDescubrimiento"].ToString().Trim();
-                for (int i = 0; i < DropDownList71.Items.Count; i++)
-                {
-                    DropDownList71.SelectedIndex = i;
-                    if (DropDownList71.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HorD"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList71.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList72.Items.Count; i++)
-                {
-                    DropDownList72.SelectedIndex = i;
-                    if (DropDownList72.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinD"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList72.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList73.Items.Count; i++)
-                {
-                    DropDownList73.SelectedIndex = i;
-                    if (DropDownList73.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amD"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList73.SelectedIndex = 0;
-                    }
-                }
-
-                lblIdDependencia4.Text = InfoGridEventos.Rows[RowGridEventos]["GeneraEvento"].ToString().Trim();
-                TextBox52.Text = InfoGridEventos.Rows[RowGridEventos]["cuantiaperdida"].ToString().Trim();
-                TextBox39.Text = InfoGridEventos.Rows[RowGridEventos]["FechaEvento"].ToString().Trim();
-                TextBox40.Text = InfoGridEventos.Rows[RowGridEventos]["Usuario"].ToString().Trim();
-                //ddlImpCual.SelectedItem.Text = InfoGridEventos.Rows[RowGridEventos]["NombreImpactoCualitativo"].ToString().Trim();
-                //if(InfoGridEventos.Rows[RowGridEventos]["NombreImpactoCualitativo"].ToString().Trim() != string.Empty)
-                    //ddlImpCual.SelectedValue = InfoGridEventos.Rows[RowGridEventos]["NombreImpactoCualitativo"].ToString().Trim();
-
-                for (int i = 0; i < ddlImpCual.Items.Count; i++)
-                {
-                    ddlImpCual.SelectedIndex = i;
-                    if (ddlImpCual.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["NombreImpactoCualitativo"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        ddlImpCual.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < ddlEmpresa1.Items.Count; i++)
-                {
-                    ddlEmpresa1.SelectedIndex = i;
-                    if (ddlEmpresa1.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdEmpresa"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        ddlEmpresa1.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList1.Items.Count; i++)
-                {
-                    DropDownList1.SelectedIndex = i;
-                    if (DropDownList1.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdRegion"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList1.SelectedIndex = 0;
-                    }
-                }
-
-                loadDDLPais(DropDownList1.SelectedValue.ToString().Trim(), 1);
-                for (int i = 0; i < DropDownList2.Items.Count; i++)
-                {
-                    DropDownList2.SelectedIndex = i;
-                    if (DropDownList2.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdPais"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList2.SelectedIndex = 0;
-                    }
-                }
-
-                loadDDLDepartamento(DropDownList2.SelectedValue.ToString().Trim(), 1);
-                for (int i = 0; i < DropDownList3.Items.Count; i++)
-                {
-                    DropDownList3.SelectedIndex = i;
-                    if (DropDownList3.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdDepartamento"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList3.SelectedIndex = 0;
-                    }
-                }
-
-                loadDDLCiudad(DropDownList3.SelectedValue.ToString().Trim(), 1);
-                for (int i = 0; i < DropDownList4.Items.Count; i++)
-                {
-                    int valor = DropDownList4.SelectedIndex = i;
-                    string cb = DropDownList4.SelectedValue.ToString().Trim();
-                    string grilla = InfoGridEventos.Rows[RowGridEventos]["IdCiudad"].ToString().Trim();
-
-                    if (DropDownList4.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdCiudad"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList4.SelectedIndex = 0;
-                    }
-                }
-                // YOENDY -- si no encuentra oficina sucursal
-                if (DropDownList4.SelectedValue.ToString().Trim() == "---")
-                {
-                    loadDDLOficinaSucursal("0", 1);
-                }
-
+                DropDownList12.SelectedIndex = i;
+                if (DropDownList12.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HorI"].ToString().Trim())
+                    break;
                 else
-                {
-                    loadDDLOficinaSucursal(DropDownList4.SelectedValue.ToString().Trim(), 1);
-                }
-
-                for (int i = 0; i < DropDownList5.Items.Count; i++)
-                {
-                    DropDownList5.SelectedIndex = i;
-                    if (DropDownList5.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdOficinaSucursal"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList5.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList24.Items.Count; i++)
-                {
-                    DropDownList24.SelectedIndex = i;
-                    if (DropDownList24.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdServicio"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList24.SelectedIndex = 0;
-                    }
-                }
-
-                if (DropDownList24.SelectedValue != "---")
-                {
-                    loadDDLSubServicio(DropDownList24.SelectedValue.ToString().Trim(), 1);
-                    for (int i = 0; i < DropDownList25.Items.Count; i++)
-                    {
-                        DropDownList25.SelectedIndex = i;
-                        if (DropDownList25.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubServicio"].ToString().Trim())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            DropDownList25.SelectedIndex = 0;
-                        }
-                    }
-                }
-
-                for (int i = 0; i < DropDownList26.Items.Count; i++)
-                {
-                    DropDownList26.SelectedIndex = i;
-                    if (DropDownList26.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdCanal"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList26.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList27.Items.Count; i++)
-                {
-                    DropDownList27.SelectedIndex = i;
-                    if (DropDownList27.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdGeneraEvento"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList27.SelectedIndex = 0;
-                    }
-                }
-
-                //Muetsra la informacion del generador de evento
-                if (InfoGridEventos.Rows[RowGridEventos]["IdGeneraEvento"].ToString().Trim() == "1")
-                {
-                    lresponable.Visible = true;
-                    tresponsable.Visible = true;
-                    TextBox51.Enabled = false;
-                    imgDependencia4.Visible = true;
-                    TextBox51.Text = InfoGridEventos.Rows[RowGridEventos]["GeneradorEvento"].ToString().Trim();
-                }
-                else
-                {
-                    lresponable.Visible = true;
-                    tresponsable.Visible = true;
-                    TextBox51.Enabled = true;
-                    imgDependencia4.Visible = false;
-                    TextBox51.Text = InfoGridEventos.Rows[RowGridEventos]["NomGeneradorEvento"].ToString().Trim();
-                }
-
-                //tab 2
-                #region TAB 2 Datos Complementarios
-                TextBox34.Text = InfoGridEventos.Rows[RowGridEventos]["ResponsableSolucion"].ToString().Trim();
-                lblIdDependencia1.Text = InfoGridEventos.Rows[RowGridEventos]["ResponsableEvento"].ToString().Trim();
-                for (int i = 0; i < DropDownList67.Items.Count; i++)
-                {
-                    DropDownList67.SelectedIndex = i;
-                    if (DropDownList67.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdCadenaValor"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList67.SelectedIndex = 0;
-                    }
-                }
-
-                if (DropDownList67.SelectedValue.ToString().Trim() != "---")
-                {
-                    loadDDLMacroproceso(DropDownList67.SelectedValue.ToString().Trim(), 1);
-                    for (int i = 0; i < DropDownList9.Items.Count; i++)
-                    {
-                        DropDownList9.SelectedIndex = i;
-                        if (DropDownList9.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdMacroproceso"].ToString().Trim())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            DropDownList9.SelectedIndex = 0;
-                        }
-                    }
-                }
-                if (DropDownList9.SelectedValue.ToString().Trim() != "---")
-                {
-                    loadDDLProceso(DropDownList9.SelectedValue.ToString().Trim(), 1);
-                    for (int i = 0; i < DropDownList10.Items.Count; i++)
-                    {
-                        DropDownList10.SelectedIndex = i;
-                        if (DropDownList10.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdProceso"].ToString().Trim())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            DropDownList10.SelectedIndex = 0;
-                        }
-                    }
-                }
-
-                if (DropDownList10.SelectedValue.ToString().Trim() != "---")
-                {
-                    loadDDLSubProceso(DropDownList10.SelectedValue.ToString().Trim(), 1);
-                    for (int i = 0; i < DropDownList6.Items.Count; i++)
-                    {
-                        DropDownList6.SelectedIndex = i;
-                        if (DropDownList6.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubProceso"].ToString().Trim())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            DropDownList6.SelectedIndex = 0;
-                        }
-                    }
-                }
-
-                if (DropDownList6.SelectedValue.ToString().Trim() != "---")
-                {
-                    loadDDLActividad(DropDownList6.SelectedValue.ToString().Trim(), 1);
-                    for (int i = 0; i < DropDownList11.Items.Count; i++)
-                    {
-                        DropDownList11.SelectedIndex = i;
-                        if (DropDownList11.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdActividad"].ToString().Trim())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            DropDownList11.SelectedIndex = 0;
-                        }
-                    }
-                }
-
-                lblIdDependencia4.Text = InfoGridEventos.Rows[RowGridEventos]["GeneraEvento"].ToString().Trim();
-
-                for (int i = 0; i < DropDownList33.Items.Count; i++)
-                {
-                    DropDownList33.SelectedIndex = i;
-                    if (DropDownList33.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdClase"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList33.SelectedIndex = 0;
-                    }
-                }
-
-                if (DropDownList33.SelectedValue != "---")
-                {
-                    loadDDLSubClaseRiesgo(DropDownList33.SelectedValue.ToString().Trim(), 1);
-                    for (int i = 0; i < DropDownList34.Items.Count; i++)
-                    {
-                        DropDownList34.SelectedIndex = i;
-                        if (DropDownList34.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubClase"].ToString().Trim())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            DropDownList34.SelectedIndex = 0;
-                        }
-                    }
-                }
-
-                for (int i = 0; i < DropDownList8.Items.Count; i++)
-                {
-                    DropDownList8.SelectedIndex = i;
-                    if (DropDownList8.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["NombreTipoPerdidaEvento"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList8.SelectedIndex = 0;
-                    }
-                }
-
-                //cargamos los los tipo y subtipos de lineas
-                for (int i = 0; i < DropDownList23.Items.Count; i++)
-                {
-                    DropDownList23.SelectedIndex = i;
-                    if (DropDownList23.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdLineaProceso"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList23.SelectedIndex = 0;
-                    }
-                }
-
-                if (DropDownList23.SelectedValue != "NULL")
-                {
-                    loadDDLSubLineaNegocio(DropDownList23.SelectedValue.ToString().Trim(), 1);
-                    for (int i = 0; i < DropDownList29.Items.Count; i++)
-                    {
-                        DropDownList29.SelectedIndex = i;
-                        if (DropDownList29.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubLineaProceso"].ToString().Trim())
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            DropDownList29.SelectedIndex = 0;
-                        }
-                    }
-                }
-
-                string ff = InfoGridEventos.Rows[RowGridEventos]["AfectaContinudad"].ToString().Trim();
-                if (ff == "True")
-                {
-                    ff = "1";
-                }
-                else
-                {
-                    ff = "0";
-                }
-
-                for (int i = 0; i < DropDownList15.Items.Count; i++)
-                {
-                    DropDownList15.SelectedIndex = i;
-                    if (DropDownList15.SelectedValue.ToString().Trim() == ff)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList15.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList16.Items.Count; i++)
-                {
-                    DropDownList16.SelectedIndex = i;
-                    if (DropDownList16.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdEstado"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList16.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList74.Items.Count; i++)
-                {
-                    DropDownList74.SelectedIndex = i;
-                    if (DropDownList74.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["Moneda1"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList74.SelectedIndex = 0;
-                    }
-                }
-
-                ff = InfoGridEventos.Rows[RowGridEventos]["Moneda2"].ToString().Trim();
-                for (int i = 0; i < DropDownList75.Items.Count; i++)
-                {
-                    DropDownList75.SelectedIndex = i;
-                    ff = DropDownList75.SelectedValue.ToString().Trim();
-                    if (DropDownList75.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["Moneda2"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList75.SelectedIndex = 0;
-                    }
-                }
-
-                ff = InfoGridEventos.Rows[RowGridEventos]["Recuperacion"].ToString().Trim();
-                if (ff == "True")
-                {
-                    ff = "1";
-                    lrecuperacio.Visible = true;
-                    trecuperacion.Visible = true;
-                }
-                else
-                {
-                    ff = "0";
-                    lrecuperacio.Visible = false;
-                    trecuperacion.Visible = false;
-                }
-
-                for (int i = 0; i < DropDownList28.Items.Count; i++)
-                {
-                    DropDownList28.SelectedIndex = i;
-                    if (DropDownList28.SelectedValue.ToString().Trim() == ff)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList28.SelectedIndex = 0;
-                    }
-                }
-
-                TextBox53.Text = InfoGridEventos.Rows[RowGridEventos]["Observaciones"].ToString().Trim();
-                TextBox17.Text = InfoGridEventos.Rows[RowGridEventos]["MasLineas"].ToString().Trim();
-
-                if (TextBox17.Text != "")
-                {
-                    TrMasLNegocio.Visible = true;
-                }
-                else
-                {
-                    TrMasLNegocio.Visible = false;
-                }
-
-                #endregion TAB 2 Contabilizacion
-
-                //tab 3
-                #region TAB 3 Contabilizacion
-                TextBox33.Text = InfoGridEventos.Rows[RowGridEventos]["NombreResContabilidad"].ToString().Trim();
-                lblIdDependencia2.Text = InfoGridEventos.Rows[RowGridEventos]["ResponsableContabilidad"].ToString().Trim();
-                TextBox14.Text = InfoGridEventos.Rows[RowGridEventos]["CuentaPUC"].ToString().Trim();
-                TextBox15.Text = InfoGridEventos.Rows[RowGridEventos]["CuentaOrden"].ToString().Trim();
-                TextBox16.Text = InfoGridEventos.Rows[RowGridEventos]["CuentaPerdida"].ToString().Trim();
-                TextBox21.Text = InfoGridEventos.Rows[RowGridEventos]["TasaCambio1"].ToString().Trim();
-                TextBox22.Text = InfoGridEventos.Rows[RowGridEventos]["ValorPesos1"].ToString().Trim();
-                TextBox23.Text = InfoGridEventos.Rows[RowGridEventos]["ValorRecuperadoTotal"].ToString().Trim();
-                TextBox25.Text = InfoGridEventos.Rows[RowGridEventos]["TasaCambio2"].ToString().Trim();
-                TextBox26.Text = InfoGridEventos.Rows[RowGridEventos]["ValorPesos2"].ToString().Trim();
-                TextBox27.Text = InfoGridEventos.Rows[RowGridEventos]["ValorRecuperadoSeguro"].ToString().Trim();
-                TextBox28.Text = InfoGridEventos.Rows[RowGridEventos]["ValorPesos3"].ToString().Trim();
-                TextBox46.Text = InfoGridEventos.Rows[RowGridEventos]["ValorRecuperacion"].ToString().Trim();
-
-                //FechaContab
-                TextBox1.Text = InfoGridEventos.Rows[RowGridEventos]["FechaContab"].ToString().Trim();
-
-                //TextBox2.Text = string.Format("{0}:{1} {2}",
-                //    InfoGridEventos.Rows[RowGridEventos]["HoraContab"].ToString().Trim(),
-                //    InfoGridEventos.Rows[RowGridEventos]["MinContab"].ToString().Trim(),
-                //    InfoGridEventos.Rows[RowGridEventos]["amContab"].ToString().Trim());
-
-                //HoraContab
-                for (int i = 0; i < DropDownList7.Items.Count; i++)
-                {
-                    DropDownList7.SelectedIndex = i;
-                    if (DropDownList7.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HoraContab"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList7.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList30.Items.Count; i++)
-                {
-                    DropDownList30.SelectedIndex = i;
-                    if (DropDownList30.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinContab"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList30.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList31.Items.Count; i++)
-                {
-                    DropDownList31.SelectedIndex = i;
-                    if (DropDownList31.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amContab"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList31.SelectedIndex = 0;
-                    }
-                }
-
-                TextBox2.Text = InfoGridEventos.Rows[RowGridEventos]["FechaRecup"].ToString().Trim();
-
-
-                for (int i = 0; i < DropDownList32.Items.Count; i++)
-                {
-                    DropDownList32.SelectedIndex = i;
-                    if (DropDownList32.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HoraRecup"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList32.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList35.Items.Count; i++)
-                {
-                    DropDownList35.SelectedIndex = i;
-                    if (DropDownList35.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinRecup"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList35.SelectedIndex = 0;
-                    }
-                }
-
-                for (int i = 0; i < DropDownList36.Items.Count; i++)
-                {
-                    DropDownList36.SelectedIndex = i;
-                    if (DropDownList36.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amRecup"].ToString().Trim())
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        DropDownList36.SelectedIndex = 0;
-                    }
-                }
-
-                TextBox3.Text = InfoGridEventos.Rows[RowGridEventos]["CuantiaRecup"].ToString().Trim();
-                TextBox4.Text = InfoGridEventos.Rows[RowGridEventos]["CuantiaOtraRecup"].ToString().Trim();
-                TextBox5.Text = InfoGridEventos.Rows[RowGridEventos]["CuantiaNeta"].ToString().Trim();
-
-                #endregion TAB 3 Contabilizacion
-
-                ///Validad si es nuevo para el envío de notificacioón
-                if (!string.IsNullOrEmpty(lblIdDependencia1.Text.Trim()))
-                {
-                    lblExisteResponsableNotificacion.Text = "S";
-                }
-                #endregion VaAEditar
+                    DropDownList12.SelectedIndex = 0;
             }
 
-        }
+            for (int i = 0; i < DropDownList13.Items.Count; i++)
+            {
+                DropDownList13.SelectedIndex = i;
+                if (DropDownList13.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinI"].ToString().Trim())
+                    break;
+                else
+                    DropDownList13.SelectedIndex = 0;
+            }
 
-        private void RelacionarRiesgoEvento()
+            for (int i = 0; i < DropDownList14.Items.Count; i++)
+            {
+                DropDownList14.SelectedIndex = i;
+                if (DropDownList14.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amI"].ToString().Trim())
+                    break;
+                else
+                    DropDownList14.SelectedIndex = 0;
+            }
+
+            //Fecha Finalizacion
+            TextBox47.Text = InfoGridEventos.Rows[RowGridEventos]["FechaFinalizacion"].ToString().Trim();
+            for (int i = 0; i < DropDownList68.Items.Count; i++)
+            {
+                DropDownList68.SelectedIndex = i;
+                if (DropDownList68.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HorF"].ToString().Trim())
+                    break;
+                else
+                    DropDownList68.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList69.Items.Count; i++)
+            {
+                DropDownList69.SelectedIndex = i;
+                if (DropDownList69.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinF"].ToString().Trim())
+                    break;
+                else
+                    DropDownList69.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList70.Items.Count; i++)
+            {
+                DropDownList70.SelectedIndex = i;
+                if (DropDownList70.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amF"].ToString().Trim())
+                    break;
+                else
+                    DropDownList70.SelectedIndex = 0;
+            }
+
+            //Fecha Descubrimiento
+            TextBox49.Text = InfoGridEventos.Rows[RowGridEventos]["FechaDescubrimiento"].ToString().Trim();
+            for (int i = 0; i < DropDownList71.Items.Count; i++)
+            {
+                DropDownList71.SelectedIndex = i;
+                if (DropDownList71.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HorD"].ToString().Trim())
+                    break;
+                else
+                    DropDownList71.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList72.Items.Count; i++)
+            {
+                DropDownList72.SelectedIndex = i;
+                if (DropDownList72.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinD"].ToString().Trim())
+                    break;
+                else
+                    DropDownList72.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList73.Items.Count; i++)
+            {
+                DropDownList73.SelectedIndex = i;
+                if (DropDownList73.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amD"].ToString().Trim())
+                    break;
+                else
+                    DropDownList73.SelectedIndex = 0;
+            }
+
+            lblIdDependencia4.Text = InfoGridEventos.Rows[RowGridEventos]["GeneraEvento"].ToString().Trim();
+            TextBox52.Text = InfoGridEventos.Rows[RowGridEventos]["cuantiaperdida"].ToString().Trim();
+            TextBox39.Text = InfoGridEventos.Rows[RowGridEventos]["FechaEvento"].ToString().Trim();
+            TextBox40.Text = InfoGridEventos.Rows[RowGridEventos]["Usuario"].ToString().Trim();
+
+            for (int i = 0; i < ddlEmpresa1.Items.Count; i++)
+            {
+                ddlEmpresa1.SelectedIndex = i;
+                if (ddlEmpresa1.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdEmpresa"].ToString().Trim())
+                    break;
+                else
+                    ddlEmpresa1.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList1.Items.Count; i++)
+            {
+                DropDownList1.SelectedIndex = i;
+                if (DropDownList1.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdRegion"].ToString().Trim())
+                    break;
+                else
+                    DropDownList1.SelectedIndex = 0;
+            }
+
+            loadDDLPais(DropDownList1.SelectedValue.ToString().Trim(), 1);
+            for (int i = 0; i < DropDownList2.Items.Count; i++)
+            {
+                DropDownList2.SelectedIndex = i;
+                if (DropDownList2.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdPais"].ToString().Trim())
+                    break;
+                else
+                    DropDownList2.SelectedIndex = 0;
+            }
+
+            loadDDLDepartamento(DropDownList2.SelectedValue.ToString().Trim(), 1);
+            for (int i = 0; i < DropDownList3.Items.Count; i++)
+            {
+                DropDownList3.SelectedIndex = i;
+                if (DropDownList3.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdDepartamento"].ToString().Trim())
+                    break;
+                else
+                    DropDownList3.SelectedIndex = 0;
+            }
+
+            loadDDLCiudad(DropDownList3.SelectedValue.ToString().Trim(), 1);
+            for (int i = 0; i < DropDownList4.Items.Count; i++)
+            {
+                DropDownList4.SelectedIndex = i;
+                if (DropDownList4.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdCiudad"].ToString().Trim())
+                    break;
+                else
+                    DropDownList4.SelectedIndex = 0;
+            }
+
+            loadDDLOficinaSucursal(DropDownList4.SelectedValue.ToString().Trim(), 1);
+            for (int i = 0; i < DropDownList5.Items.Count; i++)
+            {
+                DropDownList5.SelectedIndex = i;
+                if (DropDownList5.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdOficinaSucursal"].ToString().Trim())
+                    break;
+                else
+                    DropDownList5.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList24.Items.Count; i++)
+            {
+                DropDownList24.SelectedIndex = i;
+                if (DropDownList24.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdServicio"].ToString().Trim())
+                    break;
+                else
+                    DropDownList24.SelectedIndex = 0;
+            }
+
+            if (DropDownList24.SelectedValue != "---")
+            {
+                loadDDLSubServicio(DropDownList24.SelectedValue.ToString().Trim(), 1);
+                for (int i = 0; i < DropDownList25.Items.Count; i++)
+                {
+                    DropDownList25.SelectedIndex = i;
+                    if (DropDownList25.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubServicio"].ToString().Trim())
+                        break;
+                    else
+                        DropDownList25.SelectedIndex = 0;
+                }
+            }
+
+            for (int i = 0; i < DropDownList26.Items.Count; i++)
+            {
+                DropDownList26.SelectedIndex = i;
+                if (DropDownList26.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdCanal"].ToString().Trim())
+                    break;
+                else
+
+                    DropDownList26.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList27.Items.Count; i++)
+            {
+                DropDownList27.SelectedIndex = i;
+                if (DropDownList27.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdGeneraEvento"].ToString().Trim())
+                    break;
+                else
+                    DropDownList27.SelectedIndex = 0;
+            }
+
+            //Muetsra la informacion del generador de evento
+            if (InfoGridEventos.Rows[RowGridEventos]["IdGeneraEvento"].ToString().Trim() == "1")
+            {
+                lresponable.Visible = true;
+                tresponsable.Visible = true;
+                TextBox51.Enabled = false;
+                imgDependencia4.Visible = true;
+                TextBox51.Text = InfoGridEventos.Rows[RowGridEventos]["GeneradorEvento"].ToString().Trim();
+            }
+            else
+            {
+                lresponable.Visible = true;
+                tresponsable.Visible = true;
+                TextBox51.Enabled = true;
+                imgDependencia4.Visible = false;
+                TextBox51.Text = InfoGridEventos.Rows[RowGridEventos]["NomGeneradorEvento"].ToString().Trim();
+            }
+
+            //tab 2
+            #region TAB 2 Datos Complementarios
+            TextBox34.Text = InfoGridEventos.Rows[RowGridEventos]["ResponsableSolucion"].ToString().Trim();
+            lblIdDependencia1.Text = InfoGridEventos.Rows[RowGridEventos]["ResponsableEvento"].ToString().Trim();
+            for (int i = 0; i < DropDownList67.Items.Count; i++)
+            {
+                DropDownList67.SelectedIndex = i;
+                if (DropDownList67.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdCadenaValor"].ToString().Trim())
+                    break;
+                else
+                    DropDownList67.SelectedIndex = 0;
+            }
+
+            if (DropDownList67.SelectedValue.ToString().Trim() != "---")
+            {
+                loadDDLMacroproceso(DropDownList67.SelectedValue.ToString().Trim(), 1);
+                for (int i = 0; i < DropDownList9.Items.Count; i++)
+                {
+                    DropDownList9.SelectedIndex = i;
+                    if (DropDownList9.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdMacroproceso"].ToString().Trim())
+                        break;
+                    else
+                        DropDownList9.SelectedIndex = 0;
+                }
+            }
+            if (DropDownList9.SelectedValue.ToString().Trim() != "---")
+            {
+                loadDDLProceso(DropDownList9.SelectedValue.ToString().Trim(), 1);
+                for (int i = 0; i < DropDownList10.Items.Count; i++)
+                {
+                    DropDownList10.SelectedIndex = i;
+                    if (DropDownList10.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdProceso"].ToString().Trim())
+                        break;
+                    else
+                        DropDownList10.SelectedIndex = 0;
+                }
+            }
+
+            if (DropDownList10.SelectedValue.ToString().Trim() != "---")
+            {
+                loadDDLSubProceso(DropDownList10.SelectedValue.ToString().Trim(), 1);
+                for (int i = 0; i < DropDownList6.Items.Count; i++)
+                {
+                    DropDownList6.SelectedIndex = i;
+                    if (DropDownList6.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubProceso"].ToString().Trim())
+                        break;
+                    else
+                        DropDownList6.SelectedIndex = 0;
+                }
+            }
+
+            if (DropDownList6.SelectedValue.ToString().Trim() != "---")
+            {
+                loadDDLActividad(DropDownList6.SelectedValue.ToString().Trim(), 1);
+                for (int i = 0; i < DropDownList11.Items.Count; i++)
+                {
+                    DropDownList11.SelectedIndex = i;
+                    if (DropDownList11.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdActividad"].ToString().Trim())
+                        break;
+                    else
+                        DropDownList11.SelectedIndex = 0;
+                }
+            }
+
+            lblIdDependencia4.Text = InfoGridEventos.Rows[RowGridEventos]["GeneraEvento"].ToString().Trim();
+
+            for (int i = 0; i < DropDownList33.Items.Count; i++)
+            {
+                DropDownList33.SelectedIndex = i;
+                if (DropDownList33.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdClase"].ToString().Trim())
+                    break;
+                else
+                    DropDownList33.SelectedIndex = 0;
+            }
+
+            if (DropDownList33.SelectedValue != "---")
+            {
+                loadDDLSubClaseRiesgo(DropDownList33.SelectedValue.ToString().Trim(), 1);
+                for (int i = 0; i < DropDownList34.Items.Count; i++)
+                {
+                    DropDownList34.SelectedIndex = i;
+                    if (DropDownList34.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubClase"].ToString().Trim())
+                        break;
+                    else
+                        DropDownList34.SelectedIndex = 0;
+                }
+            }
+
+            for (int i = 0; i < DropDownList8.Items.Count; i++)
+            {
+                DropDownList8.SelectedIndex = i;
+                if (DropDownList8.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["NombreTipoPerdidaEvento"].ToString().Trim())
+                    break;
+                else
+                    DropDownList8.SelectedIndex = 0;
+            }
+
+            //cargamos los los tipo y subtipos de lineas
+            for (int i = 0; i < DropDownList23.Items.Count; i++)
+            {
+                DropDownList23.SelectedIndex = i;
+                if (DropDownList23.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdLineaProceso"].ToString().Trim())
+                    break;
+                else
+                    DropDownList23.SelectedIndex = 0;
+            }
+
+            if (DropDownList23.SelectedValue != "NULL")
+            {
+                loadDDLSubLineaNegocio(DropDownList23.SelectedValue.ToString().Trim(), 1);
+                for (int i = 0; i < DropDownList29.Items.Count; i++)
+                {
+                    DropDownList29.SelectedIndex = i;
+                    if (DropDownList29.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdSubLineaProceso"].ToString().Trim())
+                        break;
+                    else
+                        DropDownList29.SelectedIndex = 0;
+                }
+            }
+
+            string ff = InfoGridEventos.Rows[RowGridEventos]["AfectaContinudad"].ToString().Trim();
+            if (ff == "True")
+                ff = "1";
+            else
+                ff = "0";
+
+            for (int i = 0; i < DropDownList15.Items.Count; i++)
+            {
+                DropDownList15.SelectedIndex = i;
+                if (DropDownList15.SelectedValue.ToString().Trim() == ff)
+                    break;
+                else
+                    DropDownList15.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList16.Items.Count; i++)
+            {
+                DropDownList16.SelectedIndex = i;
+                if (DropDownList16.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["IdEstado"].ToString().Trim())
+                    break;
+                else
+                    DropDownList16.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList74.Items.Count; i++)
+            {
+                DropDownList74.SelectedIndex = i;
+                if (DropDownList74.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["Moneda1"].ToString().Trim())
+                    break;
+                else
+                    DropDownList74.SelectedIndex = 0;
+            }
+
+            ff = InfoGridEventos.Rows[RowGridEventos]["Moneda2"].ToString().Trim();
+            for (int i = 0; i < DropDownList75.Items.Count; i++)
+            {
+                DropDownList75.SelectedIndex = i;
+                ff = DropDownList75.SelectedValue.ToString().Trim();
+                if (DropDownList75.SelectedValue.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["Moneda2"].ToString().Trim())
+                    break;
+                else
+                    DropDownList75.SelectedIndex = 0;
+            }
+
+            ff = InfoGridEventos.Rows[RowGridEventos]["Recuperacion"].ToString().Trim();
+            if (ff == "True")
+            {
+                ff = "1";
+                lrecuperacio.Visible = true;
+                trecuperacion.Visible = true;
+            }
+            else
+            {
+                ff = "0";
+                lrecuperacio.Visible = false;
+                trecuperacion.Visible = false;
+            }
+
+            for (int i = 0; i < DropDownList28.Items.Count; i++)
+            {
+                DropDownList28.SelectedIndex = i;
+                if (DropDownList28.SelectedValue.ToString().Trim() == ff)
+                    break;
+                else
+                    DropDownList28.SelectedIndex = 0;
+            }
+
+            TextBox53.Text = InfoGridEventos.Rows[RowGridEventos]["Observaciones"].ToString().Trim();
+            TextBox17.Text = InfoGridEventos.Rows[RowGridEventos]["MasLineas"].ToString().Trim();
+
+            if (TextBox17.Text != "")
+                TrMasLNegocio.Visible = true;
+            else
+                TrMasLNegocio.Visible = false;
+
+            #endregion TAB 2 Contabilizacion
+
+            //tab 3
+            #region TAB 3 Contabilizacion
+            TextBox33.Text = InfoGridEventos.Rows[RowGridEventos]["NombreResContabilidad"].ToString().Trim();
+            lblIdDependencia2.Text = InfoGridEventos.Rows[RowGridEventos]["ResponsableContabilidad"].ToString().Trim();
+            TextBox14.Text = InfoGridEventos.Rows[RowGridEventos]["CuentaPUC"].ToString().Trim();
+            TextBox15.Text = InfoGridEventos.Rows[RowGridEventos]["CuentaOrden"].ToString().Trim();
+            TextBox16.Text = InfoGridEventos.Rows[RowGridEventos]["CuentaPerdida"].ToString().Trim();
+            TextBox21.Text = InfoGridEventos.Rows[RowGridEventos]["TasaCambio1"].ToString().Trim();
+            TextBox22.Text = InfoGridEventos.Rows[RowGridEventos]["ValorPesos1"].ToString().Trim();
+            TextBox23.Text = InfoGridEventos.Rows[RowGridEventos]["ValorRecuperadoTotal"].ToString().Trim();
+            TextBox25.Text = InfoGridEventos.Rows[RowGridEventos]["TasaCambio2"].ToString().Trim();
+            TextBox26.Text = InfoGridEventos.Rows[RowGridEventos]["ValorPesos2"].ToString().Trim();
+            TextBox27.Text = InfoGridEventos.Rows[RowGridEventos]["ValorRecuperadoSeguro"].ToString().Trim();
+            TextBox28.Text = InfoGridEventos.Rows[RowGridEventos]["ValorPesos3"].ToString().Trim();
+            TextBox46.Text = InfoGridEventos.Rows[RowGridEventos]["ValorRecuperacion"].ToString().Trim();
+
+            //FechaContab
+            TextBox1.Text = InfoGridEventos.Rows[RowGridEventos]["FechaContab"].ToString().Trim();
+
+            //TextBox2.Text = string.Format("{0}:{1} {2}",
+            //    InfoGridEventos.Rows[RowGridEventos]["HoraContab"].ToString().Trim(),
+            //    InfoGridEventos.Rows[RowGridEventos]["MinContab"].ToString().Trim(),
+            //    InfoGridEventos.Rows[RowGridEventos]["amContab"].ToString().Trim());
+
+            //HoraContab
+            for (int i = 0; i < DropDownList7.Items.Count; i++)
+            {
+                DropDownList7.SelectedIndex = i;
+                if (DropDownList7.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["HoraContab"].ToString().Trim())
+                    break;
+                else
+                    DropDownList7.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList30.Items.Count; i++)
+            {
+                DropDownList30.SelectedIndex = i;
+                if (DropDownList30.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["MinContab"].ToString().Trim())
+                    break;
+                else
+                    DropDownList30.SelectedIndex = 0;
+            }
+
+            for (int i = 0; i < DropDownList31.Items.Count; i++)
+            {
+                DropDownList31.SelectedIndex = i;
+                if (DropDownList31.SelectedItem.Text.ToString().Trim() == InfoGridEventos.Rows[RowGridEventos]["amContab"].ToString().Trim())
+                    break;
+                else
+                    DropDownList31.SelectedIndex = 0;
+            }
+            string[] fecha = InfoGridEventos.Rows[RowGridEventos]["fechaRecuperacion"].ToString().Split(' ');
+            if (fecha.Length > 1)
+            {
+                string date = fecha[0].ToString();
+                string[] horasV = fecha[1].ToString().Split(':');
+                int hora = Convert.ToInt32(horasV[0].ToString());
+                if (hora > 12)
+                {
+                    string horas = mtdRetornaHora(hora);
+                    ddlHoraRecuperacion.SelectedValue = horas;
+                    ddlHorarioRecuperacion.SelectedValue = "pm";
+                }
+                else
+                {
+                    ddlHoraRecuperacion.SelectedValue = hora.ToString();
+                    ddlHorarioRecuperacion.SelectedValue = "am";
+                }
+                ddlMinutoRecuperacion.SelectedValue = horasV[1].ToString();
+                DateTime dtFechaRep = Convert.ToDateTime(InfoGridEventos.Rows[RowGridEventos]["fechaRecuperacion"].ToString());
+                txtFechaRecuperacion.Text = string.Format("{0:yyyy-M-d}", dtFechaRep);
+            }
+
+
+            txtCuantiaRecuperadaSeguros.Text = InfoGridEventos.Rows[RowGridEventos]["cuantiaRecuperadaSeguros"].ToString().Trim();
+            txtCuantiaOtrasRecuperaciones.Text = InfoGridEventos.Rows[RowGridEventos]["cuantiaOtrasRecuperaciones"].ToString().Trim();
+            txtCuantiaNetaRecuperaciones.Text = InfoGridEventos.Rows[RowGridEventos]["cuantiaNetaRecuperaciones"].ToString().Trim();
+            #endregion TAB 3 Contabilizacion
+
+            ///Validad si es nuevo para el envío de notificacioón
+            if (!string.IsNullOrEmpty(lblIdDependencia1.Text.Trim()))
+                lblExisteResponsableNotificacion.Text = "S";
+        }
+        public string mtdRetornaHora(int hora)
         {
-            try
+            string rhora = string.Empty;
+            if (hora == 13)
+                rhora = "1";
+            if (hora == 14)
+                rhora = "2";
+            if (hora == 15)
+                rhora = "3";
+            if (hora == 16)
+                rhora = "4";
+            if (hora == 17)
+                rhora = "5";
+            if (hora == 18)
+                rhora = "6";
+            if (hora == 19)
+                rhora = "7";
+            if (hora == 20)
+                rhora = "8";
+            if (hora == 21)
+                rhora = "9";
+            if (hora == 22)
+                rhora = "10";
+            if (hora == 23)
+                rhora = "11";
+            if (hora == 24)
+                rhora = "12";
+            return rhora;
+        }
+        private void relacionarRiesgoEvento()
+        {
+            if (validarRiesgo())
             {
-                if (Transaccion == 0)
-                {
-                    cEvento.relacionarRiesgoEvento(InfoGridConsultarRiesgos.Rows[RowGridConsultarRiesgos]["IdRiesgo"].ToString().Trim(), IdEventoActual.ToString());
-                }
-                else
-                {
-                    cEvento.relacionarRiesgoEvento(InfoGridConsultarRiesgos.Rows[RowGridConsultarRiesgos]["IdRiesgo"].ToString().Trim(), InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim());
-                }
-
+                cEvento.relacionarRiesgoEvento(InfoGridConsultarRiesgos.Rows[RowGridConsultarRiesgos]["IdRiesgo"].ToString().Trim(), InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim());
+                loadGridRiesgoEvento();
+                loadInfoRiesgoEvento();
                 GridView8.Visible = false;
-                omb.ShowMessage("Asociación de Riesgo a Evento creada correctamente! ", 3, "Atención");
+                Mensaje("Asociación de Riesgo a Evento creada correctamente");
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al relacionar Riesgo a Evento." + "<br/>" + "Descripción: " + ex.Message.ToString().Trim());
-            }
-
+            else
+                Mensaje("El riesgo ya se encuentra relacionado.");
         }
 
-        private bool ValidarRiesgo()
+        private bool validarRiesgo()
         {
             bool validar = true;
 
@@ -4523,64 +3244,34 @@ namespace ListasSarlaft.UserControls.Eventos
                     break;
                 }
             }
-
             return validar;
         }
-
-        // Yoendy
-        private bool ValidarLimiteRiesgos(int IdRiesgo, int IdFrecuencia, int IdImpacto)
+        private bool validarLimiteRiesgos(int IdRiesgo, int IdFrecuencia, int IdImpacto)
         {
-            bool respuesta = false; int CantEventMax = 0;
-            DataTable dtInfo = cEvento.TotalRiesgosxEvento(IdRiesgo); // En EventoRiesgo
-            System.Data.DataSet dsFuePersonalizado = cEvento.VerificaParametrizacion(IdRiesgo, IdFrecuencia);
+            bool validar = false;
+            DataTable dtInfo = cEvento.mtdTotalRiesgosxEvento(IdRiesgo);
             int CantRiesgoxEvento = Convert.ToInt32(dtInfo.Rows[0]["CantRiesgo"].ToString());
-            dtInfo = cEvento.LimiteRiesgosxEvento(IdFrecuencia); // Máximo disponible general           
+            dtInfo = cEvento.mtdLimiteRiesgosxEvento(IdFrecuencia);
 
-            try
+            if (dtInfo.Rows.Count > 0)
             {
-                if (dsFuePersonalizado.Tables.Count > 1) // OK
+                int CantEventMax = Convert.ToInt32(dtInfo.Rows[0]["EventosMaximos"].ToString());
+                if (CantRiesgoxEvento > CantEventMax)
                 {
-                    DataTable dtCuantos = dsFuePersonalizado.Tables[0];
-                    DataTable dtMaximos = dsFuePersonalizado.Tables[1];
-
-                    int cantidad = Convert.ToInt32(dtCuantos.Rows[0]["Cantidad"]);
-
-                    foreach (DataRow row in dtMaximos.Rows)
+                    if (IdFrecuencia != 5)
                     {
-                        int eventosMaximos = Convert.ToInt32(row["EventosMaximos"]);
-                        if (!string.IsNullOrEmpty(Convert.ToString(eventosMaximos)))
-                        {
-                            CantEventMax = eventosMaximos; // Máximo disponible                          
-                            cantEventosMaximos = eventosMaximos;
-                            personalizado = "Si";
-                        }
+                        IdFrecuencia++;
+                        dtInfo = cRiesgo.calificacionInherente(IdFrecuencia.ToString(), IdImpacto.ToString());
+                        string CodigoRiesgo = Session["CodigoRiesgo"].ToString();
+                        string NombreRiesgoInherente = dtInfo.Rows[0]["NombreRiesgoInherente"].ToString().Trim();
+                        cEvento.actualizarFrecuenciaRiesgo(IdRiesgo.ToString(), IdFrecuencia.ToString(), IdImpacto.ToString());
+                        if (DropDownList27.SelectedValue == "1")
+                            mtdGenerarNotificacion(IdRiesgo, Session["NombreRiesgo"].ToString(), Convert.ToInt32(Session["IdEvento"].ToString()), CodigoRiesgo);
                     }
                 }
-                else
-                {
-                    CantEventMax = Convert.ToInt32(dtInfo.Rows[0]["EventosMaximos"].ToString());
-                    cantEventosMaximos = CantEventMax;
-                    personalizado = "No";
-                }
-                cantEventosFrecuenciaExisten = CantRiesgoxEvento;
-                if (dtInfo.Rows.Count > 0)
-                {
-                    if (CantEventMax > CantRiesgoxEvento)
-                    {
-                        respuesta = true;
-                    }
-                    else
-                    {
-                        respuesta = false;
-                    }
-                }
+                validar = true;
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al validar límite de riesgo." + "<br/>" + "Descripción: " + ex.Message.ToString().Trim());
-            }
-
-            return respuesta;
+            return validar;
         }
         private void mtdGenerarNotificacion(int IdRiesgo, string NombreRiesgo, int IdEvento, string CodigoRiesgo)
         {
@@ -4600,9 +3291,7 @@ namespace ListasSarlaft.UserControls.Eventos
 
                 boolEnviarNotificacion(19, IdRiesgo, Convert.ToInt16(lblIdDependencia4.Text.Trim()), System.DateTime.Now.ToString().Trim(), TextoAdicional);
                 if (TipoArea != "0")
-                {
                     boolEnviarNotificacionRiesgos(19, IdRiesgo, Convert.ToInt16(lblIdDependencia4.Text.Trim()), System.DateTime.Now.ToString().Trim(), TextoAdicional, TipoArea);
-                }
             }
             catch (Exception ex)
             {
@@ -4651,18 +3340,16 @@ namespace ListasSarlaft.UserControls.Eventos
             {
                 DropDownList17.SelectedIndex = i;
                 if (DropDownList17.SelectedValue.ToString().Trim() == InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["IdTipoRecursoPlanAccion"].ToString().Trim())
-                {
                     break;
-                }
+
             }
             TextBox36.Text = InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["ValorRecurso"].ToString().Trim();
             for (int i = 0; i < DropDownList18.Items.Count; i++)
             {
                 DropDownList18.SelectedIndex = i;
                 if (DropDownList18.SelectedValue.ToString().Trim() == InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["IdEstadoPlanAccion"].ToString().Trim())
-                {
                     break;
-                }
+
             }
 
             TextBox37.Text = InfoGridPlanAccionEvento.Rows[RowGridPlanAccionEvento]["FechaCompromiso"].ToString().Trim();
@@ -4681,9 +3368,7 @@ namespace ListasSarlaft.UserControls.Eventos
             if (dtInfo != null)
             {
                 if (dtInfo.Rows.Count > 0)
-                {
                     intIdRegistro = Convert.ToInt32(dtInfo.Rows[0][0].ToString());
-                }
             }
 
             return intIdRegistro;
@@ -4909,36 +3594,26 @@ namespace ListasSarlaft.UserControls.Eventos
                     foreach (string substr in Destinatario.Split(';'))
                     {
                         if (!string.IsNullOrEmpty(substr.Trim()))
-                        {
                             message.To.Add(substr);
-                        }
                     }
                     #endregion
 
                     #region Copia
                     if (Copia.Trim() != "")
-                    {
                         foreach (string substr in Copia.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     #region Otros
                     if (Otros.Trim() != "")
-                    {
                         foreach (string substr in Otros.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     message.Subject = Asunto;//subject of email
@@ -5130,36 +3805,26 @@ namespace ListasSarlaft.UserControls.Eventos
                     foreach (string substr in Destinatario.Split(';'))
                     {
                         if (!string.IsNullOrEmpty(substr.Trim()))
-                        {
                             message.To.Add(substr);
-                        }
                     }
                     #endregion
 
                     #region Copia
                     if (Copia.Trim() != "")
-                    {
                         foreach (string substr in Copia.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     #region Otros
                     if (Otros.Trim() != "")
-                    {
                         foreach (string substr in Otros.Split(';'))
                         {
                             if (!string.IsNullOrEmpty(substr.Trim()))
-                            {
                                 message.CC.Add(substr);
-                            }
                         }
-                    }
                     #endregion
 
                     message.Subject = Asunto;//subject of email
@@ -5235,12 +3900,8 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             try
             {
-                if (!string.IsNullOrEmpty(TextBox22.Text))
-                {
-                    long N = Convert.ToInt32(Sanitizer.GetSafeHtmlFragment(TextBox22.Text));
-                    TextBox22.Text = N.ToString("N0");
-                }
-
+                long N = Convert.ToInt32(Sanitizer.GetSafeHtmlFragment(TextBox22.Text));
+                TextBox22.Text = N.ToString("N0");
             }
             catch (Exception a)
             {
@@ -5324,64 +3985,19 @@ namespace ListasSarlaft.UserControls.Eventos
                 Mensaje("Error al poner separadores de mil. <br/> Solo números. [Error: " + a.Message + "]");
             }
         }
-
-        protected void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                long N = Convert.ToInt32(Sanitizer.GetSafeHtmlFragment(TextBox3.Text));
-                TextBox3.Text = N.ToString("N0");
-            }
-            catch (Exception a)
-            {
-                TextBox3.Text = "";
-                TextBox3.Focus();
-                //Mensaje("Error: solo números permitidos.");
-            }
-        }
-
-        protected void TextBox4_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                long N = Convert.ToInt32(Sanitizer.GetSafeHtmlFragment(TextBox4.Text));
-                TextBox4.Text = N.ToString("N0");
-            }
-            catch (Exception a)
-            {
-                TextBox4.Text = "";
-                TextBox4.Focus();
-                //Mensaje("Error: solo números permitidos.");
-            }
-        }
-
-        protected void TextBox5_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                long N = Convert.ToInt32(Sanitizer.GetSafeHtmlFragment(TextBox5.Text));
-                TextBox5.Text = N.ToString("N0");
-            }
-            catch (Exception a)
-            {
-                TextBox5.Text = "";
-                TextBox5.Focus();
-                //Mensaje("Error: solo números permitidos.");
-            }
-        }
         #endregion Textbox
 
         #region Gridviews
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            Transaccion = 1;
+
             switch (e.CommandName)
             {
                 case "Modificar":
                     RowGridEventos = (Convert.ToInt16(GridView1.PageSize) * PagIndexInfoGridEventos) + Convert.ToInt16(e.CommandArgument);
                     GridViewRow row = GridView1.Rows[Convert.ToInt16(e.CommandArgument)];
-                    System.Collections.Specialized.IOrderedDictionary colsNoVisible = GridView1.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
+                    var colsNoVisible = GridView1.DataKeys[Convert.ToInt16(e.CommandArgument)].Values;
                     Session["IdEvento"] = colsNoVisible[0].ToString();
                     reseteartodo();
                     resetValuesCamposEventos();
@@ -5399,9 +4015,7 @@ namespace ListasSarlaft.UserControls.Eventos
                     loadGridPlanAccionEvento();
                     loadInfoPlanAccionEvento();
 
-                    mtdCargaImpCual();
-                    
-                    cargardatosevento(Transaccion);
+                    cargardatosevento();
 
                     loadGridRiesgoEvento();
                     loadInfoRiesgoEvento();
@@ -5410,89 +4024,10 @@ namespace ListasSarlaft.UserControls.Eventos
                     mtdLoadGridAudEventoRiesgo();
                     mtdLoadInfoAudEventoRiesgo();
 
-                    
-
-                    ResetValuesAsociados();
-                    loadGridEventosAsociados();
-                    loadInfoGridEventosAsociados();
-
                     #region Carga Riesgos Por Proceso
-                    loadGridConsultarRiesgos();
+                    //loadGridConsultarRiesgos();
                     loadInfoConsultarRiesgosProceso();
                     #endregion Carga Riesgos Por Proceso
-
-                    //load yoendyca
-                    resetValuesRiesgoEventos();
-                    //limpiaCombos();
-                    trRiesgosEventos.Visible = true;
-                    loadGridConsultarRiesgos();
-
-                    loadPlanesAsociados();
-                    loadGvRiesgosAsociados();
-
-                    Habilita();
-                    TbConEventos.Visible = true;
-                    TbNohuboeventos.Visible = false;
-                    ImageButton6.Visible = false; // NUEVO
-                    ImageButton8.Visible = true;  // MODIFICAR
-                    TextBox11.Focus();
-                    Tr9.Visible = true;
-                    Tr10.Visible = true;
-                    break;
-            }
-        }
-
-        protected void GridViewAsociar_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            bool err = false;
-            switch (e.CommandName)
-            {
-                case "Modificar":
-
-                    //lblMsgBoxOkNo1.Text = "Desea Crear la asociación entre los eventos";
-                    //mpeMsgBoxOkNo1.Show();
-                    //lbldummyOkNo1.Text = "Eventos";
-
-                    //Una vez realizado la fuinción de confirmacion de asociación (deberia funcionar con las tres lineas de la parte de arriba)
-                    // se envia la vuncion try a btnAceptarOkNo1_Click
-                    try
-                    {
-                        rowGridEventosAsociar = (Convert.ToInt16(GridViewAsociar.PageSize) * PagIndexInfoGridEventosAsociar) + Convert.ToInt16(e.CommandArgument);
-                        string IdEventoPrincipal = InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim();
-                        string CodigoEventoPrincipal = InfoGridEventos.Rows[RowGridEventos]["CodigoEvento"].ToString().Trim();
-                        string IdEventoAsociado = InfoGridEventosAsociados.Rows[rowGridEventosAsociar]["IdEvento"].ToString().Trim();
-                        string CodigoEventoAsociado = InfoGridEventosAsociados.Rows[rowGridEventosAsociar]["CodigoEvento"].ToString().Trim();
-                        int IdUsuario = Convert.ToInt32(Session["IdUsuario"]);
-                        if (IdEventoPrincipal != IdEventoAsociado)
-                        {
-                            for (int i = 0; i < InfoGridEventoAsociado.Rows.Count; i++)
-                            {
-                                if (IdEventoAsociado == InfoGridEventoAsociado.Rows[i]["IdEvento"].ToString().Trim())
-                                {
-                                    Mensaje("Error: el evento ya se encuentra asociado" + "<a style='font-weight: bold;color: #3a4ee0;'></a>");
-                                    err = true;
-                                    break;
-                                }
-                            }
-                            if (err == true) break;
-                            cEvento.CrearAsociacion(IdEventoPrincipal, CodigoEventoPrincipal, IdEventoAsociado, CodigoEventoAsociado, IdUsuario);
-                            Mensaje("Evento asociado correctamente" + "<a style='font-weight: bold;color: #3a4ee0;'></a>");
-                            ResetValuesAsociados();
-                            loadGridEventosAsociados();
-                            loadInfoGridEventosAsociados();
-                        }
-                        else
-                        {
-                            Mensaje("Error: el evento no puede asociarse a si mismo" + "<a style='font-weight: bold;color: #3a4ee0;'></a>");
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        omb.ShowMessage("Error en al crear la asociación." + "<br/>" + "Descripción: " + ex.Message.ToString().Trim(), 1, "Atención");
-                        err = true;
-                    }
-
                     break;
             }
         }
@@ -5540,7 +4075,7 @@ namespace ListasSarlaft.UserControls.Eventos
         {
             RowGridConsultarRiesgos = Convert.ToInt16(e.CommandArgument);
             GridViewRow row = GridView8.Rows[RowGridConsultarRiesgos];
-            System.Collections.Specialized.IOrderedDictionary colsNoVisible = GridView8.DataKeys[RowGridConsultarRiesgos].Values;
+            var colsNoVisible = GridView8.DataKeys[RowGridConsultarRiesgos].Values;
             string ListCausas = colsNoVisible[0].ToString();
             Session["IdRiesgo"] = colsNoVisible[1].ToString();
             Session["CodigoRiesgo"] = row.Cells[0].Text;
@@ -5561,177 +4096,62 @@ namespace ListasSarlaft.UserControls.Eventos
                     break;
             }
         }
-
-        // Yoendy - Relacionar riesgo a evento
         protected void Bok_Click(object sender, EventArgs e)
         {
-            int IdEvento = 0;
-            if (Transaccion == 0)
-            {
-                IdEvento = IdEventoActual;
-            }
-            else
-            {
-                IdEvento = Convert.ToInt32(Session["IdEvento"].ToString());
-            }
-
+            int IdEvento = Convert.ToInt32(Session["IdEvento"].ToString());
             int IdRiesgo = Convert.ToInt32(Session["IdRiesgo"].ToString());
-            string CodigoRiesgo = Session["CodigoRiesgo"].ToString();
             int IdFrecuencia = Convert.ToInt32(Session["IdProbabilidad"].ToString());
             int IdImpacto = Convert.ToInt32(Session["IdImpacto"].ToString());
-            int IdNotificacionEvento = 0;
-            bool validaLimite = false, flag = false;
-            try
+            bool flag = false;
+            bool eject = false;
+            if (validarRiesgo())
             {
-                if (cCuenta.permisosAgregar(IdFormulario) == "True")
+                if (CBriesgosSinCausa.Checked == true)
                 {
-                    if (ValidarRiesgo())
-                    {
-                        validaLimite = ValidarLimiteRiesgos(IdRiesgo, IdFrecuencia, IdImpacto);
-                        if (validaLimite)
-                        { //Ok - Relaciona
-                            if (CBriesgosSinCausa.Checked == true)
-                            {
-                                RelacionarRiesgoEvento();
-                            }
-                            else
-                            {
-                                for (int rowIndex = 0; rowIndex < GVcausasRiesgos.Rows.Count; rowIndex++)
-                                {
-                                    GridViewRow row = GVcausasRiesgos.Rows[rowIndex];
-                                    int IdCausa = Convert.ToInt32(row.Cells[0].Text);
-                                    CheckBox asociar = (CheckBox)row.FindControl("CBasociarCausa");
-                                    if (asociar.Checked == true)
-                                    {
-                                        cEvento.RelacionarRiesgoEventoCausas(IdRiesgo, IdEvento, IdCausa);
-                                        flag = true;
-                                    }
-                                }
-                            }
-                            modalPopup.Hide();
+                    relacionarRiesgoEvento();
+                    eject = validarLimiteRiesgos(IdRiesgo, IdFrecuencia, IdImpacto);
+                    if (eject == false)
+                        Mensaje("Error en la validación de la frecuencia, revisar registros de Eventos Maximos por Riesgo.");
 
-                            if (flag == true)
-                            {
-                                RelacionarRiesgoEvento();
-                                if (validaLimite == false)
-                                {
-                                    if (personalizado == "Si")
-                                    {
-                                        omb.ShowMessage("Personalizado: La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " + "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                                   "Favor revisar la frecuencia máxima del riesgo. <br /> ", 2, "Atención");
-                                    }
-                                    else
-                                    {
-                                        omb.ShowMessage("La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " + "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                                     "Favor revisar la frecuencia máxima del riesgo. <br />", 2, "Atención");
-                                    }
-                                }
-                            }
-                        }
-                        else // Supera el máximo
-                        {
-                            // consulta idNotificación
-                            DataTable dtIdNotificacion = cEvento.IdNotificacion();
-                            string id = dtIdNotificacion.Rows[0]["IdEvento"].ToString();
-                            IdNotificacionEvento = Convert.ToInt32(id);
-
-                            if (CBriesgosSinCausa.Checked == true)
-                            {
-                                RelacionarRiesgoEvento();
-                                if (personalizado == "Si")
-                                {
-                                    omb.ShowMessage("Personalizado: La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " + "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                            "Favor revisar la frecuencia máxima del riesgo. ", 2, "Atención");
-
-                                    string Descripcion = "<B> Eventos máximos superados por frecuencia. </B> <br /> Personalizado: La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " +
-                                                    "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, " +
-                                                    "se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                                    "Favor revisar la frecuencia máxima del riesgo. <br />";
-
-                                    boolEnviarNotificacion(IdNotificacionEvento, Convert.ToInt32("0"), Convert.ToInt16(Session["idJerarquia"].ToString()), "", Descripcion);
-                                }
-                                else
-                                {
-                                    omb.ShowMessage("La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " + "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                           "Favor revisar la frecuencia máxim del riesgo. ", 2, "Atención");
-
-                                    string Descripcion = "<B> Eventos máximos superados por frecuencia </B> <br /> La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " +
-                                                    "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, " +
-                                                    "se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                                    "Favor revisar la frecuencia máxima del riesgo. <br />";
-
-                                    boolEnviarNotificacion(IdNotificacionEvento, Convert.ToInt32("0"), Convert.ToInt16(Session["idJerarquia"].ToString()), "", Descripcion);
-                                }
-                            }
-                            else
-                            {
-                                for (int rowIndex = 0; rowIndex < GVcausasRiesgos.Rows.Count; rowIndex++)
-                                {
-                                    GridViewRow row = GVcausasRiesgos.Rows[rowIndex];
-                                    int IdCausa = Convert.ToInt32(row.Cells[0].Text);
-                                    CheckBox asociar = (CheckBox)row.FindControl("CBasociarCausa");
-                                    if (asociar.Checked == true)
-                                    {
-                                        cEvento.RelacionarRiesgoEventoCausas(IdRiesgo, IdEvento, IdCausa);
-                                        flag = true;
-                                    }
-                                }
-                            }
-                            modalPopup.Hide();
-                            if (flag == true)
-                            {
-                                RelacionarRiesgoEvento();
-                                if (validaLimite == false)
-                                {
-                                    if (personalizado == "Si")
-                                    {
-                                        omb.ShowMessage("Personalizado: La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " + "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                                "Favor revisar la frecuencia máxima del riesgo. ", 2, "Atención");
-                                        string Descripcion = "<B> Eventos máximos superados por frecuencia </B> <br /> Personalizado: La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " +
-                                                   "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, " +
-                                                   "se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                                   "Favor revisar la frecuencia máxima del riesgo. <br />";
-
-                                        boolEnviarNotificacion(IdNotificacionEvento, Convert.ToInt32("0"), Convert.ToInt16(Session["idJerarquia"].ToString()), "", Descripcion);
-                                    }
-                                    else
-                                    {
-                                        omb.ShowMessage("La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " + "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                               "Favor revisar la frecuencia máxima del riesgo. ", 2, "Atención");
-                                        string Descripcion = "<B> Eventos máximos superados por frecuencia </B> <br /> La cantidad máxima de eventos parametrizados para la frecuencia del riesgo " +
-                                                   "<a style='font-weight: bold;color: #3a4ee0;'> [" + CodigoRiesgo.Trim().ToUpper() + "]</a>, " +
-                                                   "se ha superado! Sin embargo, se ha asociado el riesgo. <br /> " +
-                                                   "Favor revisar la frecuencia máxima del riesgo. <br />";
-
-                                        boolEnviarNotificacion(IdNotificacionEvento, Convert.ToInt32("0"), Convert.ToInt16(Session["idJerarquia"].ToString()), "", Descripcion);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        omb.ShowMessage("El riesgo ya se encuentra relacionado!", 1, "Atención");
-                    }
                 }
                 else
                 {
-                    omb.ShowMessage("No tiene los permisos suficientes para llevar a cabo esta acción.", 1, "Atención");
+                    for (int rowIndex = 0; rowIndex < GVcausasRiesgos.Rows.Count; rowIndex++)
+                    {
+                        GridViewRow row = GVcausasRiesgos.Rows[rowIndex];
+                        //GridViewRow previousRow = GVGestionCompetencias.Rows[rowIndex];
+                        int IdCausa = Convert.ToInt32(row.Cells[0].Text);
+                        CheckBox asociar = (CheckBox)row.FindControl("CBasociarCausa");
+                        if (asociar.Checked == true)
+                        {
+                            flag = true;
+                            cEvento.relacionarRiesgoEventoCausas(IdRiesgo, IdEvento, IdCausa);
+                        }
+                    }
+                    modalPopup.Hide();
+                    if (cCuenta.permisosAgregar(IdFormulario) == "False")
+                        Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
+                    else
+                    {
+                        if (flag == true)
+                        {
+                            relacionarRiesgoEvento();
+                            eject = validarLimiteRiesgos(IdRiesgo, IdFrecuencia, IdImpacto);
+                            if (eject == false)
+                                Mensaje("Error en la validación de la frecuencia, revisar registros de Eventos Maximos por Riesgo.");
+
+                        }
+                    }
                 }
-                #region Carga Riesgos Por Proceso            
-                loadInfoConsultarRiesgosProceso();
-                #endregion Carga Riesgos Por Proceso
-                CBriesgosSinCausa.Checked = false;
-                loadGridRiesgoEvento();
-                loadInfoRiesgoEvento();
             }
-            catch (Exception ex)
-            {
-                omb.ShowMessage("No se pudo realizar la asociación : " + ex.Message + ". /UserControl/Eventos/Eventos.ascx.cs", 1, "Error");
-            }
-
+            else
+                Mensaje("El riesgo ya se encuentra relacionado.");
+            #region Carga Riesgos Por Proceso
+            //loadGridConsultarRiesgos();
+            loadInfoConsultarRiesgosProceso();
+            #endregion Carga Riesgos Por Proceso
+            CBriesgosSinCausa.Checked = false;
         }
-
         protected void GridView9_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             RowGridComentarioPlanAccion = Convert.ToInt16(e.CommandArgument);
@@ -5764,21 +4184,6 @@ namespace ListasSarlaft.UserControls.Eventos
             GridView1.DataBind();
         }
 
-        protected void GridViewAsociar_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            PagIndexInfoGridEventosAsociar = e.NewPageIndex;
-            GridViewAsociar.PageIndex = PagIndexInfoGridEventosAsociar;
-            GridViewAsociar.DataSource = InfoGridEventosAsociados;
-            GridViewAsociar.DataBind();
-        }
-        protected void GridViewEventosAsociados_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            PagIndexInfoGridEventoAsociado = e.NewPageIndex;
-            GridViewEventosAsociados.PageIndex = PagIndexInfoGridEventoAsociado;
-            GridViewEventosAsociados.DataSource = InfoGridEventoAsociado;
-            GridViewEventosAsociados.DataBind();
-        }
-
         protected void SqlDataSource200_On_Inserted(object sender, SqlDataSourceStatusEventArgs e)
         {
             LastInsertIdCE = (int)e.Command.Parameters["@NewParameter2"].Value;
@@ -5786,60 +4191,11 @@ namespace ListasSarlaft.UserControls.Eventos
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Transaccion = 0;
-
+            //LimpiarTodo();
             if (RadioButtonList1.SelectedIndex == 0)
             {
                 if (cCuenta.permisosConsulta(IdFormularioNohuboevent) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
-                else
-                {
-                    TbConEventos.Visible = false;
-                    TbNohuboeventos.Visible = true;
-                    TextBox41.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
-                    TextBox42.Text = Session["loginUsuario"].ToString().Trim();
-                    ddlEmpresa.SelectedIndex = 0;
-                }
-            }
-            else if (RadioButtonList1.SelectedIndex == 1)
-            {
-                if (cCuenta.permisosConsulta(IdFormularioCrearevento) == "False")
-                {
-                    Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
-                else
-                {
-                    LimpiarTodo();
-                    loadGridRiesgoEvento();
-                    loadInfoRiesgoEvento();
-                    mtdCargaImpCual();
-                    RadioButtonList1.SelectedIndex = 1;
-                    TbNohuboeventos.Visible = false;
-                    TbConEventos.Visible = true;
-                    ImageButton6.Visible = true; // NUEVO
-                    ImageButton8.Visible = false; // MODIFICAR
-                    TextBox39.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
-                    TextBox40.Text = Session["loginUsuario"].ToString().Trim();
-                    int trans = 10;
-                    string script = @"<script type='text/javascript'>FocusPeriodo(" + trans + ");" + "</script>";
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", script, false);
-                }
-            }
-        }
-
-        //limpia 
-        private void Habilita()
-        {
-            //LimpiarTodo();
-            bool pba = true;
-            if (pba == true)
-            {
-                if (cCuenta.permisosConsulta(IdFormularioNohuboevent) == "False")
-                {
-                    Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     TbConEventos.Visible = false;
@@ -5850,12 +4206,10 @@ namespace ListasSarlaft.UserControls.Eventos
                     //loadCodigoNHEvento();
                 }
             }
-            else if (pba == true)
+            else if (RadioButtonList1.SelectedIndex == 1)
             {
                 if (cCuenta.permisosConsulta(IdFormularioCrearevento) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
                 {
                     TbNohuboeventos.Visible = false;
@@ -5869,8 +4223,6 @@ namespace ListasSarlaft.UserControls.Eventos
             }
         }
 
-
-
         protected void TabContainerEventos_ActiveTabChanged(object sender, EventArgs e)
         {
             int a = TabContainerEventos.ActiveTabIndex;
@@ -5879,25 +4231,17 @@ namespace ListasSarlaft.UserControls.Eventos
             if (a == 1)
             {
                 if (cCuenta.permisosConsulta(IdFormularioDatosComple) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
-                {
                     TabContainerEventos.ActiveTabIndex = 1;
-                }
             }
 
             if (a == 2)
             {
                 if (cCuenta.permisosConsulta(IdFormularioContabiliza) == "False")
-                {
                     Mensaje("No tiene los permisos suficientes para llevar a cabo esta acción.");
-                }
                 else
-                {
                     TabContainerEventos.ActiveTabIndex = 2;
-                }
             }
         }
         #endregion Eventos
@@ -5910,13 +4254,9 @@ namespace ListasSarlaft.UserControls.Eventos
             dtInfo = cControl.loadCodigoArchivoControl();
 
             if (dtInfo.Rows.Count > 0)
-            {
                 nameFile = dtInfo.Rows[0]["NumRegistros"].ToString().Trim() + "-" + InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim() + "-" + FileUpload1.FileName.ToString().Trim();
-            }
             else
-            {
                 nameFile = "1-" + InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim() + "-" + FileUpload1.FileName.ToString().Trim();
-            }
 
             FileUpload1.SaveAs(Server.MapPath("~/Archivos/PDFsEventos/") + nameFile);
             cEvento.agregarArchivoEvento(InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim(), nameFile);
@@ -5942,39 +4282,14 @@ namespace ListasSarlaft.UserControls.Eventos
 
             #region Nombre Archivo
             if (dtInfo.Rows.Count > 0)
-            {
-                if (Transaccion == 0)
-                {
-                    strNombreArchivo = string.Format("{0}-{1}-{2}",
-                    dtInfo.Rows[0]["NumRegistros"].ToString().Trim(),
-                    Label55.Text,
-                    FileUpload1.FileName.ToString().Trim());
-                }
-                else
-                {
-                    strNombreArchivo = string.Format("{0}-{1}-{2}",
+                strNombreArchivo = string.Format("{0}-{1}-{2}",
                     dtInfo.Rows[0]["NumRegistros"].ToString().Trim(),
                     InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim(),
                     FileUpload1.FileName.ToString().Trim());
-                }
-
-            }
             else
-            {
-                if (Transaccion == 0)
-                {
-                    strNombreArchivo = string.Format("1-{0}-{1}",
-                   Label55.Text,
-                   FileUpload1.FileName.ToString().Trim());
-                }
-                else
-                {
-                    strNombreArchivo = string.Format("1-{0}-{1}",
+                strNombreArchivo = string.Format("1-{0}-{1}",
                     InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim(),
                     FileUpload1.FileName.ToString().Trim());
-                }
-
-            }
             #endregion Nombre Archivo
 
             #region Archivo
@@ -5982,15 +4297,8 @@ namespace ListasSarlaft.UserControls.Eventos
             BinaryReader br = new BinaryReader(fs);
             Byte[] bPdfData = br.ReadBytes((Int32)fs.Length);
             #endregion Archivo
-            if (Transaccion == 0)
-            {
-                cEvento.mtdAgregarArchivoPdf(strIdControl, Convert.ToString(IdEventoActual), strNombreArchivo, bPdfData);
-            }
-            else
-            {
-                cEvento.mtdAgregarArchivoPdf(strIdControl, Session["IdEvento"].ToString().Trim(), strNombreArchivo, bPdfData);
-            }
 
+            cEvento.mtdAgregarArchivoPdf(strIdControl, InfoGridEventos.Rows[RowGridEventos]["IdEvento"].ToString().Trim(), strNombreArchivo, bPdfData);
         }
 
         private void mtdDescargarPdfEvento()
@@ -6019,17 +4327,7 @@ namespace ListasSarlaft.UserControls.Eventos
             {
 
                 string customerId = GridView2.DataKeys[e.Row.RowIndex].Value.ToString();
-                int IdEvento = 0;
-                if (Transaccion == 0)
-                {
-                    IdEvento = IdEventoActual;
-                }
-                else
-                {
-                    IdEvento = Convert.ToInt32(Session["IdEvento"].ToString());
-                }
-
-
+                int IdEvento = Convert.ToInt32(Session["IdEvento"].ToString());
                 //int IdRiesgo = Convert.ToInt32(Session["IdRiesgo"].ToString());
                 GridView gvOrders = e.Row.FindControl("gvOrders") as GridView;
                 gvOrders.DataSource = GetData(string.Format("SELECT Causa.IdCausas, Causa.NombreCausas" +
@@ -6061,72 +4359,5 @@ namespace ListasSarlaft.UserControls.Eventos
                 }
             }
         }
-
-        //validator yoendy
-        protected void DropDownList8_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ValidarObligatoriedadDatosContables();
-        }
-
-        //eventos para nuevos campos Yoendy
-        private void loadDDLClasificacion()
-        {
-            try
-            {
-                DataTable dtInfo = new DataTable();
-                dtInfo = cRiesgo.loadDDLClasificacion();
-                for (int i = 0; i < dtInfo.Rows.Count; i++)
-                {
-
-                    cbRiesgosGlobales.Items.Insert(i + 1, new ListItem(dtInfo.Rows[i]["NombreClasificacionRiesgo"].ToString().Trim(), dtInfo.Rows[i]["IdClasificacionRiesgo"].ToString()));
-                }
-            }
-            catch (Exception ex)
-            {
-                Mensaje("Error al cargar clasificación riesgo. " + ex.Message);
-            }
-        }
-
-        protected void Exportar_Click(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = InfoGridPlanesAsociados;
-
-                if (dt.Rows.Count > 0)
-                {
-                    exportExcel(dt, Response, "Reporte Planes de Acción " + DateTime.Now + "");
-                }
-                else
-                {
-                    omb.ShowMessage("No se encontraron valores para exportar!", 2, "Atención");
-                }
-            }
-            catch (Exception ex)
-            {
-                //  omb.ShowMessage("Error al exportar el reporte de planes de acción:" + ex.Message.ToString(), 1, "Error");
-            }
-        }
-
-        public static void exportExcel(DataTable dt, HttpResponse Response, string filename)
-        {
-            Response.Clear();
-            Response.ContentType = "application/vnd.ms-excel";
-            Response.AddHeader("Content-Disposition", "attachment;filename=" + filename + ".xls");
-            Response.ContentEncoding = System.Text.Encoding.Default;
-            System.IO.StringWriter stringWrite = new System.IO.StringWriter();
-            System.Web.UI.HtmlTextWriter htmlWrite = new System.Web.UI.HtmlTextWriter(stringWrite);
-            System.Web.UI.WebControls.DataGrid dg = new System.Web.UI.WebControls.DataGrid
-            {
-                DataSource = dt
-            };
-            dg.DataBind();
-            dg.RenderControl(htmlWrite);
-            Response.Write(stringWrite.ToString());
-            Response.End();
-        }
-
-
     }
 }

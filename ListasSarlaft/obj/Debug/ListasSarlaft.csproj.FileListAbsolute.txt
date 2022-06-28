@@ -39,6 +39,10 @@ D:\Workspace\Sherlock\Fuentes\Ver4.2\ListasSarlaft\obj\Debug\RdlCompile.compiled
 D:\Workspace\Sherlock\Fuentes\Ver4.2\ListasSarlaft\obj\Debug\ListasSarlaft.csproj.CopyComplete
 D:\Workspace\Sherlock\Fuentes\Ver4.2\ListasSarlaft\obj\Debug\ListasSarlaft.dll
 D:\Workspace\Sherlock\Fuentes\Ver4.2\ListasSarlaft\obj\Debug\ListasSarlaft.pdb
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\ListasSarlaft.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\RdlCompile.cache
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\RdlCompile.compiled
+C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\ListasSarlaft.csproj.CoreCompileInputs.cache
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\ListasSarlaft.dll.config
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\ListasSarlaft.dll
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\ListasSarlaft.pdb
@@ -63,12 +67,6 @@ C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\S
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\DAL.pdb
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\DTO.pdb
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\DLL.pdb
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\AntiXSSLibrary.xml
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\bin\HtmlSanitizationLibrary.xml
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\ListasSarlaft.csproj.AssemblyReference.cache
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\RdlCompile.cache
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\RdlCompile.compiled
-C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\ListasSarlaft.csproj.CoreCompileInputs.cache
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\ListasSarlaft.csproj.CopyComplete
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\ListasSarlaft.dll
 C:\Users\Administrador\Desktop\SherlockSE\Sherlock_Ver_42_SE\ListasSarlaft\obj\Debug\ListasSarlaft.pdb

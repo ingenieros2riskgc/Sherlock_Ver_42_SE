@@ -1,75 +1,64 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Eventos.ascx.cs" Inherits="ListasSarlaft.UserControls.Eventos.Eventos" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="~/UserControls/Sitio/OkMessageBox.ascx" TagPrefix="uc" TagName="OkMessageBox" %>
+<%--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>--%>
+<script src="../../Scripts/DownloadJquery.js"></script>
 
-
-<script src="/JS/jquery.min.js"></script>
-<script src="/JS/jsFunciones.js"></script>
 <script type="text/javascript">
     function fnClick(sender, e) {
         __doPostBack(sender, e);
     }
-    //$("[src*=plus]").live("click", function () {
-    //    $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
-    //    $(this).attr("src", "../../Imagenes/Icons/minus.png");
-    //});
-    //$("[src*=minus]").live("click", function () {
-    //    $(this).attr("src", "../../Imagenes/Icons/plus.png");
-    //    $(this).closest("tr").next().remove();
-    //});
+    $("[src*=plus]").live("click", function () {
+        $(this).closest("tr").after("<tr><td></td><td colspan = '999'>" + $(this).next().html() + "</td></tr>")
+        $(this).attr("src", "../../Imagenes/Icons/minus.png");
+    });
+    $("[src*=minus]").live("click", function () {
+        $(this).attr("src", "../../Imagenes/Icons/plus.png");
+        $(this).closest("tr").next().remove();
+    });
 </script>
-
 <style type="text/css">
-    .gridViewHeader a:link {
+    .gridViewHeader a:link
+    {
         text-decoration: none;
     }
 
-    .FondoAplicacion {
+    .FondoAplicacion
+    {
         background-color: Gray;
         filter: alpha(opacity=80);
         opacity: 0.8;
     }
 
-    .scrollingControlContainer {
+    .scrollingControlContainer
+    {
         overflow-x: hidden;
         overflow-y: scroll;
     }
 
-    .scrollingCheckBoxList {
+    .scrollingCheckBoxList
+    {
         border: 1px #808080 solid;
         margin: 10px 10px 10px 10px;
         height: 200px;
     }
 
-    .popup {
+    .popup
+    {
         border: Silver 1px solid;
         color: #060F40;
         background: #ffffff;
     }
 
-    .style1 {
+    .style1
+    {
         height: 74px;
     }
-
-    .EAsociados {
-        border-radius: 0px 55px 57px 0px;
-        -moz-border-radius: 0px 55px 57px 0px;
-        -webkit-border-radius: 0px 55px 57px 0px;
-        border: 0px solid #000000;
-        background: rgba(227,227,227,1);
-        background: -moz-linear-gradient(left, rgba(227,227,227,1) 0%, rgba(166,166,166,1) 0%, rgba(178,178,178,0.58) 43%, rgba(186,186,186,0.58) 73%, rgba(201,201,201,0.58) 100%);
-        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(227,227,227,1)), color-stop(0%, rgba(166,166,166,1)), color-stop(43%, rgba(178,178,178,0.58)), color-stop(73%, rgba(186,186,186,0.58)), color-stop(100%, rgba(201,201,201,0.58)));
-        background: -webkit-linear-gradient(left, rgba(227,227,227,1) 0%, rgba(166,166,166,1) 0%, rgba(178,178,178,0.58) 43%, rgba(186,186,186,0.58) 73%, rgba(201,201,201,0.58) 100%);
-        background: -o-linear-gradient(left, rgba(227,227,227,1) 0%, rgba(166,166,166,1) 0%, rgba(178,178,178,0.58) 43%, rgba(186,186,186,0.58) 73%, rgba(201,201,201,0.58) 100%);
-        background: -ms-linear-gradient(left, rgba(227,227,227,1) 0%, rgba(166,166,166,1) 0%, rgba(178,178,178,0.58) 43%, rgba(186,186,186,0.58) 73%, rgba(201,201,201,0.58) 100%);
-        background: linear-gradient(to right, rgba(227,227,227,1) 0%, rgba(166,166,166,1) 0%, rgba(178,178,178,0.58) 43%, rgba(186,186,186,0.58) 73%, rgba(255, 255, 255, 0.45) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e3e3', endColorstr='#c9c9c9', GradientType=1 );
-    }
     .auto-style1 {
-        height: 36px;
+        font-family: Calibri;
+        font-size: small;
     }
 </style>
-
 <asp:SqlDataSource ID="SqlDataSource200" runat="server" ConnectionString="<%$ ConnectionStrings:SarlaftConnectionString %>"
     DeleteCommand="DELETE FROM [Notificaciones].[CorreosEnviados] WHERE [IdCorreosEnviados] = @IdCorreosEnviados"
     InsertCommand="INSERT INTO [Notificaciones].[CorreosEnviados] ([IdEvento], [Destinatario], [Copia], [Otros], [Asunto], [Cuerpo], [Estado], [IdRegistro], [FechaEnvio], [FechaRegistro], [IdUsuario], [Tipo]) VALUES (@IdEvento, @Destinatario, @Copia, @Otros, @Asunto, @Cuerpo, @Estado, @IdRegistro, @FechaEnvio, @FechaRegistro, @IdUsuario, @Tipo) SET @NewParameter2=SCOPE_IDENTITY();"
@@ -124,35 +113,36 @@
 <uc:OkMessageBox ID="omb" runat="server" />
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
-        <asp:UpdateProgress ID="UpdateProgress4" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
-            <ProgressTemplate>
-                <div id="Background">
-                </div>
-                <div id="Progress" align="center">
-                    <asp:Label ID="Lbl11" runat="server" Text="Procesando, por favor espere..." Font-Names="Calibri"
-                        Font-Size="Small"></asp:Label>
-                    <br />
-                    <asp:Image ID="Img11" runat="server" ImageUrl="~/Imagenes/Icons/loading.gif" />
-                </div>
-            </ProgressTemplate>
-        </asp:UpdateProgress>
+        <asp:UpdateProgress ID="UpdateProgress4" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
+                                >
+                                <ProgressTemplate>
+                                    <div id="Background">
+                                    </div>
+                                    <div id="Progress" align="center">
+                                        <asp:Label ID="Lbl11" runat="server" Text="Procesando, por favor espere..." Font-Names="Calibri"
+                                            Font-Size="Small"></asp:Label>
+                                        <br />
+                                        <asp:Image ID="Img11" runat="server" ImageUrl="~/Imagenes/Icons/loading.gif" />
+                                    </div>
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
         <asp:Panel ID="popupCausas" runat="server" CssClass="popup" Width="800px" Style="display: none">
             <table width="100%" class="tablaSinBordes">
                 <tr>
                     <td align="center">
                         <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
-                            DisplayAfter="0">
-                            <ProgressTemplate>
-                                <div id="Background">
-                                </div>
-                                <div id="Progress">
-                                    <asp:Label ID="Lbl11Pro" runat="server" Text="Procesando, por favor espere..." Font-Names="Calibri"
-                                        Font-Size="Small"></asp:Label>
-                                    <br />
-                                    <asp:Image ID="Img11Pro" runat="server" ImageUrl="~/Imagenes/Icons/loading.gif" />
-                                </div>
-                            </ProgressTemplate>
-                        </asp:UpdateProgress>
+                                DisplayAfter="0">
+                                <ProgressTemplate>
+                                    <div id="Background">
+                                    </div>
+                                    <div id="Progress">
+                                        <asp:Label ID="Lbl11Pro" runat="server" Text="Procesando, por favor espere..." Font-Names="Calibri"
+                                            Font-Size="Small"></asp:Label>
+                                        <br />
+                                        <asp:Image ID="Img11Pro" runat="server" ImageUrl="~/Imagenes/Icons/loading.gif" />
+                                    </div>
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
                     </td>
                 </tr>
                 <tr align="right" bgcolor="#5D7B9D">
@@ -164,35 +154,35 @@
                 <tr align="center">
                     <td colspan="2">
                         <asp:GridView ID="GVcausasRiesgos" runat="server" CellPadding="4"
-                            ForeColor="#333333" AllowPaging="False" AllowSorting="True" AutoGenerateColumns="False"
-                            ShowHeaderWhenEmpty="True"
-                            HeaderStyle-CssClass="gridViewHeader" BorderStyle="Solid" GridLines="Vertical"
-                            CssClass="Apariencia" Font-Bold="False">
-                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                            <Columns>
-                                <asp:BoundField DataField="IdCausas" HeaderText="Código" ReadOnly="True" SortExpression="IdCausas" ItemStyle-HorizontalAlign="Center" />
-                                <asp:BoundField HeaderText="Causa" DataField="NombreCausas" />
-                                <asp:TemplateField HeaderText="Asociar" ItemStyle-HorizontalAlign="Left">
-                                    <ItemTemplate>
-                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px">
-                                            <asp:CheckBox ID="CBasociarCausa" runat="server"></asp:CheckBox>
-                                        </div>
-                                    </ItemTemplate>
-                                    <HeaderStyle Wrap="false" Width="100" HorizontalAlign="center" />
-                                    <ItemStyle Wrap="false" Width="100" HorizontalAlign="Center" />
-                                </asp:TemplateField>
-                            </Columns>
-                            <EditRowStyle BackColor="#999999" />
-                            <FooterStyle BackColor="White" Font-Bold="True" ForeColor="White" />
-                            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                        </asp:GridView>
+                                    ForeColor="#333333" AllowPaging="False" AllowSorting="True" AutoGenerateColumns="False"
+                                     ShowHeaderWhenEmpty="True"
+                                    HeaderStyle-CssClass="gridViewHeader" BorderStyle="Solid" GridLines="Vertical"
+                                    CssClass="Apariencia" Font-Bold="False">
+                                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                    <Columns>
+                                        <asp:BoundField DataField="IdCausas" HeaderText="Código" ReadOnly="True" SortExpression="IdCausas" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:BoundField HeaderText="Causa" DataField="NombreCausas" />
+                                        <asp:TemplateField HeaderText="Asociar" ItemStyle-HorizontalAlign="Left">
+                                            <ItemTemplate>
+                                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px">
+                                                    <asp:CheckBox ID="CBasociarCausa" runat="server" ></asp:CheckBox> 
+                                                </div>
+                                            </ItemTemplate>
+                                            <HeaderStyle Wrap="false" Width="100" HorizontalAlign="center" />
+                                            <ItemStyle Wrap="false" Width="100" HorizontalAlign="Center"/>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <EditRowStyle BackColor="#999999" />
+                                    <FooterStyle BackColor="White" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                                </asp:GridView>
                     </td>
                 </tr>
                 <tr>
@@ -200,7 +190,7 @@
                         <asp:Label ID="LtextoCausas" runat="server" Text="Seleccionar Asociar Riesgo sin Causas"></asp:Label>
                         <asp:CheckBox ID="CBriesgosSinCausa" runat="server" />
                     </td>
-
+                    
                 </tr>
                 <tr align="center">
                     <td colspan="2">
@@ -309,7 +299,8 @@
                                     <tr>
                                         <td>
                                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                                                ForeColor="#333333" GridLines="Vertical" ShowHeaderWhenEmpty="True" HeaderStyle-CssClass="gridViewHeader"
+                                                ForeColor="#333333" GridLines="Vertical" ShowHeaderWhenEmpty="False" HeaderStyle-CssClass="gridViewHeader"
+                                                CssClass="table-center"
                                                 BorderStyle="Solid" HorizontalAlign="Center" Font-Names="Calibri" Font-Size="Small"
                                                 DataKeyNames="IdEvento"
                                                 OnRowCommand="GridView1_RowCommand" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
@@ -335,12 +326,6 @@
                                             </asp:GridView>
                                         </td>
                                     </tr>
-                                    <%--<tr align="center">
-                                <td>
-                                    <asp:ImageButton ID="ImageButton8" runat="server" ToolTip="Insertar" ImageUrl="~/Imagenes/Icons/Add.png"
-                                        OnClick="ImageButton8_Click" Height="32px" />
-                                </td>
-                            </tr>--%>
                                 </table>
                             </td>
                         </tr>
@@ -397,9 +382,9 @@
                             <td align="left">
                                 <asp:DropDownList ID="DDLmailEvent" Width="150px" runat="server" CssClass="Apariencia"
                                     AutoPostBack="false">
-                                    <asp:ListItem Value="---">---</asp:ListItem>
+                                     <asp:ListItem Value="---">---</asp:ListItem>
                                 </asp:DropDownList>
-
+                               
                             </td>
                         </tr>
                         <tr align="left">
@@ -459,7 +444,7 @@
                                                         <br />
                                                     </td>
                                                 </tr>
-                                                <tr align="left" runat="server" visible="true">
+                                                <tr align="left" runat="server" visible="False">
                                                     <td bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label154" runat="server" Text="Código:" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                     </td>
@@ -474,10 +459,6 @@
                                                     <td runat="server">
                                                         <asp:DropDownList ID="ddlEmpresa1" Width="200px" runat="server" Font-Names="Calibri"
                                                             Font-Size="Small">
-                                                            <%--<asp:ListItem Value="---">---</asp:ListItem>
-                                                            <asp:ListItem Value="1">Vida</asp:ListItem>
-                                                            <asp:ListItem Value="2">Generales</asp:ListItem>
-                                                            <asp:ListItem Value="3">Ambas</asp:ListItem>--%>
                                                         </asp:DropDownList>
                                                         <asp:CompareValidator ID="CompareValidator1" runat="server" ForeColor="Red" ControlToValidate="ddlEmpresa1"
                                                             ValidationGroup="Addne" ValueToCompare="---" Operator="NotEqual">*</asp:CompareValidator>
@@ -599,16 +580,12 @@
                                                         <asp:Label ID="Label83" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fecha Inicio"></asp:Label>
                                                     </td>
                                                     <td runat="server">
-                                                        <asp:TextBox ID="TextBox45" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small" autocomplete="off"></asp:TextBox>
-                                                        <asp:CalendarExtender ID="CalendarExtender4" runat="server" Enabled="True" TargetControlID="TextBox45"
-                                                            Format="yyyy-MM-dd"></asp:CalendarExtender>
+                                                        <asp:TextBox ID="TextBox45" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
+                                                        <asp:CalendarExtender ID="CalendarExtender4" runat="server" TargetControlID="TextBox45"
+                                                            Format="yyyy-MM-dd" BehaviorID="_content_CalendarExtender4"></asp:CalendarExtender>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator124" runat="server" ControlToValidate="TextBox45"
                                                             ForeColor="Red" ValidationGroup="Addne">*</asp:RequiredFieldValidator>
-                                                        <asp:CompareValidator ID="CompareValidator6" Display="Dynamic" ForeColor="Red" Font-Names="Calibri"
-                                                            runat="server" ControlToValidate="TextBox45" ControlToCompare="TextBox39" Font-Size="Small"
-                                                            ErrorMessage="Fecha Inválida. La fecha de inicio del evento no puede ser superior a la fecha de registro"
-                                                            Type="Date" Operator="LessThanEqual" ValidationGroup="Addne">
-                                                        </asp:CompareValidator>
+                                                        
 
                                                     </td>
                                                     <td bgcolor="#BBBBBB" runat="server">
@@ -714,14 +691,9 @@
                                                         <asp:Label ID="Label85" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Feha Finalización"></asp:Label>
                                                     </td>
                                                     <td runat="server">
-                                                        <asp:TextBox ID="TextBox47" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small" autocomplete="off"></asp:TextBox>
-                                                        <asp:CalendarExtender ID="CalendarExtender5" runat="server" Enabled="True" TargetControlID="TextBox47"
-                                                            Format="yyyy-MM-dd"></asp:CalendarExtender>
-                                                        <asp:CompareValidator ID="CompareValidator2" Display="Dynamic" ForeColor="Red" Font-Names="Calibri"
-                                                            runat="server" ControlToValidate="TextBox47" ControlToCompare="TextBox45" Font-Size="Small"
-                                                            ErrorMessage="Fecha Inválida. La fecha final del evento no puede ser anterior a la Fecha de Inicio"
-                                                            Type="Date" Operator="GreaterThanEqual" ValidationGroup="Addne">
-                                                        </asp:CompareValidator>
+                                                        <asp:TextBox ID="TextBox47" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
+                                                        <asp:CalendarExtender ID="CalendarExtender5" runat="server" TargetControlID="TextBox47"
+                                                            Format="yyyy-MM-dd" BehaviorID="_content_CalendarExtender5"></asp:CalendarExtender>
                                                     </td>
                                                     <td bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label86" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Hora (HH:MM am/pm)"></asp:Label>
@@ -823,16 +795,11 @@
                                                         <asp:Label ID="Label87" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fecha Descubrimiento"></asp:Label>
                                                     </td>
                                                     <td runat="server">
-                                                        <asp:TextBox ID="TextBox49" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small" autocomplete="off"></asp:TextBox>
-                                                        <asp:CalendarExtender ID="CalendarExtender6" runat="server" Enabled="True" TargetControlID="TextBox49"
-                                                            Format="yyyy-MM-dd"></asp:CalendarExtender>
+                                                        <asp:TextBox ID="TextBox49" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
+                                                        <asp:CalendarExtender ID="CalendarExtender6" runat="server" TargetControlID="TextBox49"
+                                                            Format="yyyy-MM-dd" BehaviorID="_content_CalendarExtender6"></asp:CalendarExtender>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator126" runat="server" ControlToValidate="TextBox49"
                                                             ForeColor="Red" ValidationGroup="Addne">*</asp:RequiredFieldValidator>
-                                                        <asp:CompareValidator ID="CompareValidator3" Display="Dynamic" ForeColor="Red" Font-Names="Calibri"
-                                                            runat="server" ControlToValidate="TextBox49" ControlToCompare="TextBox45" Font-Size="Small"
-                                                            ErrorMessage="Fecha Inválida. Fecha de descubrimiento no puede ser anterior a la fecha de inicio."
-                                                            Type="Date" Operator="GreaterThanEqual" ValidationGroup="Addne">
-                                                        </asp:CompareValidator>
                                                     </td>
                                                     <td bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label88" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Hora (HH:MM am/pm)"></asp:Label>
@@ -932,7 +899,6 @@
                                                             ForeColor="Red" InitialValue="---" ValidationGroup="Addne">*</asp:RequiredFieldValidator>
                                                     </td>
                                                 </tr>
-                                                
                                                 <tr runat="server" align="left">
                                                     <td bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label89" runat="server" Text="Canal" CssClass="Apariencia"></asp:Label>
@@ -967,8 +933,7 @@
                                                             Font-Size="Small"></asp:Label>
                                                         <asp:ImageButton ID="imgDependencia4" runat="server" ImageUrl="~/Imagenes/Icons/Organization-Chart.png"
                                                             OnClientClick="return false;" />
-                                                        <asp:PopupControlExtender ID="popupDependencia4" runat="server" DynamicServicePath=""
-                                                            Enabled="True" ExtenderControlID="" TargetControlID="imgDependencia4" BehaviorID="popup4"
+                                                        <asp:PopupControlExtender ID="popupDependencia4" runat="server" DynamicServicePath="" ExtenderControlID="" TargetControlID="imgDependencia4" BehaviorID="popup4"
                                                             PopupControlID="pnlDependencia4" OffsetY="-200">
                                                         </asp:PopupControlExtender>
                                                         <asp:Panel ID="pnlDependencia4" runat="server" CssClass="popup" Width="400px" Style="display: none">
@@ -1001,25 +966,10 @@
                                                 </tr>
                                                 <tr align="left" runat="server">
                                                     <td bgcolor="#BBBBBB" runat="server">
-                                                        <asp:Label ID="lblImpCual" runat="server" Text="Impacto Cualitativo" Font-Names="Calibri"
-                                                            Font-Size="Small"></asp:Label>
-                                                    </td>
-                                                    <td runat="server">
-                                                        <asp:DropDownList ID="ddlImpCual" runat="server" CssClass="Apariencia" Width="200px" AutoPostBack="True"
-                                                            OnSelectedIndexChanged="ddlImpCual_SelectedIndexChanged">
-                                                        </asp:DropDownList>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorDdlImpCual" runat="server" ControlToValidate="ddlImpCual"
-                                                            ForeColor="Red" InitialValue="---" ValidationGroup="Addne">*</asp:RequiredFieldValidator>
-                                                    </td>
-                                                </tr>
-                                                <tr align="left" runat="server">
-                                                    <td bgcolor="#BBBBBB" runat="server">
-                                                        <asp:Label ID="Label93" runat="server" Text="Posible Cuantía de Pérdida" Font-Names="Calibri"
-                                                            Font-Size="Small"></asp:Label>
-                                                    </td>
+                                                        Cuantía bruta</td>
                                                     <td runat="server">
                                                         <asp:TextBox ID="TextBox52" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            onkeyup="format(this);" onchange="format(this);"></asp:TextBox>
+                                                            AutoPostBack="True" OnTextChanged="TextBox52_TextChanged"></asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator127" runat="server" ControlToValidate="TextBox52"
                                                             ForeColor="Red" ValidationGroup="Addne">*</asp:RequiredFieldValidator>
                                                     </td>
@@ -1151,7 +1101,8 @@
                                                     </td>
                                                 </tr>
                                                 <tr align="left" runat="server">
-                                                    <td bgcolor="#BBBBBB" runat="server">Responsable proceso afectado</td>
+                                                    <td bgcolor="#BBBBBB" runat="server">
+                                                        Responsable proceso afectado</td>
                                                     <td runat="server">
                                                         <asp:TextBox ID="TextBox34" runat="server" Font-Names="Calibri" Font-Size="Small"
                                                             Width="200px" Enabled="False"></asp:TextBox>
@@ -1194,14 +1145,14 @@
                                                 </tr>
                                                 <tr runat="server" align="left">
                                                     <td bgcolor="#BBBBBB" runat="server">
-                                                        <asp:Label ID="Label97" runat="server" Text="Clase de Riesgo" Font-Names="Calibri"
-                                                            Font-Size="Small"></asp:Label>
-                                                    </td>
+                                                        Clase de riesgo operacional</td>
                                                     <td runat="server">
                                                         <asp:DropDownList ID="DropDownList33" Width="200px" runat="server" Font-Names="Calibri"
                                                             Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="DropDownList33_SelectedIndexChanged">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                         </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator41" runat="server" ControlToValidate="DropDownList33"
+                                                            InitialValue="---" ForeColor="Red" ValidationGroup="Addne1">*</asp:RequiredFieldValidator>
                                                     </td>
                                                     <td bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label99" runat="server" Text="SubClase de Riesgo" Font-Names="Calibri"
@@ -1212,6 +1163,8 @@
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                         </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator43" runat="server" ControlToValidate="DropDownList34"
+                                                            InitialValue="---" ForeColor="Red" ValidationGroup="Addne1">*</asp:RequiredFieldValidator>
                                                     </td>
                                                 </tr>
                                                 <tr runat="server">
@@ -1221,7 +1174,7 @@
                                                     </td>
                                                     <td colspan="3" runat="server">
                                                         <asp:DropDownList ID="DropDownList8" runat="server" Width="550px" Font-Names="Calibri"
-                                                            Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="DropDownList8_SelectedIndexChanged">
+                                                            Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="DropDownList8"
@@ -1284,6 +1237,8 @@
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                         </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="DropDownList16"
+                                                            InitialValue="---" ForeColor="Red" ValidationGroup="Addne1">*</asp:RequiredFieldValidator>
                                                     </td>
                                                 </tr>
                                                 <tr id="Tr6" align="left" runat="server">
@@ -1295,7 +1250,6 @@
                                                             Width="550px" Height="50px" TextMode="MultiLine"></asp:TextBox>
                                                     </td>
                                                 </tr>
-
                                                 <tr id="Tr1" align="center" runat="server">
                                                     <td id="Td2" colspan="4" runat="server">
                                                         <table>
@@ -1313,178 +1267,12 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <table id="AsociacionEventos" runat="server" align="center">
-                                                <tr align="center" runat="server">
-                                                    <td bgcolor="#BBBBBB" runat="server">
-                                                        <asp:Label ID="Label100" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Eventos asociados"></asp:Label>
-                                                    </td>
-                                                </tr>
-                                                <tr runat="server">
-                                                    <td runat="server">
-                                                        <table id="TblAsociados" runat="server" visible="False">
-                                                            <tr runat="server">
-                                                                <td runat="server">
-                                                                    <asp:GridView ID="GridViewEventosAsociados" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                                                                        ForeColor="#333333" GridLines="Vertical" ShowHeaderWhenEmpty="True"
-                                                                        BorderStyle="Solid" HorizontalAlign="Center" Font-Names="Calibri" Font-Size="Small"
-                                                                        DataKeyNames="IdEvento" AllowPaging="True" OnPageIndexChanging="GridViewEventosAsociados_PageIndexChanging">
-                                                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                                                        <Columns>
-                                                                            <asp:BoundField HeaderText="Código" DataField="CodigoEvento" />
-                                                                            <asp:BoundField HeaderText="Descripción" DataField="DescripcionEvento" />
-                                                                            <asp:BoundField HeaderText="Clase" DataField="NombreClaseEvento" />
-                                                                            <asp:BoundField HeaderText="Tipo de perdida" DataField="NombreTipoPerdidaEvento" />
-                                                                        </Columns>
-                                                                        <EditRowStyle BackColor="#999999" />
-                                                                        <FooterStyle BackColor="White" Font-Bold="True" ForeColor="White" />
-                                                                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" CssClass="gridViewHeader" />
-                                                                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                                                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" HorizontalAlign="Left" />
-                                                                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                                                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                                                                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                                                                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                                                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                                                                    </asp:GridView>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr runat="server">
-                                                    <td align="center" runat="server" class="auto-style1">
-                                                        <asp:ImageButton ID="imgBtnInsertar" runat="server" CausesValidation="False" CommandName="Insert"
-                                                            ImageUrl="~/Imagenes/Icons/Add.png" Text="Insert"
-                                                            OnClick="imgBtnInsertar_Click" ToolTip="Insertar" />
-                                                    </td>
-                                                </tr>
-                                                <tr align="center" runat="server">
-                                                    <td runat="server">
-                                                        <table id="FiltrosEventos" runat="server" visible="False">
-                                                            <tr align="left" runat="server">
-                                                                <td bgcolor="#BBBBBB" runat="server">
-                                                                    <asp:Label ID="Label28" runat="server" Text="Codigo Evento:" Font-Size="Small" Font-Names="Calibri"></asp:Label>
-                                                                </td>
-                                                                <td bgcolor="#EEEEEE" runat="server">
-                                                                    <asp:TextBox ID="TxtCod" runat="server" Width="150px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
-                                                                </td>
-                                                            </tr>
-                                                            <tr align="left" runat="server">
-                                                                <td bgcolor="#BBBBBB" runat="server">
-                                                                    <asp:Label ID="Label33" runat="server" Text="Descripción del evento:" Font-Size="Small"
-                                                                        Font-Names="Calibri"></asp:Label>
-                                                                </td>
-                                                                <td bgcolor="#EEEEEE" runat="server">
-                                                                    <asp:TextBox ID="TxtDesc" runat="server" Width="300px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
-                                                                </td>
-                                                            </tr>
-                                                            <tr align="left" runat="server">
-                                                                <td bgcolor="#BBBBBB" runat="server">
-                                                                    <asp:Label ID="Label35" runat="server" Text="Cadena de valor" Font-Names="Calibri"
-                                                                        Font-Size="Small"></asp:Label>
-                                                                </td>
-                                                                <td bgcolor="#EEEEEE" runat="server">
-                                                                    <asp:DropDownList ID="DDLCadenaValor" runat="server" Width="400px" Font-Names="Calibri"
-                                                                        Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="DDLCadenaValor_SelectedIndexChanged">
-                                                                        <asp:ListItem Value="---">---</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                            </tr>
-                                                            <tr align="left" runat="server">
-                                                                <td bgcolor="#BBBBBB" runat="server">
-                                                                    <asp:Label ID="Label94" runat="server" Text="Macroproceso" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                                                                </td>
-                                                                <td bgcolor="#EEEEEE" runat="server">
-                                                                    <asp:DropDownList ID="DDLMacroproceso" runat="server" Width="400px" Font-Names="Calibri"
-                                                                        Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="DDLMacroproceso_SelectedIndexChanged">
-                                                                        <asp:ListItem Value="---">---</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                            </tr>
-                                                            <tr align="left" runat="server">
-                                                                <td bgcolor="#BBBBBB" runat="server">
-                                                                    <asp:Label ID="Label95" runat="server" Text="Proceso" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                                                                </td>
-                                                                <td bgcolor="#EEEEEE" runat="server">
-                                                                    <asp:DropDownList ID="DDLProceso" runat="server" Width="400px" Font-Names="Calibri"
-                                                                        Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="DDLProceso_SelectedIndexChanged">
-                                                                        <asp:ListItem Value="---">---</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                            </tr>
-                                                            <tr align="left" runat="server">
-                                                                <td bgcolor="#BBBBBB" runat="server">
-                                                                    <asp:Label ID="Label96" runat="server" Text="Subproceso" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                                                                </td>
-                                                                <td bgcolor="#EEEEEE" runat="server">
-                                                                    <asp:DropDownList ID="DDLSubproceso" runat="server" Width="400px" Font-Names="Calibri"
-                                                                        Font-Size="Small">
-                                                                        <asp:ListItem Value="---">---</asp:ListItem>
-                                                                    </asp:DropDownList>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr align="center" runat="server">
-                                                    <td runat="server">
-                                                        <table id="BusquedaEventos" runat="server" visible="False">
-                                                            <tr align="center" runat="server">
-                                                                <td class="style1" runat="server">
-                                                                    <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/Imagenes/Icons/lupa.png"
-                                                                        ToolTip="Consultar" OnClick="BuscarEventosAsociar_Click" />
-                                                                </td>
-                                                                <td class="style1" runat="server">
-                                                                    <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/Imagenes/Icons/cancel.png"
-                                                                        ToolTip="Cancelar" OnClick="Cancelar_Click" />
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr runat="server">
-                                                    <td runat="server">
-                                                        <table id="TblAsociarEventos" runat="server" visible="False">
-                                                            <tr runat="server">
-                                                                <td runat="server">
-                                                                    <asp:GridView ID="GridViewAsociar" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                                                                        ForeColor="#333333" GridLines="Vertical" ShowHeaderWhenEmpty="True"
-                                                                        BorderStyle="Solid" HorizontalAlign="Center" Font-Names="Calibri" Font-Size="Small"
-                                                                        DataKeyNames="IdEvento"
-                                                                        OnRowCommand="GridViewAsociar_RowCommand" AllowPaging="True" OnPageIndexChanging="GridViewAsociar_PageIndexChanging">
-                                                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                                                        <Columns>
-                                                                            <asp:BoundField HeaderText="Código" DataField="CodigoEvento" />
-                                                                            <asp:BoundField HeaderText="Descripción" DataField="DescripcionEvento" />
-                                                                            <asp:BoundField HeaderText="Clase" DataField="NombreClaseEvento" />
-                                                                            <asp:BoundField HeaderText="Tipo de perdida" DataField="NombreTipoPerdidaEvento" />
-                                                                            <asp:ButtonField ButtonType="Image" ImageUrl="~/Imagenes/Icons/edit.png" Text="Editar"
-                                                                                CommandName="Modificar" />
-                                                                        </Columns>
-                                                                        <EditRowStyle BackColor="#999999" />
-                                                                        <FooterStyle BackColor="White" Font-Bold="True" ForeColor="White" />
-                                                                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" CssClass="gridViewHeader" />
-                                                                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                                                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" HorizontalAlign="Left" />
-                                                                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                                                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                                                                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                                                                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                                                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                                                                    </asp:GridView>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
                                         </ContentTemplate>
                                     </asp:TabPanel>
                                     <asp:TabPanel ID="TabPanelContab" runat="server" HeaderText="Contabilización" Font-Names="Calibri"
                                         Font-Size="Small" Visible="false">
                                         <ContentTemplate>
                                             <table>
-                                                <%--revisar el treeview - no cierra automáticcamente -Yoendy--%>
                                                 <tr align="center">
                                                     <td colspan="4">
                                                         <br />
@@ -1497,23 +1285,19 @@
                                                     <td colspan="3">
                                                         <asp:TextBox ID="TextBox33" runat="server" Font-Names="Calibri" Font-Size="Small"
                                                             Width="195px" Enabled="False"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator33" runat="server" ControlToValidate="TextBox33"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
                                                         <asp:Label ID="lblIdDependencia2" runat="server" Visible="False" Font-Names="Calibri"
                                                             Font-Size="Small"></asp:Label>
                                                         <asp:ImageButton ID="imgDependencia2" runat="server" ImageUrl="~/Imagenes/Icons/Organization-Chart.png"
                                                             OnClientClick="return false;" />
-                                                        <asp:PopupControlExtender ID="popupDependencia2" runat="server"
-                                                            ExtenderControlID="" TargetControlID="imgDependencia2" BehaviorID="popup3"
+                                                        <asp:PopupControlExtender ID="popupDependencia2" runat="server" DynamicServicePath="" ExtenderControlID="" TargetControlID="imgDependencia2" BehaviorID="popup2"
                                                             PopupControlID="pnlDependencia2" OffsetY="-200">
                                                         </asp:PopupControlExtender>
                                                         <asp:Panel ID="pnlDependencia2" runat="server" CssClass="popup" Width="400px" Style="display: none">
                                                             <table width="100%" border="1" cellspacing="0" cellpadding="2" bordercolor="White">
                                                                 <tr align="right" bgcolor="#5D7B9D">
                                                                     <td>
-                                                                        <asp:Label ID="Label22" runat="server" Text="Seleccione un responsable" Font-Names="Calibri" Font-Size="Small"></asp:Label>
                                                                         <asp:ImageButton ID="btnClosepp2" runat="server" ImageUrl="~/Imagenes/Icons/dialog-close2.png"
-                                                                            OnClientClick="$find('popup3').hidePopup(); return false;" />
+                                                                            OnClientClick="$find('popup2').hidePopup(); return false;" />
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -1527,46 +1311,39 @@
                                                                 </tr>
                                                                 <tr align="center">
                                                                     <td>
-                                                                        <asp:Button ID="BtnOk2" runat="server" Text="Aceptar" CssClass="Apariencia" OnClientClick="$find('popup3').hidePopup(); return false;" />
+                                                                        <asp:Button ID="BtnOk2" runat="server" Text="Aceptar" CssClass="Apariencia" OnClientClick="$find('popup2').hidePopup(); return false;" />
                                                                     </td>
                                                                 </tr>
                                                             </table>
                                                         </asp:Panel>
-                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <tr align="left">
                                                     <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="Label29" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuenta CUIF"></asp:Label>
-                                                    </td>
+                                                        Catálogo afectadas</td>
                                                     <td>
                                                         <asp:TextBox ID="TextBox14" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="TextBox14"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
                                                     </td>
                                                     <td bgcolor="#BBBBBB">
                                                         <asp:Label ID="Label30" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuenta de Orden No"></asp:Label>
                                                     </td>
                                                     <td>
                                                         <asp:TextBox ID="TextBox15" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="TextBox15"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
                                                     </td>
                                                 </tr>
-                                                <tr align="left" runat="server" id="TrCuentaPerdida" visible="false">
-                                                    <td bgcolor="#BBBBBB">
+                                                <tr align="left" runat="server" id="TrCuentaPerdida" visible="False">
+                                                    <td bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label31" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuenta de la pérdida"></asp:Label>
                                                     </td>
-                                                    <td>
+                                                    <td runat="server">
                                                         <asp:TextBox ID="TextBox16" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
                                                     </td>
-                                                    <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="Label32" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Moneda"></asp:Label>
-                                                    </td>
-                                                    <td>
+                                                    <td bgcolor="#BBBBBB" runat="server">
+                                                        Divisa</td>
+                                                    <td runat="server">
                                                         <asp:DropDownList ID="DropDownList74" runat="server" Font-Names="Calibri" Font-Size="Small"
                                                             Width="195px">
-                                                            <asp:ListItem Value="">---</asp:ListItem>
+                                                            <asp:ListItem>---</asp:ListItem>
                                                             <asp:ListItem Value="Euro">Euros</asp:ListItem>
                                                             <asp:ListItem Value="Dolar">Dolares</asp:ListItem>
                                                             <asp:ListItem Value="Peso">Pesos</asp:ListItem>
@@ -1579,43 +1356,33 @@
                                                     </td>
                                                     <td>
                                                         <asp:TextBox ID="TextBox21" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            AutoPostBack="false" onkeyup="format(this);" onchange="format(this);"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="TextBox21"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
+                                                            AutoPostBack="True" OnTextChanged="TextBox21_TextChanged"></asp:TextBox>
                                                     </td>
                                                     <td bgcolor="#BBBBBB">
                                                         <asp:Label ID="Label38" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Valor en Pesos"></asp:Label>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="TextBox22" class="number" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            AutoPostBack="false" onkeyup="format(this);" onchange="format(this);"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="TextBox22"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
+                                                        <asp:TextBox ID="TextBox22" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
+                                                            AutoPostBack="True" OnTextChanged="TextBox22_TextChanged"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr align="left">
                                                     <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="Label39" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Valor Recuperado Total"></asp:Label>
-                                                    </td>
+                                                        Cuantía total recuperada</td>
                                                     <td>
                                                         <asp:TextBox ID="TextBox23" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            onkeyup="format(this);" onchange="format(this);"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="TextBox23"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
+                                                            AutoPostBack="True" OnTextChanged="TextBox23_TextChanged"></asp:TextBox>
                                                     </td>
-                                                    <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="Label40" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Moneda"></asp:Label>
-                                                    </td>
+                                                    <td bgcolor="#BBBBBB" class="auto-style1">
+                                                        Divisa</td>
                                                     <td>
                                                         <asp:DropDownList ID="DropDownList75" runat="server" Font-Names="Calibri" Font-Size="Small"
-                                                            Width="195px" AutoPostBack="True">
-                                                            <asp:ListItem Value="---">---</asp:ListItem>
+                                                            Width="195px">
+                                                            <asp:ListItem>---</asp:ListItem>
                                                             <asp:ListItem Value="Euro">Euros</asp:ListItem>
                                                             <asp:ListItem Value="Dolar">Dolares</asp:ListItem>
                                                             <asp:ListItem Value="Peso">Pesos</asp:ListItem>
                                                         </asp:DropDownList>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="DropDownList75"
-                                                            InitialValue="---" ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
                                                     </td>
                                                 </tr>
                                                 <tr align="left">
@@ -1624,67 +1391,30 @@
                                                     </td>
                                                     <td>
                                                         <asp:TextBox ID="TextBox25" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            onkeyup="format(this);" onchange="format(this);"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="TextBox25"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
+                                                            AutoPostBack="True" OnTextChanged="TextBox25_TextChanged"></asp:TextBox>
                                                     </td>
                                                     <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="Label42" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Valor en Pesos"></asp:Label>
-                                                    </td>
+                                                        Cuantía bruta</td>
                                                     <td>
                                                         <asp:TextBox ID="TextBox26" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            onkeyup="format(this);" onchange="format(this);"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="TextBox26"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
+                                                            AutoPostBack="True" OnTextChanged="TextBox26_TextChanged"></asp:TextBox>
                                                     </td>
                                                 </tr>
-                                                <tr align="left" runat="server" id="TrSeguro" visible="false">
-                                                    <td bgcolor="#BBBBBB">
+                                                <tr align="left" runat="server" id="TrSeguro" visible="False">
+                                                    <td bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label44" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Valor Recuperado por Seguros"></asp:Label>
                                                     </td>
-                                                    <td>
+                                                    <td runat="server">
                                                         <asp:TextBox ID="TextBox27" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
                                                             AutoPostBack="True" OnTextChanged="TextBox27_TextChanged"></asp:TextBox>
                                                     </td>
-                                                    <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="Label45" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Valor en Pesos"></asp:Label>
-                                                    </td>
-                                                    <td>
+                                                    <td bgcolor="#BBBBBB" runat="server">
+                                                        Cuantía bruta</td>
+                                                    <td runat="server">
                                                         <asp:TextBox ID="TextBox28" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
                                                             AutoPostBack="True" OnTextChanged="TextBox28_TextChanged"></asp:TextBox>
                                                     </td>
                                                 </tr>
-
-
-                                                <tr align="left" runat="server" >
-                                                    <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="lblCuantiaRecuperadaSeguros" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuantía recuperada por seguros"></asp:Label>
-                                                    </td>
-                                                    <td>
-                                                        <asp:TextBox ID="txtCuantiaRecuperadaSeguros" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                             ></asp:TextBox>
-                                                    </td>
-                                                    <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="lblCuantiaOtrasRecuperaciones" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuantía de otras recuperaciones"></asp:Label>
-                                                    </td>
-                                                    <td>
-                                                        <asp:TextBox ID="txtCuantiaOtrasRecuperaciones" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            ></asp:TextBox>
-                                                    </td>
-                                                </tr>
-
-
-                                                <tr align="left" runat="server" >
-                                                    <td bgcolor="#BBBBBB">
-                                                        <asp:Label ID="lblCuantiaNetaRecuperaciones" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuantía neta de recuperaciones"></asp:Label>
-                                                    </td>
-                                                    <td>
-                                                        <asp:TextBox ID="txtCuantiaNetaRecuperaciones" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
-                                                            ></asp:TextBox>
-                                                    </td>
-                                                </tr>
-
-
                                                 <tr id="Tr7" runat="server" align="left">
                                                     <td id="Td16" bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label65" runat="server" Text="Recuperación" Font-Names="Calibri" Font-Size="Small"></asp:Label>
@@ -1692,12 +1422,12 @@
                                                     <td id="Td17" runat="server">
                                                         <asp:DropDownList ID="DropDownList28" Width="200px" runat="server" Font-Names="Calibri"
                                                             Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="DropDownList28_SelectedIndexChanged">
-                                                            <asp:ListItem Value="">---</asp:ListItem>
+                                                            <asp:ListItem>---</asp:ListItem>
                                                             <asp:ListItem Value="1">Si</asp:ListItem>
                                                             <asp:ListItem Value="0">No</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
-                                                    <td bgcolor="#BBBBBB" runat="server" id="lrecuperacio" visible="false">
+                                                    <td bgcolor="#BBBBBB" runat="server" id="lrecuperacio" visible="False">
                                                         <asp:Label ID="Label64" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fuente de la Recuperación"></asp:Label>
                                                     </td>
                                                     <td id="trecuperacion" runat="server" visible="False">
@@ -1711,16 +1441,13 @@
                                                     </td>
                                                     <td id="Td19" runat="server">
                                                         <asp:TextBox ID="TextBox1" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
-                                                        <asp:CalendarExtender ID="CalendarExtender1" runat="server" Enabled="True" TargetControlID="TextBox1"
-                                                            Format="yyyy-MM-dd"></asp:CalendarExtender>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator32" runat="server" ControlToValidate="TextBox1"
-                                                            InitialValue=" " ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
+                                                        <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="TextBox1"
+                                                            Format="yyyy-MM-dd" BehaviorID="_content_CalendarExtender1"></asp:CalendarExtender>
                                                     </td>
                                                     <td id="Td20" bgcolor="#BBBBBB" runat="server">
                                                         <asp:Label ID="Label9" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Hora (HH:MM am/pm)"></asp:Label>
                                                     </td>
                                                     <td id="Td21" runat="server">
-                                                        <%--asp:TextBox ID="TextBox2" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small" ReadOnly="true"></asp:TextBox--%>
                                                         <asp:DropDownList ID="DropDownList7" runat="server" Width="50px" Font-Names="Calibri"
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
@@ -1737,9 +1464,6 @@
                                                             <asp:ListItem Value="11">11</asp:ListItem>
                                                             <asp:ListItem Value="12">12</asp:ListItem>
                                                         </asp:DropDownList>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator34" runat="server" ControlToValidate="DropDownList7"
-                                                            InitialValue="---" ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
-
                                                         <asp:DropDownList ID="DropDownList30" runat="server" Width="50px" Font-Names="Calibri"
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
@@ -1804,41 +1528,28 @@
                                                             <asp:ListItem Value="58">58</asp:ListItem>
                                                             <asp:ListItem Value="59">59</asp:ListItem>
                                                         </asp:DropDownList>
-
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="DropDownList30"
-                                                            InitialValue="---" ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
-
                                                         <asp:DropDownList ID="DropDownList31" runat="server" Width="50px" Font-Names="Calibri"
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                             <asp:ListItem Value="am">a.m</asp:ListItem>
                                                             <asp:ListItem Value="pm">p.m</asp:ListItem>
                                                         </asp:DropDownList>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="DropDownList31"
-                                                            InitialValue="---" ForeColor="Red" ValidationGroup="Addne_2">*</asp:RequiredFieldValidator>
-
                                                     </td>
                                                 </tr>
-
-
-
-
-
-                                                <tr id="Tr8" align="left" runat="server">
+                                                 <tr  align="left" runat="server">
                                                     <td id="Td22" bgcolor="#BBBBBB" runat="server">
-                                                        <asp:Label ID="Label101" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fecha Recuperación"></asp:Label>
+                                                        <asp:Label ID="lblFechaRecuperacion" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Fecha Recuperación"></asp:Label>
                                                     </td>
                                                     <td id="Td23" runat="server">
-                                                        <asp:TextBox ID="TextBox2" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
-                                                        <asp:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" TargetControlID="TextBox2"
-                                                            Format="yyyy-MM-dd"></asp:CalendarExtender>
+                                                        <asp:TextBox ID="txtFechaRecuperacion" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
+                                                        <asp:CalendarExtender ID="ceFechaRecuperacion" runat="server" TargetControlID="txtFechaRecuperacion"
+                                                            Format="yyyy-MM-dd" BehaviorID="_content_ceFechaRecuperacion"></asp:CalendarExtender>
                                                     </td>
                                                     <td id="Td24" bgcolor="#BBBBBB" runat="server">
-                                                        <asp:Label ID="Label102" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Hora (HH:MM am/pm)"></asp:Label>
+                                                        <asp:Label ID="lblHoraHoraRecuperacion" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Hora (HH:MM am/pm)"></asp:Label>
                                                     </td>
                                                     <td id="Td25" runat="server">
-                                                        <%--asp:TextBox ID="TextBox2" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small" ReadOnly="true"></asp:TextBox--%>
-                                                        <asp:DropDownList ID="DropDownList32" runat="server" Width="50px" Font-Names="Calibri"
+                                                        <asp:DropDownList ID="ddlHoraRecuperacion" runat="server" Width="50px" Font-Names="Calibri"
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                             <asp:ListItem Value="1">01</asp:ListItem>
@@ -1855,7 +1566,7 @@
                                                             <asp:ListItem Value="12">12</asp:ListItem>
                                                         </asp:DropDownList>
 
-                                                        <asp:DropDownList ID="DropDownList35" runat="server" Width="50px" Font-Names="Calibri"
+                                                        <asp:DropDownList ID="ddlMinutoRecuperacion" runat="server" Width="50px" Font-Names="Calibri"
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                             <asp:ListItem Value="0">00</asp:ListItem>
@@ -1920,7 +1631,7 @@
                                                             <asp:ListItem Value="59">59</asp:ListItem>
                                                         </asp:DropDownList>
 
-                                                        <asp:DropDownList ID="DropDownList36" runat="server" Width="50px" Font-Names="Calibri"
+                                                        <asp:DropDownList ID="ddlHorarioRecuperacion" runat="server" Width="50px" Font-Names="Calibri"
                                                             Font-Size="Small">
                                                             <asp:ListItem Value="---">---</asp:ListItem>
                                                             <asp:ListItem Value="am">a.m</asp:ListItem>
@@ -1929,22 +1640,40 @@
 
                                                     </td>
                                                 </tr>
+                                                <tr align="left" runat="server">
+                                                    <td bgcolor="#BBBBBB" runat="server">
+                                                        <asp:Label ID="lblCuantiaRecuperadaSeguros" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuantía recuperada por seguros"></asp:Label>
+                                                    </td>
+                                                    <td runat="server">
+                                                        <asp:TextBox ID="txtCuantiaRecuperadaSeguros" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
+                                                             ></asp:TextBox>
+                                                    </td>
+                                                    <td bgcolor="#BBBBBB" runat="server">
+                                                        <asp:Label ID="lblCuantiaOtrasRecuperaciones" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuantía de otras recuperaciones"></asp:Label>
+                                                    </td>
+                                                    <td runat="server">
+                                                        <asp:TextBox ID="txtCuantiaOtrasRecuperaciones" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
+                                                            ></asp:TextBox>
+                                                    </td>
+                                                </tr>
 
 
-
-
-
-
-
-
-
+                                                <tr align="left" runat="server" >
+                                                    <td bgcolor="#BBBBBB" runat="server">
+                                                        <asp:Label ID="lblCuantiaNetaRecuperaciones" runat="server" Font-Names="Calibri" Font-Size="Small" Text="Cuantía neta de recuperaciones"></asp:Label>
+                                                    </td>
+                                                    <td runat="server">
+                                                        <asp:TextBox ID="txtCuantiaNetaRecuperaciones" runat="server" Width="195px" Font-Names="Calibri" Font-Size="Small"
+                                                            ></asp:TextBox>
+                                                    </td>
+                                                </tr>
                                                 <tr id="Tr2" align="center" runat="server">
                                                     <td id="Td3" colspan="4" runat="server">
                                                         <table>
                                                             <tr>
                                                                 <td>
                                                                     <asp:ImageButton ID="ImageButton21" runat="server" ImageUrl="~/Imagenes/Icons/guardar.png"
-                                                                        ToolTip="Guardar" ValidationGroup="Addne_2" Style="height: 20px" OnClick="ImageButton21_Click" />
+                                                                        ToolTip="Guardar" Style="height: 20px" OnClick="ImageButton21_Click" />
                                                                 </td>
                                                                 <td>
                                                                     <asp:ImageButton ID="ImageButton22" runat="server" ImageUrl="~/Imagenes/Icons/cancel.png"
@@ -1965,7 +1694,7 @@
             </tr>
             <tr id="trRiesgosEventos" runat="server" visible="false" align="center">
                 <td>
-                    <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" Font-Names="Calibri"
+                    <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="3" Font-Names="Calibri"
                         Font-Size="Small" Width="900px">
                         <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="Justificación cambios" Font-Names="Calibri"
                             Font-Size="Small">
@@ -1978,10 +1707,9 @@
                                         </td>
                                         <td>
                                             <asp:TextBox ID="TextBox11" runat="server" Height="80px" TextMode="MultiLine" Width="400px"
-                                                Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
-                                            <asp:RequiredFieldValidator
-                                                ID="RequiredFieldValidator64" runat="server" ControlToValidate="TextBox11" ValidationGroup="Addne"
-                                                ForeColor="Red">*</asp:RequiredFieldValidator>
+                                                Font-Names="Calibri" Font-Size="Small"></asp:TextBox><asp:RequiredFieldValidator
+                                                    ID="RequiredFieldValidator64" runat="server" ControlToValidate="TextBox11" ValidationGroup="Addne"
+                                                    ForeColor="Red">*</asp:RequiredFieldValidator>
                                         </td>
                                     </tr>
                                     <tr align="right">
@@ -2102,64 +1830,6 @@
                                             <asp:TextBox ID="TextBox32" runat="server" Width="300px" Font-Names="Calibri" Font-Size="Small"></asp:TextBox>
                                         </td>
                                     </tr>
-                                    <%--adición de nuevos campos Yoendy--%>
-                                    <tr align="left">
-                                        <td bgcolor="#BBBBBB">
-                                            <asp:Label ID="Label14" runat="server" Text="Cadena de valor" Font-Names="Calibri"
-                                                Font-Size="Small"></asp:Label>
-                                        </td>
-                                        <td bgcolor="#EEEEEE">
-                                            <asp:DropDownList ID="cbCadenaValor" runat="server" Width="400px" Font-Names="Calibri"
-                                                Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="cbCadenaValor_SelectedIndexChanged">
-                                                <asp:ListItem Value="---">---</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td bgcolor="#BBBBBB">
-                                            <asp:Label ID="Label15" runat="server" Text="Macroproceso" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                                        </td>
-                                        <td bgcolor="#EEEEEE">
-                                            <asp:DropDownList ID="cbMacroproceso" runat="server" Width="400px" Font-Names="Calibri"
-                                                Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="cbMacroproceso_SelectedIndexChanged">
-                                                <asp:ListItem Value="---">---</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td bgcolor="#BBBBBB">
-                                            <asp:Label ID="Label16" runat="server" Text="Proceso" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                                        </td>
-                                        <td bgcolor="#EEEEEE">
-                                            <asp:DropDownList ID="cbProceso" runat="server" Width="400px" Font-Names="Calibri"
-                                                Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="cbProceso_SelectedIndexChanged">
-                                                <asp:ListItem Value="---">---</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td bgcolor="#BBBBBB">
-                                            <asp:Label ID="Label17" runat="server" Text="Subproceso" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                                        </td>
-                                        <td bgcolor="#EEEEEE">
-                                            <asp:DropDownList ID="cbSubproceso" runat="server" Width="400px" Font-Names="Calibri"
-                                                Font-Size="Small">
-                                                <asp:ListItem Value="---">---</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </td>
-                                    </tr>
-                                    <tr align="left">
-                                        <td bgcolor="#BBBBBB">
-                                            <asp:Label ID="Label21" runat="server" Text="Riesgos globales" Font-Names="Calibri"
-                                                Font-Size="Small"></asp:Label>
-                                        </td>
-                                        <td bgcolor="#EEEEEE">
-                                            <asp:DropDownList ID="cbRiesgosGlobales" runat="server" Width="400px" Font-Names="Calibri"
-                                                Font-Size="Small">
-                                                <asp:ListItem Value="---">---</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </td>
-                                    </tr>
                                     <tr align="center">
                                         <td colspan="2">
                                             <table>
@@ -2189,7 +1859,7 @@
                                                 HorizontalAlign="Center" ShowHeaderWhenEmpty="True" OnRowCommand="GridView8_RowCommand" Visible="False">
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
                                                 <Columns>
-
+                                                    
                                                     <asp:BoundField HeaderText="Código Riesgo" DataField="Codigo" />
                                                     <asp:BoundField HeaderText="Nombre Riesgo" DataField="Nombre" />
                                                     <asp:ButtonField ButtonType="Image" CommandName="Relacionar" ImageUrl="~/Imagenes/Icons/select.png"
@@ -2207,7 +1877,7 @@
                                                 <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
                                             </asp:GridView>
                                             <asp:HiddenField ID="hidForModel" runat="server" />
-                                            <asp:ModalPopupExtender ID="modalPopup" runat="server" PopupControlID="popupCausas" TargetControlID="hidForModel" BackgroundCssClass="modalBackground" DropShadow="True" BehaviorID="_content_modalPopup" DynamicServicePath="">
+                                <asp:ModalPopupExtender ID="modalPopup" runat="server" PopupControlID="popupCausas" TargetControlID="hidForModel" BackgroundCssClass="modalBackground" DropShadow="True" BehaviorID="_content_modalPopup" DynamicServicePath="">
                                             </asp:ModalPopupExtender>
                                         </td>
                                     </tr>
@@ -2225,24 +1895,21 @@
                                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                                 <Columns>
                                                     <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <img alt="" style="cursor: pointer" src="../../Imagenes/Icons/plus.png" />
-                                                            <asp:Panel ID="pnlOrders" runat="server" Style="display: none">
-                                                                <asp:GridView ID="gvOrders" runat="server" AutoGenerateColumns="false" CssClass="ChildGrid">
-                                                                    <Columns>
-                                                                        <asp:BoundField ItemStyle-Width="150px" DataField="IdCausas" HeaderText="Código" />
-                                                                        <asp:BoundField ItemStyle-Width="150px" DataField="NombreCausas" HeaderText="Causa" />
-                                                                    </Columns>
-                                                                </asp:GridView>
-                                                            </asp:Panel>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField DataField="IdEventoRiesgo" HeaderText="Id Evento Riesgo" Visible="false" />
-                                                    <asp:BoundField DataField="IdRiesgo" HeaderText="Id" Visible="false" />
+                <ItemTemplate>
+                    <img alt = "" style="cursor: pointer" src="../../Imagenes/Icons/plus.png" />
+                    <asp:Panel ID="pnlOrders" runat="server" Style="display: none">
+                        <asp:GridView ID="gvOrders" runat="server" AutoGenerateColumns="false" CssClass = "ChildGrid">
+                            <Columns>
+                                <asp:BoundField ItemStyle-Width="150px" DataField="IdCausas" HeaderText="Código" />
+                                <asp:BoundField ItemStyle-Width="150px" DataField="NombreCausas" HeaderText="Causa" />
+                            </Columns>
+                        </asp:GridView>
+                    </asp:Panel>
+                </ItemTemplate>
+            </asp:TemplateField>
                                                     <asp:BoundField DataField="Codigo" HeaderText="Código Riesgo" />
                                                     <asp:BoundField DataField="Nombre" HeaderText="Nombre Riesgo" />
-                                                    <asp:BoundField DataField="FechaRegistro" HeaderText="Fecha Registro" Visible="false" />
-                                                    <asp:ButtonField ButtonType="Image" CommandName="Desasociar" ImageUrl="~/Imagenes/Icons/delete.png"
+                                                    <asp:ButtonField ButtonType="Image"  CommandName="Desasociar" ImageUrl="~/Imagenes/Icons/delete.png"
                                                         Text="Desasociar"></asp:ButtonField>
                                                 </Columns>
                                                 <EditRowStyle BackColor="#999999" />
@@ -2308,56 +1975,7 @@
                                 <table>
                                     <tr align="center">
                                         <td>
-                                            <asp:Panel ID="PanelPlanesAsociados" runat="server">
-                                                <div class="EAsociados" style="margin: 18px 0 7px 0; font-family: Calibri; font-size: Small; color: #4d4d4d;">
-                                                    <asp:Label ID="Label103" runat="server" Text="Planes Asociados: "></asp:Label>
-                                                </div>
-                                                <table id="tbPlanesAsociados">
-                                                    <tr>
-                                                        <td>
-                                                            <asp:GridView ID="GvPlanesAsociados" runat="server" AutoGenerateColumns="False" CellPadding="4"
-                                                                ForeColor="#333333" GridLines="Vertical" ShowHeaderWhenEmpty="True" HeaderStyle-CssClass="gridViewHeader"
-                                                                BorderStyle="Solid" HorizontalAlign="Justify" Font-Names="Calibri" Font-Size="Small"
-                                                                AllowPaging="True">
-                                                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                                                                <Columns>
-                                                                    <asp:BoundField HeaderText="Código Plan" DataField="CodigoPlan" />
-                                                                    <asp:BoundField HeaderText="Código Evento" DataField="CodigoEvento" />
-                                                                    <asp:BoundField HeaderText="Usuario" DataField="Usuario" />
-                                                                    <asp:BoundField HeaderText="Fecha Registro" DataField="FechaRegistro" />
-                                                                </Columns>
-                                                                <EditRowStyle BackColor="#999999" />
-                                                                <FooterStyle BackColor="White" Font-Bold="True" ForeColor="White" />
-                                                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                                                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                                                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" HorizontalAlign="Left" />
-                                                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                                                                <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                                                                <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                                                                <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                                                                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                                                            </asp:GridView>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <table>
-                                                    <tr align="right">
-                                                        <td style="text-align: left;">
-                                                            <asp:ImageButton ID="Exportar" runat="server" ImageUrl="../../Imagenes/Icons/excel.png"
-                                                                ToolTip="Exportar" OnClick="Exportar_Click" />
-                                                        </td>
-                                                    </tr>
-                                                </table>
-
-                                            </asp:Panel>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <%--invisibilizo plan - Yoendy--%>
-                                <table style="visibility: hidden;">
-                                    <tr align="center">
-                                        <td>
-                                            <table visible="false">
+                                            <table>
                                                 <tr>
                                                     <td>
                                                         <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BorderStyle="Solid"
@@ -2396,7 +2014,7 @@
                                     </tr>
                                     <tr id="trAddPlanAccion" runat="server" visible="False">
                                         <td id="Td1" runat="server">
-                                            <table visible="false">
+                                            <table>
                                                 <tr align="left">
                                                     <td>
                                                         <table>
@@ -2685,7 +2303,7 @@
         <asp:Label ID="lbldummyOkNo" runat="server" Text="" Visible="False"></asp:Label>
         <asp:Panel ID="pnlMsgBoxOkNo" runat="server" Width="400px" Style="display: none;"
             BorderColor="#575757" BackColor="#FFFFFF" BorderStyle="Solid">
-            <table width="100%">
+            <table width="100%" >
                 <tr class="topHandle" style="background-color: #5D7B9D">
                     <td align="center" runat="server" id="tdCaptionOkNo" colspan="2">&nbsp;
                         <asp:Label ID="lblCaptionOkNo" runat="server" Text="Atención" Font-Names="Calibri"
@@ -2726,75 +2344,9 @@
             </table>
         </asp:Panel>
 
-         <%--<ajax:ModalPopupExtender ID="mpeMsgBox1" runat="server" TargetControlID="btndummy"
-            PopupControlID="pnlMsgBox" OkControlID="btnAceptar" BackgroundCssClass="FondoAplicacion"
-            Enabled="True" DropShadow="true">
-        </ajax:ModalPopupExtender>
-        <asp:Button ID="btndummy1" runat="server" Text="Button" Style="display: none" />
-        <asp:Panel ID="pnlMsgBox1" runat="server" Width="400px" Style="display: none;" BorderColor="#575757"
-            BackColor="#FFFFFF" BorderStyle="Solid">
-            <table width="100%">
-                <tr class="topHandle" style="background-color: #5D7B9D">
-                    <td colspan="2" align="center" runat="server" id="td22">&nbsp;
-                        <asp:Label ID="lblCaption1" runat="server" Text="Atención" Font-Names="Calibri" Font-Size="Small"></asp:Label><br />
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 60px" valign="middle" align="center">
-                        <asp:Image ID="imgInfo1" runat="server" ImageUrl="~/Imagenes/Icons/icontexto-webdev-about.png" />
-                    </td>
-                    <td valign="middle" align="left">
-                        <asp:Label ID="lblMsgBox1" runat="server" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" colspan="2">
-                        <asp:Button ID="btnAceptar1" runat="server" Text="Ok" Font-Names="Calibri" Font-Size="Small" />
-                    </td>
-                </tr>
-            </table>
-        </asp:Panel>
-        <ajax:ModalPopupExtender ID="mpeMsgBoxOkNo1" runat="server" TargetControlID="btndummyOkNo"
-            PopupControlID="pnlMsgBoxOkNo" OkControlID="btnCancelarOkNo" BackgroundCssClass="FondoAplicacion"
-            Enabled="True" DropShadow="true">
-        </ajax:ModalPopupExtender>
-        <asp:Button ID="btndummyOkNo1" runat="server" Text="Button" Style="display: none" />
-        <asp:Label ID="lbldummyOkNo1" runat="server" Text="" Visible="False"></asp:Label>
-        <asp:Panel ID="pnlMsgBoxOkNo1" runat="server" Width="400px" Style="display: none;"
-            BorderColor="#575757" BackColor="#FFFFFF" BorderStyle="Solid">
-            <table width="100%">
-                <tr class="topHandle" style="background-color: #5D7B9D">
-                    <td colspan="2" align="center" runat="server" id="tdCaptionOkNo1">&nbsp;
-                        <asp:Label ID="lblCaptionOkNo1" runat="server" Text="Atención" Font-Names="Calibri"
-                            Font-Size="Small"></asp:Label><br />
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 60px" valign="middle" align="center">
-                        <asp:Image ID="imgInfoOkNo1" runat="server" ImageUrl="~/Imagenes/Icons/icontexto-webdev-about.png" />
-                    </td>
-                    <td valign="middle" align="left">
-                        <asp:Label ID="lblMsgBoxOkNo1" runat="server" Font-Names="Calibri" Font-Size="Small"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" colspan="2">
-                        <asp:Button ID="btnAceptarOkNo1" runat="server" Text="Ok" Font-Names="Calibri" Font-Size="Small"
-                            OnClick="btnAceptarOkNo1_Click" />
-                        <asp:Button ID="btnCancelarOkNo1" runat="server" Text="Cancelar" Font-Names="Calibri"
-                            Font-Size="Small" />
-                    </td>
-                </tr>
-            </table>
-        </asp:Panel>--%>
-
     </ContentTemplate>
     <Triggers>
         <asp:PostBackTrigger ControlID="TabContainer1" />
-        <%--<asp:PostBackTrigger ControlID="ImageButton16" />
-        <asp:PostBackTrigger ControlID="ddlImpCual" />
-        <asp:PostBackTrigger ControlID="GridView4" />
-        <asp:PostBackTrigger ControlID="TreeView2" />
-        <asp:PostBackTrigger ControlID="TreeView2" />--%>
     </Triggers>
 </asp:UpdatePanel>
+
